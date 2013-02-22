@@ -1,74 +1,59 @@
-/*//////////////////////////////////////////////////////////////////////////////////////////////
- //
- //  $Source: $
- //
- // NAME:  Utility.cpp
- //
- // BASE  CLASSES: none
- //  
- // PURPOSE:  purpose description
- //
- // AUTHOR:  Kalycito Powerlink Team
- //
- //  COPYRIGHT NOTICE:
- //
- //	****************************************************************************
+/**
+************************************************************************************************
+\file			Utility.cpp
 
- // (c) Kalycito Infotech Private Limited
- //
- //  Project:      openCONFIGURATOR 
- //
- //  Description:  
- //
- //
- //  License:
- //
- //    Redistribution and use in source and binary forms, with or without
- //    modification, are permitted provided that the following conditions
- //    are met:
- //
- //    1. Redistributions of source code must retain the above copyright
- //       notice, this list of conditions and the following disclaimer.
- //
- //    2. Redistributions in binary form must reproduce the above copyright
- //       notice, this list of conditions and the following disclaimer in the
- //       documentation and/or other materials provided with the distribution.
- //
- //    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
- //       its contributors may be used to endorse or promote products derived
- //       from this software without prior written permission. For written
- //       permission, please contact info@kalycito.com.
- //
- //    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- //    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- //    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
- //    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- //    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- //    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- //    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- //    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- //    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- //    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
- //    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- //    POSSIBILITY OF SUCH DAMAGE.
- //
- //    Severability Clause:
- //
- //        If a provision of this License is or becomes illegal, invalid or
- //        unenforceable in any jurisdiction, that shall not affect:
- //        1. the validity or enforceability in that jurisdiction of any other
- //           provision of this License; or
- //        2. the validity or enforceability in other jurisdictions of that or
- //           any other provision of this License.
- //
- ***********************************************************************************************/
-//
-//  REVISION HISTORY:
-// $Log:      $
-//////////////////////////////////////////////////////////////////////////////////////////////
-/****************************************************************************************************
- * Includes
- ****************************************************************************************************/
+\brief			
+************************************************************************************************
+*/
+
+/*
+(c) Kalycito Infotech Private Limited
+
+  License:
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions
+    are met:
+
+    1. Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
+
+    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
+       its contributors may be used to endorse or promote products derived
+       from this software without prior written permission. For written
+       permission, please contact info@kalycito.com.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
+
+    Severability Clause:
+
+        If a provision of this License is or becomes illegal, invalid or
+        unenforceable in any jurisdiction, that shall not affect:
+        1. the validity or enforceability in that jurisdiction of any other
+           provision of this License; or
+        2. the validity or enforceability in other jurisdictions of that or
+           any other provision of this License.
+
+****************************************************************************/
+
+/****************************************************************************************************/
+/* Includes */
+
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
@@ -78,15 +63,24 @@
 
 using namespace std;
 
-/****************************************************************************************************
- * FUNCTION DEFINITIONS
- ****************************************************************************************************/
 
-/****************************************************************************************************
- * Function Name: ConvertToUpper
- * Description: This function converts received string to upper case
- * Return value: char*
- ****************************************************************************************************/
+				//==========================================================================//
+				// 				F U N C T I O N  D E F I N I T I O N S  					//
+				//==========================================================================//
+
+				
+
+/*****************************************************************************/
+/**
+\brief			ConvertToUpper
+ 
+				This function converts received string to upper case
+				
+\param			pbStrBuffer
+\retval			char*
+*/
+/*****************************************************************************/
+
 char* ConvertToUpper(char* pbStrBuffer)
 {
 	if (NULL == pbStrBuffer)
@@ -105,11 +99,18 @@ char* ConvertToUpper(char* pbStrBuffer)
 	return pbStrBuffer;
 }
 
-/****************************************************************************************************
- * Function Name: StringToUpper
- * Description: This function checks string length,allocate buffer and covert the string to upper case
- * Return value: char*
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			StringToUpper
+ 
+				This function checks string length,allocate buffer and covert the string to upper case
+				
+\param			pbStrBuffer
+\retval			char*
+*/
+/*****************************************************************************/
+
 //TODO: To add a parameter for destination to avoid new delete memory leak.
 char* StringToUpper(char* pbStrBuffer)
 {
@@ -134,11 +135,18 @@ char* StringToUpper(char* pbStrBuffer)
 	return pbStrUpp;
 }
 
-/****************************************************************************************************
- * Function Name: reverse
- * Description: This function reverses the received string
- * Return value: char*
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			reverse
+ 
+				This function reverses the received string
+				
+\param			pbStrBuffer
+\retval			char*
+*/
+/*****************************************************************************/
+
 char* reverse(char* pbStrBuffer)
 {
 	if (NULL == pbStrBuffer)
@@ -161,11 +169,21 @@ char* reverse(char* pbStrBuffer)
 	return pbStrBuffer;
 }
 
-/****************************************************************************************************
- * Function Name: padLeft
- * Description: This function pads left of the string with 0's
- * Return value: char*
- ****************************************************************************************************/
+ 
+/*****************************************************************************/
+/**
+\brief			padLeft
+ 
+				This function pads left of the string with 0's
+				
+\param			pbStrBuffer
+\param			cPadChar
+\param			iPadLength
+\retval			char*
+*/
+/*****************************************************************************/
+
+
 char* padLeft(char* pbStrBuffer, char cPadChar, INT32 iPadLength)
 {
 	if (NULL == pbStrBuffer)
@@ -196,11 +214,20 @@ char* padLeft(char* pbStrBuffer, char cPadChar, INT32 iPadLength)
 	return pbStrBuffer;
 }
 
-/****************************************************************************************************
- * Function Name: subString
- * Description:   This function returns substring
- * Return value: char*
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			subString
+ 
+				This function returns substring
+				
+\param			pbStrBuffer
+\param			iStartPos
+\param			iStringLen
+\retval			char*
+*/
+/*****************************************************************************/
+
 //TODO: Another parameter to be added for substring to avoid new delete memory issues.
 char* subString(char* pbStrBuffer, INT32 iStartPos, INT32 iStringLen)
 {
@@ -220,11 +247,20 @@ char* subString(char* pbStrBuffer, INT32 iStartPos, INT32 iStringLen)
 	return pbSubStrBuffer;
 }
 
-/****************************************************************************************************
- * Function Name: utoa
- * Description: This function converts unsigned values to alphanumeric values
- * Return value: char * / NULL
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			utoa
+ 
+				This function converts unsigned values to alphanumeric values
+				
+\param			uValue
+\param			pbDigits
+\param			iBaseValue
+\retval			char * / NULL
+*/
+/*****************************************************************************/
+
 char *utoa(unsigned uValue, char *pbDigits, INT32 iBaseValue)
 {
 	char *pbAlphNum = NULL;
@@ -257,11 +293,19 @@ char *utoa(unsigned uValue, char *pbDigits, INT32 iBaseValue)
 
 }
 
-/****************************************************************************************************
- * Function Name: _IntToAscii
- * Description: This function converts INT values to ASCII value
- * Return value: char * / NULL
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			_IntToAscii
+ 
+				This function converts INT values to ASCII value
+				
+\param			iValue
+\param			pbDigits
+\param			iBaseValue
+\retval			char *
+*/
+/*****************************************************************************/
+
 char* _IntToAscii(LONG iValue, char *pbDigits, INT32 iBaseValue)
 {
 	char *pbDigit = NULL;
@@ -295,11 +339,18 @@ char* _IntToAscii(LONG iValue, char *pbDigits, INT32 iBaseValue)
 	return pbDigits;
 }
 
-/**************************************************************************************************
- * Function Name: hex2int
- * Description: This function converts hex values to int values
- * Return value: unsigned long
- ***************************************************************************************************/
+ 
+/*****************************************************************************/
+/**
+\brief			hex2int
+ 
+				This function converts hex values to int values
+				
+\param			pbStrBuffer
+\retval			uiValue
+*/
+/*****************************************************************************/
+
 ULONG hex2int(char *pbStrBuffer)
 {
 	UINT32 uiLoopCount = 0;
@@ -326,11 +377,19 @@ ULONG hex2int(char *pbStrBuffer)
 	return uiValue;
 }
 
-/**************************************************************************************************
- * Function Name: IsAscii
- * Description: This function checks whether the given character is ascii
- * Return value: bool
- ***************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			IsAscii
+ 
+				This function checks whether the given character is ascii
+				
+\param			cArg
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending	
+*/
+/*****************************************************************************/
+
 bool IsAscii(char cArg)
 {
 	UINT32 uiCount;
@@ -347,11 +406,19 @@ bool IsAscii(char cArg)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: CheckIfNotPDO
- * Description: This function checks whether the given index value is PDO or not
- * Return value: bool
- ***************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			CheckIfNotPDO
+ 
+				This function checks whether the given index value is PDO or not
+				
+\param			pbIndex
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending	
+*/
+/*****************************************************************************/
+
 bool CheckIfNotPDO(char* pbIndex)
 {
 	if ((0 == strncmp(pbIndex, "14xx", 2)) || (0 == strncmp(pbIndex, "16xx", 2))
@@ -366,11 +433,20 @@ bool CheckIfNotPDO(char* pbIndex)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: CheckIfManufactureSpecificObject
- * Description: This function checks whether the device index is manufacturer spcific or not
- * Return value: bool
- ***************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			CheckIfManufactureSpecificObject
+ 
+				This function checks whether the device index is manufacturer spcific or not
+				
+\param			pbIndex
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending	
+*/
+/*****************************************************************************/
+
 bool CheckIfManufactureSpecificObject(char* pbIndex)
 {
 	UINT32 uiDeviceIndex;
@@ -386,11 +462,20 @@ bool CheckIfManufactureSpecificObject(char* pbIndex)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: CheckIfMappingPDO
- * Description: This function checks index for PDO mapping
- * Return value: bool
- ***************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			CheckIfMappingPDO
+ 
+				This function checks index for PDO mapping
+				
+\param			pbIndex
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending	
+*/
+/*****************************************************************************/
+
 bool CheckIfMappingPDO(char* pbIndex)
 {
 	if ((0 == strncmp(pbIndex, "1A", 2)) || (0 == strncmp(pbIndex, "16", 2)))
@@ -403,11 +488,20 @@ bool CheckIfMappingPDO(char* pbIndex)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: CheckAllowedCNIndexes
- * Description: This function checks whether received CN index falls in the allowed CN indexs
- * Return value: bool
- ***************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			CheckAllowedCNIndexes
+ 
+				This function checks whether received CN index falls in the allowed CN indexs
+				
+\param			pbIndexValue
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending	
+*/
+/*****************************************************************************/
+ 
 //TODO: Function is not used.
 bool CheckAllowedCNIndexes(char* pbIndexValue)
 {
@@ -427,11 +521,19 @@ bool CheckAllowedCNIndexes(char* pbIndexValue)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: CheckBlockedMNIndexes
- * Description  : This function checks whether received MN index is blocked or not
- * Return value: bool
- ***************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			CheckBlockedMNIndexes
+ 
+				This function checks whether received MN index is blocked or not
+				
+\param			pbIndexValue
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending	
+*/
+/*****************************************************************************/
+
 //TODO: function is not used.
 bool CheckBlockedMNIndexes(char* pbIndexValue)
 {
@@ -444,11 +546,18 @@ bool CheckBlockedMNIndexes(char* pbIndexValue)
 		return false;
 	}
 }
-/**************************************************************************************************
- * Function Name: ConvertStringToHex
- * Description: Converts the string to hexadecimal for strings of string Datatype
- * Return value: char*
- ***************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			ConvertStringToHex
+ 
+				Converts the string to hexadecimal for strings of string Datatype
+				
+\param			actString
+\retval			char*			
+*/
+/*****************************************************************************/
+
 char* ConvertStringToHex(char* actString)
 {
 	INT32 ilen = 0;
@@ -484,11 +593,21 @@ char* ConvertStringToHex(char* actString)
 	delete[] tempbufHex;
 	return actString;
 }
-/**************************************************************************************************
- * Function Name: ConvertToHexformat
- * Description:   This function converts to hex value
- * Return value: char*
- ***************************************************************************************************/
+
+
+/*****************************************************************************/
+/**
+\brief			ConvertToHexformat
+ 
+				This function converts to hex value
+				
+\param			pbHexValue
+\param			iPadLength
+\param			bDoPadding
+\retval			char*			
+*/
+/*****************************************************************************/
+
 char* ConvertToHexformat(char* pbHexValue, INT32 iPadLength, bool bDoPadding)
 {
 	char* pbHexTemp = NULL;
@@ -506,11 +625,19 @@ char* ConvertToHexformat(char* pbHexValue, INT32 iPadLength, bool bDoPadding)
 	return pbHexTemp;
 }
 
-/**************************************************************************************************
- * Function Name: CheckIfHex
- * Description: This function checks whether hex or not
- * Return value: bool
- ***************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			CheckIfHex
+ 
+				This function checks whether hex or not
+				
+\param			pbValue
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending			
+*/
+/*****************************************************************************/
+
 bool CheckIfHex(char* pbValue)
 {
 	if (NULL == strchr(pbValue, 'x'))
@@ -531,11 +658,16 @@ bool CheckIfHex(char* pbValue)
 
 }
 
-/**************************************************************************************************
- * Function Name: getConfigDate
- * Description: This function returns configuration date
- * Return value: INT32
- ***************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			getConfigDate
+ 
+				This function returns configuration date
+				
+\retval			INT32						
+*/
+/*****************************************************************************/
+
 INT32 getConfigDate()
 {
 	// to have the total number of days Since 1984
@@ -575,11 +707,16 @@ INT32 getConfigDate()
 	return iDays;
 }
 
-/**************************************************************************************************
- * Function Name: getConfigTime
- * Description: This function returns configuration time
- * Return value: INT32
- ***************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			getConfigTime
+ 
+				This function returns configuration time
+				
+\retval			INT32						
+*/
+/*****************************************************************************/
+
 INT32 getConfigTime()
 {
 	time_t rawtime;
@@ -596,11 +733,20 @@ INT32 getConfigTime()
 	return iMSeconds;
 }
 
-/**************************************************************************************************
- * Function Name: reversedata
- * Description:  This function reverses the data 
- * Return value: INT32
- ***************************************************************************************************/
+ 
+/*****************************************************************************/
+/**
+\brief			reversedata
+ 
+				This function reverses the data
+				
+\param			pbArg1
+\param			pbArg2
+\param			uiSize			
+\retval			INT32						
+*/
+/*****************************************************************************/
+
 //TODO: function is not used.
 INT32 reversedata(UINT8 *pbArg1, UINT8 *pbArg2, UINT32 uiSize)
 {
@@ -619,11 +765,19 @@ INT32 reversedata(UINT8 *pbArg1, UINT8 *pbArg2, UINT32 uiSize)
 	return 0;
 }
 
-/**************************************************************************************************
- * Function Name: CheckAllowedDTForMapping
- * Description: This function checks for the datatype allowed for mapping
- * Return value: bool
- ***************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			CheckAllowedDTForMapping
+ 
+				This function checks for the datatype allowed for mapping
+				
+\param			dtName
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending						
+*/
+/*****************************************************************************/
+
 bool CheckAllowedDTForMapping(char* dtName)
 {
 	if (0 == strcmp(StringToUpper(dtName), "INTEGER8")
@@ -642,11 +796,17 @@ bool CheckAllowedDTForMapping(char* dtName)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: getLastAvailableCycleNumber
- * Description: This function returns last available cycle number
- * Return value: char*
- ***************************************************************************************************/
+ 
+/*****************************************************************************/
+/**
+\brief			getLastAvailableCycleNumber
+ 
+				This function returns last available cycle number
+				
+\retval			char*
+*/
+/*****************************************************************************/
+
 //TODO: Add a parameter to return the value to avoid new delete memory issues
 char* getLastAvailableCycleNumber()
 {
@@ -704,11 +864,17 @@ char* getLastAvailableCycleNumber()
 	return ForcedCycle;
 }
 
-/**************************************************************************************************
- * Function Name: checkAndCorrectName
- * Description  : This function corrects the name by adding '_'
- * Return value : void
- ***************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			checkAndCorrectName
+ 
+				This function corrects the name by adding '_'
+				
+\param			checkName				
+\retval			void
+*/
+/*****************************************************************************/
+
 void checkAndCorrectName(char* checkName)
 {
 	if (NULL == checkName)
@@ -733,11 +899,20 @@ void checkAndCorrectName(char* checkName)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: checkIfValueZero
- * Description:  This function checks for zero value
- * Return value: bool
- ***************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			checkIfValueZero
+ 
+				This function checks for zero value
+				
+\param			pcValue				
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending
+*/
+/*****************************************************************************/
+
 bool checkIfValueZero(char* pcValue)
 {
 	if (NULL == pcValue || 0 == strcmp(pcValue, ""))
@@ -765,11 +940,17 @@ bool checkIfValueZero(char* pcValue)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: GetDecimalValue
- * Description:   This function returns decimal value
- * Return value: INT32
- ***************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			GetDecimalValue
+ 
+				This function returns decimal value
+				
+\param			pcValue				
+\retval			INT32			
+*/
+/*****************************************************************************/
+
 INT32 GetDecimalValue(char* pcValue)
 {
 	if (NULL == pcValue || 0 == strcmp(pcValue, ""))
@@ -790,37 +971,58 @@ INT32 GetDecimalValue(char* pcValue)
 	return iValue;
 }
 
-/**************************************************************************************************
- * Function Name: CheckAccessTypeForInclude
- * Description: This function checks for access type
- * Return value: bool
- ***************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			CheckAccessTypeForInclude
+ 
+				This function checks for access type
+				
+\param			pcAccesstype				
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending
+*/
+/*****************************************************************************/
+
 bool CheckAccessTypeForInclude(char* pcAccesstype)
 {
-	if (NULL == pcAccesstype)
-	{
-		return true;
-	}
 	bool bInclude;
-	char* pcUpperAccesstype = StringToUpper(pcAccesstype);
-	if ((0 == strcmp(pcUpperAccesstype, "CONST"))
-			|| (0 == strcmp(pcUpperAccesstype, "RO")))
-	{
-		bInclude = false;
-	}
-	else
+	if (NULL == pcAccesstype)
 	{
 		bInclude = true;
 	}
-	delete[] pcUpperAccesstype;
+	else
+	{
+		char* pcUpperAccesstype = StringToUpper(pcAccesstype);
+		if ((0 == strcmp(pcUpperAccesstype, "CONST"))
+				|| (0 == strcmp(pcUpperAccesstype, "RO")))
+		{
+			bInclude = false;
+		}
+		else
+		{
+			bInclude = true;
+		}
+		//pcUpperAccesstype shoul be deleted if stringtoupper function parameters changed
+		delete[] pcUpperAccesstype;
+	}
 	return bInclude;
 }
 
-/**************************************************************************************************
- * Function Name: CheckToolVersion
- * Description: This function checks for tool version
- * Return value: bool
- ***************************************************************************************************/
+ 
+/*****************************************************************************/
+/**
+\brief			CheckToolVersion
+ 
+				This function checks for tool version
+				
+\param			pcCurrentToolVersion				
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending
+*/
+/*****************************************************************************/
+
 bool CheckToolVersion(char* pcCurrentToolVersion)
 {
 	char* pcUpperCurrentToolVersion = ConvertToUpper(pcCurrentToolVersion);

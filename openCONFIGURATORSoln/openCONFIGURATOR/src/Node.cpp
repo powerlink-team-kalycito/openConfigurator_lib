@@ -1,86 +1,77 @@
-///////////////////////////////////////////////////////////////////////////////////////////////
-//
-//  $Source: $
-//
-// NAME:  Node.cpp
-//
-// BASE  CLASSES: none
-//  
-// PURPOSE:  purpose description
-//
-// AUTHOR:  Kalycito Powerlink Team
-//
-//  COPYRIGHT NOTICE:
-//
-//	****************************************************************************
+/**
+************************************************************************************************
+\file			Node.cpp
 
-// (c) Kalycito Infotech Private Limited
-//
-//  Project:      openCONFIGURATOR 
-//
-//  Description:  
-//
-//
-//  License:
-//
-//    Redistribution and use in source and binary forms, with or without
-//    modification, are permitted provided that the following conditions
-//    are met:
-//
-//    1. Redistributions of source code must retain the above copyright
-//       notice, this list of conditions and the following disclaimer.
-//
-//    2. Redistributions in binary form must reproduce the above copyright
-//       notice, this list of conditions and the following disclaimer in the
-//       documentation and/or other materials provided with the distribution.
-//
-//    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
-//       its contributors may be used to endorse or promote products derived
-//       from this software without prior written permission. For written
-//       permission, please contact info@kalycito.com.
-//
-//    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-//    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-//    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-//    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-//    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-//    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-//    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-//    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-//    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-//    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-//    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-//    POSSIBILITY OF SUCH DAMAGE.
-//
-//    Severability Clause:
-//
-//        If a provision of this License is or becomes illegal, invalid or
-//        unenforceable in any jurisdiction, that shall not affect:
-//        1. the validity or enforceability in that jurisdiction of any other
-//           provision of this License; or
-//        2. the validity or enforceability in other jurisdictions of that or
-//           any other provision of this License.
-//
-//****************************************************************************/
-//
-//  REVISION HISTORY:
-// $Log:      $
-///////////////////////////////////////////////////////////////////////////////////////////////
+\brief			
+************************************************************************************************
+*/
 
-/****************************************************************************************************
- * Includes
- ****************************************************************************************************/
+/*
+(c) Kalycito Infotech Private Limited
+
+  License:
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions
+    are met:
+
+    1. Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
+
+    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
+       its contributors may be used to endorse or promote products derived
+       from this software without prior written permission. For written
+       permission, please contact info@kalycito.com.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
+
+    Severability Clause:
+
+        If a provision of this License is or becomes illegal, invalid or
+        unenforceable in any jurisdiction, that shall not affect:
+        1. the validity or enforceability in that jurisdiction of any other
+           provision of this License; or
+        2. the validity or enforceability in other jurisdictions of that or
+           any other provision of this License.
+
+****************************************************************************/
+
+/****************************************************************************************************/
+/* Includes */
+
 #include <stdio.h>
 #include "../Include/Node.h"
 #include "../Include/Internal.h"
 
-/****************************************************************************************************
- * FUNCTION DEFINITIONS
- ****************************************************************************************************/
 
-/****************************************************************************************************
- * Constructor
- ****************************************************************************************************/
+				//==========================================================================//
+				// 				F U N C T I O N  D E F I N I T I O N S  					//
+				//==========================================================================//
+
+
+/*************************************************************************/
+/* Constructor */
+
+/**
+        
+    @param void
+*/
+
 CNode::CNode(void)
 {
 	m_NodeName = NULL;
@@ -102,9 +93,14 @@ CNode::CNode(void)
 	//cout<<"CNode: Constructor Executed"<<endl;
 }
 
-/****************************************************************************************************
- * Destructor
- ****************************************************************************************************/
+/*************************************************************************/
+/* Destructor */
+
+/**
+        
+    @param void
+*/
+
 CNode::~CNode(void)
 {
 	//Add destrucor code here
@@ -112,82 +108,134 @@ CNode::~CNode(void)
 #ifndef __GNUC__
 #pragma region Properties
 #endif
-/**************************************************************************************************
- * Function Name: CNode::getNodeType
- * Description: Returns the NodeType of the Node
- * Return value: ENodeType
- ****************************************************************************************************/
+
+
+/*****************************************************************************/
+/**
+\brief			getNodeType
+ 
+				Returns the NodeType of the Node
+
+\retval			ENodeType
+*/
+/*****************************************************************************/
+
 ENodeType CNode::getNodeType()
 {
 	return m_NodeType;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::setNodeType
- * Description: sets the Node Type of the Node.Value can be either CN or MN
- * Return value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			setNodeType
+ 
+				sets the Node Type of the Node.Value can be either CN or MN
+
+\param			objNodeType
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::setNodeType(ENodeType objNodeType)
 {
 	m_NodeType = objNodeType;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::getNodeId
- * Description: Returns the Index of the Index Object
- * Return value: INT32
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			getNodeId
+ 
+				Returns the Index of the Index Object
+
+\retval			INT32
+*/
+/*****************************************************************************/
+
 INT32 CNode::getNodeId()
 {
 	return m_NodeId;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::setIndex
- * Description: sets the Index of the Index Object
- * Return value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			setNodeId
+ 
+				sets the Index of the Index Object
+
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::setNodeId(INT32 iNodeId)
 {
 	m_NodeId = iNodeId;
 
 }
 
-/**************************************************************************************************
- * Function Name: CNode::getNodeIndex
- * Description: Returns the Index of the Index Object
- * Return value: INT32
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			getNodeIndex
+ 
+				Returns the Index of the Index Object
+
+\retval			INT32
+*/
+/*****************************************************************************/
+
 INT32 CNode::getNodeIndex()
 {
 	return m_NodeIndex;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::setNodeIndex
- * Description: sets the Index of the Index Object
- * Return value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			setNodeIndex
+ 
+				sets the Index of the Index Object
+
+\retval			void
+*/
+/*****************************************************************************/
+
+
 void CNode::setNodeIndex(INT32 iNodeIndex)
 {
 	m_NodeIndex = iNodeIndex;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::getNodeName
- * Description: Returns the Name of the Node
- * Return value: Node name as string
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			getNodeName
+ 
+				Returns the Name of the Node
+
+\retval			char*			Node name as string
+*/
+/*****************************************************************************/
+
 char* CNode::getNodeName()
 {
 	return m_NodeName;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::setNodeName
- * Description: sets the Name of the Node
- * Return value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			setNodeName
+ 
+				sets the Name of the Node
+
+\retval			void
+*/
+/*****************************************************************************/
+
+
 void CNode::setNodeName(char* pbNodeName)
 {
 	if (NULL != m_NodeName)
@@ -198,70 +246,118 @@ void CNode::setNodeName(char* pbNodeName)
 	strcpy((char*) m_NodeName, pbNodeName);
 }
 
-/**************************************************************************************************
- * Function Name: CNode::HasPdoObjects
- * Description: Returns true if PDO Objects are present else false
- * Return value: bool
- ****************************************************************************************************/
+ 
+/*****************************************************************************/
+/**
+\brief			HasPdoObjects
+ 
+				Returns true if PDO Objects are present else false
+
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending	
+*/
+/*****************************************************************************/
+
 bool CNode::HasPdoObjects()
 {
 	return m_HasPdoObjects;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::setFlagForPdoObjects
- * Description: sets the Name of the Node
- * Return value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			setFlagForPdoObjects
+ 
+				sets the Name of the Node
+
+\param			bFlag
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::setFlagForPdoObjects(bool bFlag)
 {
 	m_HasPdoObjects = bFlag;
 }
 
-/**************************************************************************************************
- * Function Name: getIndexCollection
- * Description: Returns the IndexCollection of the Node
- * Return value: CIndexCollection*
- ****************************************************************************************************/
+
+
+/*****************************************************************************/
+/**
+\brief			getIndexCollection
+ 
+				Returns the IndexCollection of the Node
+
+\retval			CIndexCollection*
+*/
+/*****************************************************************************/
+
+
 CIndexCollection* CNode::getIndexCollection()
 {
 	return m_IndexCollection;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::getApplicationProcess
- * Description: Returns the Application Process of the Node
- * Return value: CApplicationProcess*
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			getApplicationProcess
+ 
+				Returns the Application Process of the Node
+
+\retval			 CApplicationProcess*
+*/
+/*****************************************************************************/
+
 CApplicationProcess* CNode::getApplicationProcess()
 {
 	return m_ApplicationProcess;
 }
-/**************************************************************************************************
- * Function Name: CNode::getNetworkManagement
- * Description: Returns the NetworkManagement of the Node
- * Return value: CNetworkManagement*
- ****************************************************************************************************/
+
+
+/*****************************************************************************/
+/**
+\brief			getNetworkManagement
+ 
+				Returns the NetworkManagement of the Node
+
+\retval			CNetworkManagement*
+*/
+/*****************************************************************************/
+
 CNetworkManagement* CNode::getNetworkManagement()
 {
 	return m_NetworkManagement;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::getDataTypeCollection
- * Description: returns the DataType Collection
- * Return value: CDataTypeCollection*
- ****************************************************************************************************/
+ 
+/*****************************************************************************/
+/**
+\brief			getDataTypeCollection
+ 
+				returns the DataType Collection
+
+\retval			CDataTypeCollection*
+*/
+/*****************************************************************************/
+
 CDataTypeCollection* CNode::getDataTypeCollection()
 {
 	return m_DataTypeCollection;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::CreateIndexCollection
- * Description: This function creates index collection
- * Return value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			CreateIndexCollection
+ 
+				This function creates index collection
+
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::CreateIndexCollection()
 {
 	CIndexCollection* pobjIndexCollection = NULL;
@@ -269,11 +365,17 @@ void CNode::CreateIndexCollection()
 	m_IndexCollection = pobjIndexCollection;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::CreateDataTypeCollection
- * Description: This function creates data type collection
- * Return value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			CreateDataTypeCollection
+ 
+				This function creates data type collection
+
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::CreateDataTypeCollection()
 {
 	CDataTypeCollection* pobjDataTypeCollection = NULL;
@@ -281,32 +383,55 @@ void CNode::CreateDataTypeCollection()
 	m_DataTypeCollection = pobjDataTypeCollection;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::addProcessImage
- * Description  : This function collects the process images 
- * Return value : void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			addProcessImage
+ 
+				This function collects the process images
+				
+\param			objProcessImage
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::addProcessImage(ProcessImage objProcessImage)
 {
 	INT32 iItemPosition = ProcessImageCollection.Add();
 	ProcessImageCollection[iItemPosition] = objProcessImage;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::addNETProcessImage
- * Description  : This function collects the NETprocess images 
- * Return value : void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			addNETProcessImage
+ 
+				This function collects the NETprocess images 
+				
+\param			objNETProcessImage
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::addNETProcessImage(NETProcessImage objNETProcessImage)
 {
 	INT32 iItemPosition = NETProcessImageCollection.Add();
 	NETProcessImageCollection[iItemPosition] = objNETProcessImage;
 }
-/**************************************************************************************************
- * Function Name: CNode::addMNPDOvar
- * Description: This function adds PDO variables for MN
- * Return value: void
- ****************************************************************************************************/
+
+
+/*****************************************************************************/
+/**
+\brief			addMNPDOvar
+ 
+				This function adds PDO variables for MN
+				
+\param			stPdoVar
+\param			enumEpdoType
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::addMNPDOvar(MNPdoVariable stPdoVar, EPDOType enumEpdoType)
 {
 	if (PDO_RPDO == enumEpdoType)
@@ -325,11 +450,16 @@ void CNode::addMNPDOvar(MNPdoVariable stPdoVar, EPDOType enumEpdoType)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: CNode::CreateApplicationProcess
- * Description  : This Function creates application process 
- * Return value : void
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			CreateApplicationProcess
+ 
+				This Function creates application process 
+				
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::CreateApplicationProcess()
 {
 	CApplicationProcess* pobjAppliProcess = NULL;
@@ -337,11 +467,18 @@ void CNode::CreateApplicationProcess()
 	pobjAppliProcess = new CApplicationProcess();
 	m_ApplicationProcess = pobjAppliProcess;
 }
-/**************************************************************************************************
- * Function Name: CNode::CreateNetworkManagament
- * Description  : This function creates  network management for the objects 
- * Return value : void
- ****************************************************************************************************/
+
+
+/*****************************************************************************/
+/**
+\brief			CreateNetworkManagament
+ 
+				This function creates  network management for the objects 
+				
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::CreateNetworkManagament()
 {
 	CNetworkManagement* pobjNwManagement = NULL;
@@ -350,11 +487,17 @@ void CNode::CreateNetworkManagament()
 	m_NetworkManagement = pobjNwManagement;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::getPDOIndexCollection
- * Description  : This function adds the indexs under EPDO index collection   
- * Return value : CIndexCollection*
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			getPDOIndexCollection
+ 
+				This function adds the indexs under EPDO index collection
+				
+\param			enumEpdoType				
+\retval			CIndexCollection*
+*/
+/*****************************************************************************/
+
 CIndexCollection* CNode::getPDOIndexCollection(EPDOType enumEpdoType)
 {
 	CIndexCollection* pobjPdoIndexCollection = new CIndexCollection();
@@ -372,11 +515,17 @@ CIndexCollection* CNode::getPDOIndexCollection(EPDOType enumEpdoType)
 	return pobjPdoIndexCollection;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::getPDOIndexCollection
- * Description  : This function adds the indexs under PDO index collection
- * Return value : CIndexCollection*
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			getPDOIndexCollection
+ 
+				This function adds the indexs under PDO index collection
+				
+\retval			CIndexCollection*
+*/
+/*****************************************************************************/
+
 CIndexCollection* CNode::getPDOIndexCollection()
 {
 	CIndexCollection* pobjPdoIndexCollection = new CIndexCollection();
@@ -401,11 +550,17 @@ CIndexCollection* CNode::getPDOIndexCollection()
 	return pobjPdoIndexCollection;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::getIndexCollectionWithoutPDO
- * Description  : This function adds the indexes for non PDO type
- * Return value : CIndexCollection*
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			getIndexCollectionWithoutPDO
+ 
+				This function adds the indexes for non PDO type
+				
+\retval			CIndexCollection*
+*/
+/*****************************************************************************/
+
 CIndexCollection* CNode::getIndexCollectionWithoutPDO()
 {
 	CIndexCollection* pobjIndexCol = new CIndexCollection();
@@ -422,11 +577,19 @@ CIndexCollection* CNode::getIndexCollectionWithoutPDO()
 	return pobjIndexCol;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::isNull
- * Description  : This function returns the status of the index collection
- * Return value : bool
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			isNull
+ 
+				This function returns the status of the index collection
+				
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending	
+*/
+/*****************************************************************************/
+
 bool CNode::isNull()
 {
 	if (NULL == m_IndexCollection)
@@ -439,11 +602,18 @@ bool CNode::isNull()
 	}
 }
 
-/**************************************************************************************************
- * Function Name: CNode::getPIbyParaIndex
- * Description  : This function returns process image for each parameter index
- * Return value : ProcessImage*
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			getPIbyParaIndex
+ 
+				This function returns process image for each parameter index
+				
+\param			iParaIndex
+\retval			ProcessImage*	
+*/
+/*****************************************************************************/
+
 ProcessImage* CNode::getPIbyParaIndex(INT32 iParaIndex)
 {
 	ProcessImage* pobjProcessImage = NULL;
@@ -461,11 +631,18 @@ ProcessImage* CNode::getPIbyParaIndex(INT32 iParaIndex)
 	return pobjProcessImage;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::DeleteCollectionsForPI
- * Description  : This function clears MN PDO collection index and process image collection
- * Return value : void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			DeleteCollectionsForPI
+ 
+				This function clears MN PDO collection index and process image collection
+				
+\retval			void
+*/
+/*****************************************************************************/
+ 
+
 void CNode::DeleteCollectionsForPI()
 {
 	if (0 != MNPDOINVarCollection.Count())
@@ -482,11 +659,17 @@ void CNode::DeleteCollectionsForPI()
 	}
 }
 
-/***************************************************************************************************
- * Function Name: CNode::DeleteCollectionsForPI
- * Description  : This function clears NETprocess image collection
- * Return value : void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			DeleteCollectionsForPI
+ 
+				This function clears NETprocess image collection
+				
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::DeleteCollectionsForNETPI()
 {
 	if (0 != NETProcessImageCollection.Count())
@@ -495,40 +678,67 @@ void CNode::DeleteCollectionsForNETPI()
 	}
 }
 
-/**************************************************************************************************
- * Function Name: CNode::getStationType
- * Description: Returns the station type of the Node
- * Return value: EStationType
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			getStationType
+ 
+				Returns the station type of the Node
+				
+\retval			EStationType
+*/
+/*****************************************************************************/
+
 EStationType CNode::getStationType()
 {
 	return m_StationType;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::setNodeType
- * Description: sets the Node Type of the Node.Value can be either CN or MN
- * Return value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			setNodeType
+ 
+				sets the Node Type of the Node.Value can be either CN or MN
+				
+\param			StationType				
+\retval			EStationType
+*/
+/*****************************************************************************/
+
 void CNode::setStationType(EStationType StationType)
 {
 	m_StationType = StationType;
 }
-/**************************************************************************************************
- * Function Name: CNode::getForcedCycle
- * Description  : Returns the forced cycle of the Node
- * Return value : char*
- ****************************************************************************************************/
+
+
+/*****************************************************************************/
+/**
+\brief			getForcedCycle
+ 
+				Returns the forced cycle of the Node
+				
+\retval			char*
+*/
+/*****************************************************************************/
+
 char* CNode::getForcedCycle()
 {
 	return m_ForcedCycle;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::setForcedCycle
- * Description: sets the cycle of the Node
- * Return value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			setForcedCycle
+ 
+				sets the cycle of the Node
+
+\param			pbForcedCycle
+\retval			void
+*/
+/*****************************************************************************/
+
 ocfmRetCode CNode::setForcedCycle(char* pbForcedCycle)
 {
 	//add or update 1f9b
@@ -641,11 +851,17 @@ ocfmRetCode CNode::setForcedCycle(char* pbForcedCycle)
 	return stErrorResult;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::resetForcedCycleValue
- * Description: sets the cycle of the Node
- * Return value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			resetForcedCycleValue
+ 
+				sets the cycle of the Node
+
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::resetForcedCycleValue()
 {
 	if (NULL == m_ForcedCycle)
@@ -666,11 +882,19 @@ void CNode::resetForcedCycleValue()
 
 	delete[] cSIdx;
 }
-/**************************************************************************************************
- * Function Name: CNode::setPollResponseTimeout
- * Description: sets the poll response timeout value in MN
- * Return value: void
- ****************************************************************************************************/
+
+
+/*****************************************************************************/
+/**
+\brief			setPollResponseTimeout
+ 
+				sets the poll response timeout value in MN
+				
+\param			pbPollResponseTimeout
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::setPollResponseTimeout(char* pbPollResponseTimeout)
 {
 	if (NULL != m_PollResponseTimeout)
@@ -717,62 +941,102 @@ void CNode::setPollResponseTimeout(char* pbPollResponseTimeout)
 	delete[] subIndName;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::getForceCycleFlag
- * Description: This function returns the value of forced cycle flag
- * Return value: bool
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			getForceCycleFlag
+ 
+				This function returns the value of forced cycle flag
+				
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending	
+*/
+/*****************************************************************************/
+
 bool CNode::getForceCycleFlag()
 {
 	return m_ForcedCycleFlag;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::setForceCycleFlag(bool)
- * Description: This function sets the value for forced cycle flag
- * Return value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			setForceCycleFlag
+ 
+				This function sets the value for forced cycle flag
+				
+\param			bForceCycleFlag
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::setForceCycleFlag(bool bForceCycleFlag)
 {
 	m_ForcedCycleFlag = bForceCycleFlag;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::setPResActPayloadValue
- * Description:  This function sets the value for Presact payload
- * Return value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			setPResActPayloadValue
+ 
+				This function sets the value for Presact payload
+				
+\param			iValue
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::setPResActPayloadValue(INT32 iValue)
 {
 	m_PResActPayload = iValue;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::getPResActPayloadValue
- * Description: This function returns the value for Presact payload
- * Return value: INT32
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			getPResActPayloadValue
+ 
+				This function returns the value for Presact payload
+				
+\retval			INT32
+*/
+/*****************************************************************************/
+
 INT32 CNode::getPResActPayloadValue()
 {
 	return m_PResActPayload;
 }
 
-/**************************************************************************************************
- * Function Name: CNode::setPReqActPayloadValue
- * Description: This function sets the value for Preqact payload
- * Return value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			setPReqActPayloadValue
+ 
+				This function sets the value for Preqact payload
+				
+\param			iValue
+\retval			void
+*/
+/*****************************************************************************/
+
 void CNode::setPReqActPayloadValue(INT32 iValue)
 {
 	m_PReqActPayload = iValue;
 
 }
 
-/**************************************************************************************************
- * Function Name: CNode::getPReqActPayloadValue
- * Description: This function returns the value for Preqact payload
- * Return value: INT32
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			getPReqActPayloadValue
+ 
+				This function returns the value for Preqact payload
+				
+\retval			INT32
+*/
+/*****************************************************************************/
+
 INT32 CNode::getPReqActPayloadValue()
 {
 	return m_PReqActPayload;

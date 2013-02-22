@@ -1,104 +1,109 @@
-///////////////////////////////////////////////////////////////////////////////////////////////
-//
-//  $Source: $
-//
-// NAME:  IndexCollection.cpp
-//
-// BASE  CLASSES: none
-//  
-// PURPOSE:  purpose description
-//
-// AUTHOR:  Kalycito Powerlink Team
-//
-//  COPYRIGHT NOTICE:
-//
-//	****************************************************************************
+/**
+************************************************************************************************
+\file			Index.cpp
 
-// (c) Kalycito Infotech Private Limited
-//
-//  Project:      openCONFIGURATOR 
-//
-//  Description:  
-//
-//
-//  License:
-//
-//    Redistribution and use in source and binary forms, with or without
-//    modification, are permitted provided that the following conditions
-//    are met:
-//
-//    1. Redistributions of source code must retain the above copyright
-//       notice, this list of conditions and the following disclaimer.
-//
-//    2. Redistributions in binary form must reproduce the above copyright
-//       notice, this list of conditions and the following disclaimer in the
-//       documentation and/or other materials provided with the distribution.
-//
-//    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
-//       its contributors may be used to endorse or promote products derived
-//       from this software without prior written permission. For written
-//       permission, please contact info@kalycito.com.
-//
-//    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-//    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-//    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-//    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-//    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-//    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-//    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-//    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-//    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-//    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-//    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-//    POSSIBILITY OF SUCH DAMAGE.
-//
-//    Severability Clause:
-//
-//        If a provision of this License is or becomes illegal, invalid or
-//        unenforceable in any jurisdiction, that shall not affect:
-//        1. the validity or enforceability in that jurisdiction of any other
-//           provision of this License; or
-//        2. the validity or enforceability in other jurisdictions of that or
-//           any other provision of this License.
-//
-//****************************************************************************/
-//
-//  REVISION HISTORY:
-// $Log:      $
-///////////////////////////////////////////////////////////////////////////////////////////////
+\brief			
+************************************************************************************************
+*/
 
-/****************************************************************************************************
- * Includes
- ****************************************************************************************************/
+/*
+(c) Kalycito Infotech Private Limited
+
+  License:
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions
+    are met:
+
+    1. Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
+
+    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
+       its contributors may be used to endorse or promote products derived
+       from this software without prior written permission. For written
+       permission, please contact info@kalycito.com.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
+
+    Severability Clause:
+
+        If a provision of this License is or becomes illegal, invalid or
+        unenforceable in any jurisdiction, that shall not affect:
+        1. the validity or enforceability in that jurisdiction of any other
+           provision of this License; or
+        2. the validity or enforceability in other jurisdictions of that or
+           any other provision of this License.
+
+****************************************************************************/
+
+/****************************************************************************************************/
+/* Includes */
+
 #include <stdio.h>
 #include "../Include/IndexCollection.h"
 #include "../Include/Internal.h"
 
-/****************************************************************************************************
- * FUNCTION DEFINITIONS
- ****************************************************************************************************/
 
-/****************************************************************************************************
- * Constructor
- ****************************************************************************************************/
+				//==========================================================================//
+				// 				F U N C T I O N  D E F I N I T I O N S  					//
+				//==========================================================================//
+				
+
+				
+/*************************************************************************/
+/* Constructor */
+
+/**
+        
+    @param void
+*/
+
 CIndexCollection::CIndexCollection(void)
 {
 	m_IndexCount = 0;
 }
 
-/****************************************************************************************************
- * Destructor
- ****************************************************************************************************/
+
+/*************************************************************************/
+/* Destructor */
+
+/**
+        
+    @param void
+*/
+
 CIndexCollection::~CIndexCollection(void)
 {
 	//Add destructor code here
 }
 
-/****************************************************************************************************
- * Function Name: CIndexCollection::addIndex
- * Description  : This function collects the objindex
- * Return value : void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			addIndex
+ 
+				This function collects the objindex
+
+\param			objIndex				
+\retval			void
+*/
+/*****************************************************************************/
+
 void CIndexCollection::addIndex(CIndex objIndex)
 {
 	INT32 iItemPosition = collectionObj.Add();
@@ -122,33 +127,53 @@ void CIndexCollection::addIndex(CIndex objIndex)
 	m_IndexCount = collectionObj.Count();
 }
 
-/****************************************************************************************************
- * Function Name: CIndexCollection::deleteIndex
- * Description  : This Function deletes the index value 
- * Return value : void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			deleteIndex
+ 
+				This Function deletes the index value
+
+\param			iIndexID				
+\retval			void
+*/
+/*****************************************************************************/
+
+
 void CIndexCollection::deleteIndex(INT32 iIndexID)
 {
 	collectionObj.Remove(iIndexID);
 	m_IndexCount = collectionObj.Count();
 }
 
-/****************************************************************************************************
- * Function Name: CIndexCollection::DeleteIndexCollection
- * Description  : This Function clears the indexcollection 
- * Return value : void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			DeleteIndexCollection
+ 
+				This Function clears the indexcollection 
+
+\retval			void
+*/
+/*****************************************************************************/
+
 void CIndexCollection::DeleteIndexCollection()
 {
 	collectionObj.Clear();
 	m_IndexCount = collectionObj.Count();
 }
 
-/****************************************************************************************************
- * Function Name: CIndexCollection::DeletePDOs
- * Description  : This Function deletes PDOs 
- * Return value : void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			DeletePDOs
+ 
+				This Function deletes PDOs
+
+\retval			void
+*/
+/*****************************************************************************/
+
 void CIndexCollection::DeletePDOs()
 {
 	INT32 iLoopCount;
@@ -170,11 +195,17 @@ void CIndexCollection::DeletePDOs()
 	delete[] substr;
 }
 
-/****************************************************************************************************
- * Function Name: CIndexCollection::DeletePIObjects
- * Description  : This Function deletes PIObjects
- * Return value : void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			DeletePIObjects
+ 
+				This Function deletes PIObjects
+
+\retval			void
+*/
+/*****************************************************************************/
+
 void CIndexCollection::DeletePIObjects()
 {
 	INT32 iLoopCount = 0;
@@ -195,21 +226,35 @@ void CIndexCollection::DeletePIObjects()
 	delete[] substr;
 }
 
-/****************************************************************************************************
- * Function Name: CIndexCollection::getIndex
- * Description  : This function collects index count 
- * Return value : CIndex*
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			getIndex
+ 
+				This function collects index count 
+
+\param			iCount
+\retval			CIndex*
+*/
+/*****************************************************************************/
+
 CIndex* CIndexCollection::getIndex(INT32 iCount)
 {
 	return &collectionObj[iCount];
 }
 
-/****************************************************************************************************
- * Function Name: CIndexCollection::getIndexbyIndexValue
- * Description  : This function collects index values
- * Return value: CIndex*
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			getIndexbyIndexValue
+ 
+				This function collects index values 
+
+\param			pbIndex
+\retval			CIndex*
+*/
+/*****************************************************************************/
+
 CIndex* CIndexCollection::getIndexbyIndexValue(char* pbIndex)
 {
 	INT32 iLoopCount;
@@ -228,13 +273,17 @@ CIndex* CIndexCollection::getIndexbyIndexValue(char* pbIndex)
 	return NULL;
 }
 
-/****************************************************************************************************
- * Function Name: CIndexCollection::getNumberofIndexes
- * Description:   This function returns total nummber of index
- * Return value: INT32
- ****************************************************************************************************/
 
-//Why no UINT32 check for what it i'll return
+/*****************************************************************************/
+/**
+\brief			getNumberofIndexes
+ 
+				This function returns total nummber of index 
+
+\retval			INT32
+*/
+/*****************************************************************************/
+
 INT32 CIndexCollection::getNumberofIndexes()
 {
 	return m_IndexCount;

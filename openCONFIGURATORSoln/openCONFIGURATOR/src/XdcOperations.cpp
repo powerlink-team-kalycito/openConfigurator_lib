@@ -1,75 +1,58 @@
-///////////////////////////////////////////////////////////////////////////////////////////////
-//
-//  $Source: $
-//
-// NAME:  XdcOperations.cpp
-//
-// BASE  CLASSES: none
-//  
-// PURPOSE:  purpose description
-//
-// AUTHOR:  Kalycito Powerlink Team
-//
-//  COPYRIGHT NOTICE:
-//
-//	****************************************************************************
+/**
+************************************************************************************************
+\file			XdcOperations.cpp
 
-// (c) Kalycito Infotech Private Limited
-//
-//  Project:      openCONFIGURATOR 
-//
-//  Description:  
-//
-//
-//  License:
-//
-//    Redistribution and use in source and binary forms, with or without
-//    modification, are permitted provided that the following conditions
-//    are met:
-//
-//    1. Redistributions of source code must retain the above copyright
-//       notice, this list of conditions and the following disclaimer.
-//
-//    2. Redistributions in binary form must reproduce the above copyright
-//       notice, this list of conditions and the following disclaimer in the
-//       documentation and/or other materials provided with the distribution.
-//
-//    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
-//       its contributors may be used to endorse or promote products derived
-//       from this software without prior written permission. For written
-//       permission, please contact info@kalycito.com.
-//
-//    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-//    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-//    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-//    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-//    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-//    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-//    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-//    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-//    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-//    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-//    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-//    POSSIBILITY OF SUCH DAMAGE.
-//
-//    Severability Clause:
-//
-//        If a provision of this License is or becomes illegal, invalid or
-//        unenforceable in any jurisdiction, that shall not affect:
-//        1. the validity or enforceability in that jurisdiction of any other
-//           provision of this License; or
-//        2. the validity or enforceability in other jurisdictions of that or
-//           any other provision of this License.
-//
-//****************************************************************************/
-//
-//  REVISION HISTORY:
-// $Log:      $
-///////////////////////////////////////////////////////////////////////////////////////////////
+\brief			
+************************************************************************************************
+*/
+/*
+(c) Kalycito Infotech Private Limited
 
-/****************************************************************************************************
- * Includes
- ****************************************************************************************************/
+  License:
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions
+    are met:
+
+    1. Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
+
+    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
+       its contributors may be used to endorse or promote products derived
+       from this software without prior written permission. For written
+       permission, please contact info@kalycito.com.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
+
+    Severability Clause:
+
+        If a provision of this License is or becomes illegal, invalid or
+        unenforceable in any jurisdiction, that shall not affect:
+        1. the validity or enforceability in that jurisdiction of any other
+           provision of this License; or
+        2. the validity or enforceability in other jurisdictions of that or
+           any other provision of this License.
+
+****************************************************************************/
+
+/****************************************************************************************************/
+/* Includes */
+
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
@@ -80,14 +63,15 @@
 #include "../Include/Declarations.h"
 #include "../Include/Exception.h"
 
-/****************************************************************************************************
- * Defines
- ****************************************************************************************************/
+/****************************************************************************************************/
+ /* Defines */
+
 #define MY_ENCODING "UTF-8"
 
-/****************************************************************************************************
- * Global Variables
- ****************************************************************************************************/
+
+/****************************************************************************************************/
+/* Global Variables */
+ 
 INT32 LastIndexParsed = 0;
 static const char *gpa2bSimple[][2] =
 {
@@ -111,15 +95,26 @@ static const char *gpa2bSimple[][2] =
 { "STRING", "1" },
 { "WSTRING", "1" } }; //array size in g_simple_arr_size
 
-/****************************************************************************************************
- * FUNCTION DEFINITIONS
- ****************************************************************************************************/
 
-/**************************************************************************************************
- * Function Name: setIndexAttributes
- * Description:	This function sets index attributes
- * Return value: void
- ****************************************************************************************************/
+
+				//==========================================================================//
+				// 				F U N C T I O N  D E F I N I T I O N S  					//
+				//==========================================================================//
+				
+				
+/*****************************************************************************/
+/**
+\brief			setIndexAttributes
+ 
+				
+				
+\param			pxtrReader
+\param			pobjIndex
+\param			bhasPDO
+\retval			void
+*/
+/*****************************************************************************/
+
 void setIndexAttributes(xmlTextReaderPtr pxtrReader, CIndex *pobjIndex,
 		bool& bhasPDO)
 {
@@ -235,11 +230,17 @@ void setIndexAttributes(xmlTextReaderPtr pxtrReader, CIndex *pobjIndex,
 		//TODO: Else added. Operation to be specified.
 	}
 }
-/**************************************************************************************************
- * Function Name: setSubIndexAttributes
- * Description:	This function sets subindex attributes
- * Return Value: void
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			setSubIndexAttributes
+ 
+				
+				
+\param			pxtrReader
+\param			pobjSubIndex
+\retval			void
+*/
+/*****************************************************************************/
 void setSubIndexAttributes(xmlTextReaderPtr pxtrReader, CSubIndex *pobjSubIndex)
 {
 	const xmlChar *pxcName = NULL;
@@ -323,11 +324,19 @@ void setSubIndexAttributes(xmlTextReaderPtr pxtrReader, CSubIndex *pobjSubIndex)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: setDataTypeAttributes
- * Description:	This function sets datatype for attributes
- * Return Value: void
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			setDataTypeAttributes
+ 
+				
+				
+\param			pxtrReader
+\param			objDataType
+\retval			void
+*/
+/*****************************************************************************/
+
+
 void setDataTypeAttributes(xmlTextReaderPtr pxtrReader, DataType *objDataType)
 {
 	const xmlChar *pxcName = NULL;
@@ -424,17 +433,24 @@ void setDataTypeAttributes(xmlTextReaderPtr pxtrReader, DataType *objDataType)
 		}
 		else
 		{
-			cout << "setDataTypeAttributes Fails: " << objDataType->Name
+			cout << __FUNCTION__ << " unhandled datatype: " << objDataType->Name
 					<< endl;
 		}
 	}
 }
 
-/**************************************************************************************************
- * Function Name: setParameterAttributes
- * Description:	This function sets parameter
- * Return Value: void
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			setParameterAttributes
+ 
+				
+				
+\param			pxtrReader
+\param			pstParameter
+\retval			void
+*/
+/*****************************************************************************/
+
 void setParameterAttributes(xmlTextReaderPtr pxtrReader,
 		Parameter *pstParameter)
 {
@@ -474,11 +490,19 @@ void setParameterAttributes(xmlTextReaderPtr pxtrReader,
 	 <USINT/>*/
 }
 
-/**************************************************************************************************
- * Function Name: getParaDT
- * Description:	This function gets parameter datatype
- * Return Value: void
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			getParaDT
+ 
+				
+				
+\param			pxtrReader
+\param			pstParameter
+\retval			void
+*/
+/*****************************************************************************/
+
+
 void getParaDT(xmlTextReaderPtr pxtrReader, Parameter* pstParameter)
 {
 	const xmlChar *pxcName = NULL;
@@ -546,11 +570,18 @@ void getParaDT(xmlTextReaderPtr pxtrReader, Parameter* pstParameter)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: setCDTAttributes
- * Description:	This function assigns CDT attributes
- * Return pxcValue: void
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			setCDTAttributes
+ 
+				
+				
+\param			pxtrReader
+\param			pobjCDT
+\retval			void
+*/
+/*****************************************************************************/
+
 static void setCDTAttributes(xmlTextReaderPtr pxtrReader,
 		CComplexDataType *pobjCDT)
 {
@@ -583,11 +614,20 @@ static void setCDTAttributes(xmlTextReaderPtr pxtrReader,
 	}
 }
 
-/**************************************************************************************************
- * Function Name: CheckifSimpleDT
- * Description:	This function checks whether datatype is simple
- * Return pxcValue: bool
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			CheckifSimpleDT
+ 
+				
+				
+\param			pbName
+\param			pbSize
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending
+*/
+/*****************************************************************************/
+
 bool CheckifSimpleDT(char *pbName, char *pbSize)
 {
 	INT32 iLoopCount = 0;
@@ -608,11 +648,18 @@ bool CheckifSimpleDT(char *pbName, char *pbSize)
 	return false;
 }
 
-/**************************************************************************************************
- * Function Name: setVarDecAttributes
- * Description:	This function sets variable declaration attributes
- * Return pxcValue: void
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			setVarDecAttributes
+ 
+				
+				
+\param			pxtrReader
+\param			vdecl
+\retval			void
+*/
+/*****************************************************************************/
+
 void setVarDecAttributes(xmlTextReaderPtr pxtrReader, varDeclaration& vdecl)
 {
 	const xmlChar *pxcName = NULL;
@@ -642,11 +689,22 @@ void setVarDecAttributes(xmlTextReaderPtr pxtrReader, varDeclaration& vdecl)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: CheckEndElement
- * Description:	This function checks for end element
- * Return pxcValue: bool
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			CheckEndElement
+ 
+				
+				
+\param			iNodeType
+\param			pbElement
+\param			pbCompareWith
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending
+*/
+/*****************************************************************************/
+
 bool CheckEndElement(INT32 iNodeType, char *pbElement, char *pbCompareWith)
 {
 	if ((XML_READER_TYPE_END_ELEMENT == iNodeType)
@@ -660,11 +718,22 @@ bool CheckEndElement(INT32 iNodeType, char *pbElement, char *pbCompareWith)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: CheckStartElement
- * Description:	This function checks for start element
- * Return pxcValue: bool
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			CheckStartElement
+ 
+				
+				
+\param			iNodeType
+\param			pbElement
+\param			pbCompareWith
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending
+*/
+/*****************************************************************************/
+
 bool CheckStartElement(INT32 iNodeType, char *pbElement, char *pbCompareWith)
 {
 	if ((XML_READER_TYPE_ELEMENT == iNodeType)
@@ -678,11 +747,18 @@ bool CheckStartElement(INT32 iNodeType, char *pbElement, char *pbCompareWith)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: getVarDeclaration
- * Description:	This function is used for obj variable declaration
- * Return pxcValue: void
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			getVarDeclaration
+ 
+				
+				
+\param			pxtrReader
+\param			pobjCDT
+\retval			void
+*/
+/*****************************************************************************/
+
 static void getVarDeclaration(xmlTextReaderPtr pxtrReader,
 		CComplexDataType *pobjCDT)
 {
@@ -789,11 +865,20 @@ static void getVarDeclaration(xmlTextReaderPtr pxtrReader,
 	}
 }
 
-/**************************************************************************************************
- * Function Name: ImportXML
- * Description: Imports the XML file
- * Return pxcValue: ocfmRetCode
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			ImportXML
+ 
+				Imports the XML file
+				
+\param			pbFileName
+\param			iNodeID
+\param			enumNodeType
+\retval			ocfmRetCode
+*/
+/*****************************************************************************/
+
 ocfmRetCode ImportXML(char *pbFileName, INT32 iNodeID, ENodeType enumNodeType)
 {
 	ocfmRetCode stErrStruct;
@@ -837,11 +922,20 @@ ocfmRetCode ImportXML(char *pbFileName, INT32 iNodeID, ENodeType enumNodeType)
 	return stErrStruct;
 }
 
-/**************************************************************************************************
- * Function Name: processNode
- * Description: Process the Node pxcValue,Name and its attributes
- * Return : void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			processNode
+ 
+				Process the Node pxcValue,Name and its attributes
+				
+\param			pxtrReader
+\param			enumNodeType
+\param			iNodeIndex
+\retval			void
+*/
+/*****************************************************************************/
+
 void processNode(xmlTextReaderPtr pxtrReader, ENodeType enumNodeType,
 		INT32 iNodeIndex)
 {
@@ -1017,11 +1111,20 @@ void processNode(xmlTextReaderPtr pxtrReader, ENodeType enumNodeType,
 	}
 }
 
-/**************************************************************************************************
- * Function Name: parseFile
- * Description: Parses the XML file
- * Return pxcValue: ocfmRetCode
- ****************************************************************************************************/
+ 
+/*****************************************************************************/
+/**
+\brief			parseFile
+ 
+				Parses the XML file
+				
+\param			pbFileName
+\param			iNodeIndex
+\param			enumNodeType
+\retval			ocfmRetCode
+*/
+/*****************************************************************************/
+
 ocfmRetCode parseFile(char* pbFileName, INT32 iNodeIndex,
 		ENodeType enumNodeType)
 {
@@ -1101,11 +1204,19 @@ ocfmRetCode parseFile(char* pbFileName, INT32 iNodeIndex,
 	return ErrStruct;
 }
 
-/**************************************************************************************************
- * Function Name: ReImportXML
- * Description: Parses the XML file
- * Return pxcValue: ocfmRetCode
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			ReImportXML
+ 
+				Parses the XML file
+				
+\param			pbFileName
+\param			iNodeID
+\param			enumNodeType
+\retval			ocfmRetCode
+*/
+/*****************************************************************************/
+
 ocfmRetCode ReImportXML(char* pbFileName, INT32 iNodeID, ENodeType enumNodeType)
 {
 	INT32 iNodePos;
@@ -1177,32 +1288,46 @@ ocfmRetCode ReImportXML(char* pbFileName, INT32 iNodeID, ENodeType enumNodeType)
 	return ErrStruct;
 }
 
-/**************************************************************************************************
- * Function Name: CreateTree
- * Description:
- * Return pxcValue: void
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			CreateTree
+ 
+							
+\retval			void
+*/
+/*****************************************************************************/
+
 void CreateTree()
 {
 	//objNodeCollection= CNodeCollection::getNodeColObject();	
 }
 
-/**************************************************************************************************
- * Function Name: ProcessUniqueIDRefs
- * Description: 
- * Return Value: void
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			ProcessUniqueIDRefs
+ 
+\param			objNode							
+\retval			void
+*/
+/*****************************************************************************/
 //TODO: To be removed from header
 void ProcessUniqueIDRefs(CNode* objNode)
 {
 	//Add code here
 }
 
-/**************************************************************************************************
- * Function Name: SaveNode
- * Description: Saves the content of a Node into a XML in XDC format
- * Return Value: ocfmRetCode
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			SaveNode
+ 
+				Saves the content of a Node into a XML in XDC format
+ 
+\param			pbFileName
+\param			NodeID
+\param			enumNodeType							
+\retval			ocfmRetCode
+*/
+/*****************************************************************************/
 ocfmRetCode SaveNode(const char* pbFileName, INT32 NodeID,
 		ENodeType enumNodeType)
 {
@@ -2149,11 +2274,17 @@ ocfmRetCode SaveNode(const char* pbFileName, INT32 NodeID,
 	return stErrInfo;
 }
 
-/**************************************************************************************************
- * Function Name: setFlagForRequiredCNIndexes
- * Description: 
- * Return Value: void
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			setFlagForRequiredCNIndexes
+ 
+				
+ 
+\param			iNodeId
+\retval			void
+*/
+/*****************************************************************************/
+
 void setFlagForRequiredCNIndexes(INT32 iNodeId)
 {
 	CIndex* pobjIndex = NULL;
@@ -2194,11 +2325,18 @@ void setFlagForRequiredCNIndexes(INT32 iNodeId)
 		}
 	}
 }
-/**************************************************************************************************
- * Function Name: setFlagForRequiredMNIndexes
- * Description: 
- * Return Value: void
- ****************************************************************************************************/
+
+/*****************************************************************************/
+/**
+\brief			setFlagForRequiredMNIndexes
+ 
+				
+ 
+\param			iNodeId
+\retval			void
+*/
+/*****************************************************************************/
+
 void setFlagForRequiredMNIndexes(INT32 iNodeId)
 {
 	CIndex* pobjIndex = NULL;
@@ -2264,11 +2402,17 @@ void setFlagForRequiredMNIndexes(INT32 iNodeId)
 	}
 }
 
-/**************************************************************************************************
- * Function Name: AddOtherRequiredCNIndexes
- * Description: 
- * Return Value: ocfmRetCode
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			AddOtherRequiredCNIndexes
+ 
+
+ 
+\param			iNodeId
+\retval			ocfmRetCode
+*/
+/*****************************************************************************/
+
 ocfmRetCode AddOtherRequiredCNIndexes(INT32 iNodeId)
 {
 	ocfmRetCode stRetCode;
@@ -2320,11 +2464,17 @@ ocfmRetCode AddOtherRequiredCNIndexes(INT32 iNodeId)
 	return stRetCode;
 }
 
-/**************************************************************************************************
- * Function Name: getDataSize
- * Description: 
- * Return Value: INT32
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			getDataSize
+ 
+				
+ 
+\param			dataTypeVal
+\retval			INT32
+*/
+/*****************************************************************************/
+
 INT32 getDataSize(char* dataTypeVal)
 {
 	if (strcmp(StringToUpper(dataTypeVal), "UNSIGNED8") == 0
@@ -2413,11 +2563,20 @@ INT32 getDataSize(char* dataTypeVal)
 	return 1; //by default
 }
 
-/**************************************************************************************************
- * Function Name: checkIfStringDatatypes
- * Description: 
- * Return Value: bool
- ****************************************************************************************************/
+/*****************************************************************************/
+/**
+\brief			checkIfStringDatatypes
+ 
+				
+ 
+\param			datatypeValue
+\retval			BOOL
+\retval			TRUE			if successful
+\retval			FALSE			if there is already a message pending
+*/
+/*****************************************************************************/
+
+
 bool checkIfStringDatatypes(char* datatypeValue)
 {
 	if (strcmp(StringToUpper(datatypeValue), "VISIBLE_STRING") == 0
@@ -2427,11 +2586,20 @@ bool checkIfStringDatatypes(char* datatypeValue)
 	else
 		return false;
 }
-/**************************************************************************************************
- * Function Name: setFeature
- * Description:	
- * Return pxcValue: void
- ***************************************************************e*************************************/
+
+
+/*****************************************************************************/
+/**
+\brief			setFeature
+ 
+				
+ 
+\param			pxtrReader
+\param			pstFeature
+\retval			void			
+*/
+/*****************************************************************************/
+
 void setFeatures(xmlTextReaderPtr pxtrReader, Feature *pstFeature)
 {
 	const xmlChar *pxcName = NULL;
