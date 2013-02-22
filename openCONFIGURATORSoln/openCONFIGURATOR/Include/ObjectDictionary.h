@@ -53,8 +53,6 @@
 #ifndef ObjectDictionary_h
 #define ObjectDictionary_h
 
-#pragma once
-
 /****************************************************************************************************/
 /* Includes */
 

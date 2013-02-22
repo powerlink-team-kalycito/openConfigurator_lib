@@ -165,7 +165,7 @@ static void AddIndexAttributes(char* pIndexID, CIndex* pobjIndex,
 	}
 	else
 	{
-		pobjIndex->setName((char*) " ");
+		pobjIndex->setName((char*) "");
 	}
 
 	if (NULL != pobjDictIndex->getObjectType())
@@ -175,7 +175,7 @@ static void AddIndexAttributes(char* pIndexID, CIndex* pobjIndex,
 	else
 	{
 		//Setting "0", so default case is hit, when setting
-		pobjIndex->setObjectType((char*) " ");
+		pobjIndex->setObjectType((char*) "");
 	}
 
 	if (NULL != pobjDictIndex->getLowLimit())
@@ -184,7 +184,7 @@ static void AddIndexAttributes(char* pIndexID, CIndex* pobjIndex,
 	}
 	else
 	{
-		pobjIndex->setLowLimit((char*) " ");
+		pobjIndex->setLowLimit((char*) "");
 	}
 
 	if (NULL != pobjDictIndex->getHighLimit())
@@ -193,7 +193,7 @@ static void AddIndexAttributes(char* pIndexID, CIndex* pobjIndex,
 	}
 	else
 	{
-		pobjIndex->setHighLimit((char*) " ");
+		pobjIndex->setHighLimit((char*) "");
 	}
 
 	if (NULL != pobjDictIndex->getAccessType())
@@ -202,7 +202,7 @@ static void AddIndexAttributes(char* pIndexID, CIndex* pobjIndex,
 	}
 	else
 	{
-		pobjIndex->setAccessType((char*) " ");
+		pobjIndex->setAccessType((char*) "");
 	}
 	char* pbPdoMapStr = NULL;
 	if (NULL != pobjDictIndex->getPDOMapping())
@@ -215,7 +215,7 @@ static void AddIndexAttributes(char* pIndexID, CIndex* pobjIndex,
 	else
 	{
 		pbPdoMapStr = new char[2 + STR_ALLOC_BUFFER];
-		strcpy(pbPdoMapStr, (char*) " ");
+		strcpy(pbPdoMapStr, (char*) "");
 		pobjIndex->setPDOMapping(pbPdoMapStr);
 	}
 	delete[] pbPdoMapStr;
@@ -226,7 +226,7 @@ static void AddIndexAttributes(char* pIndexID, CIndex* pobjIndex,
 	}
 	else
 	{
-		pobjIndex->setDefaultValue((char*) " ");
+		pobjIndex->setDefaultValue((char*) "");
 	}
 
 	if (NULL != pobjDictIndex->getActualValue())
@@ -235,7 +235,7 @@ static void AddIndexAttributes(char* pIndexID, CIndex* pobjIndex,
 	}
 	else
 	{
-		pobjIndex->setActualValue((char*) " ");
+		pobjIndex->setActualValue((char*) "");
 	}
 
 	if (NULL != pobjDictIndex->getDataType().getName())
@@ -244,7 +244,7 @@ static void AddIndexAttributes(char* pIndexID, CIndex* pobjIndex,
 	}
 	else
 	{
-		pobjIndex->setDataType((char*) " ");
+		pobjIndex->setDataType((char*) "");
 	}
 
 	return;
@@ -969,7 +969,6 @@ ocfmRetCode AddSubIndex(INT32 iNodeID, ENodeType enumNodeType, char* pbIndexID,
 				pobjSubIndex = new CSubIndex;
 				pobjSubIndex->setNodeID(iNodeID);
 				pobjSubIndex->setIndexValue(pbSubIndexID);
-				pobjSubIndex->setActualValue("");
 				if (NULL != pobjIndex)
 				{
 					pobjIndex->addSubIndex(*pobjSubIndex);

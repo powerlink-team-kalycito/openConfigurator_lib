@@ -54,8 +54,6 @@
 #ifndef complexdatatype_h
 #define complexdatatype_h
 
-#pragma once
-
 /****************************************************************************************************/
 /* Includes */
  

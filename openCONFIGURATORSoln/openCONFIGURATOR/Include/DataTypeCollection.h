@@ -53,8 +53,6 @@
 #ifndef DataTypeCollection_h
 #define DataTypeCollection_h
 
-#pragma once
-
 /****************************************************************************************************/
 /* Includes */
  

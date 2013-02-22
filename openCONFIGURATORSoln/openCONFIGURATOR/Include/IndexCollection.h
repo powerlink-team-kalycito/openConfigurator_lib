@@ -53,8 +53,6 @@
 #ifndef IndexCollection_h
 #define IndexCollection_h
 
-#pragma once
-
 /****************************************************************************************************/
 /* Includes */
 

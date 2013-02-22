@@ -53,8 +53,6 @@
 #ifndef NetworkManagement_h
 #define NetworkManagement_h
 
-#pragma once
-
 /****************************************************************************************************/
 /* Includes */
 

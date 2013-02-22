@@ -55,8 +55,6 @@
 #ifndef ApplicationProcess_h
 #define ApplicationProcess_h
 
-#pragma once
-
 /**********************************************************************************************/
 /* Includes */
 

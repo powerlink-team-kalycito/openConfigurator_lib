@@ -53,8 +53,6 @@
 #ifndef NodeCollection_h
 #define NodeCollection_h
 
-#pragma once
-
 /****************************************************************************************************/
 /* Includes */
 

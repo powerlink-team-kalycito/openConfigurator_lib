@@ -53,8 +53,6 @@
 #ifndef ProjectSettings_h
 #define ProjectSettings_h
 
-#pragma once
-
 /****************************************************************************************************/
 /* Includes */
 
