@@ -100,7 +100,7 @@ CNetworkManagement::~CNetworkManagement(void)
 				This function collects feature for each object
 
 \param			stfeature				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -117,11 +117,11 @@ void CNetworkManagement::addFeature(Feature stfeature)
  
 				Returns the NodeID of the Node of the NetworkManagement Object
 
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
-
+//TODO: unused function
 INT32 CNetworkManagement::getNodeID()
 {
 	return m_NodeID;
@@ -134,10 +134,10 @@ INT32 CNetworkManagement::getNodeID()
  
 				sets the NodeID of the NetworkManagement Object
 
-\retval			void
+\return			void
 */
 /*****************************************************************************/
-
+//TODO: unused function
 void CNetworkManagement::setNodeID(INT32 NodeID)
 {
 	m_NodeID = NodeID;
@@ -150,7 +150,7 @@ void CNetworkManagement::setNodeID(INT32 NodeID)
  
 				gets the network Management feature value
 
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
 
@@ -185,7 +185,7 @@ char* CNetworkManagement::getFeatureValue(EFeatureType featureType,
  
 				returns the Number of Features
 
-\retval			UINT32
+\return			UINT32
 */
 /*****************************************************************************/
 
@@ -202,7 +202,7 @@ UINT32 CNetworkManagement::getNumberOfFeatures()
 				returns feature collection list 
 
 \param			uiCount
-\retval			Feature*
+\return			Feature*
 */
 /*****************************************************************************/
 
@@ -218,7 +218,7 @@ Feature* CNetworkManagement::getFeature(UINT32 uiCount)
  
 				DeleteNetworkManagementCollections
 
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -237,7 +237,7 @@ void CNetworkManagement::DeleteFeatureCollections()
  
 				
 
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -254,7 +254,7 @@ INT32 CNetworkManagement::getMaxPDOCount()
  
 				calculates the PDO count from the PDOTPDOChannels parameter in MN xdd and m_MaxPDOCount is updated with that specified value
 
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 

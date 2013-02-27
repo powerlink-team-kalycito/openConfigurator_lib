@@ -108,7 +108,7 @@ CNodeCollection::~CNodeCollection(void)
  
 				This function returns node count
 
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -126,7 +126,7 @@ INT32 CNodeCollection::getNumberOfNodes()
 				This function collects objects under node count
 				
 \param			objNode
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -147,7 +147,7 @@ void CNodeCollection::addNode(CNode objNode)
 				This function deletes the node ids
 				
 \param			iNodeID
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -164,7 +164,7 @@ void CNodeCollection::deleteNode(INT32 iNodeID)
  
 				This function collects the location of node
 				
-\retval			CNodeCollection*
+\return			CNodeCollection*
 */
 /*****************************************************************************/
 
@@ -185,7 +185,7 @@ CNodeCollection* CNodeCollection::getNodeColObjectPointer()
  
 				This function collects value of node objects
 				
-\retval			CNodeCollection
+\return			CNodeCollection
 */
 /*****************************************************************************/
 
@@ -208,7 +208,7 @@ CNodeCollection CNodeCollection::getNodeColObject()
 
 \param			enumNodeType
 \param			iNodeID				
-\retval			CNode
+\return			CNode
 */
 /*****************************************************************************/
 
@@ -234,12 +234,13 @@ CNode CNodeCollection::getNode(ENodeType enumNodeType, INT32 iNodeID)
 /*****************************************************************************/
 /**
 \brief			getNodePtr
- 
+
 				This function collects the location of node objects type 
 
-\param			enumNodeType
-\param			iNodeID				
-\retval			CNode*
+\param			enumNodeType	
+\param			iNodeID			
+
+\return			CNode* / NULL
 */
 /*****************************************************************************/
 
@@ -269,10 +270,10 @@ CNode* CNodeCollection::getNodePtr(ENodeType enumNodeType, INT32 iNodeID)
 				This function collects the type of node objects 
 
 \param			iNodeID				
-\retval			CNode
+\return			CNode
 */
 /*****************************************************************************/
-
+//TODO: unused function
 CNode CNodeCollection::getNode(INT32 iNodeID)
 {
 	INT32 iLoopCount = 0;
@@ -297,7 +298,7 @@ CNode CNodeCollection::getNode(INT32 iNodeID)
  
 				This function collects the type of node objects for MN
 
-\retval			CNode
+\return			CNode
 */
 /*****************************************************************************/
 
@@ -327,7 +328,7 @@ CNode CNodeCollection::getMNNode()
 				This function returns node from the node collection index
 
 \param			iColIndex
-\retval			CNode
+\return			CNode
 */
 /*****************************************************************************/
 
@@ -345,7 +346,7 @@ CNode CNodeCollection::getNodebyCollectionIndex(INT32 iColIndex)
 				This function collects the node with reference to the index location 
 
 \param			iColIndex
-\retval			CNode*
+\return			CNode*
 */
 /*****************************************************************************/
 
@@ -362,7 +363,7 @@ CNode* CNodeCollection::getNodebyColIndex(INT32 iColIndex)
  
 				This function collects the CN node count 
 
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 

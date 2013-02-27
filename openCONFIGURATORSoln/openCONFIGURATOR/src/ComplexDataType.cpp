@@ -107,7 +107,7 @@ CComplexDataType::~CComplexDataType(void)
  
 				This Function adds variable declarations for complex datatype
 				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 

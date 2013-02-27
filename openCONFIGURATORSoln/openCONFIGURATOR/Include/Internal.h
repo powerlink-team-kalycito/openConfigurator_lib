@@ -156,7 +156,6 @@ static const UINT32 uiPreScalar = 0;
 char* ConvertToUpper(char* str);
 char* _IntToAscii(long value, char* result, INT32 base);
 bool CheckIfNotPDO(char* Index);
-void CreateTree();
 bool CheckIfNotPDO(char* Index);
 void ProcessUniqueIDRefs();
 char* subString(char* str, INT32 startpos, INT32 len);

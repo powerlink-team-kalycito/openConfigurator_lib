@@ -121,7 +121,7 @@ CBaseIndex::~CBaseIndex(void)
  
 				Returns the Name of the Index Object
 				
-\retval			const char*
+\return			const char*
 */
 /*****************************************************************************/
 
@@ -138,7 +138,7 @@ const char* CBaseIndex::getName()
  
 				sets the Name of the Index Object
 \param			pbName	
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -163,7 +163,7 @@ void CBaseIndex::setName(char* pbName)
  
 				Returns the Index of the Index Object
 			
-\retval			const char*
+\return			const char*
 */
 /*****************************************************************************/
 
@@ -180,7 +180,7 @@ const char* CBaseIndex::getIndexValue()
 				sets the Index of the Index Object
 			
 \param			pbIndex
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -197,7 +197,7 @@ void CBaseIndex::setIndexValue(char* pbIndex)
  
 				Returns the LowLimit of the Index Object
 			
-\retval			const char*
+\return			const char*
 */
 /*****************************************************************************/
 
@@ -219,7 +219,7 @@ const char* CBaseIndex::getLowLimit()
  
 				sets the LowLimit of the Index Object
 			
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -236,7 +236,7 @@ void CBaseIndex::setLowLimit(char* pbLowLimit)
  
 				Returns the LowLimit of the Index Object
 			
-\retval			const char*
+\return			const char*
 */
 /*****************************************************************************/
 
@@ -260,7 +260,7 @@ const char* CBaseIndex::getHighLimit()
 				sets the LowLimit of the Index Object
 				
 \param			pbHighLimit			
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -277,7 +277,7 @@ void CBaseIndex::setHighLimit(char* pbHighLimit)
  
 				Returns the Default Value of the Index Object
 				
-\retval			const char*
+\return			const char*
 */
 /*****************************************************************************/
 
@@ -294,7 +294,7 @@ const char* CBaseIndex::getDefaultValue()
 				sets the Default Value of the Index Object
 				
 \param			pbValue			
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -313,7 +313,7 @@ void CBaseIndex::setDefaultValue(char* pbValue)
 				Returns the Actual Value of the Index Object
 				
 \param			pbValue			
-\retval			const char*
+\return			const char*
 */
 /*****************************************************************************/
 
@@ -333,7 +333,7 @@ const char* CBaseIndex::getActualValue()
 				sets the Actual Value of the Index Object
 				
 \param			pbValue			
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -350,7 +350,7 @@ void CBaseIndex::setActualValue(char* pbValue)
  
 				Returns the Access Type of the Index Object
 				
-\retval			const char*
+\return			const char*
 */
 /*****************************************************************************/
 
@@ -367,7 +367,7 @@ const char* CBaseIndex::getAccessType()
 				sets the Access Type of the Index Object
 				
 \param			pbAccessType
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -384,7 +384,7 @@ void CBaseIndex::setAccessType(char* pbAccessType)
  
 				Returns the Object Type of the Index Object as const char*
 				
-\retval			const char*
+\return			const char*
 */
 /*****************************************************************************/
 
@@ -413,7 +413,7 @@ const char* CBaseIndex::getObjectType()
  
 				Returns the Object Type of the Index Object as Enum
 				
-\retval			EObjectType
+\return			EObjectType
 */
 /*****************************************************************************/
 
@@ -430,7 +430,7 @@ EObjectType CBaseIndex::getEObjectType()
 				sets the Object of the Index Object
 				
 \param			pbObjectType			
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -478,7 +478,7 @@ void CBaseIndex::setObjectType(char* pbObjectType)
  
 				Returns the PDOMapping of the Index Object
 				
-\retval			const char*
+\return			const char*
 */
 /*****************************************************************************/
 
@@ -508,7 +508,7 @@ const char* CBaseIndex::getPDOMapping()
 				sets the PDOMapping of the Index Object
 				
 \param			pbPdoMapping				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -552,7 +552,7 @@ void CBaseIndex::setPDOMapping(char* pbPdoMapping)
  
 				Returns the DataType of the Index Object
 				
-\retval			DataType
+\return			DataType
 */
 /*****************************************************************************/
 
@@ -568,7 +568,7 @@ DataType CBaseIndex::getDataType()
 				sets the DataType of the Index Object
 				
 \param			pbDataTypeName				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -599,10 +599,10 @@ void CBaseIndex::setDataType(char* pbDataTypeName)
 				
 \param			pbDataTypeName
 \param			iNodeID				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
-
+//TODO: unused function
 void CBaseIndex::setDataType(char* pbDataTypeName, INT32 iNodeID)
 {
 	DataType* pobjDataType = NULL;
@@ -623,7 +623,7 @@ void CBaseIndex::setDataType(char* pbDataTypeName, INT32 iNodeID)
  
 				Returns the NodeID of the Node of the Index Object
 				
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -639,7 +639,7 @@ INT32 CBaseIndex::getNodeID()
 				sets the NodeID of the Index Object
 				
 \param			NodeID				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -654,7 +654,7 @@ void CBaseIndex::setNodeID(INT32 NodeID)
  
 				Returns the UniqueIDRef of the Node of the Index Object
 				
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
 
@@ -670,7 +670,7 @@ char* CBaseIndex::getUniqueIDRef()
  
 				sets the UniqueIDRef of the Index Object
 				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -687,7 +687,7 @@ void CBaseIndex::setUniqueIDRef(char* pbUniqueID)
  
 				Returns only datatype value of the Node of the Index Object
 				
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
 
@@ -709,7 +709,7 @@ char* CBaseIndex::getDataTypeValue()
  
 				sets the datatype value  of the Index Object
 				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -727,7 +727,7 @@ void CBaseIndex::setDataTypeValue(char* pbValue)
 				sets the datatype value  of the Index Object
 				
 \param			objDataType				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -752,7 +752,7 @@ void CBaseIndex::setDataTypeST(DataType objDataType)
 				
 \param			pbIndex
 \param			pbName				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -875,7 +875,7 @@ bool CBaseIndex::IsIndexVaueValid(char* pbHexValue)
 				sets the flag whether the Index should be included in cdc
 				
 \param			enumFlag
-\retval			void			
+\return			void			
 */
 /*****************************************************************************/
 
@@ -892,7 +892,7 @@ void CBaseIndex::setFlagIfIncludedCdc(EFlag enumFlag)
  
 				Returns whether the Index should be included in cdc
 				
-\retval			EFlag			
+\return			EFlag			
 */
 /*****************************************************************************/
 

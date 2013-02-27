@@ -100,7 +100,7 @@ CIndex::~CIndex(void)
  
 				This function returns PDO type
 				
-\retval			EPDOType
+\return			EPDOType
 */
 /*****************************************************************************/
 
@@ -117,7 +117,7 @@ EPDOType CIndex::getPDOType()
 				This function assigns PDO type
 				
 \param			enumPDOType				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -137,7 +137,7 @@ void CIndex::setPDOType(EPDOType enumPDOType)
 				add the SubIndex in the Index Object
 				
 \param			objSubIndex				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -162,7 +162,7 @@ void CIndex::addSubIndex(CSubIndex objSubIndex)
 				delete the SubIndex in the Index Object
 				
 \param			iSubIndexID				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -179,7 +179,7 @@ void CIndex::deleteSubIndex(INT32 iSubIndexID)
  
 				delete the SubIndex in the Index Object
 				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -197,7 +197,7 @@ void CIndex::deleteSubIndexCollection()
  
 				This function returns number of subindexes
 				
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -213,7 +213,7 @@ INT32 CIndex::getNumberofSubIndexes()
  
 				This function returns number of subindex ids
 				
-\retval			CSubIndex*
+\return			CSubIndex*
 */
 /*****************************************************************************/
 
@@ -231,7 +231,7 @@ CSubIndex* CIndex::getSubIndex(INT32 iSubIndexId)
 				This function returns number of subindex value 
 				
 \param			pbIndex			
-\retval			CSubIndex*
+\return			CSubIndex*
 */
 /*****************************************************************************/
 
@@ -269,7 +269,7 @@ CSubIndex* CIndex::getSubIndexbyIndexValue(char* pbIndex)
 				
 \param			ipos1
 \param			ipos2			
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -285,7 +285,7 @@ void CIndex::SwapSubObjects(INT32 ipos1, INT32 ipos2)
  
 				This function updates subobjects in array  
 				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 

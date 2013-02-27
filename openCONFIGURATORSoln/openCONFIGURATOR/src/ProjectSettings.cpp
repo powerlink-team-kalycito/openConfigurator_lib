@@ -121,7 +121,7 @@ CPjtSettings::~CPjtSettings(void)
  
 				This function creats new Pjtsettings 
 
-\retval			CPjtSettings*
+\return			CPjtSettings*
 */
 /*****************************************************************************/
 
@@ -146,7 +146,7 @@ CPjtSettings* CPjtSettings::getPjtSettingsPtr()
  
 				This function saves new Pjtsettings  
 
-\retval			EAutoSave
+\return			EAutoSave
 */
 /*****************************************************************************/
 
@@ -163,7 +163,7 @@ EAutoSave CPjtSettings::getSaveAttr()
 				This function sets mode for pjt settings 
 				
 \param			enumAutoSaveMode
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -179,7 +179,7 @@ void CPjtSettings::setSaveAttr(EAutoSave enumAutoSaveMode)
  
 				This function generates mode for pjt settings    
 
-\retval			EAutoGenerate
+\return			EAutoGenerate
 */
 /*****************************************************************************/
 
@@ -199,7 +199,7 @@ EAutoGenerate CPjtSettings::getGenerateAttr()
 				This function sets mode for pjt settings  
 				
 \param			enumAutoGenerateMode
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -217,7 +217,7 @@ void CPjtSettings::setGenerateAttr(EAutoGenerate enumAutoGenerateMode)
 				This function assigns IP address for Powerlink  
 				
 \param			pbIPAddr
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -240,7 +240,7 @@ void CPjtSettings::setPOWERLINK_IP(char* pbIPAddr)
  
 				This Function returns Powerlink IP  
 				
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
 
@@ -265,7 +265,7 @@ const char* CPjtSettings::getPOWERLINK_IP()
  
 				This function sets view mode under pjt settings  
 				
-\retval			EViewMode
+\return			EViewMode
 */
 /*****************************************************************************/
 
@@ -282,7 +282,7 @@ EViewMode CPjtSettings::getViewMode()
 				This function assigns view mode  
 				
 \param			enumViewMode				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -298,7 +298,7 @@ void CPjtSettings::setViewMode(EViewMode enumViewMode)
  
 				This function sets flag for type of view selected under pjt settings  
 				
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending	
 */
@@ -318,7 +318,7 @@ bool CPjtSettings::getExpertViewSelectedFlag()
 				This function assigns type of view selected under pjt settings 
 				
 \param			bExpertViewSelected				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 

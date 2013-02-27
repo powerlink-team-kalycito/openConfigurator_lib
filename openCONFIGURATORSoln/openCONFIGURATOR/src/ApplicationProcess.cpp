@@ -102,7 +102,7 @@ CApplicationProcess::~CApplicationProcess(void)
 				This Function checks the status of the file
 			
 \param			pbFilename			
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -127,7 +127,7 @@ INT32 CApplicationProcess::checkFileStatus(char* pbFilename)
 				This Function adds complex data type colletion
 			
 \param			objComplexData			
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -145,7 +145,7 @@ void CApplicationProcess::addComplexDataType(CComplexDataType objComplexData)
  
 				This Function deletes complex data type collection
 			
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -161,7 +161,7 @@ void CApplicationProcess::DeleteComplexDataTypeCollection()
 				This function adds parameter to collection list
 			
 \param			stParam			
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -179,7 +179,7 @@ void CApplicationProcess::addParameter(Parameter stParam)
  
 				This function clears the parameter collection list
 			
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -195,7 +195,7 @@ void CApplicationProcess::DeleteParameterCollection()
 				This function returns parameter index with reference to IDs
 
 \param			pbUniqueIdRef			
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -222,7 +222,7 @@ INT32 CApplicationProcess::get_ParameterIndexby_UniqueIDRef(char *pbUniqueIdRef)
 				This function returns parameter with reference to IDs
 
 \param			pbUniqueIdRef			
-\retval			Parameter*
+\return			Parameter*
 */
 /*****************************************************************************/
 
@@ -250,7 +250,7 @@ Parameter* CApplicationProcess::get_Parameterby_UniqueIDRef(char *pbUniqueIdRef)
 				This function returns unique reference ids from the collection list
 
 \param			pbUniqueIdRef			
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -276,7 +276,7 @@ INT32 CApplicationProcess::get_CDT_UniqueIDRef(char *pbUniqueIdRef)
 				This function returns CDT values based on unique reference ids from the collection list
 
 \param			pbUniqueId			
-\retval			CComplexDataType*
+\return			CComplexDataType*
 */
 /*****************************************************************************/
 
@@ -302,7 +302,7 @@ CComplexDataType* CApplicationProcess::getCDTbyUniqueID(char *pbUniqueId)
 				This function returns data type of CDT based on unique reference ids from the collection list
 
 \param			pbUniqueRefId			
-\retval			CComplexDataType*
+\return			CComplexDataType*
 */
 /*****************************************************************************/
 
@@ -334,7 +334,7 @@ CComplexDataType* CApplicationProcess::getCDTbydt_UniqueRefID(
 				This function returns CDT index values
 
 \param			iIndex			
-\retval			CComplexDataType*
+\return			CComplexDataType*
 */
 /*****************************************************************************/
 
@@ -351,7 +351,7 @@ CComplexDataType* CApplicationProcess::getCDTbydtIndex(INT32 iIndex)
 
 \param			pbUniqueID
 \param			iIndex			
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -371,7 +371,7 @@ void CApplicationProcess::updatePreviousCDT_UId(char* pbUniqueID, INT32 iIndex)
 				This function returns parameter index
 
 \param			iParameterIndex
-\retval			Parameter
+\return			Parameter
 */
 /*****************************************************************************/
 
@@ -391,7 +391,7 @@ Parameter CApplicationProcess::get_UniqueIDRef_by_ParameterIndex(
  
 				This function returns CDT collection count
 
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -407,7 +407,7 @@ INT32 CApplicationProcess::getCDTCount()
  
 				This function returns CDT index collection value 
 
-\retval			CComplexDataType*
+\return			CComplexDataType*
 */
 /*****************************************************************************/
 

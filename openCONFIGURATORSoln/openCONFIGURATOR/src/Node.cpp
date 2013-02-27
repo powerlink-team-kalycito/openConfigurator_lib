@@ -116,7 +116,7 @@ CNode::~CNode(void)
  
 				Returns the NodeType of the Node
 
-\retval			ENodeType
+\return			ENodeType
 */
 /*****************************************************************************/
 
@@ -133,7 +133,7 @@ ENodeType CNode::getNodeType()
 				sets the Node Type of the Node.Value can be either CN or MN
 
 \param			objNodeType
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -149,7 +149,7 @@ void CNode::setNodeType(ENodeType objNodeType)
  
 				Returns the Index of the Index Object
 
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -165,7 +165,7 @@ INT32 CNode::getNodeId()
  
 				sets the Index of the Index Object
 
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -182,7 +182,7 @@ void CNode::setNodeId(INT32 iNodeId)
  
 				Returns the Index of the Index Object
 
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -198,7 +198,7 @@ INT32 CNode::getNodeIndex()
  
 				sets the Index of the Index Object
 
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -215,7 +215,7 @@ void CNode::setNodeIndex(INT32 iNodeIndex)
  
 				Returns the Name of the Node
 
-\retval			char*			Node name as string
+\return			char*			Node name as string
 */
 /*****************************************************************************/
 
@@ -231,7 +231,7 @@ char* CNode::getNodeName()
  
 				sets the Name of the Node
 
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -253,7 +253,7 @@ void CNode::setNodeName(char* pbNodeName)
  
 				Returns true if PDO Objects are present else false
 
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending	
 */
@@ -272,7 +272,7 @@ bool CNode::HasPdoObjects()
 				sets the Name of the Node
 
 \param			bFlag
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -289,7 +289,7 @@ void CNode::setFlagForPdoObjects(bool bFlag)
  
 				Returns the IndexCollection of the Node
 
-\retval			CIndexCollection*
+\return			CIndexCollection*
 */
 /*****************************************************************************/
 
@@ -306,7 +306,7 @@ CIndexCollection* CNode::getIndexCollection()
  
 				Returns the Application Process of the Node
 
-\retval			 CApplicationProcess*
+\return			 CApplicationProcess*
 */
 /*****************************************************************************/
 
@@ -322,7 +322,7 @@ CApplicationProcess* CNode::getApplicationProcess()
  
 				Returns the NetworkManagement of the Node
 
-\retval			CNetworkManagement*
+\return			CNetworkManagement*
 */
 /*****************************************************************************/
 
@@ -338,7 +338,7 @@ CNetworkManagement* CNode::getNetworkManagement()
  
 				returns the DataType Collection
 
-\retval			CDataTypeCollection*
+\return			CDataTypeCollection*
 */
 /*****************************************************************************/
 
@@ -354,7 +354,7 @@ CDataTypeCollection* CNode::getDataTypeCollection()
  
 				This function creates index collection
 
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -372,7 +372,7 @@ void CNode::CreateIndexCollection()
  
 				This function creates data type collection
 
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -391,7 +391,7 @@ void CNode::CreateDataTypeCollection()
 				This function collects the process images
 				
 \param			objProcessImage
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -409,7 +409,7 @@ void CNode::addProcessImage(ProcessImage objProcessImage)
 				This function collects the NETprocess images 
 				
 \param			objNETProcessImage
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -428,7 +428,7 @@ void CNode::addNETProcessImage(NETProcessImage objNETProcessImage)
 				
 \param			stPdoVar
 \param			enumEpdoType
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -456,7 +456,7 @@ void CNode::addMNPDOvar(MNPdoVariable stPdoVar, EPDOType enumEpdoType)
  
 				This Function creates application process 
 				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -475,7 +475,7 @@ void CNode::CreateApplicationProcess()
  
 				This function creates  network management for the objects 
 				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -494,7 +494,7 @@ void CNode::CreateNetworkManagament()
 				This function adds the indexs under EPDO index collection
 				
 \param			enumEpdoType				
-\retval			CIndexCollection*
+\return			CIndexCollection*
 */
 /*****************************************************************************/
 
@@ -522,7 +522,7 @@ CIndexCollection* CNode::getPDOIndexCollection(EPDOType enumEpdoType)
  
 				This function adds the indexs under PDO index collection
 				
-\retval			CIndexCollection*
+\return			CIndexCollection*
 */
 /*****************************************************************************/
 
@@ -557,7 +557,7 @@ CIndexCollection* CNode::getPDOIndexCollection()
  
 				This function adds the indexes for non PDO type
 				
-\retval			CIndexCollection*
+\return			CIndexCollection*
 */
 /*****************************************************************************/
 
@@ -584,7 +584,7 @@ CIndexCollection* CNode::getIndexCollectionWithoutPDO()
  
 				This function returns the status of the index collection
 				
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending	
 */
@@ -610,7 +610,7 @@ bool CNode::isNull()
 				This function returns process image for each parameter index
 				
 \param			iParaIndex
-\retval			ProcessImage*	
+\return			ProcessImage*	
 */
 /*****************************************************************************/
 
@@ -638,7 +638,7 @@ ProcessImage* CNode::getPIbyParaIndex(INT32 iParaIndex)
  
 				This function clears MN PDO collection index and process image collection
 				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
  
@@ -666,7 +666,7 @@ void CNode::DeleteCollectionsForPI()
  
 				This function clears NETprocess image collection
 				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -685,7 +685,7 @@ void CNode::DeleteCollectionsForNETPI()
  
 				Returns the station type of the Node
 				
-\retval			EStationType
+\return			EStationType
 */
 /*****************************************************************************/
 
@@ -702,7 +702,7 @@ EStationType CNode::getStationType()
 				sets the Node Type of the Node.Value can be either CN or MN
 				
 \param			StationType				
-\retval			EStationType
+\return			EStationType
 */
 /*****************************************************************************/
 
@@ -718,7 +718,7 @@ void CNode::setStationType(EStationType StationType)
  
 				Returns the forced cycle of the Node
 				
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
 
@@ -735,7 +735,7 @@ char* CNode::getForcedCycle()
 				sets the cycle of the Node
 
 \param			pbForcedCycle
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -858,7 +858,7 @@ ocfmRetCode CNode::setForcedCycle(char* pbForcedCycle)
  
 				sets the cycle of the Node
 
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -891,7 +891,7 @@ void CNode::resetForcedCycleValue()
 				sets the poll response timeout value in MN
 				
 \param			pbPollResponseTimeout
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -947,7 +947,7 @@ void CNode::setPollResponseTimeout(char* pbPollResponseTimeout)
  
 				This function returns the value of forced cycle flag
 				
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending	
 */
@@ -966,7 +966,7 @@ bool CNode::getForceCycleFlag()
 				This function sets the value for forced cycle flag
 				
 \param			bForceCycleFlag
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -983,7 +983,7 @@ void CNode::setForceCycleFlag(bool bForceCycleFlag)
 				This function sets the value for Presact payload
 				
 \param			iValue
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -999,7 +999,7 @@ void CNode::setPResActPayloadValue(INT32 iValue)
  
 				This function returns the value for Presact payload
 				
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -1016,7 +1016,7 @@ INT32 CNode::getPResActPayloadValue()
 				This function sets the value for Preqact payload
 				
 \param			iValue
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -1033,7 +1033,7 @@ void CNode::setPReqActPayloadValue(INT32 iValue)
  
 				This function returns the value for Preqact payload
 				
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 

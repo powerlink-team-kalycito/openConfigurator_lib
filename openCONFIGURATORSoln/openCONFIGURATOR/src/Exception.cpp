@@ -103,7 +103,7 @@ ocfmException::~ocfmException(void) throw ()
 				This Function displays Error statements
 				
 \param			enumErrcode			
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 

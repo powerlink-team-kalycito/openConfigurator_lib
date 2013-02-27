@@ -72,7 +72,7 @@
 				This function returns ocfm return value error
 				
 \param			stRetValError				
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -90,7 +90,7 @@ INT32 ocfmRetValError_getRetValue(ocfmRetValError stRetValError)
 				This function returns ocfm error code
 				
 \param			stRetValError				
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 

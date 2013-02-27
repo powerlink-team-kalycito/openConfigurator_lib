@@ -111,7 +111,7 @@ static const char *gpa2bSimple[][2] =
 \param			pxtrReader
 \param			pobjIndex
 \param			bhasPDO
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -238,7 +238,7 @@ void setIndexAttributes(xmlTextReaderPtr pxtrReader, CIndex *pobjIndex,
 				
 \param			pxtrReader
 \param			pobjSubIndex
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 void setSubIndexAttributes(xmlTextReaderPtr pxtrReader, CSubIndex *pobjSubIndex)
@@ -332,7 +332,7 @@ void setSubIndexAttributes(xmlTextReaderPtr pxtrReader, CSubIndex *pobjSubIndex)
 				
 \param			pxtrReader
 \param			objDataType
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -447,7 +447,7 @@ void setDataTypeAttributes(xmlTextReaderPtr pxtrReader, DataType *objDataType)
 				
 \param			pxtrReader
 \param			pstParameter
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -498,7 +498,7 @@ void setParameterAttributes(xmlTextReaderPtr pxtrReader,
 				
 \param			pxtrReader
 \param			pstParameter
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -578,7 +578,7 @@ void getParaDT(xmlTextReaderPtr pxtrReader, Parameter* pstParameter)
 				
 \param			pxtrReader
 \param			pobjCDT
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -622,7 +622,7 @@ static void setCDTAttributes(xmlTextReaderPtr pxtrReader,
 				
 \param			pbName
 \param			pbSize
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending
 */
@@ -656,7 +656,7 @@ bool CheckifSimpleDT(char *pbName, char *pbSize)
 				
 \param			pxtrReader
 \param			vdecl
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -699,7 +699,7 @@ void setVarDecAttributes(xmlTextReaderPtr pxtrReader, varDeclaration& vdecl)
 \param			iNodeType
 \param			pbElement
 \param			pbCompareWith
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending
 */
@@ -728,7 +728,7 @@ bool CheckEndElement(INT32 iNodeType, char *pbElement, char *pbCompareWith)
 \param			iNodeType
 \param			pbElement
 \param			pbCompareWith
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending
 */
@@ -755,7 +755,7 @@ bool CheckStartElement(INT32 iNodeType, char *pbElement, char *pbCompareWith)
 				
 \param			pxtrReader
 \param			pobjCDT
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -868,14 +868,16 @@ static void getVarDeclaration(xmlTextReaderPtr pxtrReader,
 
 /*****************************************************************************/
 /**
-\brief			ImportXML
+\brief		ImportXML
  
-				Imports the XML file
-				
-\param			pbFileName
-\param			iNodeID
-\param			enumNodeType
-\retval			ocfmRetCode
+This API shall be used for parsing the XDC/XDD file and load the objects for 
+the Node ID of Node Type specified as arguments
+
+\param		pbFileName		Char pointer to hold the path of the configuration file[XDD or XDC] to be imported.
+\param		iNodeID			Integer variable to hold the Node Id of a node
+\param		enumNodeType	Enum to hold the Node type of the node
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -932,7 +934,7 @@ ocfmRetCode ImportXML(char *pbFileName, INT32 iNodeID, ENodeType enumNodeType)
 \param			pxtrReader
 \param			enumNodeType
 \param			iNodeIndex
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -1114,14 +1116,15 @@ void processNode(xmlTextReaderPtr pxtrReader, ENodeType enumNodeType,
  
 /*****************************************************************************/
 /**
-\brief			parseFile
+\brief		parseFile
  
-				Parses the XML file
-				
-\param			pbFileName
-\param			iNodeIndex
-\param			enumNodeType
-\retval			ocfmRetCode
+Recursiveley parses the Nodes, elements and values from the XML[xdd/xdc] file
+
+\param		pbFileName		Char pointer  to hold the path of the file [XDD or XDC].
+\param		iNodeIndex		Integer variable to hold the Node Id of a node
+\param		enumNodeType	Enum to hold the Node type of the node
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -1208,12 +1211,15 @@ ocfmRetCode parseFile(char* pbFileName, INT32 iNodeIndex,
 /**
 \brief			ReImportXML
  
-				Parses the XML file
-				
-\param			pbFileName
-\param			iNodeID
-\param			enumNodeType
-\retval			ocfmRetCode
+This API shall be used for parsing the XDC/XDD file and re-load the objects for
+the Node ID of Node Type specified as arguments for this API. This API will not
+delete and create the node. Only the objects for the node are recreated.
+
+\param			pbFileName		Char pointer to hold the path of the configuration file [XDD or XDC] to be reimported for a Node
+\param			iNodeID			Integer variable to hold the Node Id of a node
+\param			enumNodeType	Enum to hold the Node type of the node
+
+\return			ocfmRetCode		
 */
 /*****************************************************************************/
 
@@ -1290,42 +1296,15 @@ ocfmRetCode ReImportXML(char* pbFileName, INT32 iNodeID, ENodeType enumNodeType)
 
 /*****************************************************************************/
 /**
-\brief			CreateTree
- 
-							
-\retval			void
-*/
-/*****************************************************************************/
+\brief		SaveNode
 
-void CreateTree()
-{
-	//objNodeCollection= CNodeCollection::getNodeColObject();	
-}
+This API shall be used to save a node in xml format. This API saves the all the objects [Index/SubIndex] under the node into a xml file along with all the attributes of the objects.
 
-/*****************************************************************************/
-/**
-\brief			ProcessUniqueIDRefs
- 
-\param			objNode							
-\retval			void
-*/
-/*****************************************************************************/
-//TODO: To be removed from header
-void ProcessUniqueIDRefs(CNode* objNode)
-{
-	//Add code here
-}
+\param		pbFileName		Char pointer  to hold the path of the file [XDD or XDC]
+\param		NodeID			Integer variable to hold the Node Id of a node
+\param		enumNodeType	Enum to hold the Node type of the node
 
-/*****************************************************************************/
-/**
-\brief			SaveNode
- 
-				Saves the content of a Node into a XML in XDC format
- 
-\param			pbFileName
-\param			NodeID
-\param			enumNodeType							
-\retval			ocfmRetCode
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 ocfmRetCode SaveNode(const char* pbFileName, INT32 NodeID,
@@ -2281,7 +2260,7 @@ ocfmRetCode SaveNode(const char* pbFileName, INT32 NodeID,
 				
  
 \param			iNodeId
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -2333,7 +2312,7 @@ void setFlagForRequiredCNIndexes(INT32 iNodeId)
 				
  
 \param			iNodeId
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -2409,10 +2388,10 @@ void setFlagForRequiredMNIndexes(INT32 iNodeId)
 
  
 \param			iNodeId
-\retval			ocfmRetCode
+\return			ocfmRetCode
 */
 /*****************************************************************************/
-
+//TODO: unused function
 ocfmRetCode AddOtherRequiredCNIndexes(INT32 iNodeId)
 {
 	ocfmRetCode stRetCode;
@@ -2471,7 +2450,7 @@ ocfmRetCode AddOtherRequiredCNIndexes(INT32 iNodeId)
 				
  
 \param			dataTypeVal
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -2570,7 +2549,7 @@ INT32 getDataSize(char* dataTypeVal)
 				
  
 \param			datatypeValue
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending
 */
@@ -2596,7 +2575,7 @@ bool checkIfStringDatatypes(char* datatypeValue)
  
 \param			pxtrReader
 \param			pstFeature
-\retval			void			
+\return			void			
 */
 /*****************************************************************************/
 

@@ -100,7 +100,7 @@ CIndexCollection::~CIndexCollection(void)
 				This function collects the objindex
 
 \param			objIndex				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -135,7 +135,7 @@ void CIndexCollection::addIndex(CIndex objIndex)
 				This Function deletes the index value
 
 \param			iIndexID				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -153,7 +153,7 @@ void CIndexCollection::deleteIndex(INT32 iIndexID)
  
 				This Function clears the indexcollection 
 
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -170,7 +170,7 @@ void CIndexCollection::DeleteIndexCollection()
  
 				This Function deletes PDOs
 
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -202,7 +202,7 @@ void CIndexCollection::DeletePDOs()
  
 				This Function deletes PIObjects
 
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -234,7 +234,7 @@ void CIndexCollection::DeletePIObjects()
 				This function collects index count 
 
 \param			iCount
-\retval			CIndex*
+\return			CIndex*
 */
 /*****************************************************************************/
 
@@ -251,7 +251,7 @@ CIndex* CIndexCollection::getIndex(INT32 iCount)
 				This function collects index values 
 
 \param			pbIndex
-\retval			CIndex*
+\return			CIndex*
 */
 /*****************************************************************************/
 
@@ -280,7 +280,7 @@ CIndex* CIndexCollection::getIndexbyIndexValue(char* pbIndex)
  
 				This function returns total nummber of index 
 
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 

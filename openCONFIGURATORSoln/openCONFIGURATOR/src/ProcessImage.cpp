@@ -112,7 +112,7 @@ ModuleCol astModuleInfo[TOTAL_MODULES];
 \param			iStartByteOffset
 \param			iPosition
 \param			iStartBitOffset
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 //TODO: Unused function
@@ -157,7 +157,7 @@ void SetPIOffsets(ProcessImage* pobjProcessImage, INT32& iStartByteOffset,
 				
 \param			aobjPIInCol
 \param			aobjPIOutCol
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -210,7 +210,7 @@ void GroupInOutPIVariables(ProcessImage aobjPIInCol[],
 				
 \param			DirectionType
 \param			aobjPICol
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -249,7 +249,7 @@ INT32 GroupNETPIVariables(EPIDirectionType DirectionType,
  
 				This function assigns unique variables for process image
 				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -376,7 +376,7 @@ void SetUniquePIVarName()
 				
 \param			pbDataStr
 \param			iDataSize				
-\retval			PIDataInfo*
+\return			PIDataInfo*
 */
 /*****************************************************************************/
 
@@ -496,7 +496,7 @@ PIDataInfo* getIECDT(char* pbDataStr, INT32 iDataSize)
 \param			ModuleNo
 \param			iNoOfModules
 \param			astModCol
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending	
 */
@@ -527,7 +527,7 @@ bool CheckIfModuleExists(char* pbModuleName, INT32 & ModuleNo,
 \param			objPIOutCol
 \param			iInVar
 \param			iOutVar
-\retval			void	
+\return			void	
 */
 /*****************************************************************************/
 
@@ -653,7 +653,7 @@ void GenerateXAPHeaderFile(char* pbFileName, ProcessImage objPIInCol[],
 \param			iNumberOfVars
 \param			enumDirType
 \param			fpXapHeader
-\retval			void	
+\return			void	
 */
 /*****************************************************************************/
 
@@ -832,7 +832,7 @@ void WriteXAPHeaderContents(ProcessImage objProcessImage[], INT32 iNumberOfVars,
 \param			objPIOutCol
 \param			iInVar
 \param			iOutVar
-\retval			void	
+\return			void	
 */
 /*****************************************************************************/
 
@@ -933,7 +933,7 @@ void GenerateNETHeaderFile(char* pbFileName, ProcessImage objPIInCol[],
 \param			iNumberOfVars
 \param			enumDirType
 \param			fpNetHeader
-\retval			void	
+\return			void	
 */
 /*****************************************************************************/
 
@@ -1065,7 +1065,7 @@ void WriteNETHeaderContents(ProcessImage objProcessImage[], INT32 iNumberOfVars,
 \param			iNumberOfVars
 \param			enumDirType
 \param			fpNetHeader
-\retval			INT32	
+\return			INT32	
 */
 /*****************************************************************************/
 
@@ -1303,7 +1303,7 @@ INT32 GroupNETHeaderContents(ProcessImage objProcessImage[],
 \param			pobjDataType
 \param			pbIdx
 \param			pbSIdx
-\retval			void	
+\return			void	
 */
 /*****************************************************************************/
 
@@ -1343,7 +1343,7 @@ void SetSIdxDataType(DataType *pobjDataType, char* pbIdx, char* pbSIdx)
 \param			pbIndex
 \param			pbSubIndex
 \param			enumPdoType
-\retval			void	
+\return			void	
 */
 /*****************************************************************************/
 
@@ -1474,7 +1474,7 @@ void AddPDOIndexsToMN(char* pbIndex, char* pbSubIndex, EPDOType enumPdoType)
 \param			dirType
 \param			iOffset
 \param			iDataSize
-\retval			stPIObject	
+\return			stPIObject	
 */
 /*****************************************************************************/
 
@@ -1528,7 +1528,7 @@ PIObject getPIAddress(PDODataType dt, EPIDirectionType dirType, INT32 iOffset,
 				This function sets value for process image datatype
 				
 \param			pbAddress
-\retval			char*	
+\return			char*	
 */
 /*****************************************************************************/
 
@@ -1605,7 +1605,7 @@ char* getPIDataTypeName(char* pbAddress)
 				This function retuns process image name
 				
 \param			pbAddress
-\retval			char*	
+\return			char*	
 */
 /*****************************************************************************/
 
@@ -1682,7 +1682,7 @@ char* getPIName(char* pbAddress)
 				This function checks for process image index
 				
 \param			pbIndex
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending	
 */
@@ -1703,7 +1703,7 @@ bool CheckIfProcessImageIdx(char* pbIndex)
 \param			CNNodeID
 \param			iItemLoopCount
 \param			schModuleName
-\retval			INT32	
+\return			INT32	
 */
 /*****************************************************************************/
 
@@ -1747,7 +1747,7 @@ INT32 SearchModuleNameNETProcessImageCollection(INT32 CNNodeID,
 \param			objProcessImage
 \param			objNETProcessImage
 \param			ModuleName
-\retval			void	
+\return			void	
 */
 /*****************************************************************************/
 
@@ -1793,7 +1793,7 @@ void CopyPItoNETPICollection(ProcessImage objProcessImage,
 				This function returns data type for process image
 				
 \param			dt_enum
-\retval			char*	
+\return			char*	
 */
 /*****************************************************************************/
 
@@ -1870,7 +1870,7 @@ char* GetDatatypeNETPI(IEC_Datatype dt_enum)
 				This function returns data size for process image
 				
 \param			dt_enum
-\retval			INT32	
+\return			INT32	
 */
 /*****************************************************************************/
 

@@ -1,8 +1,8 @@
 /**
 ************************************************************************************************
-\file			APIOperations.cpp
+\file		APIOperations.cpp
 
-\brief			 
+\brief		
 ************************************************************************************************
 */
 
@@ -124,17 +124,18 @@ static sBuildTime sBuildTime_g;
 
 /*****************************************************************************/
 /**
-\brief			AddIndexAttributes
- 
-			Adds the default attributes to the Index, when addded.
-			
-\param			pIndexID			
-\param			pobjIndex			
-\param			pobjDictIndex
-\retval			void
+\brief		AddIndexAttributes
+
+Adds the default attributes to the Index, when addded. The default values are fetched from the object dictionary
+
+\param		pIndexID			Character pointer to hold the IndexID
+\param		pobjIndex			Class pointer of CIndex to add the attributes
+\param		pobjDictIndex		Class pointer of CIndex form object dictionary
+
+\return		void
 */
 /*****************************************************************************/
-
+//TODO: No API but static
 static void AddIndexAttributes(char* pIndexID, CIndex* pobjIndex,
 		CIndex* pobjDictIndex)
 {
@@ -246,25 +247,24 @@ static void AddIndexAttributes(char* pIndexID, CIndex* pobjIndex,
 	{
 		pobjIndex->setDataType((char*) "");
 	}
-
-	return;
 }
 
  
 /*****************************************************************************/
 /**
-\brief			AddSubIndexAttributes
- 
-			Adds the default attributes to the Index, when addded
-			
-\param			pSubIndexID			
-\param			pobjSubIndex			
-\param			pobjDictSIndex
-\retval			void
+\brief		AddSubIndexAttributes
+
+Adds the default attributes to the SubIndex, when addded. The default values are fetched from the object dictionary
+
+\param		pSubIndexID			Character pointer to hold the IndexID
+\param		pobjSubIndex		Class pointer of CSubIndex to add the attributes
+\param		pobjDictSIndex		Class pointer of CSubIndex from object dictionary
+
+\return		void
 */
 /*****************************************************************************/
 
-
+//TODO: No API but static
 static void AddSubIndexAttributes(char* pSubIndexID, CSubIndex* pobjSubIndex,
 		CSubIndex* pobjDictSIndex)
 {
@@ -368,14 +368,15 @@ static void AddSubIndexAttributes(char* pSubIndexID, CSubIndex* pobjSubIndex,
 
 /*****************************************************************************/
 /**
-\brief			CreateNode
- 
-			
-			
-\param			iNodeID			
-\param			enumNodeType			
-\param			pbNodeName
-\retval			ocfmRetCode
+\brief		CreateNode
+
+This API shall be used to create a node with the given node ID, node type and node name.
+
+\param		iNodeID			Integer variable to hold the Node Id of a node
+\param		enumNodeType	Enum to hold the Node type of the node
+\param		pbNodeName		Char pointer to hold the name of the node to be created
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -475,15 +476,16 @@ ocfmRetCode CreateNode(INT32 iNodeID, ENodeType enumNodeType, char* pbNodeName)
 
 /*****************************************************************************/
 /**
-\brief			NewProjectNode
- 
-			
-			
-\param			iNodeID			
-\param			enumNodeType			
-\param			pbNodeName
-\param			pbImportXmlFile
-\retval			ocfmRetCode
+\brief		NewProjectNode
+
+This API shall be used to create a new node(CN or MN)  with attributes nodeid, nodetype, nodename, nodeConfigurationfile(xdd/xdc path)
+
+\param		iNodeID				Integer variable to hold the Node Id of a node
+\param		enumNodeType		Enum to hold the Node type of the node
+\param		pbNodeName			Character pointer to hold the name of the node to be created
+\param		pbImportXmlFile		Character pointer to hold the full path of the xml(xdd/xdc) file to be imported for the node
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -561,12 +563,14 @@ ocfmRetCode NewProjectNode(INT32 iNodeID, ENodeType enumNodeType,
 
 /*****************************************************************************/
 /**
-\brief			DeleteNode
- 
-			
-\param			iNodeID			
-\param			enumNodeType			
-\retval			ocfmRetCode
+\brief		DeleteNode
+
+This API shall be used to delete a node with the given respective node ID and node type. Deleting a node will also delete the object dictionary for the corresponding node.
+
+\param		iNodeID			Integer variable to hold the Node Id of a node
+\param		enumNodeType	Enum to hold the Node type of the node
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -683,14 +687,15 @@ ocfmRetCode DeleteNode(INT32 iNodeID, ENodeType enumNodeType)
 
 /*****************************************************************************/
 /**
-\brief			DeleteIndex
- 
-			Deletes the Index after performing check for Index Existanse
-			
-\param			iNodeID			
-\param			enumNodeType
-\param			pIndexID			
-\retval			ocfmRetCode
+\brief		DeleteIndex
+
+This API shall be used to delete a particular index of a node given the respective IndexID in the required node ID of node type 'NodeType'.
+
+\param		iNodeID			Integer variable to hold the Node Id of a node
+\param		enumNodeType	Enum to hold the Node type of the node
+\param		pIndexID		Character pointer to hold the IndexID
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -762,15 +767,16 @@ ocfmRetCode DeleteIndex(INT32 iNodeID, ENodeType enumNodeType, char* pIndexID)
 
 /*****************************************************************************/
 /**
-\brief			DeleteSubIndex
- 
-			Deletes the Index after performing check for Index Existanse
-			
-\param			iNodeID			
-\param			enumNodeType
-\param			pbIndexID
-\param			pbSubIndexID			
-\retval			ocfmRetCode
+\brief		DeleteSubIndex
+
+This API shall be used to delete a particular SuIndex in a particular Index of a node given the respective SubIndexID, IndexID in the required node ID of node type 'NodeType'
+
+\param		iNodeID			Integer variable to hold the Node Id of a node.
+\param		enumNodeType	Enum to hold the Node type of the node
+\param		pbIndexID		Character pointer to hold the IndexID
+\param		pbSubIndexID	Character pointer to hold the SubIndexID
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -860,15 +866,16 @@ ocfmRetCode DeleteSubIndex(INT32 iNodeID, ENodeType enumNodeType,
 }
 /*****************************************************************************/
 /**
-\brief			AddSubIndex
- 
-			
-			
-\param			iNodeID			
-\param			enumNodeType
-\param			pbIndexID
-\param			pbSubIndexID
-\retval			ocfmRetCode
+\brief		AddSubIndex
+
+This API shall be used to add a particular SubIndex to a particular Index of a node given the respective SubIndexID, IndexID in the required node ID of node type 'NodeType'.
+
+\param		iNodeID			Integer variable to hold the Node Id of a node
+\param		enumNodeType	Enum to hold the Node type of the node
+\param		pbIndexID		Character pointer to hold the IndexID
+\param		pbSubIndexID	Character pointer to hold the SubIndexID
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 ocfmRetCode AddSubIndex(INT32 iNodeID, ENodeType enumNodeType, char* pbIndexID,
@@ -1025,14 +1032,15 @@ ocfmRetCode AddSubIndex(INT32 iNodeID, ENodeType enumNodeType, char* pbIndexID,
  
 /*****************************************************************************/
 /**
-\brief			AddSubobject
+\brief		AddSubobject
 
+This function is to add the 00'th entry for manufacture specific objects automatically while setting all index attributes
 
+\param		iNodeID			Integer variable to hold the Node Id of a node
+\param		enumNodeType	Enum to hold the Node type of the node
+\param		pbIndexID		Character pointer to hold the IndexID
 
-\param			iNodeID
-\param			enumNodeType
-\param			pbIndexID
-\retval			ocfmRetCode
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -1133,57 +1141,18 @@ ocfmRetCode AddSubobject(INT32 iNodeID, ENodeType enumNodeType, char* pbIndexID)
 	}
 	return stErrorInfo;
 }
-/****************************************************************************************************
- * Function Name: getIndexName
- * Description:
- * Return value: char*
- ****************************************************************************************************/
-/*char* getIndexName(char* ObjectIndex, char* ObjectName)
- {
- char* Name = NULL;// = new char[100];
- char* ModifiedName = new char[strlen(ObjectName)];
 
- INT32 len;
-
- Name = strchr(ObjectName, 'X')	;
- if(Name != NULL)
- {
- len = 1;
- if(strcmp(subString(Name,1,1), "X") ==0)
- len++;
-
- INT32 pos = strlen(Name);
- INT32 i = 0;
- while(i < len)
- {
- if(Name[0] == 'X')
- {
- Name[0] = *(ObjectIndex + i);
- }
- Name++;
- i++;
- }
- Name = Name-i;
- strcpy(ModifiedName, subString(ObjectName, 0, strlen(ObjectName)-pos));
- strcat(ModifiedName, Name);
- return ModifiedName;
- }
- else
- { 
- return ObjectName;
- }
- }
- */
 /*****************************************************************************/
 /**
-\brief			AddIndex
+\brief		AddIndex
 
+This API shall be used to add a particular Index to a particular node given the respective IndexID in the required node ID of node type 'NodeType'.
 
+\param		iNodeID			Integer variable to hold the Node Id of a node
+\param		enumNodeType	Enum to hold the Node type of the node
+\param		pbIndexID		Character pointer to hold the IndexID
 
-\param			iNodeID
-\param			enumNodeType
-\param			pbIndexID
-\retval			ocfmRetCode
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 ocfmRetCode AddIndex(INT32 iNodeID, ENodeType enumNodeType, char* pbIndexID)
@@ -1313,16 +1282,18 @@ ocfmRetCode AddIndex(INT32 iNodeID, ENodeType enumNodeType, char* pbIndexID)
 
 /*****************************************************************************/
 /**
-\brief			SetIndexAttributes
- 
+\brief		SetIndexAttributes
 
-\param			iNodeID
-\param			enumNodeType
-\param			pbIndexID
-\param			pbIndexValue
-\param			pbIndexName
-\param			enumIsIncludedInCdc
-\retval			ocfmRetCode
+This API shall be used to set the index attributes [IndexValue, IndexName & flagIfInCdc] of a particular Index of a node given the respective IndexID in the required node ID of node type 'NodeType'.
+
+\param		iNodeID					Integer variable to hold the Node Id of a node
+\param		enumNodeType			Enum to hold the Node type of the node
+\param		pbIndexID				Character pointer to hold the IndexID
+\param		pbIndexValue			Character Pointer to hold the IndexValue
+\param		pbIndexName				Character Pointer to hold the IndexName
+\param		enumIsIncludedInCdc		Enumeration Flag to flagIfInCdc
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -1415,17 +1386,19 @@ ocfmRetCode SetIndexAttributes(INT32 iNodeID, ENodeType enumNodeType,
 
 /*****************************************************************************/
 /**
-\brief			SetSubIndexAttributes
- 
+\brief		SetSubIndexAttributes
 
-\param			iNodeID			
-\param			enumNodeType
-\param			pbIndexID
-\param			pbSubIndexID
-\param			pbIndexValue
-\param			pbIndexName
-\param			enumIsIncludedInCdc
-\retval			ocfmRetCode
+This API shall be used to set the SubIndex attributes [IndexValue, IndexName & flagIfInCdc] of a particular SuIndex in a particular Index of a node given the respective SubIndexID, IndexID in the required node ID of node type 'NodeType'.
+
+\param		iNodeID					Integer variable to hold the Node Id of a node
+\param		enumNodeType			Enum to hold the Node type of the node
+\param		pbIndexID				Character pointer to hold the IndexID
+\param		pbSubIndexID			Character pointer to hold the SubIndexID
+\param		pbIndexValue			Character Pointer to hold the IndexValue
+\param		pbIndexName				Character Pointer to hold the IndexName
+\param		enumIsIncludedInCdc		Enumeration Flag to flagIfInCdc
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -1541,23 +1514,25 @@ ocfmRetCode SetSubIndexAttributes(INT32 iNodeID, ENodeType enumNodeType,
 
 /*****************************************************************************/
 /**
-\brief			SetALLIndexAttributes
+\brief		SetALLIndexAttributes
 
+This API shall be used to set all the attributes of an Index in a single shot.
 
-\param			iNodeID
-\param			enumNodeType
-\param			pbIndexID
-\param			pbActualValue
-\param			pbIndexName
-\param			pbAccess
-\param			pbDataTypeName
-\param			pdoMappingVal
-\param			pbdefaultValue
-\param			pbhighLimit
-\param			pblowLimit
-\param			pbobjType
-\param			enumIncludeInCdc
-\retval			ocfmRetCode
+\param		iNodeID				Integer variable to hold the Node Id of a node
+\param		enumNodeType		Enum to hold the Node type of the node
+\param		pbIndexID			Character pointer to hold the IndexID
+\param		pbActualValue		Character pointer to hold the ActualValue
+\param		pbIndexName			Character pointer to hold the IndexName
+\param		pbAccess			Character pointer to hold the Access type
+\param		pbDataTypeName		Character pointer to hold the Datatype
+\param		pdoMappingVal		Character pointer to hold the PDO Mapping
+\param		pbdefaultValue		Character pointer to hold the Default value
+\param		pbhighLimit			Character pointer to hold the Highlimit
+\param		pblowLimit			Character pointer to hold the Lowlimit
+\param		pbobjType			Character pointer to hold the Object type
+\param		enumIncludeInCdc	Enumeration flag for include in cdc
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -1726,25 +1701,26 @@ ocfmRetCode SetAllIndexAttributes(INT32 iNodeID, ENodeType enumNodeType,
  
 /*****************************************************************************/
 /**
-\brief			SetAllSubIndexAttributes
- 
+\brief		SetAllSubIndexAttributes
 
+This API shall be used to set all the attributes of an SubIndex in a single shot.
 
-\param			iNodeID
-\param			enumNodeType
-\param			pbIndexID
-\param			pbSubIndexID
-\param			pbActualValue
-\param			pbIndexName
-\param			pbAccess
-\param			pbDataTypeName
-\param			pbPdoMappingVal
-\param			pbDefaultValue
-\param			pbHighLimit
-\param			pbLowLimit
-\param			pbObjType
-\param			enumIncludeInCdc
-\retval			ocfmRetCode
+\param		iNodeID				Integer variable to hold the Node Id of a node
+\param		enumNodeType		Enum to hold the Node type of the node
+\param		pbIndexID			Character pointer to hold the IndexID
+\param		pbSubIndexID		Character pointer to hold the SubIndexID
+\param		pbActualValue		Character pointer to hold the ActualValue
+\param		pbIndexName			Character pointer to hold the IndexName
+\param		pbAccess			Character pointer to hold the Access type
+\param		pbDataTypeName		Character pointer to hold the Datatype
+\param		pbPdoMappingVal		Character pointer to hold the PDO Mapping
+\param		pbDefaultValue		Character pointer to hold the Default value
+\param		pbHighLimit			Character pointer to hold the Highlimit
+\param		pbLowLimit			Character pointer to hold the Lowlimit
+\param		pbObjType			Character pointer to hold the Object type
+\param		enumIncludeInCdc	Enumeration flag for include in cdc
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -1903,17 +1879,18 @@ ocfmRetCode SetAllSubIndexAttributes(INT32 iNodeID, ENodeType enumNodeType,
 
 /*****************************************************************************/
 /**
-\brief			SetSubIndexAttributesByAttribute
- 
-			
-			
-\param			iNodeID			
-\param			enumNodeType
-\param			pbIndexID
-\param			pbSubIndexID
-\param			enumAttributeType
-\param			pbInAttributeValue
-\retval			ocfmRetCode
+\brief		SetSubIndexAttributesByAttribute
+
+This function shall be used to set any SubIndex attributes of a particular SuIndex in a particular Index of a node by selecting any of the types from the enumerator EAttributeType
+
+\param		iNodeID					Integer variable to hold the Node Id of a node
+\param		enumNodeType			Enum to hold the Node type of the node
+\param		pbIndexID				Character pointer to hold the IndexID
+\param		pbSubIndexID			Character pointer to hold the SubIndexID
+\param		enumAttributeType		Enum to hold the attribute type of the subindex
+\param		pbInAttributeValue		Character pointer to hold the value to be set for the subindex attribute
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -2034,13 +2011,14 @@ ocfmRetCode SetSubIndexAttributesByAttribute(INT32 iNodeID,
 
 /*****************************************************************************/
 /**
-\brief			CheckUpperAndLowerLimits
- 
-			
-		
-\param			pcLowLimit			
-\param			pcHighLimit
-\retval			ocfmRetCode
+\brief		CheckUpperAndLowerLimits
+
+This function shall be used to validate the upper & lower limit values while setting the Index/Subindex attributes limits
+
+\param		pcLowLimit		Character pointer to hold the lowerlimit value
+\param		pcHighLimit		Character pointer to hold the higherlimit value
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -2104,49 +2082,19 @@ ocfmRetCode CheckUpperAndLowerLimits(char* pcLowLimit, char* pcHighLimit)
 	}
 	return stError;
 }
-/****************************************************************************************************
- * Function Name: DisplayNodeTree
- * Description:
- * Return value: void
- ****************************************************************************************************/
-
-void DisplayNodeTree()
-{
-//	CNode objNode;
-//	 CNodeCollection *pobjNodeCollection;
-//	 CIndexCollection *pobjIndexCollection;
-
-//	 pobjNodeCollection= CNodeCollection::getNodeColObjectPointer();
-//	 pobjIndexCollection = objNode.getIndexCollection();
-
-//	 if( pobjNodeCollection->getNumberOfNodes() > 0)
-//	 {
-//	 	for(INT32 iLoopCount = 0; iLoopCount < pobjNodeCollection->getNumberOfNodes(); iLoopCount++)
-//	 	{
-//	 		objNode = pobjNodeCollection->getNodebyCollectionIndex(iLoopCount);
-//	 		if (objNode.getNodeType() == CN)
-//	 		{
-//	 		}
-//	 	}
-//	 }
-//	 else
-//	 {
-//		return;
-//	 }
-
-}
 
 /*****************************************************************************/
 /**
-\brief			EnableDisableMappingPDO
- 
-			
-		
-\param			pobjIdxCol			
-\param			pobjIndex
-\param			Buffer
-\param			EnableFlag
-\retval			void
+\brief		EnableDisableMappingPDO
+
+This function Enables or Disables the Mapping pdo's before the pdo contents are written to the cdc by setting the EnableFlag to true or false respectiveley
+
+\param		pobjIdxCol		Class pointer of CIndexCollection for a single node
+\param		pobjIndex		Class pointer of CIndex for the PDO index
+\param		Buffer			Character pointer to hold the values to be written to the cdc
+\param		EnableFlag		Boolean value to enable or disable the pdo
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -2341,19 +2289,19 @@ void EnableDisableMappingPDO(CIndexCollection* pobjIdxCol, CIndex* pobjIndex,
 	}
 }
 
- 
+
 /*****************************************************************************/
 /**
-\brief			UpdateCNCycleTime
- 
-				Updates the cycle time(1006) of the CN
-		
-\param			pobjIdxCol			
-\param			pbCycleTime
-\retval			void
+\brief		UpdateCNCycleTime
+
+This function updates the cycle time index value(1006) of the CN
+
+\param		pobjIdxCol		Class pointer of CIndexCollection for a CN node
+\param		pbCycleTime		Character pointer to hold the new cycle time value
+
+\return		void
 */
 /*****************************************************************************/
-
 
 void UpdateCNCycleTime(CIndexCollection* pobjIdxCol, char* pbCycleTime)
 {
@@ -2391,13 +2339,14 @@ void UpdateCNCycleTime(CIndexCollection* pobjIdxCol, char* pbCycleTime)
 
 /*****************************************************************************/
 /**
-\brief			UpdateCNSoCTolerance
- 
-				Updates the Loss SoC Tolerance(1C14) of the CN
-		
-\param			pobjIdxCol			
-\param			pbSocTolerance
-\retval			void
+\brief		UpdateCNSoCTolerance
+
+This function updates the Loss SoC Tolerance index value(1C14) of the CN
+
+\param		pobjIdxCol			Class pointer of CIndexCollection for a CN node
+\param		pbSocTolerance		Character pointer to hold the new Loss SoC Tolerance value
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -2437,16 +2386,17 @@ void UpdateCNSoCTolerance(CIndexCollection* pobjIdxCol, char* pbSocTolerance)
 
 /*****************************************************************************/
 /**
-\brief			UpdateCNAsyncMTUsize
- 
-				Updates the Asynchronous MTU size(1F98/08) of the CN
-		
-\param			pobjIdxCol			
-\param			pbAsyncMTUsize
-\retval			void
+\brief		UpdateCNAsyncMTUsize
+
+This function updates the Asynchronous MTU size(1F98/08) of the CN
+
+\param		pobjIdxCol			Class pointer of CIndexCollection for a CN node
+\param		pbAsyncMTUsize		Character pointer to hold the new AsyncMTUsize value
+
+\return		void
 */
 /*****************************************************************************/
- 
+
 void UpdateCNAsyncMTUsize(CIndexCollection* pobjIdxCol, char* pbAsyncMTUsize)
 {
 	CIndex* pobjIndex = NULL;
@@ -2494,13 +2444,14 @@ void UpdateCNAsyncMTUsize(CIndexCollection* pobjIdxCol, char* pbAsyncMTUsize)
 
 /*****************************************************************************/
 /**
-\brief			UpdateCNMultiPrescal
- 
-				Updates the Multilexing prescaler (1F98/07) of the CN
-		
-\param			pobjIdxCol			
-\param			pbMultiPrescal
-\retval			void
+\brief		UpdateCNMultiPrescal
+
+This function updates the Multilexing prescaler (1F98/07) of the CN
+
+\param		pobjIdxCol			Class pointer of CIndexCollection for a CN node
+\param		pbMultiPrescal		Character pointer to hold the new Multilexing prescaler value
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -2550,15 +2501,16 @@ void UpdateCNMultiPrescal(CIndexCollection* pobjIdxCol, char* pbMultiPrescal)
 
 /*****************************************************************************************/
 /**
-\brief			UpdateCNNodeAssignment
- 
-				copies all the subobjects of 1F81 in MN to CN if conditions are satisfied
-		
-\param			pobjNode
-\retval			void			
+\brief		UpdateCNNodeAssignment
+
+This function updates the subobjects of 1F81 in CN to MN if conditions are satisfied
+
+\param		pobjNode	Class pointer of CNode for a CN node
+
+\return		void
 */
 /******************************************************************************************/
-
+//TODO: unused function
 void UpdateCNNodeAssignment(CNode* pobjNode)
 {
 	bool bCopy1F81 = false;
@@ -2654,17 +2606,18 @@ void UpdateCNNodeAssignment(CNode* pobjNode)
 
 /*****************************************************************************************/
 /**
-\brief			ISCNNodeAssignmentValid
- 
-				checks whether the CN can implement 1F81 object
-		
-\param			pobjNode
-\retval			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending			
+\brief		ISCNNodeAssignmentValid
+
+This function checks whether the CN can implement 1F81 object or not
+
+\param		pobjNode	Class pointer of CNode for a CN node
+
+\return		BOOL
+
+\retval		TRUE			if a CN can implement 1F81 object
+\retval		FALSE			if a CN cannot implement 1F81 object
 */
 /******************************************************************************************/
-
 
 bool ISCNNodeAssignmentValid(CNode* pobjNode)
 {
@@ -2762,12 +2715,13 @@ bool ISCNNodeAssignmentValid(CNode* pobjNode)
  
 /*****************************************************************************************/
 /**
-\brief			UpdateCNMultipleCycleAssign
- 
-				copies all the subobjects of 1F9B in MN to CN if conditions are satisfied
-		
-\param			pobjNode
-\retval			void			
+\brief		UpdateCNMultipleCycleAssign
+
+This function copies all the subobjects of 1F9B in MN to CN if conditions are satisfied
+
+\param		pobjNode	Class pointer of CNode for a CN node
+
+\return		void
 */
 /******************************************************************************************/
 
@@ -2840,12 +2794,13 @@ void UpdateCNMultipleCycleAssign(CNode* pobjNode)
 
 /*****************************************************************************************/
 /**
-\brief			UpdateCNPresMNActLoad
- 
-				set the calculated PresMN load value in CN 1F8D object
-		
-\param			pobjNode
-\retval			void			
+\brief		UpdateCNPresMNActLoad
+
+This function set the calculated PresMN load value in CN 1F8D object
+
+\param		pobjNode	Class pointer of CNode for a CN node
+
+\return		void
 */
 /******************************************************************************************/
 
@@ -2959,12 +2914,13 @@ void UpdateCNPresMNActLoad(CNode* pobjNode)
 
 /*****************************************************************************************/
 /**
-\brief			UpdatePreqActLoad
- 
-				set the calculated Preq load value in CN
-		
-\param			pobjNode
-\retval			void			
+\brief		UpdatePreqActLoad
+
+This function set the calculated Preq load value in CN
+
+\param		pobjNode	Class pointer of CNode for a CN node
+
+\return		void
 */
 /******************************************************************************************/
 
@@ -3083,12 +3039,13 @@ void UpdatePreqActLoad(CNode* pobjNode)
 
 /*****************************************************************************************/
 /**
-\brief			UpdatePresActLoad
- 
-				set the calculated Pres load value in CN 
-		
-\param			pobjNode
-\retval			void			
+\brief		UpdatePresActLoad
+
+This function sets the calculated Pres load value in CN 
+
+\param		pobjNode	Class pointer of CNode for a CN node
+
+\return		void
 */
 /******************************************************************************************/
 
@@ -3234,15 +3191,16 @@ void UpdatePresActLoad(CNode* pobjNode)
 	delete[] pcSubindexId;
 }
 
- 
+
 /*****************************************************************************************/
 /**
-\brief			UpdateCNVisibleNode
- 
-				Updates 1F81 and 1F8D of cross trafficked station 
-		
-\param			pobjNode
-\retval			void			
+\brief		UpdateCNVisibleNode
+
+This function updates 1F81 and 1F8D of cross trafficked stations
+
+\param		pobjNode	Class pointer of CNode for a CN node
+
+\return		void
 */
 /******************************************************************************************/
 
@@ -3415,16 +3373,19 @@ void UpdateCNVisibleNode(CNode* pobjNode)
 
 /*****************************************************************************************/
 /**
-\brief			CopyMNSubindexToCN
- 
-				copies the MN subindex value into corresponding CN subindex 
-		
-\param			pobjNode
-\param			pcIndex
-\param			pcSubIndex
-\retval			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending				
+\brief		CopyMNSubindexToCN
+
+This function copies the MN subindex value into corresponding CN subindex 
+
+\param		pobjNode		Class pointer of CNode for a CN node
+\param		pcIndex			Character pointer to hold the Index value
+\param		pcSubIndex		Character pointer to hold the subindex value
+
+
+\return		BOOL
+
+\retval		TRUE			if successfuly copied
+\retval		FALSE			if not copied
 */
 /******************************************************************************************/
 
@@ -3471,7 +3432,11 @@ bool CopyMNSubindexToCN(CNode* pobjNode, char* pcIndex, char* pcSubIndex)
 
 		if ((NULL == pobjCNSubindex) || (NULL == pobjMNSubindex))
 		{
-
+#if defined DEBUG
+			cout
+					<< "CopyMNSubindexToCN falied: MNSubindex/CNSubindex Not present"
+					<< endl;
+#endif
 		}
 		else if (NULL != pobjMNSubindex->getActualValue())
 		{
@@ -3494,7 +3459,7 @@ bool CopyMNSubindexToCN(CNode* pobjNode, char* pcIndex, char* pcSubIndex)
 	{
 #if defined DEBUG
 		cout
-				<< "CopyMNSubindexToCN falied: pobjMNIndex/pobjCNIndex is Not Present"
+				<< "CopyMNSubindexToCN falied: MNIndex/CNIndex is Not Present"
 				<< endl;
 #endif
 	}
@@ -3503,12 +3468,13 @@ bool CopyMNSubindexToCN(CNode* pobjNode, char* pcIndex, char* pcSubIndex)
 
 /*****************************************************************************************/
 /**
-\brief			ResetAllSubIndexFlag
- 
-				
-		
-\param			pobjIndex
-\retval			void			
+\brief		ResetAllSubIndexFlag
+
+This function resets the Include in cdc flag for all the sub index
+
+\param		pobjIndex	Class pointer of CIndex to get all the subindexes
+
+\return		void
 */
 /******************************************************************************************/
 
@@ -3540,16 +3506,17 @@ void ResetAllSubIndexFlag(CIndex* pobjIndex)
 	}
 	pobjIndex->setFlagIfIncludedCdc(FALSE);
 }
- 
+
 /*****************************************************************************************/
 /**
-\brief			GetIndexData
- 
-				
-		
-\param			objIndex
-\param			Buffer
-\retval			void			
+\brief		GetIndexData
+
+This function writes the buffer(char pointer) with the index data(id, datatype value, actual value) to be used for the cdc
+
+\param		objIndex	Class pointer of CIndex for node
+\param		Buffer		Character pointer to hold the buffer data
+
+\return		void
 */
 /******************************************************************************************/
 
@@ -3866,14 +3833,15 @@ void GetIndexData(CIndex* objIndex, char* Buffer)
 
 /*****************************************************************************************/
 /**
-\brief			BRSpecificGetIndexData
- 
-				write the index data into cdc as per specific format
-		
-\param			objIndex
-\param			Buffer
-\param			iNodeId
-\retval			void			
+\brief		BRSpecificGetIndexData
+
+This function writes the buffer(char pointer) with the index data(id, datatype value, actual value) to be used for the cdc in a BnR specific format.
+
+\param		objIndex	Class pointer of CIndex for node
+\param		Buffer		Character pointer to hold the buffer data
+\param		iNodeId		Integer variable to hold the Node id to be written to the 1F81 index
+
+\return		void
 */
 /******************************************************************************************/
 
@@ -4211,12 +4179,13 @@ void BRSpecificGetIndexData(CIndex* objIndex, char* Buffer, INT32 iNodeId)
 
 /*****************************************************************************************/
 /**
-\brief			WriteCNsData
- 
-				write the index data into cdc
-		
-\param			fileName
-\retval			void			
+\brief		WriteCNsData
+
+This function writes the CN's all index datas into CDC file(mnobd.txt)
+
+\param		fileName	Character pointer to hold the full path of the file (mnobd.txt)
+
+\return		void
 */
 /******************************************************************************************/
 
@@ -4495,12 +4464,13 @@ void WriteCNsData(char* fileName)
 
 /*****************************************************************************************/
 /**
-\brief			getNodeTotalIndexSubIndex
- 
-				
-		
-\param			iNodeId
-\retval			INT32			
+\brief		getNodeTotalIndexSubIndex
+
+This function returns the total no.of index and subindex that can be written to the CDC
+
+\param		iNodeId		Integer variable to hold the node id to which the total values to be fetched
+
+\return		INT32
 */
 /******************************************************************************************/
 
@@ -4693,12 +4663,13 @@ INT32 getNodeTotalIndexSubIndex(INT32 iNodeId)
 
 /*****************************************************************************************/
 /**
-\brief			BRSpecificgetCNsTotalIndexSubIndex
- 
-				BRSpecificgetCNsTotalIndexSubIndex returns the no.of entries that'll be included in CDC
-		
-\param			iNodeID
-\retval			INT32			
+\brief		BRSpecificgetCNsTotalIndexSubIndex
+
+This function returns the total no.of index and subindex(recommended by BnR) that can be written to the CDC
+
+\param		iNodeID
+
+\return		INT32
 */
 /******************************************************************************************/
 
@@ -4892,12 +4863,13 @@ INT32 BRSpecificgetCNsTotalIndexSubIndex(INT32 iNodeID)
  
 /*****************************************************************************************/
 /**
-\brief			GenerateCDC
- 
-				Generates the CDC file
-		
-\param			CDCLocation
-\retval			ocfmRetCode			
+\brief		GenerateCDC
+
+This API shall be used to generate the CDC for the project. This API writes the compiled CDC into the mnobd.txt file. The generated mnobd.txt is converted into binary [mnobd.cdc] file using txt2cdc [elf].
+
+\param		CDCLocation		Char pointer to hold the path of the location to which the generated cdc contents will be written into.
+
+\return		ocfmRetCode
 */
 /******************************************************************************************/
 
@@ -5266,15 +5238,16 @@ ocfmRetCode GenerateCDC(char* CDCLocation)
 
 /*****************************************************************************************/
 /**
-\brief			FormatCdc
- 
-				extracts the index data as per specified format
-		
-\param			objIndexCollection
-\param			Buffer1
-\param			fileptr
-\param			eNodeType
-\retval			void			
+\brief		FormatCdc
+
+This function writes the buffer with the index data in the index collection that can be written in the CDC
+
+\param		objIndexCollection		Class pointer of CIndexCollection for node
+\param		Buffer1					Character pointer to hold the buffer data
+\param		fileptr					
+\param		eNodeType				Enumeration flag for Node type (CN/MN)
+
+\return		void
 */
 /******************************************************************************************/
 
@@ -5422,16 +5395,17 @@ void FormatCdc(CIndexCollection *objIndexCollection, char* Buffer1,
 
 /*****************************************************************************************/
 /**
-\brief			BRSpecificFormatCdc
- 
-				write the cdc as per BR specific format
-		
-\param			objIndexCollection
-\param			Buffer1
-\param			fileptr
-\param			eNodeType
-\param			iNodeId
-\retval			void			
+\brief		BRSpecificFormatCdc
+
+This function writes the buffer with the index data in the index collection that can be written in the CDC
+
+\param		objIndexCollection		Class pointer of CIndexCollection for node
+\param		Buffer1					Character pointer to hold the buffer data
+\param		fileptr
+\param		eNodeType				Enumeration flag for Node type (CN/MN)
+\param		iNodeId					Integer variable to hold the Node id to be written to the 1F81 index
+
+\return		void
 */
 /******************************************************************************************/
 
@@ -5633,21 +5607,22 @@ void BRSpecificFormatCdc(CIndexCollection *objIndexCollection, char* Buffer1,
 		}
 	}
 }
- 
+
 /*****************************************************************************************/
 /**
-\brief			ProcessCDT
- 
-				
-		
-\param			pobjCDT
-\param			pobjAppProc
-\param			pobjNode
-\param			pobjParameter
-\param			enumPdoType
-\param			pbModuleName
-\param			pbModuleIndex
-\retval			void			
+\brief		ProcessCDT
+
+This function process the Complex datatype collection and generates the process image for the node
+
+\param		pobjCDT				Class pointer of CComplexDataType for node
+\param		pobjAppProc			Class pointer of CApplicationProcess for node
+\param		pobjNode			Class pointer of CNode for node
+\param		pobjParameter		Struct pointer of Parameter for node
+\param		enumPdoType			Enumeration flag for PDO type
+\param		pbModuleName		Character pointer to hold the Module name
+\param		pbModuleIndex		Character pointer to hold the Module Index value
+
+\return		void
 */
 /******************************************************************************************/
 
@@ -5902,16 +5877,17 @@ void ProcessCDT(CComplexDataType* pobjCDT, CApplicationProcess* pobjAppProc,
 
 /*****************************************************************************************/
 /**
-\brief			DecodeUniqiueIDRef
- 
-				
-		
-\param			uniquedIdref
-\param			pobjNode
-\param			enumPdoType
-\param			pbModuleName
-\param			pbModuleIndex
-\retval			void			
+\brief		DecodeUniqiueIDRef
+
+This function Decodes the uniqiueID Ref & process the complex data type collection accordingly
+
+\param		uniquedIdref	Character pointer to hold the uniquedId reference
+\param		pobjNode		Class pointer of CNode for node
+\param		enumPdoType		Enumeration flag for PDO type
+\param		pbModuleName	Character pointer to hold the Module name
+\param		pbModuleIndex	Character pointer to hold the Module Index value
+
+\return		void
 */
 /******************************************************************************************/
 
@@ -5966,10 +5942,11 @@ void DecodeUniqiueIDRef(char* uniquedIdref, CNode* pobjNode,
 					iLastVarIndex = -1;
 					bCDTCompleted = false;
 				}
-
 				else
 				{
-
+#if defined DEBUG
+					cout << "Data type of unique id does not exists" << endl;
+#endif
 				}
 			}
 
@@ -5983,9 +5960,11 @@ void DecodeUniqiueIDRef(char* uniquedIdref, CNode* pobjNode,
 
 /*****************************************************************************************/
 /**
-\brief			ProcessPDONodes
-				Processes the Node
-\retval			ocfmRetCode			
+\brief		ProcessPDONodes
+
+This API Processes the PDO nodes of the Controlled node
+
+\return		ocfmRetCode
 */
 /******************************************************************************************/
 
@@ -5994,15 +5973,15 @@ ocfmRetCode ProcessPDONodes()
 	return (ProcessPDONodes(false));
 }
 
-
 /*****************************************************************************************/
 /**
-\brief			ProcessPDONodes
+\brief		ProcessPDONodes
 
-				Processes the Node
-				
-\param			IsBuild
-\retval			ocfmRetCode			
+This function Processes the PDO Nodes of the controlled node and generates a pdo collection that is used to create the MN pdo's & the process image variables
+
+\param		IsBuild		Boolean flag to hold the value true if it is Build process
+
+\return		ocfmRetCode
 */
 /******************************************************************************************/
 
@@ -6722,15 +6701,14 @@ ocfmRetCode ProcessPDONodes(bool IsBuild)
 	return stRetInfo;
 }
 
-//#pragma optimize("", on)
 
 /*****************************************************************************************/
 /**
-\brief			CalculatePayload
+\brief		CalculatePayload
 
-				calculates the PReq and PRes payload for node
-				
-\retval			void			
+This function calculates the PReq and PRes payload value for node
+
+\return			void
 */
 /******************************************************************************************/
 
@@ -7006,14 +6984,16 @@ void CalculatePayload()
 	}
 	delete[] pArrangedNodeIDbyStation;
 }
- 
+
 /*****************************************************************************************/
 /**
-\brief			getCNDataLen
+\brief		getCNDataLen
 
-				
-\param			pbBuffer				
-\retval			INT32			
+This function returns the total size of data in the buffer
+
+\param		pbBuffer		Character pointer to hold the buffer data
+
+\return		INT32
 */
 /******************************************************************************************/
 
@@ -7088,14 +7068,16 @@ INT32 getCNDataLen(char* pbBuffer)
 
 /*****************************************************************************************/
 /**
-\brief			lenOfCNBuffer
+\brief		lenOfCNBuffer
 
-				
-\param			pbBuffer				
-\retval			INT32			
+This function returns the total size of data in the buffer
+
+\param		pbBuffer		Character pointer to hold the buffer data
+
+\return		INT32
 */
 /******************************************************************************************/
-
+//TODO: unused function
 INT32 lenOfCNBuffer(char* pbBuffer)
 {
 	char cTempChar;
@@ -7118,9 +7100,11 @@ INT32 lenOfCNBuffer(char* pbBuffer)
 /**
 \brief			getMNIndexValues
 
-				
-\param			pbIndex
-\retval			CIndex*
+This function returns the CIndex class pointer for the index id
+
+\param			pbIndex		Character pointer to hold the Index id value
+
+\return			CIndex*
 */
 /******************************************************************************************/
 
@@ -7129,10 +7113,13 @@ CIndex* getMNIndexValues(char* pbIndex)
 	CNodeCollection* pobjNodeCollection;
 	pobjNodeCollection = CNodeCollection::getNodeColObjectPointer();
 	CIndexCollection* objIndexCol;
-	CNode objNode;
-
-	objNode = pobjNodeCollection->getMNNode();
-	objIndexCol = objNode.getIndexCollection();
+	CNode *objNode;
+//TODO: Review
+	//CNode objNode;
+	//objNode = pobjNodeCollection->getMNNode();
+	//objIndexCol = objNode.getIndexCollection();
+	objNode = pobjNodeCollection->getNodePtr(MN, MN_NODEID);
+	objIndexCol = objNode->getIndexCollection();
 	CIndex* pobjIndex = NULL;
 	pobjIndex = objIndexCol->getIndexbyIndexValue(pbIndex);
 	return pobjIndex;
@@ -7140,12 +7127,14 @@ CIndex* getMNIndexValues(char* pbIndex)
 
 /*****************************************************************************************/
 /**
-\brief			getMNSubIndexValues
+\brief		getMNSubIndexValues
 
-				
-\param			pbIndex
-\param			pbSubIndex			
-\retval			CSubIndex*			
+This function returns the CSubIndex class pointer for the specific index & SubIndex
+
+\param		pbIndex			Character pointer to hold the Index id value
+\param		pbSubIndex		Character pointer to hold the SubIndex id value
+
+\return		CSubIndex* / NULL
 */
 /******************************************************************************************/
 
@@ -7177,7 +7166,7 @@ CSubIndex* getMNSubIndexValues(char* pbIndex, char* pbSubIndex)
 \param			pxtwWriter
 \param			iVarCount
 \param			piType			
-\retval			void			
+\return			void			
 */
 /******************************************************************************************/
 
@@ -7344,7 +7333,7 @@ void WriteXAPElements(ProcessImage aobjPICol[], xmlTextWriterPtr& pxtwWriter,
 				
 \param			pxtwWriter
 \param			pxdDoc
-\retval			void			
+\return			void			
 */
 /******************************************************************************************/
 
@@ -7396,7 +7385,7 @@ void StartXAPxml(xmlTextWriterPtr& pxtwWriter, xmlDocPtr& pxdDoc)
 \param			pxtwWriter
 \param			pbFileName
 \param			pxdDoc
-\retval			void			
+\return			void
 */
 /******************************************************************************************/
 
@@ -7426,11 +7415,15 @@ void EndWrtitingXAP(xmlTextWriterPtr& pxtwWriter, char* pbFileName,
 
 /*****************************************************************************************/
 /**
-\brief			GenerateXAP
+\brief		GenerateXAP
 
-				
-\param			pbFileName
-\retval			ocfmRetCode			
+This API writes the process image variables to the XAP files [.h and .xml] in the location specified
+
+Note: This API is recommended to be called after the GenerateCDC API.
+
+\param		pbFileName		Char pointer to hold the path of the location to which the generated xap contents will be written into
+
+\return		ocfmRetCode
 */
 /******************************************************************************************/
  
@@ -7494,11 +7487,15 @@ ocfmRetCode GenerateXAP(char* pbFileName)
 
 /*****************************************************************************************/
 /**
-\brief			GenerateNET
+\brief		GenerateNET
 
-				
-\param			pbFileName
-\retval			ocfmRetCode			
+This API shall be used to generate the process image variables in a C# .NET usable format.
+
+Note: This API is recommended to be called after the GenerateCDC API.
+
+\param		pbFileName		Char pointer to hold the path of the location to which the generated NET contents will be written into
+
+\return		ocfmRetCode
 */
 /******************************************************************************************/
 
@@ -7542,15 +7539,17 @@ ocfmRetCode GenerateNET(char* pbFileName)
 
 /*****************************************************************************************/
 /**
-\brief			GetIndexAttributes
+\brief		GetIndexAttributes
 
-				
-\param			iNodeID
-\param			enumNodeType
-\param			pbIndexID
-\param			enumAttributeType
-\param			pbOutAttributeValue
-\retval			ocfmRetCode			
+This API shall be used to get the attributes of an Index. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS', this API fills the 'pbOutAttributeValue' variable with the value for the specified 'enumAttributeType'. Refer the table for the  'enumAttributeType'.
+
+\param		iNodeID					Integer variable to hold the Node Id of a node
+\param		enumNodeType			Enum to hold the Node type of the node
+\param		pbIndexID				Character pointer to hold the IndexID
+\param		enumAttributeType		Enum to hold the Attribute type of the index 
+\param		pbOutAttributeValue		Character pointer to hold the AttributeValue
+
+\return		ocfmRetCode
 */
 /******************************************************************************************/
 
@@ -7677,14 +7676,16 @@ ocfmRetCode GetIndexAttributes(INT32 iNodeID, ENodeType enumNodeType,
 
 /*****************************************************************************************/
 /**
-\brief			GetIndexAttributesbyPositions
+\brief		GetIndexAttributesbyPositions
 
-				
-\param			iNodePos
-\param			iIndexPos
-\param			enumAttributeType
-\param			pbOutAttributeValue
-\retval			ocfmRetCode			
+This API shall be used to get the attributes of an Index given the position of the Node, position of the Index and the attribute type. Refer the EAttributeType table for the attributes. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS', the respective attribute's value is filled in the 'piOutAttributeValue'.
+
+\param		iNodePos				Integer variable to hold the position of the node
+\param		iIndexPos				Integer variable to hold the position of the Index
+\param		enumAttributeType		Enum to hold the Attribute type of the index .
+\param		pbOutAttributeValue		Character pointer to hold the AttributeValue
+
+\return		ocfmRetCode
 */
 /******************************************************************************************/
 
@@ -7833,17 +7834,18 @@ ocfmRetCode GetIndexAttributesbyPositions(INT32 iNodePos, INT32 iIndexPos,
 
 /*****************************************************************************/
 /**
-\brief			GetSubIndexAttributes
- 
-			
-			
-\param			iNodeID
-\param			enumNodeType
-\param			pbIndexID
-\param			pbSubIndexID
-\param			enumAttributeType
-\param			pbOutAttributeValue
-\retval			ocfmRetCode
+\brief		GetSubIndexAttributes
+
+This API shall be used to get the attributes of a SubIndex. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS', this API fills the 'pbOutAttributeValue' variable with the value for the specified 'enumAttributeType'. Refer the EattributeType table for the  'enumAttributeType'.
+
+\param		iNodeID					Integer variable to hold the Node Id of a node
+\param		enumNodeType			Enum to hold the Node type of the node
+\param		pbIndexID				Character pointer to hold the IndexID
+\param		pbSubIndexID			Character pointer to hold the SubIndexID
+\param		enumAttributeType		Enum to hold the Attribute type of the index .
+\param		pbOutAttributeValue		Character pointer to hold the AttributeValue
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -7975,16 +7977,17 @@ ocfmRetCode GetSubIndexAttributes(INT32 iNodeID, ENodeType enumNodeType,
  
 /*****************************************************************************/
 /**
-\brief			GetSubIndexAttributesbyPositions
- 
-			
-			
-\param			iNodePos			
-\param			iIndexPos
-\param			iSubIndexPos
-\param			enumAttributeType
-\param			pbOutAttributeValue
-\retval			ocfmRetCode
+\brief		GetSubIndexAttributesbyPositions
+
+This API shall be used to get the attributes of a SubIndex given the position of the Node, position of the Index, position of the SubIndex and the attribute type. Refer the EAttributeType table for the attributes. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS', the respective attribute's value is filled in the 'piOutAttributeValue'.
+
+\param		iNodePos				Integer variable to hold the position of the node
+\param		iIndexPos				Integer variable to hold the position of the Index
+\param		iSubIndexPos			Integer variable to hold the position of the SubIndex
+\param		enumAttributeType		Enum to hold the Attribute type of the index
+\param		pbOutAttributeValue		Character pointer to hold the AttributeValue
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -8154,18 +8157,19 @@ ocfmRetCode GetSubIndexAttributesbyPositions(INT32 iNodePos, INT32 iIndexPos,
  
 /*****************************************************************************/
 /**
-\brief			GetNodeCount
+\brief		GetNodeCount
  
+This API shall be used to get the number of controlled nodes under a MN. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS', 'piOutNodeCount' is filled with the Node count value.
 			
-			
-\param			iMnId			
-\param			piOutNodeCount
-\retval			ocfmRetCode
+\param		iMnNodeId				Integer variable to hold the node id
+\param		piOutNodeCount		Integer Pointer to NodeCount
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
-//TODO: iMnId not used. to be removed in header also
-ocfmRetCode GetNodeCount(INT32 iMnId, INT32* piOutNodeCount)
+//TODO: iMnNodeId not used. to be removed in header also
+ocfmRetCode GetNodeCount(INT32 iMnNodeId, INT32* piOutNodeCount)
 {
 
 	ocfmRetCode stErrorInfo;
@@ -8215,10 +8219,10 @@ ocfmRetCode GetNodeCount(INT32 iMnId, INT32* piOutNodeCount)
  
 			
 \param			iNodeID			
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
-
+//TODO: unused function
 //TODO: change the returning char* to delete pbNodeIdStr
 char* getPIName(INT32 iNodeID)
 {
@@ -8242,7 +8246,7 @@ char* getPIName(INT32 iNodeID)
  
 						
 \param			pbAccess			
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
 
@@ -8267,13 +8271,15 @@ char* getParameterAccess(char* pbAccess)
 
 /*****************************************************************************/
 /**
-\brief			GetIndexCount
- 
-						
-\param			iNodeID
-\param			enumNodeType
-\param			piOutIndexCount			
-\retval			ocfmRetCode
+\brief		GetIndexCount
+
+This API shall be used to get the number of Indexes under a node. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS', 'piOutIndexCount' is filled with the Index count.
+
+\param		iNodeID				Integer variable to hold the Node Id of a node
+\param		enumNodeType		Enum to hold the Node type of the node
+\param		piOutIndexCount		Integer Pointer to hold the  IndexCount
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -8328,14 +8334,16 @@ ocfmRetCode GetIndexCount(INT32 iNodeID, ENodeType enumNodeType,
 
 /*****************************************************************************/
 /**
-\brief			GetSubIndexCount
- 
+\brief		GetSubIndexCount
 
-\param			iNodeID
-\param			enumNodeType
-\param			pbIndexID
-\param			piOutSubIndexCount
-\retval			ocfmRetCode
+This API shall be used to get the number of SubIndexes under an Index. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS', 'piOutSubIndexCount' is filled with the SubIndex count.
+
+\param		iNodeID				Integer variable to hold the Node Id of a node
+\param		enumNodeType		Enum to hold the Node type of the node
+\param		pbIndexID			Character pointer to hold the IndexID
+\param		piOutSubIndexCount	Integer Pointer to hold the IndexCount
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -8395,11 +8403,13 @@ ocfmRetCode GetSubIndexCount(INT32 iNodeID, ENodeType enumNodeType,
 
 /*****************************************************************************/
 /**
-\brief			LoadObjectDictionary
- 
-						
-\param			pbFileName
-\retval			void
+\brief		LoadObjectDictionary
+
+This API shall be used to load the predefined object dictionary xml. This API loads the objects that the tool will refer to when adding/editing an Index and/or a SubIndex.
+
+\param		pbFileName		Char pointer  to hold the path of the file [XDD or XDC]
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -8449,17 +8459,19 @@ void LoadObjectDictionary(char* pbFileName)
 
 /*****************************************************************************/
 /**
-\brief			GetNodeIDbyNodePos
-				
-				Fills the NodeID and NodeType for the NodeCount
-						
-\param			iNodePos
-\param			piOutNodeID
-\param			piOutNodeName
-\param			eOutStationType
-\param			pbOutForcedCycle
-\param			bForcedCycleFlag
-\retval			ocfmRetCode
+\brief		GetNodeAttributesbyNodePos
+
+This API shall be used to get the node attributes [NodeID, NodeName, Stationtype, Forcedcycle_value, Forcedcycle_flag] of a node given the position of the node under a MN. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS', the attributes will be filled with the corresponding values in the parameter variables.
+
+
+\param		iNodePos			Integer variable to hold the position of the node
+\param		piOutNodeID			Integer Pointer to hold the NodeID
+\param		piOutNodeName		Character pointer to hold the NodeName
+\param		eOutStationType		Character pointer to hold the station type
+\param		pbOutForcedCycle	Character pointer to hold the forced cycle value
+\param		bForcedCycleFlag	boolean pointer to hold the forced cycle flag
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -8538,15 +8550,16 @@ ocfmRetCode GetNodeAttributesbyNodePos(INT32 iNodePos, INT32* piOutNodeID,
  
 /*****************************************************************************/
 /**
-\brief			GetIndexIDbyIndexPos
-				
-				Fills the IndexID for the IndexCount, given iNodeID and the enumNodeType
-						
-\param			iNodeID
-\param			enumNodeType
-\param			iIndexPos
-\param			pbOutIndexID
-\retval			ocfmRetCode
+\brief		GetIndexIDbyIndexPos
+
+This API shall be used to get the Index ID  of an Index, given the position of the Index under a node and the Node ID. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS', the Index ID is filled into the 'piOutIndexID'.
+
+\param		iNodeID			Integer variable to hold the Node Id of a node
+\param		enumNodeType	Enum to hold the Node type of the node
+\param		iIndexPos		Integer variable to hold the index position
+\param		pbOutIndexID	Character pointer to hold the IndexID
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -8616,14 +8629,15 @@ ocfmRetCode GetIndexIDbyIndexPos(INT32 iNodeID, ENodeType enumNodeType,
 
 /*****************************************************************************/
 /**
-\brief			GetIndexIDbyPositions
-				
-				Fills the IndexID for the IndexCount
-						
-\param			iNodePos
-\param			iIndexPos
-\param			pbOutIndexID
-\retval			ocfmRetCode
+\brief		GetIndexIDbyPositions
+
+This API shall be used to get the Index ID  of an Index given the position of the  Index under a node and the position of the Node. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS', the Index ID is filled into the 'piOutIndexID'.
+
+\param		iNodePos		Integer variable to hold the position of the node
+\param		iIndexPos		Integer variable to hold the position of the Index
+\param		pbOutIndexID	Character Pointer to  hold the IndexID
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -8698,16 +8712,17 @@ ocfmRetCode GetIndexIDbyPositions(INT32 iNodePos, INT32 iIndexPos,
 
 /*****************************************************************************/
 /**
-\brief			GetSubIndexIDbySubIndexPos
-				
-				Fills the SubpIndexID for the iSubIndexPos, given iNodeID, enumNodeType and the IndexID
-						
-\param			iNodeID
-\param			enumNodeType
-\param			pbIndexID
-\param			iSubIndexPos
-\param			pbOutSubIndexID
-\retval			ocfmRetCode
+\brief		GetSubIndexIDbySubIndexPos
+
+This API shall be used to get the SubIndex ID of a SubIndex given the position of the  SubIndex under an Index, the Index ID and the Node ID. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS', the SubIndex ID is filled into the 'piOutSubIndexID'.
+
+\param		iNodeID				Integer variable to hold the Node Id of a node
+\param		enumNodeType		Enum to hold the Node type of the node
+\param		pbIndexID			Character pointer to hold the IndexID
+\param		iSubIndexPos		Integer variable to hold the position of SubIndex
+\param		pbOutSubIndexID		Character Pointer to hold the SubIndexID
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -8780,15 +8795,16 @@ ocfmRetCode GetSubIndexIDbySubIndexPos(INT32 iNodeID, ENodeType enumNodeType,
 
 /*****************************************************************************/
 /**
-\brief			GetSubIndexIDbyPositions
-				
-				Fills the SubIndexID for the iSubIndexPos, given iNodePos and the iIndexPos
-						
-\param			iNodePos
-\param			iIndexPos
-\param			iSubIndexPos
-\param			pbOutSubIndexID
-\retval			ocfmRetCode
+\brief		GetSubIndexIDbyPositions
+
+This API shall be used to get the SubIndex ID of a SubIndex given the position of the  SubIndex under an Index, the position of the Index under the node and the position of the node under the MN. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS', the SubIndex ID is filled into the 'piOutSubIndexID'.
+
+\param		iNodePos			Integer variable to hold the position of the node
+\param		iIndexPos			Integer variable to hold the position of the Index
+\param		iSubIndexPos		Integer variable to hold the SubIndex position
+\param		pbOutSubIndexID		Character pointer to hold the SubIndexID
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -8884,13 +8900,14 @@ ocfmRetCode GetSubIndexIDbyPositions(INT32 iNodePos, INT32 iIndexPos,
 
 /*****************************************************************************/
 /**
-\brief			DeleteNodeObjDict
-				
-				Deletes the Node Object Dictinary
-						
-\param			iNodeID
-\param			enumNodeType
-\retval			ocfmRetCode
+\brief		DeleteNodeObjDict
+
+This API shall be used to delete the object dictionary of a node given its respective node ID and node type. This API will not delete the node.
+
+\param		iNodeID			Integer variable to hold the Node Id of a node
+\param		enumNodeType	Enum to hold the Node type of the node
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -8987,13 +9004,14 @@ ocfmRetCode DeleteNodeObjDict(INT32 iNodeID, ENodeType enumNodeType)
 
 /*****************************************************************************/
 /**
-\brief			SaveProject
-				
-				Saves all the Nodes into the Project location
-						
-\param			pbProjectPath
-\param			pbProjectName
-\retval			ocfmRetCode
+\brief		SaveProject
+
+This API shall be used to save the project. This API calls the SaveNode API recursively and saves all the nodes under the project and also saves a project file 'ProjectName.oct' in the project location.
+
+\param		pbProjectPath		Character pointer to hold the Project Path
+\param		pbProjectName		Character pointer to hold the Project name
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -9138,15 +9156,17 @@ ocfmRetCode SaveProject(char* pbProjectPath, char* pbProjectName)
 
 /*****************************************************************************/
 /**
-\brief			GetMNPDOSubIndex
-				
-										
-\param			stMNPdoVar
-\param			iPrevSubIndex
-\param			pobjIdx
-\param			pbMNIndex
-\param			iPrevSize
-\retval			void
+\brief		GetMNPDOSubIndex
+
+This function sets the MN pdo actual value calculated from the MNPdoVariable struct generated by the Processpdonodes amd the iPrevSubIndex value is updated
+
+\param		stMNPdoVar		Struct variable of struct MNPdoVariable
+\param		iPrevSubIndex	Integer variable to update the previous subindex used
+\param		pobjIdx			Class pointer of the class CIndex of the CN's PDO index
+\param		pbMNIndex		Character pointer to hold the MN index value
+\param		iPrevSize		Integer variable to update the previous size used
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -9213,17 +9233,18 @@ void GetMNPDOSubIndex(MNPdoVariable stMNPdoVar, INT32& iPrevSubIndex,
 
 /*****************************************************************************/
 /**
-\brief			SetSIdxValue
-				
-										
-\param			pbIdx
-\param			pbSIdx
-\param			pbvalue
-\param			pobjIdxCol
-\param			iNodeId
-\param			enumNodeType
-\param			setDefaultValue
-\retval			void
+\brief		SetSIdxValue
+
+
+\param		pbIdx
+\param		pbSIdx
+\param		pbvalue
+\param		pobjIdxCol
+\param		iNodeId
+\param		enumNodeType
+\param		setDefaultValue
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -9288,15 +9309,16 @@ void SetSIdxValue(char* pbIdx, char* pbSIdx, char* pbvalue,
 
 /*****************************************************************************/
 /**
-\brief			AddForEachSIdx
-				
-										
-\param			pbIdx
-\param			pobjIdxCol
-\param			iMNNodeID
-\param			pbValue
-\param			bIsDefaultValueSet
-\retval			void
+\brief		AddForEachSIdx
+
+
+\param		pbIdx
+\param		pobjIdxCol
+\param		iMNNodeID
+\param		pbValue
+\param		bIsDefaultValueSet
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -9393,14 +9415,15 @@ void AddForEachSIdx(char *pbIdx, CIndexCollection *pobjIdxCol, INT32 iMNNodeID,
 
 /*****************************************************************************/
 /**
-\brief			AddOtherMNIndexes
-				
-										
-\param			NodeID
-\retval			ocfmRetCode
+\brief		AddOtherMNIndexes
+
+
+\param		NodeID
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
-
+//TODO: unused function
 ocfmRetCode AddOtherMNIndexes(INT32 NodeID)
 {
 	ocfmRetCode stRetInfo;
@@ -9623,9 +9646,11 @@ ocfmRetCode AddOtherMNIndexes(INT32 NodeID)
 
 /*****************************************************************************/
 /**
-\brief			GenerateMNOBD
-														
-\retval			ocfmRetCode
+\brief		GenerateMNOBD
+
+This API shall be used to auto generate the MN's object dictionary.
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -9637,10 +9662,12 @@ ocfmRetCode GenerateMNOBD()
 
 /*****************************************************************************/
 /**
-\brief			GenerateMNOBD
+\brief		GenerateMNOBD
 
-\param			IsBuild														
-\retval			ocfmRetCode
+
+\param		IsBuild
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 ocfmRetCode GenerateMNOBD(bool IsBuild)
@@ -9978,14 +10005,16 @@ ocfmRetCode GenerateMNOBD(bool IsBuild)
 
 /*****************************************************************************/
 /**
-\brief			checkIfOffsetUsed
+\brief		checkIfOffsetUsed
 
-\param			iOffset
-\param			enumPdoType														
-\retval			void
+
+\param		iOffset
+\param		enumPdoType
+
+\return		void
 */
 /*****************************************************************************/
-
+//TODO: unused function
 void checkIfOffsetUsed(INT32& iOffset, EPDOType enumPdoType)
 {
 	CNodeCollection* pobjNodeCol;
@@ -10037,11 +10066,13 @@ void checkIfOffsetUsed(INT32& iOffset, EPDOType enumPdoType)
 
 /*****************************************************************************/
 /**
-\brief			ComputeOUTOffset
+\brief		ComputeOUTOffset
 
-\param			iDataSize
-\param			enumPdoType														
-\retval			INT32
+
+\param		iDataSize
+\param		enumPdoType
+
+\return		INT32
 */
 /*****************************************************************************/
 //TODO: No need of enumPdotype for size calculation. to be removed in header
@@ -10184,11 +10215,12 @@ INT32 ComputeOUTOffset(INT32 iDataSize, EPDOType enumPdoType)
 
 /*****************************************************************************/
 /**
-\brief			ComputeINOffset
+\brief		ComputeINOffset
 
-\param			iDataSize
-\param			enumPdoType														
-\retval			INT32
+\param		iDataSize
+\param		enumPdoType
+
+\return		INT32
 */
 /*****************************************************************************/
 
@@ -10331,10 +10363,11 @@ INT32 ComputeINOffset(INT32 iDataSize, EPDOType enumPdoType)
 
 /*****************************************************************************/
 /**
-\brief			FreeProjectMemory
+\brief		FreeProjectMemory
 
-				Close the current project and free the memory
-\retval			ocfmRetCode
+This API shall be used to free the memory occupied by the shared library objects for the current project& settings. After calling this API, the project configurations & setting are no more valid.
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -10350,13 +10383,14 @@ ocfmRetCode FreeProjectMemory()
 
 /*****************************************************************************/
 /**
-\brief			OpenProject
+\brief		OpenProject
 
-				Saves all the Nodes into the Project location
-				
-\param			pbPjtPath
-\param			pbProjectXmlFileName														
-\retval			ocfmRetCode
+This API shall be used to open a saved openCONFIGURATOR project. This API reads through the 'ProjectName'.oct file and from which reads the respective 'NodeNumber'.octx files in the project location and loads the shared library objects for the project.
+
+\param		pbPjtPath				Character pointer to hold the project path
+\param		pbProjectXmlFileName	Character pointer to hold the file name of the project xml
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -10472,13 +10506,14 @@ ocfmRetCode OpenProject(char* pbPjtPath, char* pbProjectXmlFileName)
 
 /*****************************************************************************/
 /**
-\brief			processProjectXML
+\brief		processProjectXML
 
-				Process the Node value,Name and its attributes
-				
-\param			pxReader
-\param			pbPjtPath														
-\retval			ocfmRetCode
+Process the Node value,Name and its attributes
+
+\param		pxReader
+\param		pbPjtPath
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -10658,14 +10693,15 @@ ocfmRetCode processProjectXML(xmlTextReaderPtr pxReader, char* pbPjtPath)
 
 /*****************************************************************************/
 /**
-\brief			setProjectSettings_Auto
+\brief		setProjectSettings_Auto
 
-				Gets the Auto info from the Pjt xml and stores in the object
-				
-\param			pxReader
-\retval			BOOL														
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending
+Gets the Auto info from the Pjt xml and stores in the object
+
+\param		pxReader
+
+\return		BOOL
+\retval		TRUE		if successful
+\retval		FALSE		if there is already a message pending
 */
 /*****************************************************************************/
 
@@ -10759,14 +10795,15 @@ bool setProjectSettings_Auto(xmlTextReaderPtr pxReader)
 
 /*****************************************************************************/
 /**
-\brief			setProjectSettings_Communication
+\brief		setProjectSettings_Communication
 
-				Gets the communication info from the Pjt xml and stores in the object
-				
-\param			pxReader
-\retval			BOOL														
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending
+Gets the communication info from the Pjt xml and stores in the object
+
+\param		pxReader
+
+\return		BOOL
+\retval		TRUE			if successful
+\retval		FALSE			if there is already a message pending
 */
 /*****************************************************************************/
 
@@ -10819,18 +10856,18 @@ bool setProjectSettings_Communication(xmlTextReaderPtr pxReader)
 
 /*****************************************************************************/
 /**
-\brief			getandCreateNode
+\brief		getandCreateNode
 
-				Gets the Node properties from the Pjt xml and Creates the Nodes
-				
-\param			pxReader
-\param			pbPjtPath
-\retval			BOOL														
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending
+Gets the Node properties from the Pjt xml and Creates the Nodes
+
+\param		pxReader
+\param		pbPjtPath
+
+\return		BOOL
+\retval		TRUE			if successful
+\retval		FALSE			if there is already a message pending
 */
 /*****************************************************************************/
-
 
 bool getandCreateNode(xmlTextReaderPtr pxReader, char* pbPjtPath)
 {
@@ -11094,18 +11131,19 @@ bool getandCreateNode(xmlTextReaderPtr pxReader, char* pbPjtPath)
 	delete[] pbNodeName;
 	return true;
 }
- 
+
 /*****************************************************************************/
 /**
-\brief			saveProjectXML
+\brief		saveProjectXML
 
-				Saves the project details into the Project location
+Saves the project details into the Project location
 
-\param			pbProjectPath
-\param			pbProjectName
-\retval			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending
+\param		pbProjectPath
+\param		pbProjectName
+
+\return		BOOL
+\retval		TRUE			if successful
+\retval		FALSE			if there is already a message pending
 */
 /*****************************************************************************/
 
@@ -11460,16 +11498,17 @@ bool saveProjectXML(char* pbProjectPath, char* pbProjectName)
 
 /*****************************************************************************/
 /**
-\brief			CreateMNPDOVar
+\brief		CreateMNPDOVar
 
-				
-				
-\param			iOffset
-\param			iDataSize
-\param			enumDataType
-\param			enumPdoType
-\param			pobjNode
-\retval			void
+
+
+\param		iOffset
+\param		iDataSize
+\param		enumDataType
+\param		enumPdoType
+\param		pobjNode
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -11662,15 +11701,16 @@ void CreateMNPDOVar(INT32 iOffset, INT32 iDataSize, IEC_Datatype enumDataType,
 
 /*****************************************************************************/
 /**
-\brief			GetProjectSettings
+\brief		GetProjectSettings
 
-				Gets the Project Settings of the tool
-				
-\param			enumAutoGen
-\param			enumAutoSave
-\param			enumviewMode
-\param			bExpertViewAlreadySet
-\retval			ocfmRetCode
+This API shall be used to get the Project settings information [auto save, auto generate] for the active project. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS', the auto save information is filled into the 'enumAutoSave' and the auto generate information is filled into the 'enumAutoGen'. Refer to the EAutoGenerate and EautoSave enumerations.
+
+\param		enumAutoGen				Enum to hold the Auto generation option of the project.
+\param		enumAutoSave			Enum to hold the Auto save option of the project.
+\param		enumviewMode			Enum to hold the view mode option of the project.
+\param		bExpertViewAlreadySet	Boolean pointer to hold the view type option of the project.
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -11718,18 +11758,18 @@ ocfmRetCode GetProjectSettings(EAutoGenerate *enumAutoGen,
 
 /*****************************************************************************/
 /**
-\brief			SetProjectSettings
+\brief		SetProjectSettings
 
-				Sets the Project Settings of the tool
-				
-\param			enumAutoGen
-\param			enumAutoSave
-\param			enumViewMode
-\param			bExpertViewAlreadySet
-\retval			ocfmRetCode
+This API shall be used to set the Project settings information [auto save, auto generate] for the active project. Refer to the EAutoGenerate and EautoSave enumerations.
+
+\param		enumAutoGen				Enum to hold the Auto generation option of the project.
+\param		enumAutoSave			Enum to hold the Auto save option of the project.
+\param		enumViewMode			Enum to hold the view mode option of the project.
+\param		bExpertViewAlreadySet	Boolean to hold the view type option of the project.
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
-
 
 ocfmRetCode SetProjectSettings(EAutoGenerate enumAutoGen,
 		EAutoSave enumAutoSave, EViewMode enumViewMode,
@@ -11765,13 +11805,14 @@ ocfmRetCode SetProjectSettings(EAutoGenerate enumAutoGen,
 
 /*****************************************************************************/
 /**
-\brief			UpdateNumberOfEnteriesSIdx
+\brief		UpdateNumberOfEnteriesSIdx
 
-				Update subindex "00"/NumberofEnteries
-				
-\param			pobjIndex
-\param			enumNodeType
-\retval			void
+Update subindex "00"/NumberofEnteries
+
+\param		pobjIndex
+\param		enumNodeType
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -11807,12 +11848,13 @@ void UpdateNumberOfEnteriesSIdx(CIndex *pobjIndex, ENodeType enumNodeType)
  
 /*****************************************************************************/
 /**
-\brief			AuotgenerateOtherIndexs
+\brief		AuotgenerateOtherIndexs
 
-				
-				
-\param			pobjNode
-\retval			void
+
+
+\param		pobjNode
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -11963,14 +12005,15 @@ void AuotgenerateOtherIndexs(CNode* pobjNode)
 
 /*****************************************************************************/
 /**
-\brief			UpdatedCNDateORTime
+\brief		UpdatedCNDateORTime
 
-				
-				
-\param			pobjMNIndex
-\param			iNodeId
-\param			enumDT
-\retval			void
+
+
+\param		pobjMNIndex
+\param		iNodeId
+\param		enumDT
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -12040,13 +12083,14 @@ void UpdatedCNDateORTime(CIndex* pobjMNIndex, INT32 iNodeId, EDateTime enumDT)
  
 /*****************************************************************************/
 /**
-\brief			copyPDODefToAct
+\brief		copyPDODefToAct
 
-				CNode::Copy pdos default value to actual value
-				
-\param			iNodeID
-\param			enumNodeType
-\retval			void
+CNode::Copy pdos default value to actual value
+
+\param		iNodeID
+\param		enumNodeType
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -12096,12 +12140,13 @@ void copyPDODefToAct(INT32 iNodeID, ENodeType enumNodeType)
  
 /*****************************************************************************/
 /**
-\brief			getPDOIndexByOffset
+\brief		getPDOIndexByOffset
 
-				Sort the pdos by offset
-				
-\param			pobjIndex
-\retval			CIndex
+Sort the pdos by offset
+
+\param		pobjIndex
+
+\return		CIndex
 */
 /*****************************************************************************/
 
@@ -12178,16 +12223,17 @@ CIndex getPDOIndexByOffset(CIndex* pobjIndex)
 
 /*****************************************************************************/
 /**
-\brief			GetFeatureValue
+\brief		GetFeatureValue
 
-				Sort the pdos by offset
-				
-\param			iNodeID
-\param			eNodeType
-\param			eFeatureType
-\param			FeatureName
-\param			Out_FeatureValue
-\retval			ocfmRetCode
+This API shall be used to get the specific network management feature value for the specified node
+
+\param		iNodeID				Integer variable to hold the Node Id of a node
+\param		eNodeType			Enum to hold the Node type of the node
+\param		eFeatureType		Enum to hold the Feature type of the node
+\param		FeatureName			Character pointer to hold the Feature name
+\param		Out_FeatureValue	Character pointer to get the feature value
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -12236,19 +12282,20 @@ ocfmRetCode GetFeatureValue(INT32 iNodeID, ENodeType eNodeType,
 
 /*****************************************************************************/
 /**
-\brief			UpdateNodeParams
+\brief		UpdateNodeParams
 
-				Fills the NodeID and NodeType for the NodeCount
-				
-\param			iCurrNodeId
-\param			iNewNodeID
-\param			eNodeType
-\param			NodeName
-\param			eStationType
-\param			ForcedCycle
-\param			ForcedCycleFlag
-\param			PollResponseTimeout
-\retval			ocfmRetCode
+This API shall be used to update all the attributes of a node including the nodeid.
+
+\param		iCurrNodeId				Integer variable to hold the current node id of a node
+\param		iNewNodeID				Integer variable to hold the new node id to be set to the node
+\param		eNodeType				Enum to hold the node type of the node
+\param		NodeName				Character pointer to hold the Node Name
+\param		eStationType			Enum to hold the station type of the node
+\param		ForcedCycle				Character pointer to hold the ForcedCycle value
+\param		ForcedCycleFlag			Boolean to hold the Forced Cycle Flag of the node
+\param		PollResponseTimeout		Character pointer to hold the Poll Response Timeout value for the node
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -12486,14 +12533,15 @@ ocfmRetCode UpdateNodeParams(INT32 iCurrNodeId, INT32 iNewNodeID,
  
 /*****************************************************************************/
 /**
-\brief			GetNodeDataTypes
+\brief		GetNodeDataTypes
 
-				Returns the Data Type Available for a prticular node
-				
-\param			iNodeId
-\param			eNodeType
-\param			pbOutDataTypes
-\retval			ocfmRetCode
+This API shall be used to get all the datatypes available for the particular node.
+
+\param		iNodeId				Integer variable to hold the Node Id of a node
+\param		eNodeType			Enum to hold the Node type of the node
+\param		pbOutDataTypes		Character pointer to hold all the datatypes available for the specifed node
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -12563,12 +12611,13 @@ ocfmRetCode GetNodeDataTypes(INT32 iNodeId, ENodeType eNodeType,
  
 /*****************************************************************************/
 /**
-\brief			setNodeAssigmentBits
+\brief		setNodeAssigmentBits
 
-				Returns the 1F81 object data depending upon the  if Multiplex set bit 8, if chained set bit 14
-				
-\param			pobjNode
-\retval			char*
+Returns the 1F81 object data depending upon the  if Multiplex set bit 8, if chained set bit 14
+
+\param		pobjNode
+
+\return		char*
 */
 /*****************************************************************************/
 
@@ -12610,11 +12659,11 @@ char* setNodeAssigmentBits(CNode* pobjNode)
 
 /*****************************************************************************/
 /**
-\brief			setPresMNNodeAssigmentBits
+\brief		setPresMNNodeAssigmentBits
 
-				Returns the 1F81 object data depending upon the  if Multiplex set bit 8, if chained set bit 14
-				
-\retval			void*
+Returns the 1F81 object data depending upon the  if Multiplex set bit 8, if chained set bit 14
+
+\return		void*
 */
 /*****************************************************************************/
  
@@ -12732,11 +12781,11 @@ void setPresMNNodeAssigmentBits()
 
 /*****************************************************************************/
 /**
-\brief			RecalculateMultiplex
+\brief		RecalculateMultiplex
 
-				recalculates the multiplex cycle for CNs
-				
-\retval			ocfmRetCode
+recalculates the multiplex cycle for CNs
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -12964,11 +13013,10 @@ ocfmRetCode RecalculateMultiplex()
  
 /*****************************************************************************/
 /**
-\brief			ResetMultiplexedCNForceCycle
+\brief		ResetMultiplexedCNForceCycle
 
-				
-				
-\retval			void
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -13031,12 +13079,13 @@ void ResetMultiplexedCNForceCycle()
 
 /*****************************************************************************/
 /**
-\brief			copyMNPropDefToAct
+\brief		copyMNPropDefToAct
 
-				
-\param			iNodeID
-\param			enumNodeType		
-\retval			void
+
+\param		iNodeID
+\param		enumNodeType
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -13057,13 +13106,14 @@ void copyMNPropDefToAct(INT32 iNodeID, ENodeType enumNodeType)
 
 /*****************************************************************************/
 /**
-\brief			copyIndexDefToAct
+\brief		copyIndexDefToAct
 
-				
-\param			iNodeID
-\param			enumNodeType
-\param			indexId		
-\retval			void
+
+\param		iNodeID
+\param		enumNodeType
+\param		indexId
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -13096,15 +13146,17 @@ void copyIndexDefToAct(INT32 iNodeID, ENodeType enumNodeType, char *indexId)
 
 /*****************************************************************************/
 /**
-\brief			copySubIndexDefToAct
+\brief		copySubIndexDefToAct
 
-				
-\param			iNodeID
-\param			enumNodeType
-\param			bForce
-\param			subIndexId
-\param			indexId		
-\retval			void
+
+
+\param		iNodeID
+\param		enumNodeType
+\param		bForce
+\param		subIndexId
+\param		indexId
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -13152,12 +13204,13 @@ void copySubIndexDefToAct(INT32 iNodeID, ENodeType enumNodeType, bool bForce,
 
 /*****************************************************************************/
 /**
-\brief			CheckAndReAssignMultiplex
+\brief		CheckAndReAssignMultiplex
 
-				
-\param			iCNNodeId
-\param			CycleValue
-\retval			void
+
+\param		iCNNodeId
+\param		CycleValue
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -13312,10 +13365,10 @@ void CheckAndReAssignMultiplex(INT32 iCNNodeId, char* CycleValue)
 
 /*****************************************************************************/
 /**
-\brief			CheckMutliplexAssigned
+\brief		CheckMutliplexAssigned
 
-				
-\retval			ocfmRetCode
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -13478,10 +13531,11 @@ ocfmRetCode CheckMutliplexAssigned()
 
 /*****************************************************************************/
 /**
-\brief			getFreeCycleNumber
+\brief		getFreeCycleNumber
 
-\param			uiParmCycleNumber			
-\retval			UINT32
+\param		uiParmCycleNumber
+
+\return		UINT32
 */
 /*****************************************************************************/
 
@@ -13555,12 +13609,14 @@ UINT32 getFreeCycleNumber(UINT32 uiParmCycleNumber)
 
 /*****************************************************************************/
 /**
-\brief			IsMultiplexCycleNumberContinuous
+\brief		IsMultiplexCycleNumberContinuous
 
-\param			uiParmCycleNumber			
-\retval			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending			
+
+\param		uiParmCycleNumber		
+
+\return		BOOL
+\retval		TRUE			if successful
+\retval		FALSE			if there is already a message pending			
 */
 /*****************************************************************************/
 
@@ -13632,11 +13688,12 @@ bool IsMultiplexCycleNumberContinuous(UINT32 uiParmCycleNumber)
 
 /*****************************************************************************/
 /**
-\brief			calculateCNPollResponse
+\brief		calculateCNPollResponse
 
-\param			iNodeID
-\param			enumNodeType			
-\retval			void
+\param		iNodeID
+\param		enumNodeType	
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -13724,11 +13781,13 @@ void calculateCNPollResponse(INT32 iNodeID, ENodeType enumNodeType)
  
 /*****************************************************************************/
 /**
-\brief			CopyCustomErrorString
+\brief		CopyCustomErrorString
 
-\param			stRet
-\param			pcCustomErrString			
-\retval			void
+
+\param		stRet
+\param		pcCustomErrString
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -13758,11 +13817,11 @@ void CopyCustomErrorString(ocfmRetCode* stRet, char* pcCustomErrString)
 
 /*****************************************************************************/
 /**
-\brief			CheckIfMultiplexedCNExist
+\brief		CheckIfMultiplexedCNExist
 
-\retval			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
+\return		BOOL
+\retval		TRUE			if successful
+\retval		FALSE			if there is already a message pending	
 */
 /*****************************************************************************/
 bool CheckIfMultiplexedCNExist()
@@ -13790,10 +13849,10 @@ bool CheckIfMultiplexedCNExist()
 \brief			RecalculateCNPresTimeout
 
 \param			pbSubIndexId
-\retval			void
+\return			void
 */
 /*****************************************************************************/
-
+//TODO: unused function
 void RecalculateCNPresTimeout(char* pbSubIndexId)
 {
 	ocfmRetCode stErrorInfo;
@@ -13855,13 +13914,14 @@ void RecalculateCNPresTimeout(char* pbSubIndexId)
 
 /*****************************************************************************/
 /**
-\brief			UpdateMNNodeAssignmentIndex
+\brief		UpdateMNNodeAssignmentIndex
 
-\param			pobjNode
-\param			CNsCount
-\param			pcIndex
-\param			allowMNSubindex
-\retval			void
+\param		pobjNode
+\param		CNsCount
+\param		pcIndex
+\param		allowMNSubindex
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -13962,13 +14022,14 @@ void UpdateMNNodeAssignmentIndex(CNode *pobjNode, INT32 CNsCount, char* pcIndex,
 /**
 \brief			ValidateCNPresTimeout
 
-				validates the user input for the cdc generation; but only considers the default latency value
+validates the user input for the cdc generation; but only considers the default latency value
 
-\param			pbSubIndexId
-\param			pcCheckValue
-\retval			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
+\param		pbSubIndexId
+\param		pcCheckValue
+
+\return		BOOL
+\retval		TRUE			if successful
+\retval		FALSE			if there is already a message pending	
 */
 /*****************************************************************************/
 
@@ -14039,11 +14100,11 @@ bool ValidateCNPresTimeout(char* pbSubIndexId, char* pcCheckValue)
 /**
 \brief			CopyOldNodeIdAssignmentObject
 
-				
 
-\param			pobjNode
-\param			iOldNodeId
-\retval			void
+\param		pobjNode
+\param		iOldNodeId
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -14063,12 +14124,13 @@ void CopyOldNodeIdAssignmentObject(CNode* pobjNode, INT32 iOldNodeId)
 /**
 \brief			CopyOldNodeIdAssignmentObjectSubindex
 
-				
 
-\param			pobjNode
-\param			iOldNodeId
-\param			pcIndex
-\retval			void
+
+\param		pobjNode
+\param		iOldNodeId
+\param		pcIndex
+
+\return		void
 */
 /*****************************************************************************/
 
@@ -14158,15 +14220,16 @@ void CopyOldNodeIdAssignmentObjectSubindex(CNode* pobjNode, INT32 iOldNodeId,
 
 /*****************************************************************************/
 /**
-\brief			DuplicateSubIndexObject
+\brief		DuplicateSubIndexObject
 
-				
 
-\param			pobjSubindex
-\retval			CSubIndex
+
+\param		pobjSubindex
+
+\return		CSubIndex
 */
 /*****************************************************************************/
-
+//TODO: unused function
 CSubIndex* DuplicateSubIndexObject(CSubIndex* pobjSubindex)
 {
 	if (NULL == pobjSubindex)
@@ -14222,14 +14285,14 @@ CSubIndex* DuplicateSubIndexObject(CSubIndex* pobjSubindex)
 
 /*****************************************************************************/
 /**
-\brief			IsDefaultActualNotEqual
+\brief		IsDefaultActualNotEqual
 
-				
 
-\param			pBaseIndexObject
-\retval			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
+\param		pBaseIndexObject
+
+\return		BOOL
+\retval		TRUE			if successful
+\retval		FALSE			if there is already a message pending	
 */
 /*****************************************************************************/
 
@@ -14281,15 +14344,16 @@ bool IsDefaultActualNotEqual(CBaseIndex* pBaseIndexObject)
 
 /*****************************************************************************/
 /**
-\brief			ReactivateMappingPDO
+\brief		ReactivateMappingPDO
 
-				
 
-\param			pobjIndexCol
-\param			pobjIndex
-\retval			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
+
+\param		pobjIndexCol
+\param		pobjIndex
+
+\return		BOOL
+\retval		TRUE			if successful
+\retval		FALSE			if there is already a message pending	
 */
 /*****************************************************************************/
 
@@ -14411,10 +14475,10 @@ bool ReactivateMappingPDO(CIndexCollection* pobjIndexCol, CIndex* pobjIndex)
 
 /*****************************************************************************/
 /**
-\brief			ArrangeNodeIDbyStation
+\brief		ArrangeNodeIDbyStation
 
-				
-\retval			INT32*
+
+\return		INT32*
 */
 /*****************************************************************************/
 
@@ -14518,15 +14582,16 @@ INT32* ArrangeNodeIDbyStation(void)
 
 /*****************************************************************************/
 /**
-\brief			SortNodeID
+\brief		SortNodeID
 
-				
 
-\param			piNodeIDColl
-\param			iColSize
-\retval			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
+
+\param		piNodeIDColl
+\param		iColSize
+
+\return		BOOL
+\retval		TRUE			if successful
+\retval		FALSE			if there is already a message pending	
 */
 /*****************************************************************************/
 
@@ -14565,12 +14630,12 @@ void SortNodeID(INT32 *piNodeIDColl, INT32 iColSize)
 
 /*****************************************************************************/
 /**
-\brief			IsPresMN
+\brief		IsPresMN
 
-				
-\retval			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
+
+\return		BOOL
+\retval		TRUE			if successful
+\retval		FALSE			if there is already a message pending	
 */
 /*****************************************************************************/
 
@@ -14600,15 +14665,16 @@ bool IsPresMN()
 
 /*****************************************************************************/
 /**
-\brief			SetCNLossObjects
+\brief		SetCNLossObjects
 
-				sets value to 1COB, 1C0C and 1C0D objects
+sets value to 1COB, 1C0C and 1C0D objects
 
-\param			iNodeID
-\param			enumNodeType				
-\retval			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
+\param		iNodeID
+\param		enumNodeType	
+
+\return		BOOL
+\retval		TRUE			if successful
+\retval		FALSE			if there is already a message pending	
 */
 /*****************************************************************************/
 
@@ -14683,11 +14749,11 @@ void SetCNLossObjects(INT32 iNodeID, ENodeType enumNodeType)
 
 /*****************************************************************************/
 /**
-\brief			SetBuildTime
+\brief		SetBuildTime
 
-				Gets the system time during time of build - to be called from ProcessPDOnodes
+Gets the system time during time of build - to be called from ProcessPDOnodes
 
-\retval			void
+\return		void
 */
 /*****************************************************************************/
 
@@ -14701,14 +14767,15 @@ void SetBuildTime()
 
 /*****************************************************************************/
 /**
-\brief			GetBuildTime
+\brief		GetBuildTime
 
-				Gets the calculated system time during time of build to be called from API generating interface files
+Gets the calculated system time during time of build to be called from API generating interface files
 
-\retval			const char*
+\return		const char*
 */
 /*****************************************************************************/
 const char* GetBuildTime()
 {
 	return (const char*) &sBuildTime_g.buffer;
 }
+

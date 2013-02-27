@@ -363,9 +363,6 @@ DllExport ocfmRetCode SetIndexAttributes(INT32 NodeID, ENodeType NodeType,
 DllExport ocfmRetCode SetSubIndexAttributes(INT32 NodeID, ENodeType NodeType,
 		char* IndexID, char* SubIndexID, char* IndexValue, char* IndexName,
 		EFlag flagIfInCdc);
-
-//$S Test API. Should be deleted in the release code
-DllExport void DisplayNodeTree(void);
 DllExport ocfmRetCode IfNodeExists(INT32 NodeID, ENodeType NodeType,
 		INT32* NodePos, bool& ExistfFlag);
 DllExport ocfmRetCode IfIndexExists(INT32 NodeID, ENodeType NodeType,
@@ -377,7 +374,7 @@ DllExport ocfmRetCode GetIndexAttributes(INT32 NodeID, ENodeType NodeType,
 DllExport ocfmRetCode GetSubIndexAttributes(INT32 NodeID, ENodeType NodeType,
 		char* IndexID, char* SubIndexID, EAttributeType AttributeType,
 		char* Out_AttributeValue);
-DllExport ocfmRetCode GetNodeCount(INT32 MNID, INT32* Out_NodeCount);
+DllExport ocfmRetCode GetNodeCount(INT32 MnNodeID, INT32* Out_NodeCount);
 DllExport ocfmRetCode GetIndexCount(INT32 NodeID, ENodeType NodeType,
 		INT32* Out_IndexCount);
 DllExport ocfmRetCode GetSubIndexCount(INT32 NodeID, ENodeType NodeType,

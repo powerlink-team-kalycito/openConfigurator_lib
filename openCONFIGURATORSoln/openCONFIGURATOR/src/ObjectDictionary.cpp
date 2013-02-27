@@ -118,7 +118,7 @@ CObjectDictionary::~CObjectDictionary(void)
  
 				This function returns object dictionary based on the value of instance flag 
 
-\retval			CObjectDictionary*
+\return			CObjectDictionary*
 */
 /*****************************************************************************/
 
@@ -140,7 +140,7 @@ CObjectDictionary* CObjectDictionary::getObjDictPtr()
 				Process the Node value,Name and its attributes
 				
 \param			reader
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -284,7 +284,7 @@ void CObjectDictionary::ProcessObjectDictionary(xmlTextReaderPtr reader)
 				add the SubIndex in the Index Object
 				
 \param			stAttrIdx
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -306,7 +306,7 @@ void CObjectDictionary::addSameAttributesObjects(s_attrIdx_SIdx stAttrIdx)
 \param			pbValue
 \param			enumObjType
 \param			pbIdx
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -357,7 +357,7 @@ void CObjectDictionary::createSameattrObject(char* pbValue,
 				This function returns index value of the object dictionary
 				
 \param			pbIdx
-\retval			CIndex*
+\return			CIndex*
 */
 /*****************************************************************************/
 
@@ -405,7 +405,7 @@ CIndex* CObjectDictionary::getObjectDictIndex(char* pbIdx)
 				
 \param			pbIdx
 \param			pbSIdx
-\retval			CIndex*
+\return			CIndex*
 */
 /*****************************************************************************/
 
@@ -475,7 +475,7 @@ CSubIndex* CObjectDictionary::getObjectDictSubIndex(char* pbIdx, char* pbSIdx)
 \param			pbIdx
 \param			pbStartIdx
 \param			pbEndIdx
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending	
 */
@@ -502,7 +502,7 @@ bool CObjectDictionary::checkInTheRange(char* pbIdx, char* pbStartIdx,
  
 				This function collects the object ids,start index and end index
 				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 //TODO: Unused function
@@ -523,7 +523,7 @@ void CObjectDictionary::printall()
 				This function returns the obj dictionary value from the collection list based on the index value
 				
 \param			pbIdx				
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 //TODO: Unused function
@@ -554,7 +554,7 @@ INT32 CObjectDictionary::ifObjectDictIndexExists(char* pbIdx)
 				
 \param			pbIdx
 \param			pbSIdx				
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 //TODO: Unused function
@@ -592,7 +592,7 @@ INT32 CObjectDictionary::ifObjectDictSubIndexExists(char* pbIdx, char* pbSIdx)
 				
 \param			pbObjectIndex
 \param			pbObjectName				
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
 

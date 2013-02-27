@@ -71,15 +71,16 @@
 
 /*****************************************************************************/
 /**
-\brief			IfNodeExists
+\brief		IfNodeExists
  
-				Checks for existance of a Node
-				
-\param			iNodeID
-\param			iNodeType
-\param			piNodePos
-\param			ExistfFlag
-\retval			ocfmRetCode
+This API shall be used to check the presence of a Node in a project. This API returns 'ocfmRetCode'. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS',  the 'ExistfFlag' will contain the information about the presence of the node.
+
+\param		iNodeID			Integer variable to hold the Node Id of a node
+\param		iNodeType		Enum to hold the Node type of the node
+\param		piNodePos		Pointer to the Node position
+\param		ExistfFlag		Boolean
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -148,16 +149,17 @@ ocfmRetCode IfNodeExists(INT32 iNodeID, ENodeType iNodeType, INT32 *piNodePos,
 
 /*****************************************************************************/
 /**
-\brief			IfIndexExists
+\brief		IfIndexExists
  
-				Checks for the existance of a Index
-				
-\param			iNodeID
-\param			enumNodeType
-\param			pbIndexID
-\param			piIndexPos
-\retval			ocfmRetCode			-2 if the Index doesnot exist. Returns Zero and fills the error string on Index existance or 
-									if Node doesn't exist or if NodeType is invalid
+This API shall be used to check the presence of an Index in a node. This API returns 'ocfmRetCode'. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS',  the 'IndexPos' will contain the position of the Index under the node.
+
+\param		iNodeID			Integer variable to hold the Node Id of a node
+\param		enumNodeType	Enum to hold the Node type of the node
+\param		pbIndexID		Character pointer to hold the IndexID
+\param		piIndexPos		Integer Pointer to the  IndexPos
+
+\return		ocfmRetCode		-2 if the Index doesnot exist. Returns Zero and fills the error string on Index existance or 
+							if Node doesn't exist or if NodeType is invalid
 */
 /*****************************************************************************/
 
@@ -257,17 +259,18 @@ ocfmRetCode IfIndexExists(INT32 iNodeID, ENodeType enumNodeType,
 
 /*****************************************************************************/
 /**
-\brief			IfSubIndexExists
+\brief		IfSubIndexExists
  
-				Checks for the existance of a SubIndex
-				
-\param			iNodeID
-\param			enumNodeType
-\param			pbIndexID
-\param			pbSubIndexID
-\param			piSubIndexPos
-\param			piIndexPos
-\retval			ocfmRetCode
+This API shall be used to check the presence of a SubIndex in an Index. This API returns 'ocfmRetCode'. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS',  the 'SubIndexPos' will contain the position of the SubIndex under the Index.
+
+\param		iNodeID				Integer variable to hold the Node Id of a node
+\param		enumNodeType		Enum to hold the Node type of the node
+\param		pbIndexID			Character pointer to hold the IndexID
+\param		pbSubIndexID		Character pointer to hold the SubIndexID
+\param		piSubIndexPos		Integer Pointer to hold  the  SubIndexPos
+\param		piIndexPos			Integer Pointer to hold the  IndexPos
+
+\return		ocfmRetCode
 */
 /*****************************************************************************/
 
@@ -361,7 +364,7 @@ ocfmRetCode IfSubIndexExists(INT32 iNodeID, ENodeType enumNodeType,
 				
 \param			pbDataValue
 \param			iNodeID
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending
 */
@@ -397,7 +400,7 @@ bool CheckIfDataTypeExists(char* pbDataValue, INT32 iNodeID)
 				
 \param			dtName
 \param			iNodeID
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending
 */
@@ -434,7 +437,7 @@ bool CheckIfDataTypeByNameExists(char* dtName, INT32 iNodeID)
 \param			enumNodeType
 \param			pbIndexID
 \param			pbSubIndexID
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending
 */
@@ -501,7 +504,7 @@ bool CheckIfSubIndexExists(INT32 iNodeID, ENodeType enumNodeType,
 				This function checks whether project version number matches with existing	
 				
 \param			pxReader
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending
 */

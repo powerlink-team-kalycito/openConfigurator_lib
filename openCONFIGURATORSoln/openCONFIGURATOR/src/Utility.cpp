@@ -77,7 +77,7 @@ using namespace std;
 				This function converts received string to upper case
 				
 \param			pbStrBuffer
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
 
@@ -107,7 +107,7 @@ char* ConvertToUpper(char* pbStrBuffer)
 				This function checks string length,allocate buffer and covert the string to upper case
 				
 \param			pbStrBuffer
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
 
@@ -143,7 +143,7 @@ char* StringToUpper(char* pbStrBuffer)
 				This function reverses the received string
 				
 \param			pbStrBuffer
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
 
@@ -179,7 +179,7 @@ char* reverse(char* pbStrBuffer)
 \param			pbStrBuffer
 \param			cPadChar
 \param			iPadLength
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
 
@@ -224,7 +224,7 @@ char* padLeft(char* pbStrBuffer, char cPadChar, INT32 iPadLength)
 \param			pbStrBuffer
 \param			iStartPos
 \param			iStringLen
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
 
@@ -257,7 +257,7 @@ char* subString(char* pbStrBuffer, INT32 iStartPos, INT32 iStringLen)
 \param			uValue
 \param			pbDigits
 \param			iBaseValue
-\retval			char * / NULL
+\return			char * / NULL
 */
 /*****************************************************************************/
 
@@ -302,7 +302,7 @@ char *utoa(unsigned uValue, char *pbDigits, INT32 iBaseValue)
 \param			iValue
 \param			pbDigits
 \param			iBaseValue
-\retval			char *
+\return			char *
 */
 /*****************************************************************************/
 
@@ -347,7 +347,7 @@ char* _IntToAscii(LONG iValue, char *pbDigits, INT32 iBaseValue)
 				This function converts hex values to int values
 				
 \param			pbStrBuffer
-\retval			uiValue
+\return			Unsigned long int
 */
 /*****************************************************************************/
 
@@ -384,7 +384,7 @@ ULONG hex2int(char *pbStrBuffer)
 				This function checks whether the given character is ascii
 				
 \param			cArg
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending	
 */
@@ -413,7 +413,7 @@ bool IsAscii(char cArg)
 				This function checks whether the given index value is PDO or not
 				
 \param			pbIndex
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending	
 */
@@ -441,7 +441,7 @@ bool CheckIfNotPDO(char* pbIndex)
 				This function checks whether the device index is manufacturer spcific or not
 				
 \param			pbIndex
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending	
 */
@@ -470,7 +470,7 @@ bool CheckIfManufactureSpecificObject(char* pbIndex)
 				This function checks index for PDO mapping
 				
 \param			pbIndex
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending	
 */
@@ -496,7 +496,7 @@ bool CheckIfMappingPDO(char* pbIndex)
 				This function checks whether received CN index falls in the allowed CN indexs
 				
 \param			pbIndexValue
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending	
 */
@@ -528,7 +528,7 @@ bool CheckAllowedCNIndexes(char* pbIndexValue)
 				This function checks whether received MN index is blocked or not
 				
 \param			pbIndexValue
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending	
 */
@@ -554,7 +554,7 @@ bool CheckBlockedMNIndexes(char* pbIndexValue)
 				Converts the string to hexadecimal for strings of string Datatype
 				
 \param			actString
-\retval			char*			
+\return			char*			
 */
 /*****************************************************************************/
 
@@ -604,7 +604,7 @@ char* ConvertStringToHex(char* actString)
 \param			pbHexValue
 \param			iPadLength
 \param			bDoPadding
-\retval			char*			
+\return			char*			
 */
 /*****************************************************************************/
 
@@ -632,7 +632,7 @@ char* ConvertToHexformat(char* pbHexValue, INT32 iPadLength, bool bDoPadding)
 				This function checks whether hex or not
 				
 \param			pbValue
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending			
 */
@@ -664,7 +664,7 @@ bool CheckIfHex(char* pbValue)
  
 				This function returns configuration date
 				
-\retval			INT32						
+\return			INT32						
 */
 /*****************************************************************************/
 
@@ -713,7 +713,7 @@ INT32 getConfigDate()
  
 				This function returns configuration time
 				
-\retval			INT32						
+\return			INT32						
 */
 /*****************************************************************************/
 
@@ -743,7 +743,7 @@ INT32 getConfigTime()
 \param			pbArg1
 \param			pbArg2
 \param			uiSize			
-\retval			INT32						
+\return			INT32						
 */
 /*****************************************************************************/
 
@@ -772,7 +772,7 @@ INT32 reversedata(UINT8 *pbArg1, UINT8 *pbArg2, UINT32 uiSize)
 				This function checks for the datatype allowed for mapping
 				
 \param			dtName
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending						
 */
@@ -803,7 +803,7 @@ bool CheckAllowedDTForMapping(char* dtName)
  
 				This function returns last available cycle number
 				
-\retval			char*
+\return			char*
 */
 /*****************************************************************************/
 
@@ -871,7 +871,7 @@ char* getLastAvailableCycleNumber()
 				This function corrects the name by adding '_'
 				
 \param			checkName				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -907,7 +907,7 @@ void checkAndCorrectName(char* checkName)
 				This function checks for zero value
 				
 \param			pcValue				
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending
 */
@@ -947,7 +947,7 @@ bool checkIfValueZero(char* pcValue)
 				This function returns decimal value
 				
 \param			pcValue				
-\retval			INT32			
+\return			INT32			
 */
 /*****************************************************************************/
 
@@ -978,7 +978,7 @@ INT32 GetDecimalValue(char* pcValue)
 				This function checks for access type
 				
 \param			pcAccesstype				
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending
 */
@@ -1017,7 +1017,7 @@ bool CheckAccessTypeForInclude(char* pcAccesstype)
 				This function checks for tool version
 				
 \param			pcCurrentToolVersion				
-\retval			BOOL
+\return			BOOL
 \retval			TRUE			if successful
 \retval			FALSE			if there is already a message pending
 */

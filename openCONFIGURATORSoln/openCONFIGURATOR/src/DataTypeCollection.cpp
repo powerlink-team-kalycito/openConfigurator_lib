@@ -102,7 +102,7 @@ CDataTypeCollection::~CDataTypeCollection(void)
 				This Function counts the data type
 				
 \param			objDataType			
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -122,7 +122,7 @@ void CDataTypeCollection::addDataType(DataType objDataType)
  
 				This Function clears the datatype collection count
 				
-\retval			void
+\return			void
 */
 /*****************************************************************************/
 
@@ -139,7 +139,7 @@ void CDataTypeCollection::DeleteDataTypeCollection()
  
 				This function returns the total number object count
 				
-\retval			INT32
+\return			INT32
 */
 /*****************************************************************************/
 
@@ -156,7 +156,7 @@ INT32 CDataTypeCollection::getNumberOfDataTypes()
 				This function return the data type ID
 				
 \param			iDataTypeId				
-\retval			DataType
+\return			DataType
 */
 /*****************************************************************************/
 
@@ -173,7 +173,7 @@ DataType* CDataTypeCollection::getDataTypeElement(INT32 iDataTypeId)
 				This function return the data type value
 				
 \param			pbDataTypeValue				
-\retval			DataType*
+\return			DataType*
 */
 /*****************************************************************************/
 
@@ -203,7 +203,7 @@ DataType* CDataTypeCollection::getDataType(char* pbDataTypeValue)
 				This function return the data type name
 				
 \param			pbDataTypeValue				
-\retval			DataType*
+\return			DataType*
 */
 /*****************************************************************************/
 
