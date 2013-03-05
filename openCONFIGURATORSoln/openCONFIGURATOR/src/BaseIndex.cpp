@@ -1,57 +1,56 @@
 /**
-************************************************************************************************
-\file			BaseIndex.cpp
+ ************************************************************************************************
+ \file			BaseIndex.cpp
 
-\brief			 
-************************************************************************************************
+ \brief			 
+ ************************************************************************************************
 
-*/
+ */
 
 /*
-(c) Kalycito Infotech Private Limited
+ (c) Kalycito Infotech Private Limited
 
-  License:
+ License:
 
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions
-    are met:
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
 
-    1. Redistributions of source code must retain the above copyright
-       notice, this list of conditions and the following disclaimer.
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
 
-    2. Redistributions in binary form must reproduce the above copyright
-       notice, this list of conditions and the following disclaimer in the
-       documentation and/or other materials provided with the distribution.
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
 
-    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
-       its contributors may be used to endorse or promote products derived
-       from this software without prior written permission. For written
-       permission, please contact info@kalycito.com.
+ 3. Neither the name of Kalycito Infotech Private Limited nor the names of 
+ its contributors may be used to endorse or promote products derived
+ from this software without prior written permission. For written
+ permission, please contact info@kalycito.com.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
 
-    Severability Clause:
+ Severability Clause:
 
-        If a provision of this License is or becomes illegal, invalid or
-        unenforceable in any jurisdiction, that shall not affect:
-        1. the validity or enforceability in that jurisdiction of any other
-           provision of this License; or
-        2. the validity or enforceability in other jurisdictions of that or
-           any other provision of this License.
+ If a provision of this License is or becomes illegal, invalid or
+ unenforceable in any jurisdiction, that shall not affect:
+ 1. the validity or enforceability in that jurisdiction of any other
+ provision of this License; or
+ 2. the validity or enforceability in other jurisdictions of that or
+ any other provision of this License.
 
-****************************************************************************/
-
+ ****************************************************************************/
 
 /****************************************************************************************************/
 /* Includes */
@@ -62,19 +61,17 @@
 #include "../Include/Internal.h"
 #include "../Include/Exception.h"
 
-
-				//==========================================================================//
-				// 				F U N C T I O N  D E F I N I T I O N S  					//
-				//==========================================================================//
-
+//==========================================================================//
+// 				F U N C T I O N  D E F I N I T I O N S  					//
+//==========================================================================//
 
 /****************************************************************************************************/
- /* Constructor */
+/* Constructor */
 
 /**
-        
-    @param void
-*/
+ 
+ @param void
+ */
 
 CBaseIndex::CBaseIndex(void)
 {
@@ -103,8 +100,8 @@ CBaseIndex::CBaseIndex(void)
 /* Destructor */
 
 /**
-    @param void
-*/
+ @param void
+ */
 
 CBaseIndex::~CBaseIndex(void)
 {
@@ -114,32 +111,29 @@ CBaseIndex::~CBaseIndex(void)
 #pragma region Properties
 #endif
 
-	
 /*****************************************************************************/
 /**
-\brief			getName
+ \brief			getName
  
-				Returns the Name of the Index Object
-				
-\return			const char*
-*/
+ Returns the Name of the Index Object
+ 
+ \return	const char*
+ */
 /*****************************************************************************/
-
 
 const char* CBaseIndex::getName()
 {
 	return m_Name;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			setName
+ \brief			setName
  
-				sets the Name of the Index Object
-\param			pbName	
-\return			void
-*/
+ sets the Name of the Index Object
+ \param			pbName	
+ \return	void
+ */
 /*****************************************************************************/
 
 void CBaseIndex::setName(char* pbName)
@@ -156,15 +150,14 @@ void CBaseIndex::setName(char* pbName)
 	}
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getIndexValue
+ \brief			getIndexValue
  
-				Returns the Index of the Index Object
-			
-\return			const char*
-*/
+ Returns the Index of the Index Object
+ 
+ \return	const char*
+ */
 /*****************************************************************************/
 
 const char* CBaseIndex::getIndexValue()
@@ -172,16 +165,15 @@ const char* CBaseIndex::getIndexValue()
 	return m_Index;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			setIndexValue
+ \brief			setIndexValue
  
-				sets the Index of the Index Object
-			
-\param			pbIndex
-\return			void
-*/
+ sets the Index of the Index Object
+ 
+ \param			pbIndex
+ \return	void
+ */
 /*****************************************************************************/
 
 void CBaseIndex::setIndexValue(char* pbIndex)
@@ -190,15 +182,14 @@ void CBaseIndex::setIndexValue(char* pbIndex)
 	strcpy((char*) m_Index, pbIndex);
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getLowLimit
+ \brief			getLowLimit
  
-				Returns the LowLimit of the Index Object
-			
-\return			const char*
-*/
+ Returns the LowLimit of the Index Object
+ 
+ \return		const char*
+ */
 /*****************************************************************************/
 
 const char* CBaseIndex::getLowLimit()
@@ -215,12 +206,12 @@ const char* CBaseIndex::getLowLimit()
 
 /*****************************************************************************/
 /**
-\brief			setLowLimit
+ \brief			setLowLimit
  
-				sets the LowLimit of the Index Object
-			
-\return			void
-*/
+ sets the LowLimit of the Index Object
+ 
+ \return		void
+ */
 /*****************************************************************************/
 
 void CBaseIndex::setLowLimit(char* pbLowLimit)
@@ -229,17 +220,15 @@ void CBaseIndex::setLowLimit(char* pbLowLimit)
 	strcpy((char*) m_LowLimit, pbLowLimit);
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getHighLimit
+ \brief			getHighLimit
  
-				Returns the LowLimit of the Index Object
-			
-\return			const char*
-*/
+ Returns the LowLimit of the Index Object
+ 
+ \return		const char*
+ */
 /*****************************************************************************/
-
 
 const char* CBaseIndex::getHighLimit()
 {
@@ -255,13 +244,13 @@ const char* CBaseIndex::getHighLimit()
 
 /*****************************************************************************/
 /**
-\brief			setHighLimit
+ \brief			setHighLimit
  
-				sets the LowLimit of the Index Object
-				
-\param			pbHighLimit			
-\return			void
-*/
+ sets the LowLimit of the Index Object
+ 
+ \param			pbHighLimit			
+ \return		void
+ */
 /*****************************************************************************/
 
 void CBaseIndex::setHighLimit(char* pbHighLimit)
@@ -270,15 +259,14 @@ void CBaseIndex::setHighLimit(char* pbHighLimit)
 	strcpy((char*) m_HighLimit, pbHighLimit);
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getDefaultValue
+ \brief			getDefaultValue
  
-				Returns the Default Value of the Index Object
-				
-\return			const char*
-*/
+ Returns the Default Value of the Index Object
+ 
+ \return		const char*
+ */
 /*****************************************************************************/
 
 const char* CBaseIndex::getDefaultValue()
@@ -286,18 +274,16 @@ const char* CBaseIndex::getDefaultValue()
 	return m_DefaultValue;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			setDefaultValue
+ \brief			setDefaultValue
  
-				sets the Default Value of the Index Object
-				
-\param			pbValue			
-\return			void
-*/
+ sets the Default Value of the Index Object
+ 
+ \param			pbValue			
+ \return		void
+ */
 /*****************************************************************************/
-
 
 void CBaseIndex::setDefaultValue(char* pbValue)
 {
@@ -305,16 +291,15 @@ void CBaseIndex::setDefaultValue(char* pbValue)
 	strcpy((char*) m_DefaultValue, pbValue);
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getActualValue
+ \brief			getActualValue
  
-				Returns the Actual Value of the Index Object
-				
-\param			pbValue			
-\return			const char*
-*/
+ Returns the Actual Value of the Index Object
+ 
+ \param			pbValue			
+ \return		const char*
+ */
 /*****************************************************************************/
 
 const char* CBaseIndex::getActualValue()
@@ -328,15 +313,14 @@ const char* CBaseIndex::getActualValue()
 
 /*****************************************************************************/
 /**
-\brief			setActualValue
+ \brief			setActualValue
  
-				sets the Actual Value of the Index Object
-				
-\param			pbValue			
-\return			void
-*/
+ sets the Actual Value of the Index Object
+ 
+ \param			pbValue			
+ \return		void
+ */
 /*****************************************************************************/
-
 
 void CBaseIndex::setActualValue(char* pbValue)
 {
@@ -346,12 +330,12 @@ void CBaseIndex::setActualValue(char* pbValue)
 
 /*****************************************************************************/
 /**
-\brief			getAccessType
+ \brief			getAccessType
  
-				Returns the Access Type of the Index Object
-				
-\return			const char*
-*/
+ Returns the Access Type of the Index Object
+ 
+ \return		const char*
+ */
 /*****************************************************************************/
 
 const char* CBaseIndex::getAccessType()
@@ -359,16 +343,15 @@ const char* CBaseIndex::getAccessType()
 	return m_accessType;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			setAccessType
+ \brief			setAccessType
  
-				sets the Access Type of the Index Object
-				
-\param			pbAccessType
-\return			void
-*/
+ sets the Access Type of the Index Object
+ 
+ \param			pbAccessType
+ \return		void
+ */
 /*****************************************************************************/
 
 void CBaseIndex::setAccessType(char* pbAccessType)
@@ -377,15 +360,14 @@ void CBaseIndex::setAccessType(char* pbAccessType)
 	strcpy((char*) m_accessType, pbAccessType);
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getObjectType
+ \brief			getObjectType
  
-				Returns the Object Type of the Index Object as const char*
-				
-\return			const char*
-*/
+ Returns the Object Type of the Index Object as const char*
+ 
+ \return		const char*
+ */
 /*****************************************************************************/
 
 const char* CBaseIndex::getObjectType()
@@ -409,12 +391,12 @@ const char* CBaseIndex::getObjectType()
 
 /*****************************************************************************/
 /**
-\brief			getObjectType
+ \brief			getObjectType
  
-				Returns the Object Type of the Index Object as Enum
-				
-\return			EObjectType
-*/
+ Returns the Object Type of the Index Object as Enum
+ 
+ \return		EObjectType
+ */
 /*****************************************************************************/
 
 EObjectType CBaseIndex::getEObjectType()
@@ -422,16 +404,15 @@ EObjectType CBaseIndex::getEObjectType()
 	return m_objectType;
 }
 
-
 /******************************************************************************/
 /**
-\brief			setObjectType
+ \brief			setObjectType
  
-				sets the Object of the Index Object
-				
-\param			pbObjectType			
-\return			void
-*/
+ sets the Object of the Index Object
+ 
+ \param			pbObjectType			
+ \return		void
+ */
 /*****************************************************************************/
 
 void CBaseIndex::setObjectType(char* pbObjectType)
@@ -471,15 +452,14 @@ void CBaseIndex::setObjectType(char* pbObjectType)
 	delete[] pbStrBuff;
 }
 
-
 /******************************************************************************/
 /**
-\brief			getPDOMapping
+ \brief			getPDOMapping
  
-				Returns the PDOMapping of the Index Object
-				
-\return			const char*
-*/
+ Returns the PDOMapping of the Index Object
+ 
+ \return		const char*
+ */
 /*****************************************************************************/
 
 const char* CBaseIndex::getPDOMapping()
@@ -503,13 +483,13 @@ const char* CBaseIndex::getPDOMapping()
 
 /******************************************************************************/
 /**
-\brief			setPDOMapping
+ \brief			setPDOMapping
  
-				sets the PDOMapping of the Index Object
-				
-\param			pbPdoMapping				
-\return			void
-*/
+ sets the PDOMapping of the Index Object
+ 
+ \param			pbPdoMapping				
+ \return		void
+ */
 /*****************************************************************************/
 
 void CBaseIndex::setPDOMapping(char* pbPdoMapping)
@@ -548,12 +528,12 @@ void CBaseIndex::setPDOMapping(char* pbPdoMapping)
 
 /******************************************************************************/
 /**
-\brief			getDataType
+ \brief			getDataType
  
-				Returns the DataType of the Index Object
-				
-\return			DataType
-*/
+ Returns the DataType of the Index Object
+ 
+ \return		DataType
+ */
 /*****************************************************************************/
 
 DataType CBaseIndex::getDataType()
@@ -563,13 +543,13 @@ DataType CBaseIndex::getDataType()
 
 /******************************************************************************/
 /**
-\brief			setDataType
+ \brief			setDataType
  
-				sets the DataType of the Index Object
-				
-\param			pbDataTypeName				
-\return			void
-*/
+ sets the DataType of the Index Object
+ 
+ \param			pbDataTypeName				
+ \return		void
+ */
 /*****************************************************************************/
 
 void CBaseIndex::setDataType(char* pbDataTypeName)
@@ -590,17 +570,16 @@ void CBaseIndex::setDataType(char* pbDataTypeName)
 	}
 }
 
-
 /******************************************************************************/
 /**
-\brief			setDataType
+ \brief			setDataType
  
-				sets the DataType of the Index Object
-				
-\param			pbDataTypeName
-\param			iNodeID				
-\return			void
-*/
+ sets the DataType of the Index Object
+ 
+ \param			pbDataTypeName
+ \param			iNodeID				
+ \return		void
+ */
 /*****************************************************************************/
 //TODO: unused function
 void CBaseIndex::setDataType(char* pbDataTypeName, INT32 iNodeID)
@@ -619,12 +598,12 @@ void CBaseIndex::setDataType(char* pbDataTypeName, INT32 iNodeID)
 
 /******************************************************************************/
 /**
-\brief			getNodeID
+ \brief			getNodeID
  
-				Returns the NodeID of the Node of the Index Object
-				
-\return			INT32
-*/
+ Returns the NodeID of the Node of the Index Object
+ 
+ \return		INT32
+ */
 /*****************************************************************************/
 
 INT32 CBaseIndex::getNodeID()
@@ -634,13 +613,13 @@ INT32 CBaseIndex::getNodeID()
 
 /******************************************************************************/
 /**
-\brief			setNodeID
+ \brief			setNodeID
  
-				sets the NodeID of the Index Object
-				
-\param			NodeID				
-\return			void
-*/
+ sets the NodeID of the Index Object
+ 
+ \param			NodeID				
+ \return		void
+ */
 /*****************************************************************************/
 
 void CBaseIndex::setNodeID(INT32 NodeID)
@@ -650,12 +629,12 @@ void CBaseIndex::setNodeID(INT32 NodeID)
 
 /******************************************************************************/
 /**
-\brief			getUniqueIDRef
+ \brief			getUniqueIDRef
  
-				Returns the UniqueIDRef of the Node of the Index Object
-				
-\return			char*
-*/
+ Returns the UniqueIDRef of the Node of the Index Object
+ 
+ \return		char*
+ */
 /*****************************************************************************/
 
 char* CBaseIndex::getUniqueIDRef()
@@ -663,15 +642,14 @@ char* CBaseIndex::getUniqueIDRef()
 	return m_UniqueIDRef;
 }
 
-
 /******************************************************************************/
 /**
-\brief			setUniqueIDRef
+ \brief			setUniqueIDRef
  
-				sets the UniqueIDRef of the Index Object
-				
-\return			void
-*/
+ sets the UniqueIDRef of the Index Object
+ 
+ \return		void
+ */
 /*****************************************************************************/
 
 void CBaseIndex::setUniqueIDRef(char* pbUniqueID)
@@ -680,15 +658,14 @@ void CBaseIndex::setUniqueIDRef(char* pbUniqueID)
 	strcpy((char*) m_UniqueIDRef, pbUniqueID);
 }
 
-
 /******************************************************************************/
 /**
-\brief			getDataTypeValue
+ \brief			getDataTypeValue
  
-				Returns only datatype value of the Node of the Index Object
-				
-\return			char*
-*/
+ Returns only datatype value of the Node of the Index Object
+ 
+ \return		char*
+ */
 /*****************************************************************************/
 
 char* CBaseIndex::getDataTypeValue()
@@ -705,12 +682,12 @@ char* CBaseIndex::getDataTypeValue()
 
 /******************************************************************************/
 /**
-\brief			setDataTypeValue
+ \brief			setDataTypeValue
  
-				sets the datatype value  of the Index Object
-				
-\return			void
-*/
+ sets the datatype value  of the Index Object
+ 
+ \return		void
+ */
 /*****************************************************************************/
 
 void CBaseIndex::setDataTypeValue(char* pbValue)
@@ -719,16 +696,15 @@ void CBaseIndex::setDataTypeValue(char* pbValue)
 	strcpy((char*) m_dataTypeValue, pbValue);
 }
 
-
 /******************************************************************************/
 /**
-\brief			setDataTypeST
+ \brief			setDataTypeST
  
-				sets the datatype value  of the Index Object
-				
-\param			objDataType				
-\return			void
-*/
+ sets the datatype value  of the Index Object
+ 
+ \param			objDataType				
+ \return		void
+ */
 /*****************************************************************************/
 
 void CBaseIndex::setDataTypeST(DataType objDataType)
@@ -743,17 +719,16 @@ void CBaseIndex::setDataTypeST(DataType objDataType)
 #pragma region MemberFunctions
 #endif
 
-
 /******************************************************************************/
 /**
-\brief			SaveChanges
+ \brief			SaveChanges
  
-				Saves the changes of the Index properties
-				
-\param			pbIndex
-\param			pbName				
-\return			void
-*/
+ Saves the changes of the Index properties
+ 
+ \param			pbIndex
+ \param			pbName				
+ \return		void
+ */
 /*****************************************************************************/
 
 void CBaseIndex::SaveChanges(char* pbIndex, char* pbName)
@@ -762,18 +737,17 @@ void CBaseIndex::SaveChanges(char* pbIndex, char* pbName)
 	m_Name = pbName;
 }
 
-
 /******************************************************************************/
 /**
-\brief			IsIndexVaueValid
+ \brief			IsIndexVaueValid
  
-				Saves the changes of the Index properties
-				
-\param			pbHexValue
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending
-*/
+ Saves the changes of the Index properties
+ 
+ \param			pbHexValue
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending
+ */
 /*****************************************************************************/
 
 bool CBaseIndex::IsIndexVaueValid(char* pbHexValue)
@@ -870,13 +844,13 @@ bool CBaseIndex::IsIndexVaueValid(char* pbHexValue)
 
 /******************************************************************************/
 /**
-\brief			setFlagIfIncludedCdc
+ \brief			setFlagIfIncludedCdc
  
-				sets the flag whether the Index should be included in cdc
-				
-\param			enumFlag
-\return			void			
-*/
+ sets the flag whether the Index should be included in cdc
+ 
+ \param			enumFlag
+ \return		void			
+ */
 /*****************************************************************************/
 
 void CBaseIndex::setFlagIfIncludedCdc(EFlag enumFlag)
@@ -884,16 +858,14 @@ void CBaseIndex::setFlagIfIncludedCdc(EFlag enumFlag)
 	m_IsIncludedInCDC = enumFlag;
 }
 
-
-
 /******************************************************************************/
 /**
-\brief			getFlagIfIncludedCdc
+ \brief			getFlagIfIncludedCdc
  
-				Returns whether the Index should be included in cdc
-				
-\return			EFlag			
-*/
+ Returns whether the Index should be included in cdc
+ 
+ \return		EFlag			
+ */
 /*****************************************************************************/
 
 EFlag CBaseIndex::getFlagIfIncludedCdc()

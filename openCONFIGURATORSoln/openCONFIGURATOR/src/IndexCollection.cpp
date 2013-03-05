@@ -1,55 +1,55 @@
 /**
-************************************************************************************************
-\file			Index.cpp
+ ************************************************************************************************
+ \file			Index.cpp
 
-\brief			
-************************************************************************************************
-*/
+ \brief			
+ ************************************************************************************************
+ */
 
 /*
-(c) Kalycito Infotech Private Limited
+ (c) Kalycito Infotech Private Limited
 
-  License:
+ License:
 
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions
-    are met:
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
 
-    1. Redistributions of source code must retain the above copyright
-       notice, this list of conditions and the following disclaimer.
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
 
-    2. Redistributions in binary form must reproduce the above copyright
-       notice, this list of conditions and the following disclaimer in the
-       documentation and/or other materials provided with the distribution.
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
 
-    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
-       its contributors may be used to endorse or promote products derived
-       from this software without prior written permission. For written
-       permission, please contact info@kalycito.com.
+ 3. Neither the name of Kalycito Infotech Private Limited nor the names of 
+ its contributors may be used to endorse or promote products derived
+ from this software without prior written permission. For written
+ permission, please contact info@kalycito.com.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
 
-    Severability Clause:
+ Severability Clause:
 
-        If a provision of this License is or becomes illegal, invalid or
-        unenforceable in any jurisdiction, that shall not affect:
-        1. the validity or enforceability in that jurisdiction of any other
-           provision of this License; or
-        2. the validity or enforceability in other jurisdictions of that or
-           any other provision of this License.
+ If a provision of this License is or becomes illegal, invalid or
+ unenforceable in any jurisdiction, that shall not affect:
+ 1. the validity or enforceability in that jurisdiction of any other
+ provision of this License; or
+ 2. the validity or enforceability in other jurisdictions of that or
+ any other provision of this License.
 
-****************************************************************************/
+ ****************************************************************************/
 
 /****************************************************************************************************/
 /* Includes */
@@ -58,50 +58,45 @@
 #include "../Include/IndexCollection.h"
 #include "../Include/Internal.h"
 
+//==========================================================================//
+// 				F U N C T I O N  D E F I N I T I O N S  					//
+//==========================================================================//
 
-				//==========================================================================//
-				// 				F U N C T I O N  D E F I N I T I O N S  					//
-				//==========================================================================//
-				
-
-				
 /*************************************************************************/
 /* Constructor */
 
 /**
-        
-    @param void
-*/
+ 
+ @param void
+ */
 
 CIndexCollection::CIndexCollection(void)
 {
 	m_IndexCount = 0;
 }
 
-
 /*************************************************************************/
 /* Destructor */
 
 /**
-        
-    @param void
-*/
+ 
+ @param void
+ */
 
 CIndexCollection::~CIndexCollection(void)
 {
 	//Add destructor code here
 }
 
-
 /*****************************************************************************/
 /**
-\brief			addIndex
+ \brief			addIndex
  
-				This function collects the objindex
+ This function collects the objindex
 
-\param			objIndex				
-\return			void
-*/
+ \param			objIndex				
+ \return		void
+ */
 /*****************************************************************************/
 
 void CIndexCollection::addIndex(CIndex objIndex)
@@ -127,18 +122,16 @@ void CIndexCollection::addIndex(CIndex objIndex)
 	m_IndexCount = collectionObj.Count();
 }
 
-
 /*****************************************************************************/
 /**
-\brief			deleteIndex
+ \brief			deleteIndex
  
-				This Function deletes the index value
+ This Function deletes the index value
 
-\param			iIndexID				
-\return			void
-*/
+ \param			iIndexID				
+ \return		void
+ */
 /*****************************************************************************/
-
 
 void CIndexCollection::deleteIndex(INT32 iIndexID)
 {
@@ -146,15 +139,14 @@ void CIndexCollection::deleteIndex(INT32 iIndexID)
 	m_IndexCount = collectionObj.Count();
 }
 
-
 /*****************************************************************************/
 /**
-\brief			DeleteIndexCollection
+ \brief			DeleteIndexCollection
  
-				This Function clears the indexcollection 
+ This Function clears the indexcollection 
 
-\return			void
-*/
+ \return		void
+ */
 /*****************************************************************************/
 
 void CIndexCollection::DeleteIndexCollection()
@@ -163,15 +155,14 @@ void CIndexCollection::DeleteIndexCollection()
 	m_IndexCount = collectionObj.Count();
 }
 
-
 /*****************************************************************************/
 /**
-\brief			DeletePDOs
+ \brief			DeletePDOs
  
-				This Function deletes PDOs
+ This Function deletes PDOs(14xx, 16xx, 18xx, 1Axx) indexes
 
-\return			void
-*/
+ \return		void
+ */
 /*****************************************************************************/
 
 void CIndexCollection::DeletePDOs()
@@ -195,15 +186,14 @@ void CIndexCollection::DeletePDOs()
 	delete[] substr;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			DeletePIObjects
+ \brief			DeletePIObjects
  
-				This Function deletes PIObjects
+ This Function deletes PIObjects
 
-\return			void
-*/
+ \return		void
+ */
 /*****************************************************************************/
 
 void CIndexCollection::DeletePIObjects()
@@ -226,16 +216,15 @@ void CIndexCollection::DeletePIObjects()
 	delete[] substr;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getIndex
+ \brief			getIndex
  
-				This function collects index count 
+ This function collects index count 
 
-\param			iCount
-\return			CIndex*
-*/
+ \param			iCount
+ \return		CIndex*
+ */
 /*****************************************************************************/
 
 CIndex* CIndexCollection::getIndex(INT32 iCount)
@@ -243,16 +232,15 @@ CIndex* CIndexCollection::getIndex(INT32 iCount)
 	return &collectionObj[iCount];
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getIndexbyIndexValue
+ \brief			getIndexbyIndexValue
  
-				This function collects index values 
+ This function collects index values 
 
-\param			pbIndex
-\return			CIndex*
-*/
+ \param			pbIndex
+ \return		CIndex*
+ */
 /*****************************************************************************/
 
 CIndex* CIndexCollection::getIndexbyIndexValue(char* pbIndex)
@@ -273,15 +261,14 @@ CIndex* CIndexCollection::getIndexbyIndexValue(char* pbIndex)
 	return NULL;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getNumberofIndexes
+ \brief			getNumberofIndexes
  
-				This function returns total nummber of index 
+ This function returns total nummber of index 
 
-\return			INT32
-*/
+ \return		INT32
+ */
 /*****************************************************************************/
 
 INT32 CIndexCollection::getNumberofIndexes()

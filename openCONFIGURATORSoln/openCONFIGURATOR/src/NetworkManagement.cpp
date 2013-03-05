@@ -1,56 +1,55 @@
 /**
-************************************************************************************************
-\file			NetworkManagement.cpp
+ ************************************************************************************************
+ \file			NetworkManagement.cpp
 
-\brief			
-************************************************************************************************
-*/
-
+ \brief			
+ ************************************************************************************************
+ */
 
 /*
-(c) Kalycito Infotech Private Limited
+ (c) Kalycito Infotech Private Limited
 
-  License:
+ License:
 
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions
-    are met:
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
 
-    1. Redistributions of source code must retain the above copyright
-       notice, this list of conditions and the following disclaimer.
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
 
-    2. Redistributions in binary form must reproduce the above copyright
-       notice, this list of conditions and the following disclaimer in the
-       documentation and/or other materials provided with the distribution.
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
 
-    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
-       its contributors may be used to endorse or promote products derived
-       from this software without prior written permission. For written
-       permission, please contact info@kalycito.com.
+ 3. Neither the name of Kalycito Infotech Private Limited nor the names of 
+ its contributors may be used to endorse or promote products derived
+ from this software without prior written permission. For written
+ permission, please contact info@kalycito.com.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
 
-    Severability Clause:
+ Severability Clause:
 
-        If a provision of this License is or becomes illegal, invalid or
-        unenforceable in any jurisdiction, that shall not affect:
-        1. the validity or enforceability in that jurisdiction of any other
-           provision of this License; or
-        2. the validity or enforceability in other jurisdictions of that or
-           any other provision of this License.
+ If a provision of this License is or becomes illegal, invalid or
+ unenforceable in any jurisdiction, that shall not affect:
+ 1. the validity or enforceability in that jurisdiction of any other
+ provision of this License; or
+ 2. the validity or enforceability in other jurisdictions of that or
+ any other provision of this License.
 
-****************************************************************************/
+ ****************************************************************************/
 
 /****************************************************************************************************/
 /* Includes */
@@ -58,20 +57,17 @@
 #include "../Include/NetworkManagement.h"
 #include "../Include/Internal.h"
 
-
-				//==========================================================================//
-				// 				F U N C T I O N  D E F I N I T I O N S  					//
-				//==========================================================================//
-				
-				
+//==========================================================================//
+// 				F U N C T I O N  D E F I N I T I O N S  					//
+//==========================================================================//
 
 /*************************************************************************/
 /* Constructor */
 
 /**
-        
-    @param void
-*/
+ 
+ @param void
+ */
 
 CNetworkManagement::CNetworkManagement(void)
 {
@@ -83,25 +79,24 @@ CNetworkManagement::CNetworkManagement(void)
 /* Destructor */
 
 /**
-        
-    @param void
-*/
+ 
+ @param void
+ */
 
 CNetworkManagement::~CNetworkManagement(void)
 {
 	//Add destructor code here
 }
 
-
 /*****************************************************************************/
 /**
-\brief			addParameter
+ \brief			addParameter
  
-				This function collects feature for each object
+ This function collects feature for each object
 
-\param			stfeature				
-\return			void
-*/
+ \param			stfeature				
+ \return		void
+ */
 /*****************************************************************************/
 
 void CNetworkManagement::addFeature(Feature stfeature)
@@ -110,15 +105,14 @@ void CNetworkManagement::addFeature(Feature stfeature)
 	FeatureCollection[iItemPosition] = stfeature;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getNodeID
+ \brief			getNodeID
  
-				Returns the NodeID of the Node of the NetworkManagement Object
+ Returns the NodeID of the Node of the NetworkManagement Object
 
-\return			INT32
-*/
+ \return		INT32
+ */
 /*****************************************************************************/
 
 //TODO: unused function
@@ -127,15 +121,14 @@ INT32 CNetworkManagement::getNodeID()
 	return m_NodeID;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			setNodeID
+ \brief			setNodeID
  
-				sets the NodeID of the NetworkManagement Object
+ sets the NodeID of the NetworkManagement Object
 
-\return			void
-*/
+ \return		void
+ */
 /*****************************************************************************/
 //TODO: unused function
 void CNetworkManagement::setNodeID(INT32 NodeID)
@@ -143,15 +136,14 @@ void CNetworkManagement::setNodeID(INT32 NodeID)
 	m_NodeID = NodeID;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getFeatureValue
+ \brief			getFeatureValue
  
-				gets the network Management feature value
+ gets the network Management feature value
 
-\return			char*
-*/
+ \return		char*
+ */
 /*****************************************************************************/
 
 char* CNetworkManagement::getFeatureValue(EFeatureType featureType,
@@ -178,15 +170,14 @@ char* CNetworkManagement::getFeatureValue(EFeatureType featureType,
 	return pbRetString;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getNumberOfFeatures
+ \brief			getNumberOfFeatures
  
-				returns the Number of Features
+ returns the Number of Features
 
-\return			UINT32
-*/
+ \return		UINT32
+ */
 /*****************************************************************************/
 
 UINT32 CNetworkManagement::getNumberOfFeatures()
@@ -194,16 +185,15 @@ UINT32 CNetworkManagement::getNumberOfFeatures()
 	return FeatureCollection.Count();
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getFeature
+ \brief			getFeature
  
-				returns feature collection list 
+ returns feature collection list 
 
-\param			uiCount
-\return			Feature*
-*/
+ \param			uiCount
+ \return		Feature*
+ */
 /*****************************************************************************/
 
 Feature* CNetworkManagement::getFeature(UINT32 uiCount)
@@ -211,15 +201,14 @@ Feature* CNetworkManagement::getFeature(UINT32 uiCount)
 	return &FeatureCollection[uiCount];
 }
 
-
 /*****************************************************************************/
 /**
-\brief			DeleteFeatureCollections
+ \brief			DeleteFeatureCollections
  
-				DeleteNetworkManagementCollections
+ DeleteNetworkManagementCollections
 
-\return			void
-*/
+ \return		void
+ */
 /*****************************************************************************/
 
 void CNetworkManagement::DeleteFeatureCollections()
@@ -230,15 +219,14 @@ void CNetworkManagement::DeleteFeatureCollections()
 	}
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getMaxPDOCount
+ \brief			getMaxPDOCount
  
-				
+ 
 
-\return			INT32
-*/
+ \return		INT32
+ */
 /*****************************************************************************/
 
 INT32 CNetworkManagement::getMaxPDOCount()
@@ -246,16 +234,14 @@ INT32 CNetworkManagement::getMaxPDOCount()
 	return m_MaxPDOCount;
 }
 
-
-
 /*****************************************************************************/
 /**
-\brief			calculateMaxPDOCount
+ \brief			calculateMaxPDOCount
  
-				calculates the PDO count from the PDOTPDOChannels parameter in MN xdd and m_MaxPDOCount is updated with that specified value
+ calculates the PDO count from the PDOTPDOChannels parameter in MN xdd and m_MaxPDOCount is updated with that specified value
 
-\return			void
-*/
+ \return		void
+ */
 /*****************************************************************************/
 
 void CNetworkManagement::calculateMaxPDOCount()

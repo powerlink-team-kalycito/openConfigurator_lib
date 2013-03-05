@@ -1,55 +1,55 @@
 /**
-************************************************************************************************
-\file			NodeCollection.cpp
+ ************************************************************************************************
+ \file			NodeCollection.cpp
 
-\brief			
-************************************************************************************************
-*/
+ \brief			
+ ************************************************************************************************
+ */
 
 /*
-(c) Kalycito Infotech Private Limited
+ (c) Kalycito Infotech Private Limited
 
-  License:
+ License:
 
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions
-    are met:
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
 
-    1. Redistributions of source code must retain the above copyright
-       notice, this list of conditions and the following disclaimer.
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
 
-    2. Redistributions in binary form must reproduce the above copyright
-       notice, this list of conditions and the following disclaimer in the
-       documentation and/or other materials provided with the distribution.
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
 
-    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
-       its contributors may be used to endorse or promote products derived
-       from this software without prior written permission. For written
-       permission, please contact info@kalycito.com.
+ 3. Neither the name of Kalycito Infotech Private Limited nor the names of 
+ its contributors may be used to endorse or promote products derived
+ from this software without prior written permission. For written
+ permission, please contact info@kalycito.com.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
 
-    Severability Clause:
+ Severability Clause:
 
-        If a provision of this License is or becomes illegal, invalid or
-        unenforceable in any jurisdiction, that shall not affect:
-        1. the validity or enforceability in that jurisdiction of any other
-           provision of this License; or
-        2. the validity or enforceability in other jurisdictions of that or
-           any other provision of this License.
+ If a provision of this License is or becomes illegal, invalid or
+ unenforceable in any jurisdiction, that shall not affect:
+ 1. the validity or enforceability in that jurisdiction of any other
+ provision of this License; or
+ 2. the validity or enforceability in other jurisdictions of that or
+ any other provision of this License.
 
-****************************************************************************/
+ ****************************************************************************/
 
 /****************************************************************************************************/
 /* Includes */
@@ -59,57 +59,50 @@
 #include "../Include/Node.h"
 //$S Only for testing
 
-
 /****************************************************************************************************/
 /* Global Variables */
 
 bool CNodeCollection::instanceFlag = false;
 CNodeCollection* CNodeCollection::objNodeCollection = NULL;
 
+//==========================================================================//
+// 				F U N C T I O N  D E F I N I T I O N S  					//
+//==========================================================================//
 
-
-				//==========================================================================//
-				// 				F U N C T I O N  D E F I N I T I O N S  					//
-				//==========================================================================//
-				
-				
-				
 /*************************************************************************/
 /* Constructor */
 
 /**
-        
-    @param void
-*/
+ 
+ @param void
+ */
 
 CNodeCollection::CNodeCollection(void)
 {
 	m_NodeCount = collectionObj.Count();
 }
 
-
 /*************************************************************************/
 /* Destructor */
 
 /**
-        
-    @param void
-*/
+ 
+ @param void
+ */
 
 CNodeCollection::~CNodeCollection(void)
 {
 	instanceFlag = false;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getNumberOfNodes
+ \brief			getNumberOfNodes
  
-				This function returns node count
+ This function returns node count
 
-\return			INT32
-*/
+ \return	INT32
+ */
 /*****************************************************************************/
 
 INT32 CNodeCollection::getNumberOfNodes()
@@ -117,17 +110,15 @@ INT32 CNodeCollection::getNumberOfNodes()
 	return m_NodeCount;
 }
 
-
- 
 /*****************************************************************************/
 /**
-\brief			addNode
+ \brief			addNode
  
-				This function collects objects under node count
-				
-\param			objNode
-\return			void
-*/
+ This function collects objects under node count
+ 
+ \param			objNode
+ \return	void
+ */
 /*****************************************************************************/
 
 void CNodeCollection::addNode(CNode objNode)
@@ -138,17 +129,15 @@ void CNodeCollection::addNode(CNode objNode)
 	m_NodeCount = collectionObj.Count();
 }
 
-
-
 /*****************************************************************************/
 /**
-\brief			deleteNode
+ \brief			deleteNode
  
-				This function deletes the node ids
-				
-\param			iNodeID
-\return			void
-*/
+ This function deletes the node ids
+ 
+ \param			iNodeID
+ \return	void
+ */
 /*****************************************************************************/
 
 void CNodeCollection::deleteNode(INT32 iNodeID)
@@ -157,15 +146,14 @@ void CNodeCollection::deleteNode(INT32 iNodeID)
 	m_NodeCount = collectionObj.Count();
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getNodeColObjectPointer
+ \brief			getNodeColObjectPointer
  
-				This function collects the location of node
-				
-\return			CNodeCollection*
-*/
+ This function collects the location of node
+ 
+ \return	CNodeCollection*
+ */
 /*****************************************************************************/
 
 CNodeCollection* CNodeCollection::getNodeColObjectPointer()
@@ -178,15 +166,14 @@ CNodeCollection* CNodeCollection::getNodeColObjectPointer()
 	return objNodeCollection;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getNodeColObject
+ \brief			getNodeColObject
  
-				This function collects value of node objects
-				
-\return			CNodeCollection
-*/
+ This function collects value of node objects
+ 
+ \return	CNodeCollection
+ */
 /*****************************************************************************/
 
 CNodeCollection CNodeCollection::getNodeColObject()
@@ -199,17 +186,16 @@ CNodeCollection CNodeCollection::getNodeColObject()
 	return *objNodeCollection;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getNode
+ \brief			getNode
  
-				This function collects the type of node objects
+ This function collects the type of node objects
 
-\param			enumNodeType
-\param			iNodeID				
-\return			CNode
-*/
+ \param			enumNodeType
+ \param			iNodeID				
+ \return	CNode
+ */
 /*****************************************************************************/
 
 CNode CNodeCollection::getNode(ENodeType enumNodeType, INT32 iNodeID)
@@ -230,18 +216,17 @@ CNode CNodeCollection::getNode(ENodeType enumNodeType, INT32 iNodeID)
 	return objNode;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getNodePtr
+ \brief			getNodePtr
 
-				This function collects the location of node objects type 
+ This function collects the location of node objects type 
 
-\param			enumNodeType	
-\param			iNodeID			
+ \param			enumNodeType	
+ \param			iNodeID			
 
-\return			CNode* / NULL
-*/
+ \return	CNode* / NULL
+ */
 /*****************************************************************************/
 
 CNode* CNodeCollection::getNodePtr(ENodeType enumNodeType, INT32 iNodeID)
@@ -262,16 +247,15 @@ CNode* CNodeCollection::getNodePtr(ENodeType enumNodeType, INT32 iNodeID)
 	return NULL;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getNode
+ \brief			getNode
  
-				This function collects the type of node objects 
+ This function collects the type of node objects 
 
-\param			iNodeID				
-\return			CNode
-*/
+ \param			iNodeID				
+ \return	CNode
+ */
 /*****************************************************************************/
 //TODO: unused function
 CNode CNodeCollection::getNode(INT32 iNodeID)
@@ -291,15 +275,14 @@ CNode CNodeCollection::getNode(INT32 iNodeID)
 	return objNode;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getMNNode
+ \brief			getMNNode
  
-				This function collects the type of node objects for MN
+ This function collects the type of node objects for MN
 
-\return			CNode
-*/
+ \return	CNode
+ */
 /*****************************************************************************/
 
 CNode CNodeCollection::getMNNode()
@@ -320,16 +303,15 @@ CNode CNodeCollection::getMNNode()
 	return objNode;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getNodebyCollectionIndex
+ \brief			getNodebyCollectionIndex
  
-				This function returns node from the node collection index
+ This function returns node from the node collection index
 
-\param			iColIndex
-\return			CNode
-*/
+ \param			iColIndex
+ \return	CNode
+ */
 /*****************************************************************************/
 
 CNode CNodeCollection::getNodebyCollectionIndex(INT32 iColIndex)
@@ -337,34 +319,30 @@ CNode CNodeCollection::getNodebyCollectionIndex(INT32 iColIndex)
 	return collectionObj[iColIndex];
 }
 
-
-
 /*****************************************************************************/
 /**
-\brief			getNodebyColIndex
+ \brief			getNodebyColIndex
  
-				This function collects the node with reference to the index location 
+ This function collects the node with reference to the index location 
 
-\param			iColIndex
-\return			CNode*
-*/
+ \param			iColIndex
+ \return	CNode*
+ */
 /*****************************************************************************/
-
 
 CNode* CNodeCollection::getNodebyColIndex(INT32 iColIndex)
 {
 	return &collectionObj[iColIndex];
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getCNNodesCount
+ \brief			getCNNodesCount
  
-				This function collects the CN node count 
+ This function collects the CN node count 
 
-\return			INT32
-*/
+ \return	INT32
+ */
 /*****************************************************************************/
 
 INT32 CNodeCollection::getCNNodesCount()

@@ -1,55 +1,55 @@
 /**
-************************************************************************************************
-\file			ObjectDictionary.cpp
+ ************************************************************************************************
+ \file			ObjectDictionary.cpp
 
-\brief			
-************************************************************************************************
-*/
+ \brief			
+ ************************************************************************************************
+ */
 
 /*
-(c) Kalycito Infotech Private Limited
+ (c) Kalycito Infotech Private Limited
 
-  License:
+ License:
 
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions
-    are met:
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
 
-    1. Redistributions of source code must retain the above copyright
-       notice, this list of conditions and the following disclaimer.
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
 
-    2. Redistributions in binary form must reproduce the above copyright
-       notice, this list of conditions and the following disclaimer in the
-       documentation and/or other materials provided with the distribution.
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
 
-    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
-       its contributors may be used to endorse or promote products derived
-       from this software without prior written permission. For written
-       permission, please contact info@kalycito.com.
+ 3. Neither the name of Kalycito Infotech Private Limited nor the names of 
+ its contributors may be used to endorse or promote products derived
+ from this software without prior written permission. For written
+ permission, please contact info@kalycito.com.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
 
-    Severability Clause:
+ Severability Clause:
 
-        If a provision of this License is or becomes illegal, invalid or
-        unenforceable in any jurisdiction, that shall not affect:
-        1. the validity or enforceability in that jurisdiction of any other
-           provision of this License; or
-        2. the validity or enforceability in other jurisdictions of that or
-           any other provision of this License.
+ If a provision of this License is or becomes illegal, invalid or
+ unenforceable in any jurisdiction, that shall not affect:
+ 1. the validity or enforceability in that jurisdiction of any other
+ provision of this License; or
+ 2. the validity or enforceability in other jurisdictions of that or
+ any other provision of this License.
 
-****************************************************************************/
+ ****************************************************************************/
 
 /****************************************************************************************************/
 /* Includes */
@@ -61,7 +61,6 @@
 
 using namespace std;
 
-
 /****************************************************************************************************/
 /* Global Variables */
 
@@ -70,22 +69,17 @@ bool CObjectDictionary::instanceFlag = false;
 CObjectDictionary* CObjectDictionary::objectDictionary = NULL;
 CNode* CObjectDictionary::objDictNode = NULL;
 
+//==========================================================================//
+// 				F U N C T I O N  D E F I N I T I O N S  					//
+//==========================================================================//
 
-
-				//==========================================================================//
-				// 				F U N C T I O N  D E F I N I T I O N S  					//
-				//==========================================================================//
-
-				
-
-				
 /*************************************************************************/
 /* Constructor */
 
 /**
-        
-    @param void
-*/
+ 
+ @param void
+ */
 
 CObjectDictionary::CObjectDictionary(void)
 {
@@ -102,24 +96,23 @@ CObjectDictionary::CObjectDictionary(void)
 /* Destructor */
 
 /**
-        
-    @param void
-*/
+ 
+ @param void
+ */
 
 CObjectDictionary::~CObjectDictionary(void)
 {
 	//Add destructor code here
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getObjDictPtr
+ \brief			getObjDictPtr
  
-				This function returns object dictionary based on the value of instance flag 
+ This function returns object dictionary based on the value of instance flag 
 
-\return			CObjectDictionary*
-*/
+ \return		CObjectDictionary*
+ */
 /*****************************************************************************/
 
 CObjectDictionary* CObjectDictionary::getObjDictPtr()
@@ -132,16 +125,15 @@ CObjectDictionary* CObjectDictionary::getObjDictPtr()
 	return objectDictionary;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			ProcessObjectDictionary
+ \brief			ProcessObjectDictionary
  
-				Process the Node value,Name and its attributes
-				
-\param			reader
-\return			void
-*/
+ Process the Node value,Name and its attributes
+ 
+ \param			reader
+ \return		void
+ */
 /*****************************************************************************/
 
 void CObjectDictionary::ProcessObjectDictionary(xmlTextReaderPtr reader)
@@ -279,13 +271,13 @@ void CObjectDictionary::ProcessObjectDictionary(xmlTextReaderPtr reader)
 
 /*****************************************************************************/
 /**
-\brief			addSameAttributesObjects
+ \brief			addSameAttributesObjects
  
-				add the SubIndex in the Index Object
-				
-\param			stAttrIdx
-\return			void
-*/
+ add the SubIndex in the Index Object
+ 
+ \param			stAttrIdx
+ \return		void
+ */
 /*****************************************************************************/
 
 void CObjectDictionary::addSameAttributesObjects(s_attrIdx_SIdx stAttrIdx)
@@ -296,18 +288,17 @@ void CObjectDictionary::addSameAttributesObjects(s_attrIdx_SIdx stAttrIdx)
 	m_s_attrIdx_SIdx = collectionObj.Count();
 }
 
- 
 /*****************************************************************************/
 /**
-\brief			createSameattrObject
+ \brief			createSameattrObject
  
-				This function creats object dictionary
-				
-\param			pbValue
-\param			enumObjType
-\param			pbIdx
-\return			void
-*/
+ This function creats object dictionary
+ 
+ \param			pbValue
+ \param			enumObjType
+ \param			pbIdx
+ \return		void
+ */
 /*****************************************************************************/
 
 void CObjectDictionary::createSameattrObject(char* pbValue,
@@ -349,16 +340,15 @@ void CObjectDictionary::createSameattrObject(char* pbValue,
 	delete[] pbSubIdx;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getObjectDictIndex
+ \brief			getObjectDictIndex
  
-				This function returns index value of the object dictionary
-				
-\param			pbIdx
-\return			CIndex*
-*/
+ This function returns index value of the object dictionary
+ 
+ \param			pbIdx
+ \return		CIndex*
+ */
 /*****************************************************************************/
 
 CIndex* CObjectDictionary::getObjectDictIndex(char* pbIdx)
@@ -399,14 +389,14 @@ CIndex* CObjectDictionary::getObjectDictIndex(char* pbIdx)
 
 /*****************************************************************************/
 /**
-\brief			getObjectDictSubIndex
+ \brief			getObjectDictSubIndex
  
-				This function returns the object dictonary for sub index
-				
-\param			pbIdx
-\param			pbSIdx
-\return			CIndex*
-*/
+ This function returns the object dictonary for sub index
+ 
+ \param			pbIdx
+ \param			pbSIdx
+ \return		CIndex*
+ */
 /*****************************************************************************/
 
 CSubIndex* CObjectDictionary::getObjectDictSubIndex(char* pbIdx, char* pbSIdx)
@@ -465,20 +455,19 @@ CSubIndex* CObjectDictionary::getObjectDictSubIndex(char* pbIdx, char* pbSIdx)
 	}
 }
 
- 
 /*****************************************************************************/
 /**
-\brief			checkInTheRange
+ \brief			checkInTheRange
  
-				This function returns the range of the object dictionary ids
-				
-\param			pbIdx
-\param			pbStartIdx
-\param			pbEndIdx
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
-*/
+ This function returns the range of the object dictionary ids
+ 
+ \param			pbIdx
+ \param			pbStartIdx
+ \param			pbEndIdx
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending	
+ */
 /*****************************************************************************/
 
 bool CObjectDictionary::checkInTheRange(char* pbIdx, char* pbStartIdx,
@@ -495,15 +484,14 @@ bool CObjectDictionary::checkInTheRange(char* pbIdx, char* pbStartIdx,
 	}
 }
 
-
 /*****************************************************************************/
 /**
-\brief			printall
+ \brief			printall
  
-				This function collects the object ids,start index and end index
-				
-\return			void
-*/
+ This function collects the object ids,start index and end index
+ 
+ \return		void
+ */
 /*****************************************************************************/
 //TODO: Unused function
 void CObjectDictionary::printall()
@@ -515,16 +503,15 @@ void CObjectDictionary::printall()
 	}
 }
 
-
 /*****************************************************************************/
 /**
-\brief			ifObjectDictIndexExists
+ \brief			ifObjectDictIndexExists
  
-				This function returns the obj dictionary value from the collection list based on the index value
-				
-\param			pbIdx				
-\return			INT32
-*/
+ This function returns the obj dictionary value from the collection list based on the index value
+ 
+ \param			pbIdx				
+ \return		INT32
+ */
 /*****************************************************************************/
 //TODO: Unused function
 INT32 CObjectDictionary::ifObjectDictIndexExists(char* pbIdx)
@@ -545,17 +532,16 @@ INT32 CObjectDictionary::ifObjectDictIndexExists(char* pbIdx)
 	}
 }
 
-
 /*****************************************************************************/
 /**
-\brief			ifObjectDictSubIndexExists
+ \brief			ifObjectDictSubIndexExists
  
-				This function returns the obj dictionary value from the collection list based on the subindex value
-				
-\param			pbIdx
-\param			pbSIdx				
-\return			INT32
-*/
+ This function returns the obj dictionary value from the collection list based on the subindex value
+ 
+ \param			pbIdx
+ \param			pbSIdx				
+ \return		INT32
+ */
 /*****************************************************************************/
 //TODO: Unused function
 INT32 CObjectDictionary::ifObjectDictSubIndexExists(char* pbIdx, char* pbSIdx)
@@ -586,14 +572,14 @@ INT32 CObjectDictionary::ifObjectDictSubIndexExists(char* pbIdx, char* pbSIdx)
 
 /*****************************************************************************/
 /**
-\brief			getIndexName
+ \brief			getIndexName
  
-				This function returns the index name
-				
-\param			pbObjectIndex
-\param			pbObjectName				
-\return			char*
-*/
+ This function returns the index name
+ 
+ \param			pbObjectIndex
+ \param			pbObjectName				
+ \return		char*
+ */
 /*****************************************************************************/
 
 char* CObjectDictionary::getIndexName(char* pbObjectIndex, char* pbObjectName)

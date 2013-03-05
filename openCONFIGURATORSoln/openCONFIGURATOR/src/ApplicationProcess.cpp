@@ -1,57 +1,55 @@
-
 /**
-************************************************************************************************
-\file			ApplicationProcess.cpp
+ ************************************************************************************************
+ \file			ApplicationProcess.cpp
 
-\brief			 
-************************************************************************************************
+ \brief			 
+ ************************************************************************************************
 
-*/
+ */
 /*
-(c) Kalycito Infotech Private Limited
+ (c) Kalycito Infotech Private Limited
 
-  License:
+ License:
 
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions
-    are met:
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
 
-    1. Redistributions of source code must retain the above copyright
-       notice, this list of conditions and the following disclaimer.
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
 
-    2. Redistributions in binary form must reproduce the above copyright
-       notice, this list of conditions and the following disclaimer in the
-       documentation and/or other materials provided with the distribution.
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
 
-    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
-       its contributors may be used to endorse or promote products derived
-       from this software without prior written permission. For written
-       permission, please contact info@kalycito.com.
+ 3. Neither the name of Kalycito Infotech Private Limited nor the names of 
+ its contributors may be used to endorse or promote products derived
+ from this software without prior written permission. For written
+ permission, please contact info@kalycito.com.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
 
-    Severability Clause:
+ Severability Clause:
 
-        If a provision of this License is or becomes illegal, invalid or
-        unenforceable in any jurisdiction, that shall not affect:
-        1. the validity or enforceability in that jurisdiction of any other
-           provision of this License; or
-        2. the validity or enforceability in other jurisdictions of that or
-           any other provision of this License.
+ If a provision of this License is or becomes illegal, invalid or
+ unenforceable in any jurisdiction, that shall not affect:
+ 1. the validity or enforceability in that jurisdiction of any other
+ provision of this License; or
+ 2. the validity or enforceability in other jurisdictions of that or
+ any other provision of this License.
 
-****************************************************************************/
-
+ ****************************************************************************/
 
 /****************************************************************************************************/
 /* Includes */
@@ -60,19 +58,17 @@
 #include <fstream>
 #include "../Include/ApplicationProcess.h"
 
-
-		//==========================================================================//
-		// 				F U N C T I O N  D E F I N I T I O N S  					//
-		//==========================================================================//
-
+//==========================================================================//
+// 				F U N C T I O N  D E F I N I T I O N S  					//
+//==========================================================================//
 
 /*************************************************************************/
 /* Constructor */
 
 /**
-        
-    @param void
-*/
+ 
+ @param void
+ */
 
 CApplicationProcess::CApplicationProcess(void)
 {
@@ -85,25 +81,24 @@ CApplicationProcess::CApplicationProcess(void)
 /* Destructor */
 
 /**
-        
-    @param void
-*/
+ 
+ @param void
+ */
 
 CApplicationProcess::~CApplicationProcess(void)
 {
 	//Add destructor code here
 }
 
-
 /*****************************************************************************/
 /**
-\brief			checkFileStatus
+ \brief			checkFileStatus
  
-				This Function checks the status of the file
-			
-\param			pbFilename			
-\return			INT32
-*/
+ This Function checks the status of the file
+ 
+ \param			pbFilename			
+ \return	INT32
+ */
 /*****************************************************************************/
 
 INT32 CApplicationProcess::checkFileStatus(char* pbFilename)
@@ -122,13 +117,13 @@ INT32 CApplicationProcess::checkFileStatus(char* pbFilename)
 
 /*****************************************************************************/
 /**
-\brief			addComplexDataType
+ \brief			addComplexDataType
  
-				This Function adds complex data type colletion
-			
-\param			objComplexData			
-\return			void
-*/
+ This Function adds complex data type colletion
+ 
+ \param			objComplexData			
+ \return	void
+ */
 /*****************************************************************************/
 
 void CApplicationProcess::addComplexDataType(CComplexDataType objComplexData)
@@ -141,28 +136,28 @@ void CApplicationProcess::addComplexDataType(CComplexDataType objComplexData)
 
 /*****************************************************************************/
 /**
-\brief			DeleteComplexDataTypeCollection
+ \brief			DeleteComplexDataTypeCollection
  
-				This Function deletes complex data type collection
-			
-\return			void
-*/
+ This Function deletes complex data type collection
+ 
+ \return	void
+ */
 /*****************************************************************************/
 
 void CApplicationProcess::DeleteComplexDataTypeCollection()
 {
 	CDTCollection.Clear();
 }
- 
+
 /*****************************************************************************/
 /**
-\brief			addParameter
+ \brief			addParameter
  
-				This function adds parameter to collection list
-			
-\param			stParam			
-\return			void
-*/
+ This function adds parameter to collection list
+ 
+ \param			stParam			
+ \return	void
+ */
 /*****************************************************************************/
 
 void CApplicationProcess::addParameter(Parameter stParam)
@@ -172,31 +167,31 @@ void CApplicationProcess::addParameter(Parameter stParam)
 	stParam.ParaIndex = iItemPosition;
 	ParameterCollection[iItemPosition] = stParam;
 }
- 
+
 /*****************************************************************************/
 /**
-\brief			Deleteparametercollection
+ \brief			Deleteparametercollection
  
-				This function clears the parameter collection list
-			
-\return			void
-*/
+ This function clears the parameter collection list
+ 
+ \return	void
+ */
 /*****************************************************************************/
 
 void CApplicationProcess::DeleteParameterCollection()
 {
 	ParameterCollection.Clear();
 }
- 
+
 /*****************************************************************************/
 /**
-\brief			get_ParameterIndexby_UniqueIDRef
+ \brief			get_ParameterIndexby_UniqueIDRef
  
-				This function returns parameter index with reference to IDs
+ This function returns parameter index with reference to IDs
 
-\param			pbUniqueIdRef			
-\return			INT32
-*/
+ \param			pbUniqueIdRef			
+ \return	INT32
+ */
 /*****************************************************************************/
 
 INT32 CApplicationProcess::get_ParameterIndexby_UniqueIDRef(char *pbUniqueIdRef)
@@ -214,16 +209,15 @@ INT32 CApplicationProcess::get_ParameterIndexby_UniqueIDRef(char *pbUniqueIdRef)
 	return 0;
 }
 
- 
 /*****************************************************************************/
 /**
-\brief			get_Parameterby_UniqueIDRef
+ \brief			get_Parameterby_UniqueIDRef
  
-				This function returns parameter with reference to IDs
+ This function returns parameter with reference to IDs
 
-\param			pbUniqueIdRef			
-\return			Parameter*
-*/
+ \param			pbUniqueIdRef			
+ \return	Parameter*
+ */
 /*****************************************************************************/
 
 Parameter* CApplicationProcess::get_Parameterby_UniqueIDRef(char *pbUniqueIdRef)
@@ -242,16 +236,15 @@ Parameter* CApplicationProcess::get_Parameterby_UniqueIDRef(char *pbUniqueIdRef)
 	return NULL;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			get_CDT_UniqueIDRef
+ \brief			get_CDT_UniqueIDRef
  
-				This function returns unique reference ids from the collection list
+ This function returns unique reference ids from the collection list
 
-\param			pbUniqueIdRef			
-\return			INT32
-*/
+ \param			pbUniqueIdRef			
+ \return	INT32
+ */
 /*****************************************************************************/
 
 INT32 CApplicationProcess::get_CDT_UniqueIDRef(char *pbUniqueIdRef)
@@ -271,13 +264,13 @@ INT32 CApplicationProcess::get_CDT_UniqueIDRef(char *pbUniqueIdRef)
 
 /*****************************************************************************/
 /**
-\brief			getCDTbyUniqueID
+ \brief			getCDTbyUniqueID
  
-				This function returns CDT values based on unique reference ids from the collection list
+ This function returns CDT values based on unique reference ids from the collection list
 
-\param			pbUniqueId			
-\return			CComplexDataType*
-*/
+ \param			pbUniqueId			
+ \return	CComplexDataType*
+ */
 /*****************************************************************************/
 
 CComplexDataType* CApplicationProcess::getCDTbyUniqueID(char *pbUniqueId)
@@ -297,13 +290,13 @@ CComplexDataType* CApplicationProcess::getCDTbyUniqueID(char *pbUniqueId)
 
 /*****************************************************************************/
 /**
-\brief			getCDTbydt_UniqueRefID
+ \brief			getCDTbydt_UniqueRefID
  
-				This function returns data type of CDT based on unique reference ids from the collection list
+ This function returns data type of CDT based on unique reference ids from the collection list
 
-\param			pbUniqueRefId			
-\return			CComplexDataType*
-*/
+ \param			pbUniqueRefId			
+ \return	CComplexDataType*
+ */
 /*****************************************************************************/
 
 CComplexDataType* CApplicationProcess::getCDTbydt_UniqueRefID(
@@ -329,13 +322,13 @@ CComplexDataType* CApplicationProcess::getCDTbydt_UniqueRefID(
 
 /*****************************************************************************/
 /**
-\brief			getCDTbydtIndex
+ \brief			getCDTbydtIndex
  
-				This function returns CDT index values
+ This function returns CDT index values
 
-\param			iIndex			
-\return			CComplexDataType*
-*/
+ \param			iIndex			
+ \return	CComplexDataType*
+ */
 /*****************************************************************************/
 
 CComplexDataType* CApplicationProcess::getCDTbydtIndex(INT32 iIndex)
@@ -345,14 +338,14 @@ CComplexDataType* CApplicationProcess::getCDTbydtIndex(INT32 iIndex)
 
 /*****************************************************************************/
 /**
-\brief			updatePreviousCDT_UId
+ \brief			updatePreviousCDT_UId
  
-				This function updates CDT collection list 
+ This function updates CDT collection list 
 
-\param			pbUniqueID
-\param			iIndex			
-\return			void
-*/
+ \param			pbUniqueID
+ \param			iIndex			
+ \return	void
+ */
 /*****************************************************************************/
 
 void CApplicationProcess::updatePreviousCDT_UId(char* pbUniqueID, INT32 iIndex)
@@ -366,13 +359,13 @@ void CApplicationProcess::updatePreviousCDT_UId(char* pbUniqueID, INT32 iIndex)
 
 /*****************************************************************************/
 /**
-\brief			get_UniqueIDRef_by_ParameterIndex
+ \brief			get_UniqueIDRef_by_ParameterIndex
  
-				This function returns parameter index
+ This function returns parameter index
 
-\param			iParameterIndex
-\return			Parameter
-*/
+ \param			iParameterIndex
+ \return	Parameter
+ */
 /*****************************************************************************/
 
 Parameter CApplicationProcess::get_UniqueIDRef_by_ParameterIndex(
@@ -387,12 +380,12 @@ Parameter CApplicationProcess::get_UniqueIDRef_by_ParameterIndex(
 
 /*****************************************************************************/
 /**
-\brief			getCDTCount
+ \brief			getCDTCount
  
-				This function returns CDT collection count
+ This function returns CDT collection count
 
-\return			INT32
-*/
+ \return	INT32
+ */
 /*****************************************************************************/
 
 INT32 CApplicationProcess::getCDTCount()
@@ -400,15 +393,14 @@ INT32 CApplicationProcess::getCDTCount()
 	return CDTCollection.Count();
 }
 
-
 /*****************************************************************************/
 /**
-\brief			getCDTbyCount
+ \brief			getCDTbyCount
  
-				This function returns CDT index collection value 
+ This function returns CDT index collection value 
 
-\return			CComplexDataType*
-*/
+ \return	CComplexDataType*
+ */
 /*****************************************************************************/
 
 CComplexDataType* CApplicationProcess::getCDTbyCount(INT32 iIndex)

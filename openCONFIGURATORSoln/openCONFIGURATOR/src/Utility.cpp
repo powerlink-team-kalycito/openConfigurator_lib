@@ -1,55 +1,55 @@
 /**
-************************************************************************************************
-\file			Utility.cpp
+ ************************************************************************************************
+ \file			Utility.cpp
 
-\brief			
-************************************************************************************************
-*/
+ \brief			
+ ************************************************************************************************
+ */
 
 /*
-(c) Kalycito Infotech Private Limited
+ (c) Kalycito Infotech Private Limited
 
-  License:
+ License:
 
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions
-    are met:
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
 
-    1. Redistributions of source code must retain the above copyright
-       notice, this list of conditions and the following disclaimer.
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
 
-    2. Redistributions in binary form must reproduce the above copyright
-       notice, this list of conditions and the following disclaimer in the
-       documentation and/or other materials provided with the distribution.
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
 
-    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
-       its contributors may be used to endorse or promote products derived
-       from this software without prior written permission. For written
-       permission, please contact info@kalycito.com.
+ 3. Neither the name of Kalycito Infotech Private Limited nor the names of 
+ its contributors may be used to endorse or promote products derived
+ from this software without prior written permission. For written
+ permission, please contact info@kalycito.com.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
 
-    Severability Clause:
+ Severability Clause:
 
-        If a provision of this License is or becomes illegal, invalid or
-        unenforceable in any jurisdiction, that shall not affect:
-        1. the validity or enforceability in that jurisdiction of any other
-           provision of this License; or
-        2. the validity or enforceability in other jurisdictions of that or
-           any other provision of this License.
+ If a provision of this License is or becomes illegal, invalid or
+ unenforceable in any jurisdiction, that shall not affect:
+ 1. the validity or enforceability in that jurisdiction of any other
+ provision of this License; or
+ 2. the validity or enforceability in other jurisdictions of that or
+ any other provision of this License.
 
-****************************************************************************/
+ ****************************************************************************/
 
 /****************************************************************************************************/
 /* Includes */
@@ -63,22 +63,19 @@
 
 using namespace std;
 
-
-				//==========================================================================//
-				// 				F U N C T I O N  D E F I N I T I O N S  					//
-				//==========================================================================//
-
-				
+//==========================================================================//
+// 				F U N C T I O N  D E F I N I T I O N S  					//
+//==========================================================================//
 
 /*****************************************************************************/
 /**
-\brief			ConvertToUpper
+ \brief			ConvertToUpper
  
-				This function converts received string to upper case
-				
-\param			pbStrBuffer
-\return			char*
-*/
+ This function converts received string to upper case
+ 
+ \param			pbStrBuffer
+ \return		char*
+ */
 /*****************************************************************************/
 
 char* ConvertToUpper(char* pbStrBuffer)
@@ -99,16 +96,15 @@ char* ConvertToUpper(char* pbStrBuffer)
 	return pbStrBuffer;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			StringToUpper
+ \brief			StringToUpper
  
-				This function checks string length,allocate buffer and covert the string to upper case
-				
-\param			pbStrBuffer
-\return			char*
-*/
+ This function checks string length,allocate buffer and covert the string to upper case
+ 
+ \param			pbStrBuffer
+ \return		char*
+ */
 /*****************************************************************************/
 
 //TODO: To add a parameter for destination to avoid new delete memory leak.
@@ -135,16 +131,15 @@ char* StringToUpper(char* pbStrBuffer)
 	return pbStrUpp;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			reverse
+ \brief			reverse
  
-				This function reverses the received string
-				
-\param			pbStrBuffer
-\return			char*
-*/
+ This function reverses the received string
+ 
+ \param			pbStrBuffer
+ \return		char*
+ */
 /*****************************************************************************/
 
 char* reverse(char* pbStrBuffer)
@@ -169,20 +164,18 @@ char* reverse(char* pbStrBuffer)
 	return pbStrBuffer;
 }
 
- 
 /*****************************************************************************/
 /**
-\brief			padLeft
+ \brief			padLeft
  
-				This function pads left of the string with 0's
-				
-\param			pbStrBuffer
-\param			cPadChar
-\param			iPadLength
-\return			char*
-*/
+ This function pads left of the string with 0's
+ 
+ \param			pbStrBuffer
+ \param			cPadChar
+ \param			iPadLength
+ \return		char*
+ */
 /*****************************************************************************/
-
 
 char* padLeft(char* pbStrBuffer, char cPadChar, INT32 iPadLength)
 {
@@ -214,18 +207,17 @@ char* padLeft(char* pbStrBuffer, char cPadChar, INT32 iPadLength)
 	return pbStrBuffer;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			subString
+ \brief			subString
  
-				This function returns substring
-				
-\param			pbStrBuffer
-\param			iStartPos
-\param			iStringLen
-\return			char*
-*/
+ This function returns substring
+ 
+ \param			pbStrBuffer
+ \param			iStartPos
+ \param			iStringLen
+ \return		char*
+ */
 /*****************************************************************************/
 
 //TODO: Another parameter to be added for substring to avoid new delete memory issues.
@@ -247,18 +239,17 @@ char* subString(char* pbStrBuffer, INT32 iStartPos, INT32 iStringLen)
 	return pbSubStrBuffer;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			utoa
+ \brief			utoa
  
-				This function converts unsigned values to alphanumeric values
-				
-\param			uValue
-\param			pbDigits
-\param			iBaseValue
-\return			char * / NULL
-*/
+ This function converts unsigned values to alphanumeric values
+ 
+ \param			uValue
+ \param			pbDigits
+ \param			iBaseValue
+ \return		char * / NULL
+ */
 /*****************************************************************************/
 
 char *utoa(unsigned uValue, char *pbDigits, INT32 iBaseValue)
@@ -295,15 +286,15 @@ char *utoa(unsigned uValue, char *pbDigits, INT32 iBaseValue)
 
 /*****************************************************************************/
 /**
-\brief			_IntToAscii
+ \brief			_IntToAscii
  
-				This function converts INT values to ASCII value
-				
-\param			iValue
-\param			pbDigits
-\param			iBaseValue
-\return			char *
-*/
+ This function converts INT values to ASCII value
+ 
+ \param			iValue
+ \param			pbDigits
+ \param			iBaseValue
+ \return		char *
+ */
 /*****************************************************************************/
 
 char* _IntToAscii(LONG iValue, char *pbDigits, INT32 iBaseValue)
@@ -339,16 +330,15 @@ char* _IntToAscii(LONG iValue, char *pbDigits, INT32 iBaseValue)
 	return pbDigits;
 }
 
- 
 /*****************************************************************************/
 /**
-\brief			hex2int
+ \brief			hex2int
  
-				This function converts hex values to int values
-				
-\param			pbStrBuffer
-\return			Unsigned long int
-*/
+ This function converts hex values to int values
+ 
+ \param			pbStrBuffer
+ \return		Unsigned long int
+ */
 /*****************************************************************************/
 
 ULONG hex2int(char *pbStrBuffer)
@@ -379,15 +369,15 @@ ULONG hex2int(char *pbStrBuffer)
 
 /*****************************************************************************/
 /**
-\brief			IsAscii
+ \brief			IsAscii
  
-				This function checks whether the given character is ascii
-				
-\param			cArg
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
-*/
+ This function checks whether the given character is ascii
+ 
+ \param			cArg
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending	
+ */
 /*****************************************************************************/
 
 bool IsAscii(char cArg)
@@ -408,15 +398,15 @@ bool IsAscii(char cArg)
 
 /*****************************************************************************/
 /**
-\brief			CheckIfNotPDO
+ \brief			CheckIfNotPDO
  
-				This function checks whether the given index value is PDO or not
-				
-\param			pbIndex
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
-*/
+ This function checks whether the given index value is PDO or not
+ 
+ \param			pbIndex
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending	
+ */
 /*****************************************************************************/
 
 bool CheckIfNotPDO(char* pbIndex)
@@ -433,18 +423,17 @@ bool CheckIfNotPDO(char* pbIndex)
 	}
 }
 
-
 /*****************************************************************************/
 /**
-\brief			CheckIfManufactureSpecificObject
+ \brief			CheckIfManufactureSpecificObject
  
-				This function checks whether the device index is manufacturer spcific or not
-				
-\param			pbIndex
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
-*/
+ This function checks whether the device index is manufacturer spcific or not
+ 
+ \param			pbIndex
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending	
+ */
 /*****************************************************************************/
 
 bool CheckIfManufactureSpecificObject(char* pbIndex)
@@ -462,18 +451,17 @@ bool CheckIfManufactureSpecificObject(char* pbIndex)
 	}
 }
 
-
 /*****************************************************************************/
 /**
-\brief			CheckIfMappingPDO
+ \brief			CheckIfMappingPDO
  
-				This function checks index for PDO mapping
-				
-\param			pbIndex
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
-*/
+ This function checks index for PDO mapping
+ 
+ \param			pbIndex
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending	
+ */
 /*****************************************************************************/
 
 bool CheckIfMappingPDO(char* pbIndex)
@@ -488,20 +476,19 @@ bool CheckIfMappingPDO(char* pbIndex)
 	}
 }
 
-
 /*****************************************************************************/
 /**
-\brief			CheckAllowedCNIndexes
+ \brief			CheckAllowedCNIndexes
  
-				This function checks whether received CN index falls in the allowed CN indexs
-				
-\param			pbIndexValue
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
-*/
+ This function checks whether received CN index falls in the allowed CN indexs
+ 
+ \param			pbIndexValue
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending	
+ */
 /*****************************************************************************/
- 
+
 //TODO: Function is not used.
 bool CheckAllowedCNIndexes(char* pbIndexValue)
 {
@@ -523,15 +510,15 @@ bool CheckAllowedCNIndexes(char* pbIndexValue)
 
 /*****************************************************************************/
 /**
-\brief			CheckBlockedMNIndexes
+ \brief			CheckBlockedMNIndexes
  
-				This function checks whether received MN index is blocked or not
-				
-\param			pbIndexValue
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending	
-*/
+ This function checks whether received MN index is blocked or not
+ 
+ \param			pbIndexValue
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending	
+ */
 /*****************************************************************************/
 
 //TODO: function is not used.
@@ -549,13 +536,13 @@ bool CheckBlockedMNIndexes(char* pbIndexValue)
 
 /*****************************************************************************/
 /**
-\brief			ConvertStringToHex
+ \brief			ConvertStringToHex
  
-				Converts the string to hexadecimal for strings of string Datatype
-				
-\param			actString
-\return			char*			
-*/
+ Converts the string to hexadecimal for strings of string Datatype
+ 
+ \param			actString
+ \return		char*			
+ */
 /*****************************************************************************/
 
 char* ConvertStringToHex(char* actString)
@@ -594,18 +581,17 @@ char* ConvertStringToHex(char* actString)
 	return actString;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			ConvertToHexformat
+ \brief			ConvertToHexformat
  
-				This function converts to hex value
-				
-\param			pbHexValue
-\param			iPadLength
-\param			bDoPadding
-\return			char*			
-*/
+ This function converts to hex value
+ 
+ \param			pbHexValue
+ \param			iPadLength
+ \param			bDoPadding
+ \return		char*			
+ */
 /*****************************************************************************/
 
 char* ConvertToHexformat(char* pbHexValue, INT32 iPadLength, bool bDoPadding)
@@ -627,15 +613,15 @@ char* ConvertToHexformat(char* pbHexValue, INT32 iPadLength, bool bDoPadding)
 
 /*****************************************************************************/
 /**
-\brief			CheckIfHex
+ \brief			CheckIfHex
  
-				This function checks whether hex or not
-				
-\param			pbValue
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending			
-*/
+ This function checks whether hex or not
+ 
+ \param			pbValue
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending			
+ */
 /*****************************************************************************/
 
 bool CheckIfHex(char* pbValue)
@@ -660,12 +646,12 @@ bool CheckIfHex(char* pbValue)
 
 /*****************************************************************************/
 /**
-\brief			getConfigDate
+ \brief			getConfigDate
  
-				This function returns configuration date
-				
-\return			INT32						
-*/
+ This function returns configuration date
+ 
+ \return		INT32						
+ */
 /*****************************************************************************/
 
 INT32 getConfigDate()
@@ -709,12 +695,12 @@ INT32 getConfigDate()
 
 /*****************************************************************************/
 /**
-\brief			getConfigTime
+ \brief			getConfigTime
  
-				This function returns configuration time
-				
-\return			INT32						
-*/
+ This function returns configuration time
+ 
+ \return		INT32						
+ */
 /*****************************************************************************/
 
 INT32 getConfigTime()
@@ -733,18 +719,17 @@ INT32 getConfigTime()
 	return iMSeconds;
 }
 
- 
 /*****************************************************************************/
 /**
-\brief			reversedata
+ \brief			reversedata
  
-				This function reverses the data
-				
-\param			pbArg1
-\param			pbArg2
-\param			uiSize			
-\return			INT32						
-*/
+ This function reverses the data
+ 
+ \param			pbArg1
+ \param			pbArg2
+ \param			uiSize			
+ \return		INT32						
+ */
 /*****************************************************************************/
 
 //TODO: function is not used.
@@ -767,15 +752,15 @@ INT32 reversedata(UINT8 *pbArg1, UINT8 *pbArg2, UINT32 uiSize)
 
 /*****************************************************************************/
 /**
-\brief			CheckAllowedDTForMapping
+ \brief			CheckAllowedDTForMapping
  
-				This function checks for the datatype allowed for mapping
-				
-\param			dtName
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending						
-*/
+ This function checks for the datatype allowed for mapping
+ 
+ \param			dtName
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending						
+ */
 /*****************************************************************************/
 
 bool CheckAllowedDTForMapping(char* dtName)
@@ -796,15 +781,14 @@ bool CheckAllowedDTForMapping(char* dtName)
 	}
 }
 
- 
 /*****************************************************************************/
 /**
-\brief			getLastAvailableCycleNumber
+ \brief			getLastAvailableCycleNumber
  
-				This function returns last available cycle number
-				
-\return			char*
-*/
+ This function returns last available cycle number
+ 
+ \return		char*
+ */
 /*****************************************************************************/
 
 //TODO: Add a parameter to return the value to avoid new delete memory issues
@@ -866,13 +850,13 @@ char* getLastAvailableCycleNumber()
 
 /*****************************************************************************/
 /**
-\brief			checkAndCorrectName
+ \brief			checkAndCorrectName
  
-				This function corrects the name by adding '_'
-				
-\param			checkName				
-\return			void
-*/
+ This function corrects the name by adding '_'
+ 
+ \param			checkName				
+ \return		void
+ */
 /*****************************************************************************/
 
 void checkAndCorrectName(char* checkName)
@@ -899,18 +883,17 @@ void checkAndCorrectName(char* checkName)
 	}
 }
 
-
 /*****************************************************************************/
 /**
-\brief			checkIfValueZero
+ \brief			checkIfValueZero
  
-				This function checks for zero value
-				
-\param			pcValue				
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending
-*/
+ This function checks for zero value
+ 
+ \param			pcValue				
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending
+ */
 /*****************************************************************************/
 
 bool checkIfValueZero(char* pcValue)
@@ -942,13 +925,13 @@ bool checkIfValueZero(char* pcValue)
 
 /*****************************************************************************/
 /**
-\brief			GetDecimalValue
+ \brief			GetDecimalValue
  
-				This function returns decimal value
-				
-\param			pcValue				
-\return			INT32			
-*/
+ This function returns decimal value
+ 
+ \param			pcValue				
+ \return		INT32			
+ */
 /*****************************************************************************/
 
 INT32 GetDecimalValue(char* pcValue)
@@ -973,15 +956,15 @@ INT32 GetDecimalValue(char* pcValue)
 
 /*****************************************************************************/
 /**
-\brief			CheckAccessTypeForInclude
+ \brief			CheckAccessTypeForInclude
  
-				This function checks for access type
-				
-\param			pcAccesstype				
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending
-*/
+ This function checks for access type
+ 
+ \param			pcAccesstype				
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending
+ */
 /*****************************************************************************/
 
 bool CheckAccessTypeForInclude(char* pcAccesstype)
@@ -1009,18 +992,17 @@ bool CheckAccessTypeForInclude(char* pcAccesstype)
 	return bInclude;
 }
 
- 
 /*****************************************************************************/
 /**
-\brief			CheckToolVersion
+ \brief			CheckToolVersion
  
-				This function checks for tool version
-				
-\param			pcCurrentToolVersion				
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending
-*/
+ This function checks for tool version
+ 
+ \param			pcCurrentToolVersion				
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending
+ */
 /*****************************************************************************/
 
 bool CheckToolVersion(char* pcCurrentToolVersion)

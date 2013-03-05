@@ -1,54 +1,54 @@
 /**
-************************************************************************************************
-\file			XdcOperations.cpp
+ ************************************************************************************************
+ \file			XdcOperations.cpp
 
-\brief			
-************************************************************************************************
-*/
+ \brief			
+ ************************************************************************************************
+ */
 /*
-(c) Kalycito Infotech Private Limited
+ (c) Kalycito Infotech Private Limited
 
-  License:
+ License:
 
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions
-    are met:
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
 
-    1. Redistributions of source code must retain the above copyright
-       notice, this list of conditions and the following disclaimer.
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
 
-    2. Redistributions in binary form must reproduce the above copyright
-       notice, this list of conditions and the following disclaimer in the
-       documentation and/or other materials provided with the distribution.
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
 
-    3. Neither the name of Kalycito Infotech Private Limited nor the names of 
-       its contributors may be used to endorse or promote products derived
-       from this software without prior written permission. For written
-       permission, please contact info@kalycito.com.
+ 3. Neither the name of Kalycito Infotech Private Limited nor the names of 
+ its contributors may be used to endorse or promote products derived
+ from this software without prior written permission. For written
+ permission, please contact info@kalycito.com.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
 
-    Severability Clause:
+ Severability Clause:
 
-        If a provision of this License is or becomes illegal, invalid or
-        unenforceable in any jurisdiction, that shall not affect:
-        1. the validity or enforceability in that jurisdiction of any other
-           provision of this License; or
-        2. the validity or enforceability in other jurisdictions of that or
-           any other provision of this License.
+ If a provision of this License is or becomes illegal, invalid or
+ unenforceable in any jurisdiction, that shall not affect:
+ 1. the validity or enforceability in that jurisdiction of any other
+ provision of this License; or
+ 2. the validity or enforceability in other jurisdictions of that or
+ any other provision of this License.
 
-****************************************************************************/
+ ****************************************************************************/
 
 /****************************************************************************************************/
 /* Includes */
@@ -64,14 +64,13 @@
 #include "../Include/Exception.h"
 
 /****************************************************************************************************/
- /* Defines */
+/* Defines */
 
 #define MY_ENCODING "UTF-8"
 
-
 /****************************************************************************************************/
 /* Global Variables */
- 
+
 INT32 LastIndexParsed = 0;
 static const char *gpa2bSimple[][2] =
 {
@@ -95,24 +94,21 @@ static const char *gpa2bSimple[][2] =
 { "STRING", "1" },
 { "WSTRING", "1" } }; //array size in g_simple_arr_size
 
+//==========================================================================//
+// 				F U N C T I O N  D E F I N I T I O N S  					//
+//==========================================================================//
 
-
-				//==========================================================================//
-				// 				F U N C T I O N  D E F I N I T I O N S  					//
-				//==========================================================================//
-				
-				
 /*****************************************************************************/
 /**
-\brief			setIndexAttributes
+ \brief			setIndexAttributes
  
-				
-				
-\param			pxtrReader
-\param			pobjIndex
-\param			bhasPDO
-\return			void
-*/
+ 
+ 
+ \param			pxtrReader
+ \param			pobjIndex
+ \param			bhasPDO
+ \return		void
+ */
 /*****************************************************************************/
 
 void setIndexAttributes(xmlTextReaderPtr pxtrReader, CIndex *pobjIndex,
@@ -232,14 +228,14 @@ void setIndexAttributes(xmlTextReaderPtr pxtrReader, CIndex *pobjIndex,
 }
 /*****************************************************************************/
 /**
-\brief			setSubIndexAttributes
+ \brief			setSubIndexAttributes
  
-				
-				
-\param			pxtrReader
-\param			pobjSubIndex
-\return			void
-*/
+ 
+ 
+ \param			pxtrReader
+ \param			pobjSubIndex
+ \return		void
+ */
 /*****************************************************************************/
 void setSubIndexAttributes(xmlTextReaderPtr pxtrReader, CSubIndex *pobjSubIndex)
 {
@@ -326,16 +322,15 @@ void setSubIndexAttributes(xmlTextReaderPtr pxtrReader, CSubIndex *pobjSubIndex)
 
 /*****************************************************************************/
 /**
-\brief			setDataTypeAttributes
+ \brief			setDataTypeAttributes
  
-				
-				
-\param			pxtrReader
-\param			objDataType
-\return			void
-*/
+ 
+ 
+ \param			pxtrReader
+ \param			objDataType
+ \return		void
+ */
 /*****************************************************************************/
-
 
 void setDataTypeAttributes(xmlTextReaderPtr pxtrReader, DataType *objDataType)
 {
@@ -441,14 +436,14 @@ void setDataTypeAttributes(xmlTextReaderPtr pxtrReader, DataType *objDataType)
 
 /*****************************************************************************/
 /**
-\brief			setParameterAttributes
+ \brief			setParameterAttributes
  
-				
-				
-\param			pxtrReader
-\param			pstParameter
-\return			void
-*/
+ 
+ 
+ \param			pxtrReader
+ \param			pstParameter
+ \return		void
+ */
 /*****************************************************************************/
 
 void setParameterAttributes(xmlTextReaderPtr pxtrReader,
@@ -492,16 +487,15 @@ void setParameterAttributes(xmlTextReaderPtr pxtrReader,
 
 /*****************************************************************************/
 /**
-\brief			getParaDT
+ \brief			getParaDT
  
-				
-				
-\param			pxtrReader
-\param			pstParameter
-\return			void
-*/
+ 
+ 
+ \param			pxtrReader
+ \param			pstParameter
+ \return		void
+ */
 /*****************************************************************************/
-
 
 void getParaDT(xmlTextReaderPtr pxtrReader, Parameter* pstParameter)
 {
@@ -572,14 +566,14 @@ void getParaDT(xmlTextReaderPtr pxtrReader, Parameter* pstParameter)
 
 /*****************************************************************************/
 /**
-\brief			setCDTAttributes
+ \brief			setCDTAttributes
  
-				
-				
-\param			pxtrReader
-\param			pobjCDT
-\return			void
-*/
+ 
+ 
+ \param			pxtrReader
+ \param			pobjCDT
+ \return		void
+ */
 /*****************************************************************************/
 
 static void setCDTAttributes(xmlTextReaderPtr pxtrReader,
@@ -616,16 +610,17 @@ static void setCDTAttributes(xmlTextReaderPtr pxtrReader,
 
 /*****************************************************************************/
 /**
-\brief			CheckifSimpleDT
+ \brief			CheckifSimpleDT
  
-				
-				
-\param			pbName
-\param			pbSize
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending
-*/
+ 
+ 
+ \param			pbName
+ \param			pbSize
+
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending
+ */
 /*****************************************************************************/
 
 bool CheckifSimpleDT(char *pbName, char *pbSize)
@@ -650,14 +645,14 @@ bool CheckifSimpleDT(char *pbName, char *pbSize)
 
 /*****************************************************************************/
 /**
-\brief			setVarDecAttributes
+ \brief			setVarDecAttributes
  
-				
-				
-\param			pxtrReader
-\param			vdecl
-\return			void
-*/
+ 
+ 
+ \param			pxtrReader
+ \param			vdecl
+ \return		void
+ */
 /*****************************************************************************/
 
 void setVarDecAttributes(xmlTextReaderPtr pxtrReader, varDeclaration& vdecl)
@@ -689,20 +684,19 @@ void setVarDecAttributes(xmlTextReaderPtr pxtrReader, varDeclaration& vdecl)
 	}
 }
 
-
 /*****************************************************************************/
 /**
-\brief			CheckEndElement
+ \brief			CheckEndElement
  
-				
-				
-\param			iNodeType
-\param			pbElement
-\param			pbCompareWith
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending
-*/
+ 
+ 
+ \param			iNodeType
+ \param			pbElement
+ \param			pbCompareWith
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending
+ */
 /*****************************************************************************/
 
 bool CheckEndElement(INT32 iNodeType, char *pbElement, char *pbCompareWith)
@@ -718,20 +712,20 @@ bool CheckEndElement(INT32 iNodeType, char *pbElement, char *pbCompareWith)
 	}
 }
 
-
 /*****************************************************************************/
 /**
-\brief			CheckStartElement
+ \brief			CheckStartElement
  
-				
-				
-\param			iNodeType
-\param			pbElement
-\param			pbCompareWith
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending
-*/
+ 
+ 
+ \param			iNodeType
+ \param			pbElement
+ \param			pbCompareWith
+
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending
+ */
 /*****************************************************************************/
 
 bool CheckStartElement(INT32 iNodeType, char *pbElement, char *pbCompareWith)
@@ -749,14 +743,14 @@ bool CheckStartElement(INT32 iNodeType, char *pbElement, char *pbCompareWith)
 
 /*****************************************************************************/
 /**
-\brief			getVarDeclaration
+ \brief			getVarDeclaration
  
-				
-				
-\param			pxtrReader
-\param			pobjCDT
-\return			void
-*/
+ 
+ 
+ \param			pxtrReader
+ \param			pobjCDT
+ \return		void
+ */
 /*****************************************************************************/
 
 static void getVarDeclaration(xmlTextReaderPtr pxtrReader,
@@ -865,20 +859,19 @@ static void getVarDeclaration(xmlTextReaderPtr pxtrReader,
 	}
 }
 
-
 /*****************************************************************************/
 /**
-\brief		ImportXML
+ \brief		ImportXML
  
-This API shall be used for parsing the XDC/XDD file and load the objects for 
-the Node ID of Node Type specified as arguments
+ This API shall be used for parsing the XDC/XDD file and load the objects for 
+ the Node ID of Node Type specified as arguments
 
-\param		pbFileName		Char pointer to hold the path of the configuration file[XDD or XDC] to be imported.
-\param		iNodeID			Integer variable to hold the Node Id of a node
-\param		enumNodeType	Enum to hold the Node type of the node
+ \param		pbFileName		Char pointer to hold the path of the configuration file[XDD or XDC] to be imported.
+ \param		iNodeID			Integer variable to hold the Node Id of a node
+ \param		enumNodeType	Enum to hold the Node type of the node
 
-\return		ocfmRetCode
-*/
+ \return	ocfmRetCode
+ */
 /*****************************************************************************/
 
 ocfmRetCode ImportXML(char *pbFileName, INT32 iNodeID, ENodeType enumNodeType)
@@ -924,18 +917,17 @@ ocfmRetCode ImportXML(char *pbFileName, INT32 iNodeID, ENodeType enumNodeType)
 	return stErrStruct;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			processNode
+ \brief			processNode
  
-				Process the Node pxcValue,Name and its attributes
-				
-\param			pxtrReader
-\param			enumNodeType
-\param			iNodeIndex
-\return			void
-*/
+ Process the Node pxcValue,Name and its attributes
+ 
+ \param			pxtrReader
+ \param			enumNodeType
+ \param			iNodeIndex
+ \return		void
+ */
 /*****************************************************************************/
 
 void processNode(xmlTextReaderPtr pxtrReader, ENodeType enumNodeType,
@@ -1113,19 +1105,18 @@ void processNode(xmlTextReaderPtr pxtrReader, ENodeType enumNodeType,
 	}
 }
 
- 
 /*****************************************************************************/
 /**
-\brief		parseFile
+ \brief		parseFile
  
-Recursiveley parses the Nodes, elements and values from the XML[xdd/xdc] file
+ Recursiveley parses the Nodes, elements and values from the XML[xdd/xdc] file
 
-\param		pbFileName		Char pointer  to hold the path of the file [XDD or XDC].
-\param		iNodeIndex		Integer variable to hold the Node Id of a node
-\param		enumNodeType	Enum to hold the Node type of the node
+ \param		pbFileName		Char pointer  to hold the path of the file [XDD or XDC].
+ \param		iNodeIndex		Integer variable to hold the Node Id of a node
+ \param		enumNodeType	Enum to hold the Node type of the node
 
-\return		ocfmRetCode
-*/
+ \return	ocfmRetCode
+ */
 /*****************************************************************************/
 
 ocfmRetCode parseFile(char* pbFileName, INT32 iNodeIndex,
@@ -1209,18 +1200,18 @@ ocfmRetCode parseFile(char* pbFileName, INT32 iNodeIndex,
 
 /*****************************************************************************/
 /**
-\brief			ReImportXML
+ \brief			ReImportXML
  
-This API shall be used for parsing the XDC/XDD file and re-load the objects for
-the Node ID of Node Type specified as arguments for this API. This API will not
-delete and create the node. Only the objects for the node are recreated.
+ This API shall be used for parsing the XDC/XDD file and re-load the objects for
+ the Node ID of Node Type specified as arguments for this API. This API will not
+ delete and create the node. Only the objects for the node are recreated.
 
-\param			pbFileName		Char pointer to hold the path of the configuration file [XDD or XDC] to be reimported for a Node
-\param			iNodeID			Integer variable to hold the Node Id of a node
-\param			enumNodeType	Enum to hold the Node type of the node
+ \param			pbFileName		Char pointer to hold the path of the configuration file [XDD or XDC] to be reimported for a Node
+ \param			iNodeID			Integer variable to hold the Node Id of a node
+ \param			enumNodeType	Enum to hold the Node type of the node
 
-\return			ocfmRetCode		
-*/
+ \return		ocfmRetCode		
+ */
 /*****************************************************************************/
 
 ocfmRetCode ReImportXML(char* pbFileName, INT32 iNodeID, ENodeType enumNodeType)
@@ -1296,16 +1287,16 @@ ocfmRetCode ReImportXML(char* pbFileName, INT32 iNodeID, ENodeType enumNodeType)
 
 /*****************************************************************************/
 /**
-\brief		SaveNode
+ \brief		SaveNode
 
-This API shall be used to save a node in xml format. This API saves the all the objects [Index/SubIndex] under the node into a xml file along with all the attributes of the objects.
+ This API shall be used to save a node in xml format. This API saves the all the objects [Index/SubIndex] under the node into a xml file along with all the attributes of the objects.
 
-\param		pbFileName		Char pointer  to hold the path of the file [XDD or XDC]
-\param		NodeID			Integer variable to hold the Node Id of a node
-\param		enumNodeType	Enum to hold the Node type of the node
+ \param		pbFileName		Char pointer  to hold the path of the file [XDD or XDC]
+ \param		NodeID			Integer variable to hold the Node Id of a node
+ \param		enumNodeType	Enum to hold the Node type of the node
 
-\return		ocfmRetCode
-*/
+ \return	ocfmRetCode
+ */
 /*****************************************************************************/
 ocfmRetCode SaveNode(const char* pbFileName, INT32 NodeID,
 		ENodeType enumNodeType)
@@ -2255,13 +2246,13 @@ ocfmRetCode SaveNode(const char* pbFileName, INT32 NodeID,
 
 /*****************************************************************************/
 /**
-\brief			setFlagForRequiredCNIndexes
+ \brief			setFlagForRequiredCNIndexes
  
-				
  
-\param			iNodeId
-\return			void
-*/
+ 
+ \param			iNodeId
+ \return		void
+ */
 /*****************************************************************************/
 
 void setFlagForRequiredCNIndexes(INT32 iNodeId)
@@ -2307,13 +2298,13 @@ void setFlagForRequiredCNIndexes(INT32 iNodeId)
 
 /*****************************************************************************/
 /**
-\brief			setFlagForRequiredMNIndexes
+ \brief			setFlagForRequiredMNIndexes
  
-				
  
-\param			iNodeId
-\return			void
-*/
+ 
+ \param			iNodeId
+ \return		void
+ */
 /*****************************************************************************/
 
 void setFlagForRequiredMNIndexes(INT32 iNodeId)
@@ -2383,13 +2374,13 @@ void setFlagForRequiredMNIndexes(INT32 iNodeId)
 
 /*****************************************************************************/
 /**
-\brief			AddOtherRequiredCNIndexes
+ \brief			AddOtherRequiredCNIndexes
  
 
  
-\param			iNodeId
-\return			ocfmRetCode
-*/
+ \param			iNodeId
+ \return		ocfmRetCode
+ */
 /*****************************************************************************/
 //TODO: unused function
 ocfmRetCode AddOtherRequiredCNIndexes(INT32 iNodeId)
@@ -2445,13 +2436,13 @@ ocfmRetCode AddOtherRequiredCNIndexes(INT32 iNodeId)
 
 /*****************************************************************************/
 /**
-\brief			getDataSize
+ \brief			getDataSize
  
-				
  
-\param			dataTypeVal
-\return			INT32
-*/
+ 
+ \param			dataTypeVal
+ \return		INT32
+ */
 /*****************************************************************************/
 
 INT32 getDataSize(char* dataTypeVal)
@@ -2544,17 +2535,16 @@ INT32 getDataSize(char* dataTypeVal)
 
 /*****************************************************************************/
 /**
-\brief			checkIfStringDatatypes
+ \brief			checkIfStringDatatypes
  
-				
  
-\param			datatypeValue
-\return			BOOL
-\retval			TRUE			if successful
-\retval			FALSE			if there is already a message pending
-*/
+ 
+ \param			datatypeValue
+ \return		BOOL
+ \retval			TRUE			if successful
+ \retval			FALSE			if there is already a message pending
+ */
 /*****************************************************************************/
-
 
 bool checkIfStringDatatypes(char* datatypeValue)
 {
@@ -2566,17 +2556,16 @@ bool checkIfStringDatatypes(char* datatypeValue)
 		return false;
 }
 
-
 /*****************************************************************************/
 /**
-\brief			setFeature
+ \brief			setFeature
  
-				
  
-\param			pxtrReader
-\param			pstFeature
-\return			void			
-*/
+ 
+ \param			pxtrReader
+ \param			pstFeature
+ \return		void			
+ */
 /*****************************************************************************/
 
 void setFeatures(xmlTextReaderPtr pxtrReader, Feature *pstFeature)
