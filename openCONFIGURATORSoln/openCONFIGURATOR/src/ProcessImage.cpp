@@ -1,6 +1,6 @@
 /**
  ************************************************************************************************
- \file			ObjectDictionary.cpp
+ \file			ProcessImage.cpp
 
  \brief			
  ************************************************************************************************
@@ -104,10 +104,10 @@ ModuleCol astModuleInfo[TOTAL_MODULES];
  
  This function sets offset value for process image
  
- \param			pobjProcessImage
- \param			iStartByteOffset
- \param			iPosition
- \param			iStartBitOffset
+ \param			pobjProcessImage     Class Pointer Variable of ProcessImage
+ \param			iStartByteOffset     Integer Variable to hold the value of startbyteoffset  
+ \param			iPosition            Integer Variable to hold the value of image position 
+ \param			iStartBitOffset      Integer Variable to hold the value of startbitoffset 
  \return		void
  */
 /*****************************************************************************/
@@ -151,8 +151,8 @@ void SetPIOffsets(ProcessImage* pobjProcessImage, INT32& iStartByteOffset,
  
  This function assigns inout values for process image variables
  
- \param			aobjPIInCol
- \param			aobjPIOutCol
+ \param			aobjPIInCol       Class Variable of ProcessImage to hold the value of object
+ \param			aobjPIOutCol      Class Variable of ProcessImage to hold the value of object 
  \return		void
  */
 /*****************************************************************************/
@@ -204,8 +204,8 @@ void GroupInOutPIVariables(ProcessImage aobjPIInCol[],
  
  
  
- \param			DirectionType
- \param			aobjPICol
+ \param			DirectionType   Class Variable of EPIDirectionType to hold the direction type
+ \param			aobjPICol       Class Variable of NETProcessImage to hold the object 
  \return		void
  */
 /*****************************************************************************/
@@ -369,8 +369,8 @@ void SetUniquePIVarName()
  \brief			getIECDT
  
  
- \param			pbDataStr
- \param			iDataSize				
+ \param			pbDataStr       Character Pointer Variable to hold the value of data 
+ \param			iDataSize		Integer Variable to hold the value of data size		
  \return		PIDataInfo*
  */
 /*****************************************************************************/
@@ -487,10 +487,10 @@ PIDataInfo* getIECDT(char* pbDataStr, INT32 iDataSize)
  
  This function checks whether the module is present or not
  
- \param			pbModuleName
- \param			ModuleNo
- \param			iNoOfModules
- \param			astModCol
+ \param			pbModuleName        Character Pointer Variable to hold the value of Module Name      
+ \param			ModuleNo            Integer Variable to hold the value of Module number  
+ \param			iNoOfModules        Integer Variable to hold the value of NUmber of modules 
+ \param			astModCol           Structure Class Variable of ModuleCol
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending	
@@ -644,10 +644,10 @@ void GenerateXAPHeaderFile(char* pbFileName, ProcessImage objPIInCol[],
  
  This function writes content into header file
  
- \param			objProcessImage
- \param			iNumberOfVars
- \param			enumDirType
- \param			fpXapHeader
+ \param			objProcessImage       Class Variable of ProcessImage to hold the process image value
+ \param			iNumberOfVars         Integer variable to hold the value of total number of variables 
+ \param			enumDirType           Enum Variable of  EPIDirectionType
+ \param			fpXapHeader           File Pointer Varible to hold the header file
  \return		void	
  */
 /*****************************************************************************/
@@ -821,11 +821,11 @@ void WriteXAPHeaderContents(ProcessImage objProcessImage[], INT32 iNumberOfVars,
  
  This function generates header file interface
  
- \param			pbFileName
- \param			objPIInCol
- \param			objPIOutCol
- \param			iInVar
- \param			iOutVar
+ \param			pbFileName          Character POinter Variable to hold the value of file name
+ \param			objPIInCol          Class variable of ProcessImage
+ \param			objPIOutCol         Class variable of ProcessImage
+ \param			iInVar              Integer Variable to hold input value   
+ \param			iOutVar             Integer Variable to hold output value 
  \return		void	
  */
 /*****************************************************************************/
@@ -922,10 +922,10 @@ void GenerateNETHeaderFile(char* pbFileName, ProcessImage objPIInCol[],
  
  This function writes header contents
  
- \param			objProcessImage
- \param			iNumberOfVars
- \param			enumDirType
- \param			fpNetHeader
+ \param			objProcessImage       Class Variable of ProcessImage
+ \param			iNumberOfVars         Integer Variabl to hold the value of number of variables 
+ \param			enumDirType           Enum Variable of EPIDirectionType 
+ \param			fpNetHeader           File Pointer Variable to hold the header
  \return		void	
  */
 /*****************************************************************************/
@@ -1052,12 +1052,15 @@ void WriteNETHeaderContents(ProcessImage objProcessImage[], INT32 iNumberOfVars,
 /**
  \brief			GroupNETHeaderContents
  
+ This Function groups the header contents
  
+ This function writes header contents
  
- \param			objProcessImage
- \param			iNumberOfVars
- \param			enumDirType
- \param			fpNetHeader
+ \param			objProcessImage       Class Variable of ProcessImage
+ \param			iNumberOfVars         Integer Variabl to hold the value of number of variables 
+ \param			enumDirType           Enum Variable of EPIDirectionType 
+ \param			fpNetHeader           File Pointer Variable to hold the header
+ 
  \return		INT32	
  */
 /*****************************************************************************/
@@ -1293,9 +1296,9 @@ INT32 GroupNETHeaderContents(ProcessImage objProcessImage[],
  
  This fumction sets index for all data types
  
- \param			pobjDataType
- \param			pbIdx
- \param			pbSIdx
+ \param			pobjDataType     Class Pointer variable of DataType
+ \param			pbIdx            Character Pointer Variable to hold the value of Index
+ \param			pbSIdx           Character Pointer Variable to hold the value of Sub Index
  \return		void	
  */
 /*****************************************************************************/
@@ -1333,9 +1336,9 @@ void SetSIdxDataType(DataType *pobjDataType, char* pbIdx, char* pbSIdx)
  
  This function adds PDO indexes to MN
  
- \param			pbIndex
- \param			pbSubIndex
- \param			enumPdoType
+ \param			pbIndex           Character Pointer Variable to hold the value of Index
+ \param			pbSubIndex        Character Pointer Variable to hold the value of Sub Index
+ \param			enumPdoType       Enum Variable of  EPDOType
  \return		void	
  */
 /*****************************************************************************/
@@ -1462,10 +1465,10 @@ void AddPDOIndexsToMN(char* pbIndex, char* pbSubIndex, EPDOType enumPdoType)
  
  This function sets process image address
  
- \param			dt
- \param			dirType
- \param			iOffset
- \param			iDataSize
+ \param			dt                 Class Variable of PDODataType to hold the datatype
+ \param			dirType            Class Variable of EPIDirectionType to hold the value of direction type
+ \param			iOffset            Integer Variable to hold offset value
+ \param			iDataSize          Integer Varibale to hold the value of datasize   
  \return		stPIObject	
  */
 /*****************************************************************************/
@@ -1519,7 +1522,7 @@ PIObject getPIAddress(PDODataType dt, EPIDirectionType dirType, INT32 iOffset,
  
  This function sets value for process image datatype
  
- \param			pbAddress
+ \param			pbAddress       Character Pointer Variable to hold the Process image address
  \return		char*	
  */
 /*****************************************************************************/
@@ -1593,9 +1596,9 @@ char* getPIDataTypeName(char* pbAddress)
 /**
  \brief			getPIName
  
- This function retuns process image name
+ This function returns process image name
  
- \param			pbAddress
+ \param			pbAddress  Character Pointer Variable to hold the Process image address
  \return		char*	
  */
 /*****************************************************************************/
@@ -1671,7 +1674,7 @@ char* getPIName(char* pbAddress)
  
  This function checks for process image index
  
- \param			pbIndex
+ \param			pbIndex       Character Pointer Variable to hold the value of index
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending	
@@ -1689,9 +1692,9 @@ bool CheckIfProcessImageIdx(char* pbIndex)
  
  This function collects process image based on the module name
  
- \param			CNNodeID
- \param			iItemLoopCount
- \param			schModuleName
+ \param			CNNodeID         Integer Variable to hold the node id      
+ \param			iItemLoopCount   Integer Variable to hold the value of loop count   
+ \param			schModuleName    Character Pointer Variable to hold the name of the search module
  \return		INT32	
  */
 /*****************************************************************************/
@@ -1732,9 +1735,9 @@ INT32 SearchModuleNameNETProcessImageCollection(INT32 CNNodeID,
  
  This function copies process image to interface process image collection
  
- \param			objProcessImage
- \param			objNETProcessImage
- \param			ModuleName
+ \param			objProcessImage               Class Variable of ProcessImage
+ \param			objNETProcessImage            Class Variable of NETProcessImage 
+ \param			ModuleName                    Character Pointer Variable to hold the module name
  \return		void	
  */
 /*****************************************************************************/
@@ -1779,7 +1782,7 @@ void CopyPItoNETPICollection(ProcessImage objProcessImage,
  
  This function returns data type for process image
  
- \param			dt_enum
+ \param			dt_enum       Enum Variable of IEC_Datatype to hold the datatype of process image
  \return		char*	
  */
 /*****************************************************************************/
@@ -1856,7 +1859,7 @@ char* GetDatatypeNETPI(IEC_Datatype dt_enum)
  
  This function returns data size for process image
  
- \param			dt_enum
+ \param			dt_enum Enum Variable of IEC_Datatype to hold the datatype of process image
  \return		INT32	
  */
 /*****************************************************************************/

@@ -100,7 +100,7 @@ CComplexDataType::~CComplexDataType(void)
 /**
  \brief			addVarDeclaration
  
- This Function adds variable declarations for complex datatype
+ This is a member Function of CComplexDataType adds variable declarations for complex datatype
  
  \return		void
  */

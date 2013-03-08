@@ -92,9 +92,9 @@ CNetworkManagement::~CNetworkManagement(void)
 /**
  \brief			addParameter
  
- This function collects feature for each object
+ This is a member function of CNetworkManagement collects feature for each object
 
- \param			stfeature				
+ \param			stfeature		Structure Variable of feature to add feature to collection list		
  \return		void
  */
 /*****************************************************************************/
@@ -109,7 +109,7 @@ void CNetworkManagement::addFeature(Feature stfeature)
 /**
  \brief			getNodeID
  
- Returns the NodeID of the Node of the NetworkManagement Object
+ This is a member function of CNetworkManagement Returns the NodeID of NetworkManagement Object
 
  \return		INT32
  */
@@ -125,7 +125,7 @@ INT32 CNetworkManagement::getNodeID()
 /**
  \brief			setNodeID
  
- sets the NodeID of the NetworkManagement Object
+ This is a member function of CNetworkManagement sets the NodeID of the NetworkManagement Object
 
  \return		void
  */
@@ -140,7 +140,10 @@ void CNetworkManagement::setNodeID(INT32 NodeID)
 /**
  \brief			getFeatureValue
  
- gets the network Management feature value
+ This is a member function of CNetworkManagement gets the network Management feature value
+ \param         featureType   Enum variable of EFeatureType to hold the feature type
+ 
+ \param         featureName   Character pointer variable of to hold feature name    
 
  \return		char*
  */
@@ -174,7 +177,7 @@ char* CNetworkManagement::getFeatureValue(EFeatureType featureType,
 /**
  \brief			getNumberOfFeatures
  
- returns the Number of Features
+ This is a member function of CNetworkManagement returns the Number of Features
 
  \return		UINT32
  */
@@ -189,9 +192,9 @@ UINT32 CNetworkManagement::getNumberOfFeatures()
 /**
  \brief			getFeature
  
- returns feature collection list 
+ This is a member function of CNetworkManagement returns feature collection list 
 
- \param			uiCount
+ \param			uiCount  Unsigned integer variable to hold count value
  \return		Feature*
  */
 /*****************************************************************************/
@@ -205,7 +208,7 @@ Feature* CNetworkManagement::getFeature(UINT32 uiCount)
 /**
  \brief			DeleteFeatureCollections
  
- DeleteNetworkManagementCollections
+ This is a member function of CNetworkManagement Deletes NetworkManagement Collections
 
  \return		void
  */
@@ -223,7 +226,7 @@ void CNetworkManagement::DeleteFeatureCollections()
 /**
  \brief			getMaxPDOCount
  
- 
+ This is a member function of CNetworkManagement to get max PDO count
 
  \return		INT32
  */
@@ -238,7 +241,7 @@ INT32 CNetworkManagement::getMaxPDOCount()
 /**
  \brief			calculateMaxPDOCount
  
- calculates the PDO count from the PDOTPDOChannels parameter in MN xdd and m_MaxPDOCount is updated with that specified value
+ This is a member function of CNetworkManagement calculates the PDO count from the PDOTPDOChannels parameter in MN xdd and m_MaxPDOCount is updated with that specified value
 
  \return		void
  */

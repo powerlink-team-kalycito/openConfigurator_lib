@@ -102,11 +102,11 @@ static const char *gpa2bSimple[][2] =
 /**
  \brief			setIndexAttributes
  
+ This function shall set Index Attributes
  
- 
- \param			pxtrReader
- \param			pobjIndex
- \param			bhasPDO
+ \param			pxtrReader      xml Pointer Variable of type xmlTextReaderPtr
+ \param			pobjIndex       Class Pointer Variable of  CIndex 
+ \param			bhasPDO         Boolean Variable to check PDO 
  \return		void
  */
 /*****************************************************************************/
@@ -230,10 +230,10 @@ void setIndexAttributes(xmlTextReaderPtr pxtrReader, CIndex *pobjIndex,
 /**
  \brief			setSubIndexAttributes
  
+ This Functio shall set subindex Attributes
  
- 
- \param			pxtrReader
- \param			pobjSubIndex
+ \param			pxtrReader         xml Pointer of xmlTextReaderPtr
+ \param			pobjSubIndex       Class Pointer of CSubIndex 
  \return		void
  */
 /*****************************************************************************/
@@ -324,10 +324,10 @@ void setSubIndexAttributes(xmlTextReaderPtr pxtrReader, CSubIndex *pobjSubIndex)
 /**
  \brief			setDataTypeAttributes
  
+ This Fuction shall set datatype for the attributes
  
- 
- \param			pxtrReader
- \param			objDataType
+ \param			pxtrReader      xml Pointer variable of xmlTextReaderPtr
+ \param			objDataType     Class Pointer Variable of DataType
  \return		void
  */
 /*****************************************************************************/
@@ -438,10 +438,10 @@ void setDataTypeAttributes(xmlTextReaderPtr pxtrReader, DataType *objDataType)
 /**
  \brief			setParameterAttributes
  
+ This Function shall set parameter attributes
  
- 
- \param			pxtrReader
- \param			pstParameter
+ \param			pxtrReader      xml Pointer of xmlTextReaderPtr
+ \param			pstParameter    Class Pointer of Parameter
  \return		void
  */
 /*****************************************************************************/
@@ -489,10 +489,10 @@ void setParameterAttributes(xmlTextReaderPtr pxtrReader,
 /**
  \brief			getParaDT
  
+ This function shall provide parameter datatype
  
- 
- \param			pxtrReader
- \param			pstParameter
+ \param			pxtrReader        xml Pointer of xmlTextReaderPtr
+ \param			pstParameter      Class Pointer of Parameter 
  \return		void
  */
 /*****************************************************************************/
@@ -568,10 +568,10 @@ void getParaDT(xmlTextReaderPtr pxtrReader, Parameter* pstParameter)
 /**
  \brief			setCDTAttributes
  
+ This function shall set CDT attributes
  
- 
- \param			pxtrReader
- \param			pobjCDT
+ \param			pxtrReader    xml Pointer Variable of xmlTextReaderPtr
+ \param			pobjCDT       Class Pointer Variable of CComplexDataType  
  \return		void
  */
 /*****************************************************************************/
@@ -612,10 +612,10 @@ static void setCDTAttributes(xmlTextReaderPtr pxtrReader,
 /**
  \brief			CheckifSimpleDT
  
+ This function shall check the data type
  
- 
- \param			pbName
- \param			pbSize
+ \param			pbName         Character Pointer Variable to hold datatype name
+ \param			pbSize         Character Pointer Variable to hold datatype size
 
  \return		BOOL
  \retval			TRUE			if successful
@@ -647,10 +647,10 @@ bool CheckifSimpleDT(char *pbName, char *pbSize)
 /**
  \brief			setVarDecAttributes
  
+ This function shall set variable declaration for Attributes
  
- 
- \param			pxtrReader
- \param			vdecl
+ \param			pxtrReader   xml Pointer of xmlTextReaderPtr
+ \param			vdecl        Class Pointer of varDeclaration
  \return		void
  */
 /*****************************************************************************/
@@ -688,11 +688,11 @@ void setVarDecAttributes(xmlTextReaderPtr pxtrReader, varDeclaration& vdecl)
 /**
  \brief			CheckEndElement
  
+ This Function shall check end element
  
- 
- \param			iNodeType
- \param			pbElement
- \param			pbCompareWith
+ \param			iNodeType         Integer Variable to hold the value of node type
+ \param			pbElement         Character Pointer Variable to hold element value 
+ \param			pbCompareWith     Character Pointer Variable to hold value of element to compare
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending
@@ -716,12 +716,12 @@ bool CheckEndElement(INT32 iNodeType, char *pbElement, char *pbCompareWith)
 /**
  \brief			CheckStartElement
  
+ This Function shall check start element
  
+ \param			iNodeType         Integer Variable to hold the value of node type
+ \param			pbElement         Character Pointer Variable to hold element value 
+ \param			pbCompareWith     Character Pointer Variable to hold value of element to compare
  
- \param			iNodeType
- \param			pbElement
- \param			pbCompareWith
-
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending
@@ -745,10 +745,10 @@ bool CheckStartElement(INT32 iNodeType, char *pbElement, char *pbCompareWith)
 /**
  \brief			getVarDeclaration
  
+ This Function shall assign Variable declaration
  
- 
- \param			pxtrReader
- \param			pobjCDT
+ \param			pxtrReader  xml Pointer variable of xmlTextReaderPtr
+ \param			pobjCDT     Class Pointer Variable of CComplexDataType
  \return		void
  */
 /*****************************************************************************/
@@ -921,11 +921,11 @@ ocfmRetCode ImportXML(char *pbFileName, INT32 iNodeID, ENodeType enumNodeType)
 /**
  \brief			processNode
  
- Process the Node pxcValue,Name and its attributes
+ This Function shall Process the Node pxcValue,Name and its attributes
  
- \param			pxtrReader
- \param			enumNodeType
- \param			iNodeIndex
+ \param			pxtrReader         xml Pointer of xmlTextReaderPtr
+ \param			enumNodeType       Enum Variable of ENodeType 
+ \param			iNodeIndex         Integer Variable to hold the value of node index
  \return		void
  */
 /*****************************************************************************/
@@ -2248,9 +2248,9 @@ ocfmRetCode SaveNode(const char* pbFileName, INT32 NodeID,
 /**
  \brief			setFlagForRequiredCNIndexes
  
+ This function shall set the flag for CN indexs
  
- 
- \param			iNodeId
+ \param			iNodeId     Integer Variable to hold the value of nodeid
  \return		void
  */
 /*****************************************************************************/
@@ -2300,9 +2300,9 @@ void setFlagForRequiredCNIndexes(INT32 iNodeId)
 /**
  \brief			setFlagForRequiredMNIndexes
  
+ This Function shall set flag for MN indexs
  
- 
- \param			iNodeId
+ \param			iNodeId   Integer Variable to hold the value of node id
  \return		void
  */
 /*****************************************************************************/
@@ -2376,9 +2376,9 @@ void setFlagForRequiredMNIndexes(INT32 iNodeId)
 /**
  \brief			AddOtherRequiredCNIndexes
  
-
+ This function shall add required CN indexes
  
- \param			iNodeId
+ \param			iNodeId          Integer Variable to hold the value of node id
  \return		ocfmRetCode
  */
 /*****************************************************************************/
@@ -2438,9 +2438,9 @@ ocfmRetCode AddOtherRequiredCNIndexes(INT32 iNodeId)
 /**
  \brief			getDataSize
  
+ This Function shall provide datasize of the variable
  
- 
- \param			dataTypeVal
+ \param			dataTypeVal     Character Pointer Variable to hold datatype value
  \return		INT32
  */
 /*****************************************************************************/
@@ -2537,9 +2537,9 @@ INT32 getDataSize(char* dataTypeVal)
 /**
  \brief			checkIfStringDatatypes
  
+ This function shall check for string datatypes
  
- 
- \param			datatypeValue
+ \param			datatypeValue     Character Pointer Variable to hold datatype value
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending
@@ -2560,10 +2560,10 @@ bool checkIfStringDatatypes(char* datatypeValue)
 /**
  \brief			setFeature
  
+ This Function shall set the features
  
- 
- \param			pxtrReader
- \param			pstFeature
+ \param			pxtrReader  xml Pointer Variable of xmlTextReaderPtr
+ \param			pstFeature  struct Pointer Variable of type Feature
  \return		void			
  */
 /*****************************************************************************/

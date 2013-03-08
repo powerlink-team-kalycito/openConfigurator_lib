@@ -64,9 +64,9 @@
 /**
  \brief			ocfmRetValError_getRetValue
  
- This function returns ocfm return value error
+ This function returns ocfm return value
  
- \param			stRetValError				
+ \param			stRetValError	Struct variable of type	ocfmRetValError		
  \return		INT32
  */
 /*****************************************************************************/
@@ -82,7 +82,7 @@ INT32 ocfmRetValError_getRetValue(ocfmRetValError stRetValError)
  
  This function returns ocfm error code
  
- \param			stRetValError				
+ \param			stRetValError	Struct variable of type	ocfmRetValError			
  \return		INT32
  */
 /*****************************************************************************/

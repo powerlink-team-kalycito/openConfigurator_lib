@@ -110,7 +110,7 @@ CPjtSettings::~CPjtSettings(void)
 /**
  \brief			getPjtSettingsPtr
  
- This function creats new Pjtsettings 
+ This is a member function of CPjtSettings creats new Pjtsettings 
 
  \return		CPjtSettings*
  */
@@ -133,7 +133,7 @@ CPjtSettings* CPjtSettings::getPjtSettingsPtr()
 /**
  \brief			getSaveAttr
  
- This function saves new Pjtsettings  
+ This is a member function of CPjtSettings saves new Pjtsettings  
 
  \return		EAutoSave
  */
@@ -148,9 +148,9 @@ EAutoSave CPjtSettings::getSaveAttr()
 /**
  \brief			setSaveAttr
  
- This function sets mode for pjt settings 
+ This is a member function of CPjtSettings sets mode for pjt settings 
  
- \param			enumAutoSaveMode
+ \param			enumAutoSaveMode   Enum Variable of EAutoSave to save the attributes
  \return		void
  */
 /*****************************************************************************/
@@ -164,7 +164,7 @@ void CPjtSettings::setSaveAttr(EAutoSave enumAutoSaveMode)
 /**
  \brief			getGenerateAttr
  
- This function generates mode for pjt settings    
+ This is a member function of CPjtSettings generates mode for pjt settings    
 
  \return		EAutoGenerate
  */
@@ -182,9 +182,9 @@ EAutoGenerate CPjtSettings::getGenerateAttr()
 /**
  \brief			setGenerateAttr
  
- This function sets mode for pjt settings  
+ This is a member function of CPjtSettings sets mode for pjt settings  
  
- \param			enumAutoGenerateMode
+ \param			enumAutoGenerateMode Enum Variable of EAutoGenerate to generate attribute
  \return		void
  */
 /*****************************************************************************/
@@ -198,9 +198,9 @@ void CPjtSettings::setGenerateAttr(EAutoGenerate enumAutoGenerateMode)
 /**
  \brief			setPOWERLINK_IP
  
- This function assigns IP address for Powerlink  
+ This is a member function of CPjtSettings assigns IP address for Powerlink  
  
- \param			pbIPAddr
+ \param			pbIPAddr   Character Pointer variable to hold IPaddress
  \return		void
  */
 /*****************************************************************************/
@@ -222,7 +222,7 @@ void CPjtSettings::setPOWERLINK_IP(char* pbIPAddr)
 /**
  \brief			getPOWERLINK_IP
  
- This Function returns Powerlink IP  
+ This is a member function of CPjtSettings returns Powerlink IP  
  
  \return		char*
  */
@@ -245,7 +245,7 @@ const char* CPjtSettings::getPOWERLINK_IP()
 /**
  \brief			getViewMode
  
- This function sets view mode under pjt settings  
+ This is a member function of CPjtSettings sets view mode under pjt settings  
  
  \return		EViewMode
  */
@@ -260,9 +260,9 @@ EViewMode CPjtSettings::getViewMode()
 /**
  \brief			setViewMode
  
- This function assigns view mode  
+ This is a member function of CPjtSettings assigns view mode  
  
- \param			enumViewMode				
+ \param			enumViewMode	Enum Variable of EViewMode to hold the value of mode type			
  \return		void
  */
 /*****************************************************************************/
@@ -276,7 +276,7 @@ void CPjtSettings::setViewMode(EViewMode enumViewMode)
 /**
  \brief			getExpertViewSelectedFlag
  
- This function sets flag for type of view selected under pjt settings  
+ This is a member function of CPjtSettings sets flag for type of view selected under pjt settings  
  
  \return		BOOL
  \retval			TRUE			if successful
@@ -293,9 +293,9 @@ bool CPjtSettings::getExpertViewSelectedFlag()
 /**
  \brief			setExpertViewSelectedFlag
  
- This function assigns type of view selected under pjt settings 
+ This is a member function of CPjtSettings assigns type of view selected under pjt settings 
  
- \param			bExpertViewSelected				
+ \param			bExpertViewSelected	 Boolean Variable to hold the value of Expertview selected			
  \return		void
  */
 /*****************************************************************************/

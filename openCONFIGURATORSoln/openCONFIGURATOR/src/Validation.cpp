@@ -356,10 +356,10 @@ ocfmRetCode IfSubIndexExists(INT32 iNodeID, ENodeType enumNodeType,
 /**
  \brief			CheckIfDataTypeExists
  
- This function checks datatype of objects
+ This API shall be used to check datatype of objects
  
- \param			pbDataValue
- \param			iNodeID
+ \param			pbDataValue   Character pointer to hold the datavalue
+ \param			iNodeID       Integer Pointer to hold the value of node id 
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending
@@ -392,10 +392,10 @@ bool CheckIfDataTypeExists(char* pbDataValue, INT32 iNodeID)
 /**
  \brief			CheckIfDataTypeByNameExists
  
- This function checks datatype of objects with reference to name
+ This API shall be used to check datatype of objects with reference to name
  
- \param			dtName
- \param			iNodeID
+ \param			dtName        Character Pointer Variable to hold the datatype name
+ \param			iNodeID       Integer Pointer to hold the value of node id  
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending
@@ -425,12 +425,12 @@ bool CheckIfDataTypeByNameExists(char* dtName, INT32 iNodeID)
 /**
  \brief			CheckIfSubIndexExists
  
- This function checks whether subindex is present with reference to node id and index ids	
+ This API shall be used to check whether subindex is present with reference to node id and index ids	
  
- \param			iNodeID
- \param			enumNodeType
- \param			pbIndexID
- \param			pbSubIndexID
+ \param			iNodeID           Integer Pointer to hold the value of node id
+ \param			enumNodeType      Enum Variable of  ENodeType to hold the value of Node type    
+ \param			pbIndexID         Character Pointer Variable to hold the value of Index Id
+ \param			pbSubIndexID      Character Pointer Variable to hold the value of sub Index Id 
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending
@@ -494,9 +494,10 @@ bool CheckIfSubIndexExists(INT32 iNodeID, ENodeType enumNodeType,
 /**
  \brief			IfVersionNumberMatches
  
- This function checks whether project version number matches with existing	
+ This API shall be used to check whether project version number matches with existing	
  
- \param			pxReader
+ \param			pxReader	xml Variable of xmlTextReaderPtr
+
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending

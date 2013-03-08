@@ -115,7 +115,7 @@ CBaseIndex::~CBaseIndex(void)
 /**
  \brief			getName
  
- Returns the Name of the Index Object
+ This is a member function of CBaseIndex points the Name of the Index Object
  
  \return	const char*
  */
@@ -130,8 +130,8 @@ const char* CBaseIndex::getName()
 /**
  \brief			setName
  
- sets the Name of the Index Object
- \param			pbName	
+ This is a member function of CBaseIndex to set the Name of the Index Object
+ \param			pbName	Pointer variable to hold the name of the index object
  \return	void
  */
 /*****************************************************************************/
@@ -154,7 +154,7 @@ void CBaseIndex::setName(char* pbName)
 /**
  \brief			getIndexValue
  
- Returns the Index of the Index Object
+ This is a member function of CBaseIndex returns the Index value of the Object
  
  \return	const char*
  */
@@ -169,9 +169,9 @@ const char* CBaseIndex::getIndexValue()
 /**
  \brief			setIndexValue
  
- sets the Index of the Index Object
+ This is a member function of CBaseIndex to set the Index of the Object
  
- \param			pbIndex
+ \param			pbIndex Pointer variable to hold the Index value
  \return	void
  */
 /*****************************************************************************/
@@ -186,7 +186,7 @@ void CBaseIndex::setIndexValue(char* pbIndex)
 /**
  \brief			getLowLimit
  
- Returns the LowLimit of the Index Object
+ This is a member function of CBaseIndex to return the LowLimit of the Index Object
  
  \return		const char*
  */
@@ -208,8 +208,9 @@ const char* CBaseIndex::getLowLimit()
 /**
  \brief			setLowLimit
  
- sets the LowLimit of the Index Object
+ This is a member function of CBaseIndex to set the LowLimit of the Index Object
  
+ \param	        pbLowLimit  Pointer variable to hold lowlimit value
  \return		void
  */
 /*****************************************************************************/
@@ -224,7 +225,7 @@ void CBaseIndex::setLowLimit(char* pbLowLimit)
 /**
  \brief			getHighLimit
  
- Returns the LowLimit of the Index Object
+ This is a member function of CBaseIndex to return the HighLimit of the Index Object
  
  \return		const char*
  */
@@ -246,9 +247,9 @@ const char* CBaseIndex::getHighLimit()
 /**
  \brief			setHighLimit
  
- sets the LowLimit of the Index Object
+ This is a member function of CBaseIndex to set the LowLimit of the Index Object
  
- \param			pbHighLimit			
+ \param			pbHighLimit		Pointer variable to hold highlimit value	
  \return		void
  */
 /*****************************************************************************/
@@ -263,7 +264,7 @@ void CBaseIndex::setHighLimit(char* pbHighLimit)
 /**
  \brief			getDefaultValue
  
- Returns the Default Value of the Index Object
+ This is a member function of CBaseIndex to return the Default Value of the Index Object
  
  \return		const char*
  */
@@ -278,9 +279,9 @@ const char* CBaseIndex::getDefaultValue()
 /**
  \brief			setDefaultValue
  
- sets the Default Value of the Index Object
+ This is a member function of CBaseIndex to set the Default Value of the Index Object
  
- \param			pbValue			
+ \param			pbValue		Pointer variable to hold default value	
  \return		void
  */
 /*****************************************************************************/
@@ -295,9 +296,8 @@ void CBaseIndex::setDefaultValue(char* pbValue)
 /**
  \brief			getActualValue
  
- Returns the Actual Value of the Index Object
+ This is a member function of CBaseIndex to set the Default Value of the Index Object
  
- \param			pbValue			
  \return		const char*
  */
 /*****************************************************************************/
@@ -315,9 +315,9 @@ const char* CBaseIndex::getActualValue()
 /**
  \brief			setActualValue
  
- sets the Actual Value of the Index Object
+ This is a member function of CBaseIndex to set the Actual Value of the Index Object
  
- \param			pbValue			
+ \param			pbValue		Pointer variable to hold Actual value			
  \return		void
  */
 /*****************************************************************************/
@@ -332,7 +332,7 @@ void CBaseIndex::setActualValue(char* pbValue)
 /**
  \brief			getAccessType
  
- Returns the Access Type of the Index Object
+ This is a member function of CBaseIndex returns the Access Type of the Index Object
  
  \return		const char*
  */
@@ -347,9 +347,9 @@ const char* CBaseIndex::getAccessType()
 /**
  \brief			setAccessType
  
- sets the Access Type of the Index Object
+ This is a member function of CBaseIndex sets the Access Type of the Index Object
  
- \param			pbAccessType
+ \param			pbAccessType Pointer variable to hold Access type of the object
  \return		void
  */
 /*****************************************************************************/
@@ -364,7 +364,7 @@ void CBaseIndex::setAccessType(char* pbAccessType)
 /**
  \brief			getObjectType
  
- Returns the Object Type of the Index Object as const char*
+ This is a member function of CBaseIndex returns the Object Type of the Index Object
  
  \return		const char*
  */
@@ -393,7 +393,7 @@ const char* CBaseIndex::getObjectType()
 /**
  \brief			getObjectType
  
- Returns the Object Type of the Index Object as Enum
+ This is a member function of CBaseIndex returns the Object Type of the Index Object as Enum
  
  \return		EObjectType
  */
@@ -408,9 +408,9 @@ EObjectType CBaseIndex::getEObjectType()
 /**
  \brief			setObjectType
  
- sets the Object of the Index Object
+ This is a member function of CBaseIndex sets the Object of the Index Object
  
- \param			pbObjectType			
+ \param			pbObjectType	Pointer variable to hold object type 		
  \return		void
  */
 /*****************************************************************************/
@@ -456,7 +456,7 @@ void CBaseIndex::setObjectType(char* pbObjectType)
 /**
  \brief			getPDOMapping
  
- Returns the PDOMapping of the Index Object
+ This is a member function of CBaseIndex returns the PDOMapping of the Index Object
  
  \return		const char*
  */
@@ -485,9 +485,9 @@ const char* CBaseIndex::getPDOMapping()
 /**
  \brief			setPDOMapping
  
- sets the PDOMapping of the Index Object
+ This is a member function of CBaseIndex sets the PDOMapping of the Index Object
  
- \param			pbPdoMapping				
+ \param			pbPdoMapping  Character Pointer Variable to hold PDOMapping of the Index Object			
  \return		void
  */
 /*****************************************************************************/
@@ -530,7 +530,7 @@ void CBaseIndex::setPDOMapping(char* pbPdoMapping)
 /**
  \brief			getDataType
  
- Returns the DataType of the Index Object
+ This is member function of CBaseIndex returns the DataType of the Index Object
  
  \return		DataType
  */
@@ -545,9 +545,9 @@ DataType CBaseIndex::getDataType()
 /**
  \brief			setDataType
  
- sets the DataType of the Index Object
+ This is member function of CBaseIndex sets the DataType of the Index Object
  
- \param			pbDataTypeName				
+ \param			pbDataTypeName	Character pointer variable to hold datatype name
  \return		void
  */
 /*****************************************************************************/
@@ -574,10 +574,10 @@ void CBaseIndex::setDataType(char* pbDataTypeName)
 /**
  \brief			setDataType
  
- sets the DataType of the Index Object
+ This is member function of CBaseIndex sets the DataType of the Index Object
  
- \param			pbDataTypeName
- \param			iNodeID				
+ \param			pbDataTypeName Character pointer variable to hold datatype name
+ \param			iNodeID		   Integer variable to hold node id of each node 		
  \return		void
  */
 /*****************************************************************************/
@@ -600,7 +600,7 @@ void CBaseIndex::setDataType(char* pbDataTypeName, INT32 iNodeID)
 /**
  \brief			getNodeID
  
- Returns the NodeID of the Node of the Index Object
+ This is member function of CBaseIndex returns the NodeID of Index Object
  
  \return		INT32
  */
@@ -615,9 +615,9 @@ INT32 CBaseIndex::getNodeID()
 /**
  \brief			setNodeID
  
- sets the NodeID of the Index Object
+ This is member function of CBaseIndex sets the NodeID of the Index Object
  
- \param			NodeID				
+ \param			NodeID	Integer Variable to hold the node id of the objects			
  \return		void
  */
 /*****************************************************************************/
@@ -631,7 +631,7 @@ void CBaseIndex::setNodeID(INT32 NodeID)
 /**
  \brief			getUniqueIDRef
  
- Returns the UniqueIDRef of the Node of the Index Object
+ This is member function of CBaseIndex returns the UniqueIDRef of the Node 
  
  \return		char*
  */
@@ -646,7 +646,9 @@ char* CBaseIndex::getUniqueIDRef()
 /**
  \brief			setUniqueIDRef
  
- sets the UniqueIDRef of the Index Object
+ This is member function of CBaseIndex sets the UniqueIDRef of the Index Object
+ 
+ \param        pbUniqueID  Character pointer variable to hold unique id of the objects
  
  \return		void
  */
@@ -662,7 +664,7 @@ void CBaseIndex::setUniqueIDRef(char* pbUniqueID)
 /**
  \brief			getDataTypeValue
  
- Returns only datatype value of the Node of the Index Object
+ This is member function of CBaseIndex returns datatype of Node
  
  \return		char*
  */
@@ -684,7 +686,7 @@ char* CBaseIndex::getDataTypeValue()
 /**
  \brief			setDataTypeValue
  
- sets the datatype value  of the Index Object
+ This is member function of CBaseIndex sets the datatype value of the Index Object
  
  \return		void
  */
@@ -700,9 +702,9 @@ void CBaseIndex::setDataTypeValue(char* pbValue)
 /**
  \brief			setDataTypeST
  
- sets the datatype value  of the Index Object
+ This is member function of CBaseIndex sets the datatype value of the Index Object
  
- \param			objDataType				
+ \param			objDataType		Class Variable of DataType to hold value of object datatype		
  \return		void
  */
 /*****************************************************************************/
@@ -723,10 +725,10 @@ void CBaseIndex::setDataTypeST(DataType objDataType)
 /**
  \brief			SaveChanges
  
- Saves the changes of the Index properties
+ This is member function of CBaseIndex to Save the changes of the Index properties
  
- \param			pbIndex
- \param			pbName				
+ \param			pbIndex  Character pointer varibale to hold the value of index
+ \param			pbName	 Character pointer varibale to hold the value of name			
  \return		void
  */
 /*****************************************************************************/
@@ -741,9 +743,9 @@ void CBaseIndex::SaveChanges(char* pbIndex, char* pbName)
 /**
  \brief			IsIndexVaueValid
  
- Saves the changes of the Index properties
+ This is member function of CBaseIndex to check the valid index value
  
- \param			pbHexValue
+ \param			pbHexValue  Character pointer variable to hold the hex value
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending
@@ -846,9 +848,9 @@ bool CBaseIndex::IsIndexVaueValid(char* pbHexValue)
 /**
  \brief			setFlagIfIncludedCdc
  
- sets the flag whether the Index should be included in cdc
+ This is a member function of CBaseIndex sets the Enumflag 
  
- \param			enumFlag
+ \param			enumFlag  Enumeration Flag to flagIfInCdc  
  \return		void			
  */
 /*****************************************************************************/
@@ -862,7 +864,7 @@ void CBaseIndex::setFlagIfIncludedCdc(EFlag enumFlag)
 /**
  \brief			getFlagIfIncludedCdc
  
- Returns whether the Index should be included in cdc
+ This is a member function of CBaseIndex checks whether the Index shall be included in cdc
  
  \return		EFlag			
  */

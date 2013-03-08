@@ -91,9 +91,9 @@ CDataTypeCollection::~CDataTypeCollection(void)
 /**
  \brief			addDataType
  
- This Function counts the data type
+ This is a member Function of CDataTypeCollection to add datatype for objects
  
- \param			objDataType			
+ \param			objDataType		Class variable of DataType to include in data type collection	
  \return		void
  */
 /*****************************************************************************/
@@ -109,7 +109,7 @@ void CDataTypeCollection::addDataType(DataType objDataType)
 /**
  \brief			DeleteDataTypeCollection
  
- This Function clears the datatype collection count
+ This is a member Function of  CDataTypeCollection clears the datatype collection count
  
  \return		void
  */
@@ -125,7 +125,7 @@ void CDataTypeCollection::DeleteDataTypeCollection()
 /**
  \brief			getNumberOfDataTypes
  
- This function returns the total number object count
+ This is a member Function of  CDataTypeCollection returns the total number object count
  
  \return		INT32
  */
@@ -140,9 +140,9 @@ INT32 CDataTypeCollection::getNumberOfDataTypes()
 /**
  \brief			getDataTypeElement
  
- This function return the data type ID
+ This is a member Function of CDataTypeCollection return the data type ID
  
- \param			iDataTypeId				
+ \param			iDataTypeId	Integer Variable to hold the datatype id		
  \return		DataType
  */
 /*****************************************************************************/
@@ -156,9 +156,9 @@ DataType* CDataTypeCollection::getDataTypeElement(INT32 iDataTypeId)
 /**
  \brief			getDataType
  
- This function return the data type value
+ This is a member Function of CDataTypeCollection return the data type value
  
- \param			pbDataTypeValue				
+ \param			pbDataTypeValue		Character pointer variable to hold datatype value		
  \return		DataType*
  */
 /*****************************************************************************/
@@ -185,9 +185,9 @@ DataType* CDataTypeCollection::getDataType(char* pbDataTypeValue)
 /**
  \brief			getDataTypeByName
  
- This function return the data type name
+ This is a member Function of CDataTypeCollection return the data type name
  
- \param			pbDataTypeValue				
+ \param			pbDataTypeValue		Character pointer variable to hold the datatype value		
  \return		DataType*
  */
 /*****************************************************************************/

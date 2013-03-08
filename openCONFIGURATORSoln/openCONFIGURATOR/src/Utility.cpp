@@ -73,7 +73,7 @@ using namespace std;
  
  This function converts received string to upper case
  
- \param			pbStrBuffer
+ \param			pbStrBuffer         Character pointer variable to hold the value of string
  \return		char*
  */
 /*****************************************************************************/
@@ -102,7 +102,7 @@ char* ConvertToUpper(char* pbStrBuffer)
  
  This function checks string length,allocate buffer and covert the string to upper case
  
- \param			pbStrBuffer
+ \param			pbStrBuffer   Character pointer variable to hold the string length
  \return		char*
  */
 /*****************************************************************************/
@@ -137,7 +137,7 @@ char* StringToUpper(char* pbStrBuffer)
  
  This function reverses the received string
  
- \param			pbStrBuffer
+ \param			pbStrBuffer  Character pointer variable to hold the string
  \return		char*
  */
 /*****************************************************************************/
@@ -170,9 +170,9 @@ char* reverse(char* pbStrBuffer)
  
  This function pads left of the string with 0's
  
- \param			pbStrBuffer
- \param			cPadChar
- \param			iPadLength
+ \param			pbStrBuffer      Character pointer variable to hold the string length
+ \param			cPadChar         Character Variable to hold the value of padding string  
+ \param			iPadLength       Integer Variable to hold the value of Pad Length
  \return		char*
  */
 /*****************************************************************************/
@@ -213,9 +213,9 @@ char* padLeft(char* pbStrBuffer, char cPadChar, INT32 iPadLength)
  
  This function returns substring
  
- \param			pbStrBuffer
- \param			iStartPos
- \param			iStringLen
+ \param			pbStrBuffer    Character pointer variable to hold the string length
+ \param			iStartPos      Integer Variable to hold the value of starting position of the string 
+ \param			iStringLen     Integer Variable to hold the value of string length
  \return		char*
  */
 /*****************************************************************************/
@@ -245,9 +245,9 @@ char* subString(char* pbStrBuffer, INT32 iStartPos, INT32 iStringLen)
  
  This function converts unsigned values to alphanumeric values
  
- \param			uValue
- \param			pbDigits
- \param			iBaseValue
+ \param			uValue           Unsigned Integer Variable to hold the value to be converted to alphanumeric values
+ \param			pbDigits         Character Pointer Variable to hold the digits
+ \param			iBaseValue       Integer Variable to hold the basevalue
  \return		char * / NULL
  */
 /*****************************************************************************/
@@ -290,9 +290,9 @@ char *utoa(unsigned uValue, char *pbDigits, INT32 iBaseValue)
  
  This function converts INT values to ASCII value
  
- \param			iValue
- \param			pbDigits
- \param			iBaseValue
+ \param			iValue          Long Integer Variable to hold the value to be converted to ASCII value
+ \param			pbDigits        Character Pointer Variable to hold the digits
+ \param			iBaseValue      Integer Variable to hold the basevalue
  \return		char *
  */
 /*****************************************************************************/
@@ -336,7 +336,7 @@ char* _IntToAscii(LONG iValue, char *pbDigits, INT32 iBaseValue)
  
  This function converts hex values to int values
  
- \param			pbStrBuffer
+ \param			pbStrBuffer   Character pointer variable to hold the hex value to be converted to Int
  \return		Unsigned long int
  */
 /*****************************************************************************/
@@ -373,7 +373,7 @@ ULONG hex2int(char *pbStrBuffer)
  
  This function checks whether the given character is ascii
  
- \param			cArg
+ \param			cArg        Characer Variable to hold the ASCII value
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending	
@@ -402,7 +402,7 @@ bool IsAscii(char cArg)
  
  This function checks whether the given index value is PDO or not
  
- \param			pbIndex
+ \param			pbIndex         Character Pointer Variable to hold the value of index
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending	
@@ -429,7 +429,7 @@ bool CheckIfNotPDO(char* pbIndex)
  
  This function checks whether the device index is manufacturer spcific or not
  
- \param			pbIndex
+ \param			pbIndex     Character Pointer Variable to hold the value of index
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending	
@@ -457,7 +457,7 @@ bool CheckIfManufactureSpecificObject(char* pbIndex)
  
  This function checks index for PDO mapping
  
- \param			pbIndex
+ \param			pbIndex            Character Pointer Variable to hold the value of index
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending	
@@ -482,7 +482,7 @@ bool CheckIfMappingPDO(char* pbIndex)
  
  This function checks whether received CN index falls in the allowed CN indexs
  
- \param			pbIndexValue
+ \param			pbIndexValue      Character Pointer Variable to hold the value of index
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending	
@@ -514,7 +514,7 @@ bool CheckAllowedCNIndexes(char* pbIndexValue)
  
  This function checks whether received MN index is blocked or not
  
- \param			pbIndexValue
+ \param			pbIndexValue        Character Pointer Variable to hold the value of index
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending	
@@ -540,7 +540,7 @@ bool CheckBlockedMNIndexes(char* pbIndexValue)
  
  Converts the string to hexadecimal for strings of string Datatype
  
- \param			actString
+ \param			actString          Character pointer variable to hold the value of string to be converted to hex
  \return		char*			
  */
 /*****************************************************************************/
@@ -587,9 +587,9 @@ char* ConvertStringToHex(char* actString)
  
  This function converts to hex value
  
- \param			pbHexValue
- \param			iPadLength
- \param			bDoPadding
+ \param			pbHexValue       Character Pointer to hold the hex value
+ \param			iPadLength       Integer variable to hold value of padding length
+ \param			bDoPadding       Boolean Variable to decide padding to be carried out or not 
  \return		char*			
  */
 /*****************************************************************************/
@@ -617,7 +617,7 @@ char* ConvertToHexformat(char* pbHexValue, INT32 iPadLength, bool bDoPadding)
  
  This function checks whether hex or not
  
- \param			pbValue
+ \param			pbValue    Character Pointer variable to hold the value of hex
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending			
@@ -725,9 +725,9 @@ INT32 getConfigTime()
  
  This function reverses the data
  
- \param			pbArg1
- \param			pbArg2
- \param			uiSize			
+ \param			pbArg1       Unsigned integer pointer variable to hold value of the data
+ \param			pbArg2       Unsigned integer pointer variable to hold value of the data
+ \param			uiSize		 Unsigned integer pointer variable to hold size of the data	
  \return		INT32						
  */
 /*****************************************************************************/
@@ -756,7 +756,7 @@ INT32 reversedata(UINT8 *pbArg1, UINT8 *pbArg2, UINT32 uiSize)
  
  This function checks for the datatype allowed for mapping
  
- \param			dtName
+ \param			dtName       Character Pointer variable to hold datatype name
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending						
@@ -854,7 +854,7 @@ char* getLastAvailableCycleNumber()
  
  This function corrects the name by adding '_'
  
- \param			checkName				
+ \param			checkName		Character Pointer variable to hold the name		
  \return		void
  */
 /*****************************************************************************/
@@ -889,7 +889,7 @@ void checkAndCorrectName(char* checkName)
  
  This function checks for zero value
  
- \param			pcValue				
+ \param			pcValue				Character Pointer Variable to hold the value 
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending
@@ -929,7 +929,7 @@ bool checkIfValueZero(char* pcValue)
  
  This function returns decimal value
  
- \param			pcValue				
+ \param			pcValue			Character Pointer Variable to hold the value	
  \return		INT32			
  */
 /*****************************************************************************/
@@ -960,7 +960,7 @@ INT32 GetDecimalValue(char* pcValue)
  
  This function checks for access type
  
- \param			pcAccesstype				
+ \param			pcAccesstype		Character Pointer Variable to hold the Access type 		
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending
@@ -998,7 +998,7 @@ bool CheckAccessTypeForInclude(char* pcAccesstype)
  
  This function checks for tool version
  
- \param			pcCurrentToolVersion				
+ \param			pcCurrentToolVersion		Character Pointer Variable to hold the value of current tool version		
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending

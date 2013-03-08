@@ -111,9 +111,9 @@ CNode::~CNode(void)
 /**
  \brief			getNodeType
  
- Returns the NodeType of the Node
+ This is a member function of CNode Returns the NodeType of the Node
 
- \return		ENodeType
+ \return		ENodeType 
  */
 /*****************************************************************************/
 
@@ -126,9 +126,9 @@ ENodeType CNode::getNodeType()
 /**
  \brief			setNodeType
  
- sets the Node Type of the Node.Value can be either CN or MN
+ This is a member function of CNode sets the Node Type of the Node.Value can be either CN or MN
 
- \param			objNodeType
+ \param			objNodeType Enum Variable of ENodeType to hold the node type
  \return		void
  */
 /*****************************************************************************/
@@ -142,7 +142,7 @@ void CNode::setNodeType(ENodeType objNodeType)
 /**
  \brief			getNodeId
  
- Returns the Index of the Index Object
+ This is a member function of CNode Returns the Index of the Index Object
 
  \return		INT32
  */
@@ -157,7 +157,7 @@ INT32 CNode::getNodeId()
 /**
  \brief			setNodeId
  
- sets the Index of the Index Object
+ This is a member function of CNode sets the Index of the Index Object
 
  \return		void
  */
@@ -173,7 +173,7 @@ void CNode::setNodeId(INT32 iNodeId)
 /**
  \brief			getNodeIndex
  
- Returns the Index of the Index Object
+ This is a member function of CNode Returns the Index of the Index Object
 
  \return		INT32
  */
@@ -188,7 +188,9 @@ INT32 CNode::getNodeIndex()
 /**
  \brief			setNodeIndex
  
- sets the Index of the Index Object
+ This is a member function of CNode sets the Index of the Index Object
+ 
+ \param        iNodeIndex   Integer variable to hold node index
 
  \return		void
  */
@@ -203,7 +205,7 @@ void CNode::setNodeIndex(INT32 iNodeIndex)
 /**
  \brief			getNodeName
  
- Returns the Name of the Node
+ This is a member function of CNode Returns the Name of the Node
 
  \return		char*			Node name as string
  */
@@ -218,7 +220,9 @@ char* CNode::getNodeName()
 /**
  \brief			setNodeName
  
- sets the Name of the Node
+ This is a member function of CNode sets the Name of the Node
+ 
+ \param         pbNodeName     Character Pointer variable to hold node name
 
  \return		void
  */
@@ -238,7 +242,7 @@ void CNode::setNodeName(char* pbNodeName)
 /**
  \brief			HasPdoObjects
  
- Returns true if PDO Objects are present else false
+ This is a member function of CNode Returns status PDO objects
 
  \return		BOOL
  \retval			TRUE			if successful
@@ -255,9 +259,9 @@ bool CNode::HasPdoObjects()
 /**
  \brief			setFlagForPdoObjects
  
- sets the Name of the Node
+ This is a member function of CNode sets the Name of the Node
 
- \param			bFlag
+ \param			bFlag       Boolean flag to hold the value true if PDO objects are present
  \return		void
  */
 /*****************************************************************************/
@@ -271,7 +275,7 @@ void CNode::setFlagForPdoObjects(bool bFlag)
 /**
  \brief			getIndexCollection
  
- Returns the IndexCollection of the Node
+ This is a member function of CNode Returns the IndexCollection of the Node
 
  \return		CIndexCollection*
  */
@@ -286,7 +290,7 @@ CIndexCollection* CNode::getIndexCollection()
 /**
  \brief			getApplicationProcess
  
- Returns the Application Process of the Node
+ This is a member function of CNode Returns the Application Process of the Node
 
  \return		 CApplicationProcess*
  */
@@ -301,7 +305,7 @@ CApplicationProcess* CNode::getApplicationProcess()
 /**
  \brief			getNetworkManagement
  
- Returns the NetworkManagement of the Node
+ This is a member function of CNode Returns the NetworkManagement of the Node
 
  \return		CNetworkManagement*
  */
@@ -316,7 +320,7 @@ CNetworkManagement* CNode::getNetworkManagement()
 /**
  \brief			getDataTypeCollection
  
- returns the DataType Collection
+ This is a member function of CNode returns the DataType Collection
 
  \return		CDataTypeCollection*
  */
@@ -331,7 +335,7 @@ CDataTypeCollection* CNode::getDataTypeCollection()
 /**
  \brief			CreateIndexCollection
  
- This function creates index collection
+ This is a member function of CNode creates index collection
 
  \return		void
  */
@@ -348,7 +352,7 @@ void CNode::CreateIndexCollection()
 /**
  \brief			CreateDataTypeCollection
  
- This function creates data type collection
+ This is a member function of CNode creates data type collection
 
  \return		void
  */
@@ -365,9 +369,9 @@ void CNode::CreateDataTypeCollection()
 /**
  \brief			addProcessImage
  
- This function collects the process images
+ This is a member function of CNode collects the process images
  
- \param			objProcessImage
+ \param			objProcessImage  Class variable of ProcessImage to hold object process image
  \return		void
  */
 /*****************************************************************************/
@@ -382,9 +386,9 @@ void CNode::addProcessImage(ProcessImage objProcessImage)
 /**
  \brief			addNETProcessImage
  
- This function collects the NETprocess images 
+ This is a member function of CNode collects the NETprocess images 
  
- \param			objNETProcessImage
+ \param			objNETProcessImage  Class variable of NETProcessImage
  \return		void
  */
 /*****************************************************************************/
@@ -399,10 +403,10 @@ void CNode::addNETProcessImage(NETProcessImage objNETProcessImage)
 /**
  \brief			addMNPDOvar
  
- This function adds PDO variables for MN
+ This is a member function of CNode adds PDO variables for MN
  
- \param			stPdoVar
- \param			enumEpdoType
+ \param			stPdoVar        Structure variable of MNPdoVariable
+ \param			enumEpdoType    Enum Variable of EPDOType
  \return		void
  */
 /*****************************************************************************/
@@ -429,7 +433,7 @@ void CNode::addMNPDOvar(MNPdoVariable stPdoVar, EPDOType enumEpdoType)
 /**
  \brief			CreateApplicationProcess
  
- This Function creates application process 
+ This is a member function of CNode creates application process 
  
  \return		void
  */
@@ -447,7 +451,7 @@ void CNode::CreateApplicationProcess()
 /**
  \brief			CreateNetworkManagament
  
- This function creates  network management for the objects 
+ This is a member function of CNode creates  network management for the objects 
  
  \return		void
  */
@@ -465,9 +469,9 @@ void CNode::CreateNetworkManagament()
 /**
  \brief			getPDOIndexCollection
  
- This function adds the indexs under EPDO index collection
+ This is a member function of CNode adds the indexs under EPDO index collection
  
- \param			enumEpdoType				
+ \param			enumEpdoType		 Enum variable of EPDOType hold the EPDO type		
  \return		CIndexCollection*
  */
 /*****************************************************************************/
@@ -493,7 +497,7 @@ CIndexCollection* CNode::getPDOIndexCollection(EPDOType enumEpdoType)
 /**
  \brief			getPDOIndexCollection
  
- This function adds the indexs under PDO index collection
+ This is a member function of CNode adds the indexs under PDO index collection
  
  \return		CIndexCollection*
  */
@@ -527,7 +531,7 @@ CIndexCollection* CNode::getPDOIndexCollection()
 /**
  \brief			getIndexCollectionWithoutPDO
  
- This function adds the indexes for non PDO type
+ This is a member function of CNode adds the indexes for non PDO type
  
  \return		CIndexCollection*
  */
@@ -553,7 +557,7 @@ CIndexCollection* CNode::getIndexCollectionWithoutPDO()
 /**
  \brief			isNull
  
- This function returns the status of the index collection
+ This is a member function of CNode returns the status of the index collection
  
  \return		BOOL
  \retval			TRUE			if successful
@@ -577,9 +581,9 @@ bool CNode::isNull()
 /**
  \brief			getPIbyParaIndex
  
- This function returns process image for each parameter index
+ This is a member function of CNode returns process image for each parameter index
  
- \param			iParaIndex
+ \param			iParaIndex          Integer Variable to hold the value of parameter index
  \return		ProcessImage*	
  */
 /*****************************************************************************/
@@ -605,7 +609,7 @@ ProcessImage* CNode::getPIbyParaIndex(INT32 iParaIndex)
 /**
  \brief			DeleteCollectionsForPI
  
- This function clears MN PDO collection index and process image collection
+ This is a member function of CNode clears MN PDO collection index and process image collection
  
  \return		void
  */
@@ -631,7 +635,7 @@ void CNode::DeleteCollectionsForPI()
 /**
  \brief			DeleteCollectionsForPI
  
- This function clears NETprocess image collection
+ This is a member function of CNode clears NETprocess image collection
  
  \return		void
  */
@@ -649,7 +653,7 @@ void CNode::DeleteCollectionsForNETPI()
 /**
  \brief			getStationType
  
- Returns the station type of the Node
+ This is a member function of CNode Returns the station type of the Node
  
  \return		EStationType
  */
@@ -664,9 +668,9 @@ EStationType CNode::getStationType()
 /**
  \brief			setNodeType
  
- sets the Node Type of the Node.Value can be either CN or MN
+ This is a member function of CNode sets the Node Type of the Node.Value can be either CN or MN
  
- \param			StationType				
+ \param			StationType		Enum Variable of EStationType to hold value of Station type		
  \return		EStationType
  */
 /*****************************************************************************/
@@ -680,7 +684,7 @@ void CNode::setStationType(EStationType StationType)
 /**
  \brief			getForcedCycle
  
- Returns the forced cycle of the Node
+ This is a member function of CNode Returns the forced cycle of the Node
  
  \return		char*
  */
@@ -695,9 +699,9 @@ char* CNode::getForcedCycle()
 /**
  \brief			setForcedCycle
  
- sets the cycle of the Node
+ This is a member function of CNode sets the cycle of the Node
 
- \param			pbForcedCycle
+ \param			pbForcedCycle     Character Pointer Variable to hold the value of forced cycle
  \return		void
  */
 /*****************************************************************************/
@@ -818,7 +822,7 @@ ocfmRetCode CNode::setForcedCycle(char* pbForcedCycle)
 /**
  \brief			resetForcedCycleValue
  
- sets the cycle of the Node
+ This is a member function of CNode resets current node cycle
 
  \return		void
  */
@@ -849,9 +853,9 @@ void CNode::resetForcedCycleValue()
 /**
  \brief			setPollResponseTimeout
  
- sets the poll response timeout value in MN
+ This is a member function of CNode sets the poll response timeout value in MN
  
- \param			pbPollResponseTimeout
+ \param			pbPollResponseTimeout      Character pointer to hold the value of poll response timeout
  \return		void
  */
 /*****************************************************************************/
@@ -906,7 +910,7 @@ void CNode::setPollResponseTimeout(char* pbPollResponseTimeout)
 /**
  \brief			getForceCycleFlag
  
- This function returns the value of forced cycle flag
+ This is a member function of CNode returns the value of forced cycle flag
  
  \return		BOOL
  \retval			TRUE			if successful
@@ -923,9 +927,9 @@ bool CNode::getForceCycleFlag()
 /**
  \brief			setForceCycleFlag
  
- This function sets the value for forced cycle flag
+ This is a member function of CNode sets the value for forced cycle flag
  
- \param			bForceCycleFlag
+ \param			bForceCycleFlag       Boolean flag to hold the value of forced cycle flag
  \return		void
  */
 /*****************************************************************************/
@@ -939,9 +943,9 @@ void CNode::setForceCycleFlag(bool bForceCycleFlag)
 /**
  \brief			setPResActPayloadValue
  
- This function sets the value for Presact payload
+ This is a member function of CNode sets the value for Presact payload
  
- \param			iValue
+ \param			iValue      Integer Variable to hold value of Pres Actpayload
  \return		void
  */
 /*****************************************************************************/
@@ -955,7 +959,7 @@ void CNode::setPResActPayloadValue(INT32 iValue)
 /**
  \brief			getPResActPayloadValue
  
- This function returns the value for Presact payload
+ This is a member function of CNode returns the value for Presact payload
  
  \return		INT32
  */
@@ -970,7 +974,7 @@ INT32 CNode::getPResActPayloadValue()
 /**
  \brief			setPReqActPayloadValue
  
- This function sets the value for Preqact payload
+ This is a member function of CNode sets the value for Preqact payload
  
  \param			iValue
  \return		void
@@ -987,7 +991,7 @@ void CNode::setPReqActPayloadValue(INT32 iValue)
 /**
  \brief			getPReqActPayloadValue
  
- This function returns the value for Preqact payload
+ This is a member function of CNode returns the value for Preqact payload
  
  \return		INT32
  */

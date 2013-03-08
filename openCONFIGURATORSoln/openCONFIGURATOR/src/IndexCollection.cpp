@@ -92,9 +92,9 @@ CIndexCollection::~CIndexCollection(void)
 /**
  \brief			addIndex
  
- This function collects the objindex
+ This is a member function of CIndexCollection collects the objindex
 
- \param			objIndex				
+ \param			objIndex	Class variable of CIndex for object index		
  \return		void
  */
 /*****************************************************************************/
@@ -126,9 +126,9 @@ void CIndexCollection::addIndex(CIndex objIndex)
 /**
  \brief			deleteIndex
  
- This Function deletes the index value
+ This is a member function of CIndexCollection deletes the index value
 
- \param			iIndexID				
+ \param			iIndexID	Integer Variable to hold index id			
  \return		void
  */
 /*****************************************************************************/
@@ -143,7 +143,7 @@ void CIndexCollection::deleteIndex(INT32 iIndexID)
 /**
  \brief			DeleteIndexCollection
  
- This Function clears the indexcollection 
+ This is a member function of CIndexCollection clears the indexcollection 
 
  \return		void
  */
@@ -159,7 +159,7 @@ void CIndexCollection::DeleteIndexCollection()
 /**
  \brief			DeletePDOs
  
- This Function deletes PDOs(14xx, 16xx, 18xx, 1Axx) indexes
+ This is a member function of CIndexCollection deletes PDOs(14xx, 16xx, 18xx, 1Axx) indexes
 
  \return		void
  */
@@ -190,7 +190,7 @@ void CIndexCollection::DeletePDOs()
 /**
  \brief			DeletePIObjects
  
- This Function deletes PIObjects
+ This is a member function of CIndexCollection deletes PIObjects
 
  \return		void
  */
@@ -220,9 +220,9 @@ void CIndexCollection::DeletePIObjects()
 /**
  \brief			getIndex
  
- This function collects index count 
+ This is a member function of CIndexCollection collects index count 
 
- \param			iCount
+ \param			iCount    Integer Variable to hold index count
  \return		CIndex*
  */
 /*****************************************************************************/
@@ -236,9 +236,9 @@ CIndex* CIndexCollection::getIndex(INT32 iCount)
 /**
  \brief			getIndexbyIndexValue
  
- This function collects index values 
+ This is a member function of CIndexCollection collects index values 
 
- \param			pbIndex
+ \param			pbIndex    Character pointer to hold index value
  \return		CIndex*
  */
 /*****************************************************************************/
@@ -265,7 +265,7 @@ CIndex* CIndexCollection::getIndexbyIndexValue(char* pbIndex)
 /**
  \brief			getNumberofIndexes
  
- This function returns total nummber of index 
+ This is a member function of CIndexCollection returns total number of index 
 
  \return		INT32
  */

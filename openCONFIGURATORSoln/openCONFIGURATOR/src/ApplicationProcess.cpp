@@ -94,9 +94,9 @@ CApplicationProcess::~CApplicationProcess(void)
 /**
  \brief			checkFileStatus
  
- This Function checks the status of the file
+ This is a member Function of CApplicationProcess checks the status of the file
  
- \param			pbFilename			
+ \param			pbFilename	Character Pointer variable hold the value of file status		
  \return	INT32
  */
 /*****************************************************************************/
@@ -119,9 +119,9 @@ INT32 CApplicationProcess::checkFileStatus(char* pbFilename)
 /**
  \brief			addComplexDataType
  
- This Function adds complex data type colletion
+ This ia a member Function of CApplicationProcess which collects complex data type 
  
- \param			objComplexData			
+ \param			objComplexData	 Class variable of CComplexDataType for data type	
  \return	void
  */
 /*****************************************************************************/
@@ -138,7 +138,7 @@ void CApplicationProcess::addComplexDataType(CComplexDataType objComplexData)
 /**
  \brief			DeleteComplexDataTypeCollection
  
- This Function deletes complex data type collection
+ This is member Function of CApplicationProcess which clears complex data type collection
  
  \return	void
  */
@@ -153,9 +153,9 @@ void CApplicationProcess::DeleteComplexDataTypeCollection()
 /**
  \brief			addParameter
  
- This function adds parameter to collection list
+ This is a member function of CApplicationProcess to add parameter in the collection list
  
- \param			stParam			
+ \param			stParam		Structure Variable of addParameter to add parameter to the collection list
  \return	void
  */
 /*****************************************************************************/
@@ -172,7 +172,7 @@ void CApplicationProcess::addParameter(Parameter stParam)
 /**
  \brief			Deleteparametercollection
  
- This function clears the parameter collection list
+ This is a member function of CApplicationProcess which clears parameter collection list
  
  \return	void
  */
@@ -187,9 +187,9 @@ void CApplicationProcess::DeleteParameterCollection()
 /**
  \brief			get_ParameterIndexby_UniqueIDRef
  
- This function returns parameter index with reference to IDs
+ This is a member function of CApplicationProcess to point parameter index with reference to IDs
 
- \param			pbUniqueIdRef			
+ \param			pbUniqueIdRef	Character Pointer variable to hold the value of unique refernce ids	
  \return	INT32
  */
 /*****************************************************************************/
@@ -213,9 +213,9 @@ INT32 CApplicationProcess::get_ParameterIndexby_UniqueIDRef(char *pbUniqueIdRef)
 /**
  \brief			get_Parameterby_UniqueIDRef
  
- This function returns parameter with reference to IDs
+ This is a member function of CApplicationProcess to point parameter with reference to IDs
 
- \param			pbUniqueIdRef			
+ \param			pbUniqueIdRef	Character Pointer variable to hold 	Unique reference ids
  \return	Parameter*
  */
 /*****************************************************************************/
@@ -240,9 +240,9 @@ Parameter* CApplicationProcess::get_Parameterby_UniqueIDRef(char *pbUniqueIdRef)
 /**
  \brief			get_CDT_UniqueIDRef
  
- This function returns unique reference ids from the collection list
+ This is a member function of CApplicationProcess to point unique reference ids from the collection list
 
- \param			pbUniqueIdRef			
+ \param			pbUniqueIdRef   Character Pointer variable to hold the value of unique reference ids	
  \return	INT32
  */
 /*****************************************************************************/
@@ -266,9 +266,9 @@ INT32 CApplicationProcess::get_CDT_UniqueIDRef(char *pbUniqueIdRef)
 /**
  \brief			getCDTbyUniqueID
  
- This function returns CDT values based on unique reference ids from the collection list
+ This is a member function of CApplicationProcess to point CDT values based on unique reference ids from the collection list
 
- \param			pbUniqueId			
+ \param			pbUniqueId	Character Pointer variable to hold the value of unique ids	
  \return	CComplexDataType*
  */
 /*****************************************************************************/
@@ -292,9 +292,9 @@ CComplexDataType* CApplicationProcess::getCDTbyUniqueID(char *pbUniqueId)
 /**
  \brief			getCDTbydt_UniqueRefID
  
- This function returns data type of CDT based on unique reference ids from the collection list
+ This is member function of CApplicationProcess to point complex datatype collection reference to unique ids
 
- \param			pbUniqueRefId			
+ \param			pbUniqueRefId	Character pointer to hold the value of unique reference ids		
  \return	CComplexDataType*
  */
 /*****************************************************************************/
@@ -324,9 +324,9 @@ CComplexDataType* CApplicationProcess::getCDTbydt_UniqueRefID(
 /**
  \brief			getCDTbydtIndex
  
- This function returns CDT index values
+ This is a member function of CApplicationProcess to point CDT with reference to index values
 
- \param			iIndex			
+ \param			iIndex		Integer variable to hold the Index of CDT collection	
  \return	CComplexDataType*
  */
 /*****************************************************************************/
@@ -340,10 +340,10 @@ CComplexDataType* CApplicationProcess::getCDTbydtIndex(INT32 iIndex)
 /**
  \brief			updatePreviousCDT_UId
  
- This function updates CDT collection list 
+ This is a member function of CApplicationProcess which updates CDT collection list 
 
- \param			pbUniqueID
- \param			iIndex			
+ \param			pbUniqueID  Character Pointer variable to hold the unique id of CDT collection
+ \param			iIndex		Integer variable to hold the Index of CDT collection	
  \return	void
  */
 /*****************************************************************************/
@@ -361,9 +361,9 @@ void CApplicationProcess::updatePreviousCDT_UId(char* pbUniqueID, INT32 iIndex)
 /**
  \brief			get_UniqueIDRef_by_ParameterIndex
  
- This function returns parameter index
-
- \param			iParameterIndex
+ This is a member function of CApplicationProcess to point the parameterindex reference to unique ids
+ 
+ \param			iParameterIndex  Integer variable to hold the unique ids.	
  \return	Parameter
  */
 /*****************************************************************************/
@@ -382,7 +382,7 @@ Parameter CApplicationProcess::get_UniqueIDRef_by_ParameterIndex(
 /**
  \brief			getCDTCount
  
- This function returns CDT collection count
+ This is a member function of CApplicationProcess returns CDT collection count
 
  \return	INT32
  */
@@ -397,7 +397,7 @@ INT32 CApplicationProcess::getCDTCount()
 /**
  \brief			getCDTbyCount
  
- This function returns CDT index collection value 
+ This is a member function of CApplicationProcess returns CDT index collection value 
 
  \return	CComplexDataType*
  */

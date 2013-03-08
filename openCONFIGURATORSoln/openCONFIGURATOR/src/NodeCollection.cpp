@@ -99,7 +99,7 @@ CNodeCollection::~CNodeCollection(void)
 /**
  \brief			getNumberOfNodes
  
- This function returns node count
+ This is a member function of CNodeCollection returns node count
 
  \return	INT32
  */
@@ -114,9 +114,9 @@ INT32 CNodeCollection::getNumberOfNodes()
 /**
  \brief			addNode
  
- This function collects objects under node count
+ This is a member function of CNodeCollection collects objects under node count
  
- \param			objNode
+ \param			objNode        Class Variable of CNode to hold the value of object node
  \return	void
  */
 /*****************************************************************************/
@@ -133,9 +133,9 @@ void CNodeCollection::addNode(CNode objNode)
 /**
  \brief			deleteNode
  
- This function deletes the node ids
+ This is a member function of CNodeCollection deletes the node ids
  
- \param			iNodeID
+ \param			iNodeID    Integer Variable holds the value of Node ID
  \return	void
  */
 /*****************************************************************************/
@@ -150,7 +150,7 @@ void CNodeCollection::deleteNode(INT32 iNodeID)
 /**
  \brief			getNodeColObjectPointer
  
- This function collects the location of node
+ This is a member function of CNodeCollection collects the location of node
  
  \return	CNodeCollection*
  */
@@ -170,7 +170,7 @@ CNodeCollection* CNodeCollection::getNodeColObjectPointer()
 /**
  \brief			getNodeColObject
  
- This function collects value of node objects
+ This is a member function of CNodeCollection collects value of node objects
  
  \return	CNodeCollection
  */
@@ -190,10 +190,10 @@ CNodeCollection CNodeCollection::getNodeColObject()
 /**
  \brief			getNode
  
- This function collects the type of node objects
+ This is a member function of CNodeCollection the type of node objects
 
- \param			enumNodeType
- \param			iNodeID				
+ \param			enumNodeType  Enum Variable of ENodeType to hold the value of Enum Node type
+ \param			iNodeID		  Integer Variable to hold the value of Node id		
  \return	CNode
  */
 /*****************************************************************************/
@@ -220,10 +220,10 @@ CNode CNodeCollection::getNode(ENodeType enumNodeType, INT32 iNodeID)
 /**
  \brief			getNodePtr
 
- This function collects the location of node objects type 
+ This is a member function of CNodeCollection collects the location of node objects type 
 
- \param			enumNodeType	
- \param			iNodeID			
+ \param			enumNodeType  Enum Variable of ENodeType to hold the value of Enum Node type
+ \param			iNodeID		  Integer Variable to hold the value of Node id					
 
  \return	CNode* / NULL
  */
@@ -251,9 +251,9 @@ CNode* CNodeCollection::getNodePtr(ENodeType enumNodeType, INT32 iNodeID)
 /**
  \brief			getNode
  
- This function collects the type of node objects 
+ This is a member function of CNodeCollection collects the type of node objects 
 
- \param			iNodeID				
+ \param			iNodeID			Integer Variable to hold the value of Node id		
  \return	CNode
  */
 /*****************************************************************************/
@@ -279,7 +279,7 @@ CNode CNodeCollection::getNode(INT32 iNodeID)
 /**
  \brief			getMNNode
  
- This function collects the type of node objects for MN
+ This is a member function of CNodeCollection collects the type of node objects for MN
 
  \return	CNode
  */
@@ -307,9 +307,9 @@ CNode CNodeCollection::getMNNode()
 /**
  \brief			getNodebyCollectionIndex
  
- This function returns node from the node collection index
+ This is a member function of CNodeCollection returns node from the node collection index
 
- \param			iColIndex
+ \param			iColIndex    Integer Variable to hold value of column index
  \return	CNode
  */
 /*****************************************************************************/
@@ -323,9 +323,9 @@ CNode CNodeCollection::getNodebyCollectionIndex(INT32 iColIndex)
 /**
  \brief			getNodebyColIndex
  
- This function collects the node with reference to the index location 
+ This is a member function of CNodeCollection collects the node with reference to the index location 
 
- \param			iColIndex
+ \param			iColIndex   Integer Variable to hold value of column index
  \return	CNode*
  */
 /*****************************************************************************/
@@ -339,7 +339,7 @@ CNode* CNodeCollection::getNodebyColIndex(INT32 iColIndex)
 /**
  \brief			getCNNodesCount
  
- This function collects the CN node count 
+ This is a member function of CNodeCollection collects the CN node count 
 
  \return	INT32
  */

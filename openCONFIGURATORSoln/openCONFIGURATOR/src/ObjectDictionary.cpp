@@ -109,7 +109,7 @@ CObjectDictionary::~CObjectDictionary(void)
 /**
  \brief			getObjDictPtr
  
- This function returns object dictionary based on the value of instance flag 
+ This is a member function of CObjectDictionary returns object dictionary based on the value of instance flag 
 
  \return		CObjectDictionary*
  */
@@ -129,9 +129,9 @@ CObjectDictionary* CObjectDictionary::getObjDictPtr()
 /**
  \brief			ProcessObjectDictionary
  
- Process the Node value,Name and its attributes
+ This is a member function of CObjectDictionary Process the Node value,Name and its attributes
  
- \param			reader
+ \param			reader  xml Variable of type xmlTextReaderPtr 
  \return		void
  */
 /*****************************************************************************/
@@ -273,9 +273,9 @@ void CObjectDictionary::ProcessObjectDictionary(xmlTextReaderPtr reader)
 /**
  \brief			addSameAttributesObjects
  
- add the SubIndex in the Index Object
+ This is a member function of CObjectDictionary add the SubIndex in the Index Object
  
- \param			stAttrIdx
+ \param			stAttrIdx Structure Variable of s_attrIdx_SIdx to hold the attribute index
  \return		void
  */
 /*****************************************************************************/
@@ -292,11 +292,11 @@ void CObjectDictionary::addSameAttributesObjects(s_attrIdx_SIdx stAttrIdx)
 /**
  \brief			createSameattrObject
  
- This function creats object dictionary
+ This is a member function of CObjectDictionary creats object dictionary
  
- \param			pbValue
- \param			enumObjType
- \param			pbIdx
+ \param			pbValue          Character Pointer Variable to hold the value of the object
+ \param			enumObjType      Enum Variable of  ObjectType to hold the value of Object type
+ \param			pbIdx            Character Pointer Variable to hold the value of Index
  \return		void
  */
 /*****************************************************************************/
@@ -344,9 +344,10 @@ void CObjectDictionary::createSameattrObject(char* pbValue,
 /**
  \brief			getObjectDictIndex
  
- This function returns index value of the object dictionary
+ This is a member function of CObjectDictionary returns index value of the object dictionary
  
- \param			pbIdx
+ \param			pbIdx            Character Pointer Variable to hold the value of Index
+ 
  \return		CIndex*
  */
 /*****************************************************************************/
@@ -391,10 +392,10 @@ CIndex* CObjectDictionary::getObjectDictIndex(char* pbIdx)
 /**
  \brief			getObjectDictSubIndex
  
- This function returns the object dictonary for sub index
+ This is a member function of CObjectDictionary returns the object dictonary for sub index
  
- \param			pbIdx
- \param			pbSIdx
+ \param			pbIdx       Character pointer variable to hold the value of Index
+ \param			pbSIdx      Character pointer variable to hold the value of Sub-Index
  \return		CIndex*
  */
 /*****************************************************************************/
@@ -459,11 +460,11 @@ CSubIndex* CObjectDictionary::getObjectDictSubIndex(char* pbIdx, char* pbSIdx)
 /**
  \brief			checkInTheRange
  
- This function returns the range of the object dictionary ids
+ This is a member function of CObjectDictionary returns the range of the object dictionary ids
  
- \param			pbIdx
- \param			pbStartIdx
- \param			pbEndIdx
+ \param			pbIdx              Character Pointer Variable to hold the value of Index
+ \param			pbStartIdx         Character Pointer Variable to hold the value of Start Index 
+ \param			pbEndIdx           Character Pointer Variable to hold the value of End Index
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending	
@@ -488,7 +489,7 @@ bool CObjectDictionary::checkInTheRange(char* pbIdx, char* pbStartIdx,
 /**
  \brief			printall
  
- This function collects the object ids,start index and end index
+ This is a member function of CObjectDictionary collects the object ids,start index and end index
  
  \return		void
  */
@@ -507,9 +508,9 @@ void CObjectDictionary::printall()
 /**
  \brief			ifObjectDictIndexExists
  
- This function returns the obj dictionary value from the collection list based on the index value
+ This is a member function of CObjectDictionaryreturns the obj dictionary value from the collection list based on the index value
  
- \param			pbIdx				
+ \param			pbIdx		Character Pointer Variable to hold the value of index		
  \return		INT32
  */
 /*****************************************************************************/
@@ -536,10 +537,10 @@ INT32 CObjectDictionary::ifObjectDictIndexExists(char* pbIdx)
 /**
  \brief			ifObjectDictSubIndexExists
  
- This function returns the obj dictionary value from the collection list based on the subindex value
+ This is a member function of CObjectDictionary returns the obj dictionary value from the collection list based on the subindex value
  
- \param			pbIdx
- \param			pbSIdx				
+ \param			pbIdx      Character Pointer Variable to hold the value of index		
+ \param			pbSIdx	   Character Pointer Variable to hold the value of Subindex		
  \return		INT32
  */
 /*****************************************************************************/
@@ -574,10 +575,10 @@ INT32 CObjectDictionary::ifObjectDictSubIndexExists(char* pbIdx, char* pbSIdx)
 /**
  \brief			getIndexName
  
- This function returns the index name
+ This is a member function of CObjectDictionary  returns the index name
  
- \param			pbObjectIndex
- \param			pbObjectName				
+ \param			pbObjectIndex  Character Pointer Variable to hold the value of Object index
+ \param			pbObjectName   Character Pointer Variable to hold the value of Object name				
  \return		char*
  */
 /*****************************************************************************/

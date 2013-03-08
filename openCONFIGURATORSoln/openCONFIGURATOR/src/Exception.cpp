@@ -94,9 +94,9 @@ ocfmException::~ocfmException(void) throw ()
 /**
  \brief			ocfm_Excpetion
  
- This Function displays Error statements
+ This is a member Function of ocfmException displays Error statements
  
- \param			enumErrcode			
+ \param			enumErrcode	 Enum Variable of EConfiuguratorErrors to hold the error code		
  \return		void
  */
 /*****************************************************************************/

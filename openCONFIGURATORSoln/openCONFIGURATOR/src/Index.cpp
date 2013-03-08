@@ -108,9 +108,9 @@ EPDOType CIndex::getPDOType()
 /**
  \brief			setPDOType
  
- This function assigns PDO type
+ This is a member function of setPDOType to assign PDO type
  
- \param			enumPDOType				
+ \param			enumPDOType	Enum Variable of EPDOType to hold the value of PDO type			
  \return		void
  */
 /*****************************************************************************/
@@ -128,9 +128,9 @@ void CIndex::setPDOType(EPDOType enumPDOType)
 /**
  \brief			addSubIndex
  
- add the SubIndex in the Index Object
+ This is a member function of CIndex to add SubIndex in Index Object
  
- \param			objSubIndex				
+ \param			objSubIndex		Class variable of CSubIndex for object subindex		
  \return		void
  */
 /*****************************************************************************/
@@ -151,9 +151,9 @@ void CIndex::addSubIndex(CSubIndex objSubIndex)
 /**
  \brief			deleteSubIndex
  
- delete the SubIndex in the Index Object
+ This is a member function of CIndex  to delete the SubIndex in Index Object
  
- \param			iSubIndexID				
+ \param			iSubIndexID		Integer Variable to hold the value of subindex id		
  \return		void
  */
 /*****************************************************************************/
@@ -168,7 +168,7 @@ void CIndex::deleteSubIndex(INT32 iSubIndexID)
 /**
  \brief			deleteSubIndexCollection
  
- delete the SubIndex in the Index Object
+ This is a member function of CIndex to delete the SubIndex from Index Object
  
  \return		void
  */
@@ -184,7 +184,7 @@ void CIndex::deleteSubIndexCollection()
 /**
  \brief			getNumberofSubIndexes
  
- This function returns number of subindexes
+ This is a member function of CIndex returns number of subindexes
  
  \return		INT32
  */
@@ -199,7 +199,8 @@ INT32 CIndex::getNumberofSubIndexes()
 /**
  \brief			getSubIndex
  
- This function returns number of subindex ids
+ This is a member function of CIndex returns number of subindex ids
+ \param         iSubIndexId Integer variable to hold the value of subindex id   
  
  \return		CSubIndex*
  */
@@ -214,9 +215,9 @@ CSubIndex* CIndex::getSubIndex(INT32 iSubIndexId)
 /**
  \brief			getSubIndexbyIndexValue
  
- This function returns number of subindex value 
+ This is a member function of CIndex returns number of subindex value 
  
- \param			pbIndex			
+ \param			pbIndex		Character pointer to hold index value
  \return		CSubIndex*
  */
 /*****************************************************************************/
@@ -250,10 +251,10 @@ CSubIndex* CIndex::getSubIndexbyIndexValue(char* pbIndex)
 /**
  \brief			SwapSubObjects
  
- This Function swaps the subobjects
+ This is a member function of CIndex swaps the subobjects
  
- \param			ipos1
- \param			ipos2			
+ \param			ipos1    Integer Variable to hold the subobject data
+ \param			ipos2	 Integer Variable to hold the subobject data		
  \return		void
  */
 /*****************************************************************************/
@@ -267,7 +268,7 @@ void CIndex::SwapSubObjects(INT32 ipos1, INT32 ipos2)
 /**
  \brief			UpdateArraySubObjects
  
- This function updates subobjects in array  
+ This is a member function of CIndex updates subobjects in array  
  
  \return		void
  */
