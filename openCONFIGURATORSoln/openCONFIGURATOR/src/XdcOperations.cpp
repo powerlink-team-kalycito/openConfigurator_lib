@@ -2,7 +2,7 @@
  ************************************************************************************************
  \file			XdcOperations.cpp
 
- \brief			
+ \brief			Handles Parameter,Variable declaration, datatype for Index attributes and Sub-Index attributes
  ************************************************************************************************
  */
 /*

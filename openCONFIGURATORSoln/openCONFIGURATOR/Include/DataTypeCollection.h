@@ -2,7 +2,7 @@
  *****************************************************************************************************
  \file			DataTypeCollection.h
 
- \brief			
+ \brief			This class is to handle complex datatype collection in xdd/xdc file
  *****************************************************************************************************
  */
 
@@ -62,7 +62,7 @@
 /**
  ******************************************************************************************************
  \class			CDataTypeCollection
- \brief			
+ \brief			This class is to handle complex datatype collection in xdd/xdc file
  
  *******************************************************************************************************/
 class DllExport CDataTypeCollection

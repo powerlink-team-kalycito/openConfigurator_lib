@@ -1,8 +1,8 @@
 /**
  *****************************************************************************************************
- \file			Node.h
+ \file			NodeCollecction.h
 
- \brief			
+ \brief			Hanldes collection of each node's information on id,name,type present inside the network	
  *****************************************************************************************************
  */
 
@@ -62,7 +62,7 @@
 /**
  ******************************************************************************************************
  \class			CNodeCollection
- \brief				
+ \brief			Hanldes collection of each node's information on id,name,type present inside the network	
  
  ******************************************************************************************************/
 class DllExport CNodeCollection

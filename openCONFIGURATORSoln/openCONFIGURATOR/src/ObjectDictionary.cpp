@@ -2,7 +2,7 @@
  ************************************************************************************************
  \file			ObjectDictionary.cpp
 
- \brief			
+ \brief			Creats object dictionary for each node and Process the Node value,Name and its attributes
  ************************************************************************************************
  */
 

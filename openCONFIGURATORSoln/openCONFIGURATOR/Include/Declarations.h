@@ -2,7 +2,7 @@
  *****************************************************************************************************
  \file			Declarations.h
 
- \brief			
+ \brief			Handles the declaration and definitions of all functions and datatypes used this application
  *****************************************************************************************************
  */
 /*

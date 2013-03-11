@@ -2,7 +2,7 @@
  *****************************************************************************************************
  \file			NetworkManagement.h
 
- \brief			
+ \brief			Handles Feature collection of each node present in the network
  *****************************************************************************************************
  */
 
@@ -65,7 +65,7 @@ using namespace std;
 /**
  ******************************************************************************************************
  \class			CNetworkManagement
- \brief			
+ \brief			This class handles Feature collection of each node present in the network
  
  ******************************************************************************************************/
 class DllExport CNetworkManagement

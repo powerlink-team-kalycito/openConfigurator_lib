@@ -65,7 +65,7 @@
 /**
  ******************************************************************************************************
  \class			CComplexDataType
- \brief			
+ \brief			This class is to handle complex datatypes in xdd/xdc file
  
  ******************************************************************************************************/
 class DllExport CComplexDataType

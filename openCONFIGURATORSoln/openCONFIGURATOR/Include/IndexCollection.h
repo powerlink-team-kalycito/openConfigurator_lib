@@ -2,7 +2,7 @@
  *****************************************************************************************************
  \file			IndexCollection.h
 
- \brief			
+ \brief			Handles definition of Index collection for all datatypes	
  *****************************************************************************************************
  */
 
@@ -63,7 +63,7 @@ using namespace std;
 /**
  ******************************************************************************************************
  \class			CIndexCollection
- \brief			 	
+ \brief			This class has definition of Index collection for all datatypes		
  
  ******************************************************************************************************/
 class DllExport CIndexCollection

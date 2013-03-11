@@ -2,7 +2,7 @@
  ************************************************************************************************
  \file			ProjectSettings.cpp
 
- \brief			
+ \brief			Handles project settings such as view mode,new settings,generate,ip address.
  ************************************************************************************************
  */
 
