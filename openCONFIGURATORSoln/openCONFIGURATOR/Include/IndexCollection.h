@@ -66,22 +66,24 @@ using namespace std;
  \brief			This class has definition of Index collection for all datatypes		
  
  ******************************************************************************************************/
-class DllExport CIndexCollection
+class IndexCollection
 {
 	public:
-		CIndexCollection(void);
-		~CIndexCollection(void);
-	private:
-		INT32 m_IndexCount;
-		TCollection<CIndex> collectionObj;
+		IndexCollection(void);
+		~IndexCollection(void);
+
 	public:
-		void addIndex(CIndex objIndex);
-		void deleteIndex(INT32 IndexID);
+		void AddIndex(Index objIndex);
+		void DeleteIndex(INT32 indexID);
 		void DeleteIndexCollection();
 		void DeletePDOs();
 		void DeletePIObjects();
-		INT32 getNumberofIndexes();
-		CIndex* getIndex(INT32 Count);
-		CIndex* getIndexbyIndexValue(char* Index);
+		INT32 GetNumberofIndexes();
+		Index* GetIndex(INT32 varCount);
+		Index* GetIndexbyIndexValue(char* varIndex);
+
+	private:
+		INT32 indexCount;
+		TCollection<Index> collectionObj;
 };
 #endif // IndexCollection_h

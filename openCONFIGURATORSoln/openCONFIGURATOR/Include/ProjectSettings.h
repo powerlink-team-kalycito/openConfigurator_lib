@@ -65,30 +65,32 @@
  
  ******************************************************************************************************/
 
-class DllExport CPjtSettings
+class PjtSettings
 {
 	public:
-		CPjtSettings(void);
-		~CPjtSettings(void);
+		PjtSettings(void);
+		~PjtSettings(void);
+
+	public:
+		static PjtSettings* GetPjtSettingsPtr();
+		AutoSave GetSaveAttr();
+		void SetSaveAttr(AutoSave);
+		AutoGenerate GetGenerateAttr();
+		void SetGenerateAttr(AutoGenerate);
+		void SetPOWERLINKIP(char*);
+		const char* GetPOWERLINKIP();
+		ViewMode GetViewMode();
+		void SetViewMode(ViewMode);
+		bool GetExpertViewSelectedFlag();
+		void SetExpertViewSelectedFlag(bool);
+
 	private:
 		static bool instanceFlag;
-		static CPjtSettings *objPjtSettings;
-		EAutoGenerate m_generateMode;
-		EAutoSave m_saveMode;
-		char* m_IP_openPOWERLINK;
-		EViewMode m_viewMode;
-		bool m_bExpertViewSelected;
-	public:
-		static CPjtSettings* getPjtSettingsPtr();
-		EAutoSave getSaveAttr();
-		void setSaveAttr(EAutoSave);
-		EAutoGenerate getGenerateAttr();
-		void setGenerateAttr(EAutoGenerate);
-		void setPOWERLINK_IP(char*);
-		const char* getPOWERLINK_IP();
-		EViewMode getViewMode();
-		void setViewMode(EViewMode);
-		bool getExpertViewSelectedFlag();
-		void setExpertViewSelectedFlag(bool);
+		static PjtSettings *objPjtSettings;
+		AutoGenerate generateMode;
+		AutoSave saveMode;
+		char* IPopenPOWERLINK;
+		ViewMode viewMode;
+		bool varbExpertViewSelected;
 };
 #endif // ProjectSettings_h

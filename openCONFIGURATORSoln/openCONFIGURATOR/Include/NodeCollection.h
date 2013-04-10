@@ -1,8 +1,8 @@
 /**
  *****************************************************************************************************
- \file			NodeCollecction.h
+ \file			NodeCollection.h
 
- \brief			Hanldes collection of each node's information on id,name,type present inside the network	
+ \brief			Handles collection of each node's information on id,name,type present inside the network
  *****************************************************************************************************
  */
 
@@ -65,29 +65,29 @@
  \brief			Hanldes collection of each node's information on id,name,type present inside the network	
  
  ******************************************************************************************************/
-class DllExport CNodeCollection
+class NodeCollection
 {
 	public:
-		CNodeCollection(void);
-		~CNodeCollection(void);
+		NodeCollection(void);
+		~NodeCollection(void);
 
 	private:
-		TCollection<CNode> collectionObj;
-		INT32 m_NodeCount;
+		TCollection<Node> collectionObj;
+		INT32 NodeCount;
 		static bool instanceFlag;
-		static CNodeCollection *objNodeCollection;
+		static NodeCollection *objNodeCollection;
 	public:
-		INT32 getNumberOfNodes();
-		void addNode(CNode objNode);
-		void deleteNode(INT32 NodeID);
-		static CNodeCollection* getNodeColObjectPointer();
-		CNode getNode(ENodeType nodeType, INT32 NodeId);
-		CNode getNode(INT32 NodeId);
-		CNode getNodebyCollectionIndex(INT32 ColIndex);
-		CNode getMNNode();
-		CNode* getNodePtr(ENodeType nodeType, INT32 NodeId);
-		CNode* getNodebyColIndex(INT32 ColIndex);
-		INT32 getCNNodesCount();
-		static CNodeCollection getNodeColObject();
+		INT32 GetNumberOfNodes();
+		void AddNode(Node objNode);
+		void DeleteNode(INT32 nodeID);
+		static NodeCollection* GetNodeColObjectPointer();
+		Node GetNode(NodeType varNodeType, INT32 varNodeId);
+		Node GetNode(INT32 nodeId);
+		Node GetNodebyCollectionIndex(INT32 colIndex);
+		Node GetMNNode();
+		Node* GetNodePtr(NodeType varNodeType, INT32 varNodeId);
+		Node* GetNodebyColIndex(INT32 colIndex);
+		INT32 GetCNNodesCount();
+		static NodeCollection GetNodeColObject();
 };
 #endif // NodeCollection_h

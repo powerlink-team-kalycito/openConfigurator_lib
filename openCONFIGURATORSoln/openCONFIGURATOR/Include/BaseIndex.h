@@ -66,78 +66,80 @@
 
  ****************************************************************************************************/
 
-class DllExport CBaseIndex
+class BaseIndex
 {
 	public:
-		CBaseIndex(void);
-		~CBaseIndex(void);
+		BaseIndex(void);
+		~BaseIndex(void);
 
-	protected:
-		const char* m_Name;
-		const char* m_Index;
-		const char* m_LowLimit;
-		const char* m_HighLimit;
-		EObjectType m_objectType;
-		DataType m_dataType;
-		const char* m_accessType;
-		const char* m_DefaultValue;
-		char* m_ActualValue;
-		EPDOMapping m_pdoMapping;
-		INT32 m_NodeID;
-		char* m_UniqueIDRef;
-		INT32 m_ParameterIndex;
-		char* m_dataTypeValue;/* Only used for ObjectDictionary*/
-		EFlag m_IsIncludedInCDC;
+
 
 	public:
 
-		const char* getName();
-		void setName(char* Name);
+		const char* GetName();
+		void SetName(char* varName);
 
-		const char* getIndexValue();
-		void setIndexValue(char* Index);
+		const char* GetIndexValue();
+		void SetIndexValue(char* varIndex);
 
-		const char* getDefaultValue();
-		void setDefaultValue(char* Value);
+		const char* GetDefaultValue();
+		void SetDefaultValue(char* varValue);
 
-		const char* getActualValue();
-		void setActualValue(char* Value);
+		const char* GetActualValue();
+		void SetActualValue(char* varValue);
 
-		const char* getAccessType();
-		void setAccessType(char* Access);
+		const char* GetAccessType();
+		void SetAccessType(char* varAccess);
 
-		const char* getLowLimit();
-		void setLowLimit(char* LowLimit);
+		const char* GetLowLimit();
+		void SetLowLimit(char* varLowLimit);
 
-		const char* getHighLimit();
-		void setHighLimit(char* HighLimit);
+		const char* GetHighLimit();
+		void SetHighLimit(char* varHighLimit);
 
-		DataType getDataType();
-		void setDataType(char* dataTypeValue);
-		void setDataType(char* dataTypeName, INT32 NodeID);
+		DataType GetDataType();
+		void SetDataType(char* dataTypeValue);
+		void SetDataTypeName(char* dataTypeName, INT32 varNodeId);
 
-		const char* getPDOMapping();
-		void setPDOMapping(char* pdoMappingValue);
+		const char* GetPDOMapping();
+		void SetPDOMapping(char* pdoMappingValue);
 
-		const char* getObjectType();
-		EObjectType getEObjectType();
-		void setObjectType(char* objectType);
+		const char* GetObjectType();
+		ObjectType GetEObjectType();
+		void SetObjectType(char* objectType);
 
-		INT32 getNodeID();
-		void setNodeID(INT32 NodeID);
+		INT32 GetNodeID();
+		void SetNodeID(INT32 NodeID);
 
-		bool IsIndexVaueValid(char* value);
-		void SaveChanges(char* Name, char* Value);
+		bool IsIndexVaueValid(char* varValue);
+		void SaveChanges(char* varName, char* varValue);
 
-		char* getUniqueIDRef();
-		void setUniqueIDRef(char* UniqueID);
+		char* GetUniqueIDRef();
+		void SetUniqueIDRef(char* uniqueID);
 
-		char* getDataTypeValue();
-		void setDataTypeValue(char* value);
+		char* GetDataTypeValue();
+		void SetDataTypeValue(char* varValue);
 
-		EFlag getFlagIfIncludedCdc();
-		void setFlagIfIncludedCdc(EFlag flag);
+		Flag GetFlagIfIncludedCdc();
+		void SetFlagIfIncludedCdc(Flag varFlag);
 
-		void setDataTypeST(DataType dt);
+		void SetDataTypeST(DataType varDt);
+
+	protected:
+			const char* Name;
+			const char* Index;
+			const char* lowLimit;
+			const char* highLimit;
+			ObjectType objectType;
+			DataType dataType;
+			const char* accessType;
+			const char* defaultValue;
+			char* actualValue;
+			PDOMapping pdoMapping;
+			INT32 nodeId;
+			char* uniqueIdRef;
+			INT32 parameterIndex;
+			char* dataTypeValue;/* Only used for ObjectDictionary*/
+			Flag isIncludedInCDC;
 };
 #endif //BaseIndex_h

@@ -69,26 +69,26 @@
  
  ******************************************************************************************************/
 
-class DllExport CIndex: public CBaseIndex
+class Index: public BaseIndex
 {
 	public:
-		CIndex(void);
-		~CIndex(void);
+		Index(void);
+		~Index(void);
 	private:
-		INT32 m_SubIndexCount;
-		EPDOType m_PDOType;
+		INT32 SubIndexCount;
+		PDOType pdoType;
 	private:
-		TCollection<CSubIndex> collectionObj;
+		TCollection<SubIndex> collectionObj;
 	public:
-		void addSubIndex(CSubIndex objSubIndex);
-		void deleteSubIndex(INT32 SubIndexID);
-		void deleteSubIndexCollection();
-		INT32 getNumberofSubIndexes();
-		CSubIndex* getSubIndex(INT32 SubIndexId);
-		EPDOType getPDOType();
-		void setPDOType(EPDOType PDOType);
-		CSubIndex* getSubIndexbyIndexValue(char* Index);
-		void SwapSubObjects(INT32 pos1, INT32 pos2);
+		void AddSubIndex(SubIndex objSubIndex);
+		void DeleteSubIndex(INT32 subIndexID);
+		void DeleteSubIndexCollection();
+		INT32 GetNumberofSubIndexes();
+		SubIndex* GetSubIndex(INT32 subIndexId);
+		PDOType GetPDOType();
+		void SetPDOType(PDOType varPDOType);
+		SubIndex* GetSubIndexbyIndexValue(char* Index);
+		void SwapSubObjects(INT32 varPos1, INT32 varPos2);
 		void UpdateArraySubObjects();
 };
 #endif // Index_h

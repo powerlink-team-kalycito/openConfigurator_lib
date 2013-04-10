@@ -66,10 +66,10 @@
  
  ******************************************************************************************************/
 
-class DllExport CSubIndex: public CBaseIndex
+class SubIndex: public BaseIndex
 {
 	public:
-		CSubIndex(void);
-		~CSubIndex(void);
+		SubIndex(void);
+		~SubIndex(void);
 };
 #endif // SubIndex_h

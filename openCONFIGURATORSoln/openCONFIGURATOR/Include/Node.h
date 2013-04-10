@@ -69,28 +69,28 @@
  \brief			This class includes each node's information on id,name,type present inside the network
  
  ******************************************************************************************************/
-class DllExport CNode
+class Node
 {
 	public:
-		CNode(void);
-		~CNode(void);
+		Node(void);
+		~Node(void);
 	private:
-		CDataTypeCollection *m_DataTypeCollection;
-		CIndexCollection *m_IndexCollection;
-		CApplicationProcess* m_ApplicationProcess;
-		CNetworkManagement *m_NetworkManagement;
+		DataTypeCollection *VarDataTypeCollection;
+		IndexCollection *VarIndexCollection;
+		ApplicationProcess* VarApplicationProcess;
+		NetworkManagement *VarNetworkManagement;
 
-		INT32 m_NodeId;
-		ENodeType m_NodeType;
-		INT32 m_NodeIndex;
-		bool m_HasPdoObjects;
-		char* m_NodeName;
-		EStationType m_StationType;
-		char* m_ForcedCycle;
-		bool m_ForcedCycleFlag;
-		char* m_PollResponseTimeout;
-		INT32 m_PResActPayload;
-		INT32 m_PReqActPayload;
+		INT32 VarNodeId;
+		NodeType VarNodeType;
+		INT32 NodeIndex;
+		bool VarHasPdoObjects;
+		char* VarNodeName;
+		StationType VarStationType;
+		char* VarForcedCycle;
+		bool VarForcedCycleFlag;
+		char* VarPollResponseTimeout;
+		INT32 VarPResActPayload;
+		INT32 VarPReqActPayload;
 		/*	typedef TCollection<ProcessImage> PICollection;*/
 	public:
 		/*typedef _PICollection PICollection;*/
@@ -99,55 +99,55 @@ class DllExport CNode
 		TCollection<MNPdoVariable> MNPDOOUTVarCollection;
 		TCollection<NETProcessImage> NETProcessImageCollection;
 	public:
-		CDataTypeCollection* getDataTypeCollection();
-		CIndexCollection* getIndexCollection();
-		CApplicationProcess* getApplicationProcess();
-		CNetworkManagement *getNetworkManagement();
+		DataTypeCollection* GetDataTypeCollection();
+		IndexCollection* GetIndexCollection();
+		ApplicationProcess* GetApplicationProcess();
+		NetworkManagement *GetNetworkManagement();
 
-		INT32 getNodeId();
-		void setNodeId(INT32 NodeId);
+		INT32 GetNodeId();
+		void SetNodeId(INT32 NodeId);
 
-		INT32 getNodeIndex();
-		void setNodeIndex(INT32 NodeIndex);
+		INT32 GetNodeIndex();
+		void SetNodeIndex(INT32 nodeIndex);
 
-		char* getNodeName();
-		void setNodeName(char* NodeName);
+		char* GetNodeName();
+		void SetNodeName(char* nodeName);
 
-		ENodeType getNodeType();
-		void setNodeType(ENodeType NodeType);
+		NodeType GetNodeType();
+		void SetNodeType(NodeType varNodeType);
 
 		bool HasPdoObjects();
-		void setFlagForPdoObjects(bool flag);
+		void SetFlagForPdoObjects(bool flag);
 
 		void CreateIndexCollection();
 		void CreateDataTypeCollection();
 		void CreateApplicationProcess();
 		void CreateNetworkManagament();
 
-		void addProcessImage(ProcessImage processImage);
-		void addNETProcessImage(NETProcessImage objNETProcessImage);
-		void addMNPDOvar(MNPdoVariable variable, EPDOType pdoType);
+		void AddProcessImage(ProcessImage processImage);
+		void AddNETProcessImage(NETProcessImage objNETProcessImage);
+		void AddMNPDOvar(MNPdoVariable variable, PDOType varPDOType);
 
-		CIndexCollection* getPDOIndexCollection(EPDOType PDOType);
-		CIndexCollection* getIndexCollectionWithoutPDO();
-		CIndexCollection*getPDOIndexCollection(INT32 *rpdoCount, INT32 *tpdoCount);
+		IndexCollection* GetPDOIndexCollection(PDOType varPDOType);
+		IndexCollection* GetIndexCollectionWithoutPDO();
+		IndexCollection* getPDOIndexCollection(INT32 *rpdoCount, INT32 *tpdoCount);
 
-		ProcessImage* getPIbyParaIndex(INT32 paraIndex);
+		ProcessImage* GetPIbyParaIndex(INT32 paraIndex);
 		void DeleteCollectionsForPI();
-		EStationType getStationType();
-		void setStationType(EStationType StationType);
+		StationType GetStationType();
+		void SetStationType(StationType varStationType);
 
-		char* getForcedCycle();
-		bool getForceCycleFlag();
-		ocfmRetCode setForcedCycle(char* ForcedCycle);
-		void resetForcedCycleValue();
-		void setForceCycleFlag(bool bForceCycleFlag);
-		void setPollResponseTimeout(char* pbPollResponseTimeout);
-		bool isNull();
+		char* GetForcedCycle();
+		bool GetForceCycleFlag();
+		ocfmRetCode SetForcedCycle(char* forcedCycle);
+		void ResetForcedCycleValue();
+		void SetForceCycleFlag(bool forceCycleFlag);
+		void SetPollResponseTimeout(char* pollResponseTimeout);
+		bool IsNull();
 		void DeleteCollectionsForNETPI();
-		void setPResActPayloadValue(INT32);
-		INT32 getPResActPayloadValue();
-		void setPReqActPayloadValue(INT32);
-		INT32 getPReqActPayloadValue();
+		void SetPResActPayloadValue(INT32);
+		INT32 GetPResActPayloadValue();
+		void SetPReqActPayloadValue(INT32);
+		INT32 GetPReqActPayloadValue();
 };
 #endif // Node_h

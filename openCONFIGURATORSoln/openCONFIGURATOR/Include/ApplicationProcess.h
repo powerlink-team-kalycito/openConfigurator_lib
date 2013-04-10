@@ -70,34 +70,34 @@ using namespace std;
  \brief			The collection of all the objects within the Application Process tag xdd/xdc file  
 
  ********************************************************************************************************/
-class DllExport CApplicationProcess
+class ApplicationProcess
 {
 	public:
-		CApplicationProcess(void);
-		~CApplicationProcess(void);
+		ApplicationProcess(void);
+		~ApplicationProcess(void);
 	public:
-		char* XDDfilename;
-		char* ProjectPath;
-		TCollection<CComplexDataType> CDTCollection;
+		char* xddFileName;
+		char* projectPath;
+		TCollection<ComplexDataType> CDTCollection;
 		TCollection<Parameter> ParameterCollection;
 
 	public:
 		void DeleteComplexDataTypeCollection(void);
 		void DeleteParameterCollection(void);
 		//void ParseXDDfile(char* filename);
-		INT32 checkFileStatus(char* filename);
-		void addComplexDataType(CComplexDataType complexDT);
-		void addParameter(Parameter parameter);
-		INT32 get_ParameterIndexby_UniqueIDRef(char* UniqueIdRef);
-		Parameter* get_Parameterby_UniqueIDRef(char* UniqueIdRef);
-		CComplexDataType* getCDTbyUniqueID(char* UniqueId);
-		CComplexDataType* getCDTbydt_UniqueRefID(char* UniqueRefId);
-		CComplexDataType* getCDTbydtIndex(INT32 Index);
-		INT32 get_CDT_UniqueIDRef(char *UniqueIdRef);
-		void updatePreviousCDT_UId(char *UniqueID, INT32 Index);
-		Parameter get_UniqueIDRef_by_ParameterIndex(INT32 ParameterIndex);
-		INT32 getCDTCount();
-		CComplexDataType* getCDTbyCount(INT32 count);
+		INT32 CheckFileStatus(char* fileName);
+		void AddComplexDataType(ComplexDataType complexDT);
+		void AddParameter(Parameter parameter);
+		INT32 GetParameterIndexbyUniqueIDRef(char* uniqueIdRef);
+		Parameter* GetParameterbyUniqueIDRef(char* uniqueIdRef);
+		ComplexDataType* GetCDTbyUniqueID(char* uniqueId);
+		ComplexDataType* GetCDTByDtUniqueRefID(char* uniqueRefId);
+		ComplexDataType* GetCDTByDtIndex(INT32 varIndex);
+		INT32 GetCDTUniqueIDRef(char *uniqueIdRef);
+		void UpdatePreviousCDTUId(char *uniqueID, INT32 varIndex);
+		Parameter GetUniqueIDRefbyParameterIndex(INT32 parameterIndex);
+		INT32 GetCDTCount();
+		ComplexDataType* GetCDTbyCount(INT32 varCount);
 };
 
 #endif // ApplicationProcess_h

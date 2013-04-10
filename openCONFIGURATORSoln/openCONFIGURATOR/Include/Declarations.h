@@ -116,29 +116,29 @@ typedef unsigned long int ULONG;
 typedef enum
 {
 	DEFTYPE = 5, DEFSTRUCT = 6, VAR = 7, ARRAY = 8, RECORD = 9
-} EObjectType;
+} ObjectType;
 
-DllExport typedef enum
+DLLEXPORT typedef enum
 {
 		NO, DEFAULT, OPTIONAL, RPDO, TPDO
-} EPDOMapping;
+} PDOMapping;
 
-typedef EPDOMapping *e_PDOMapping;
+typedef PDOMapping *pdoMapping;
 
 typedef enum
 {
 	MN = 0, CN = 1
-} ENodeType;
+} NodeType;
 
 typedef enum
 {
 	PDO_TPDO = 1, PDO_RPDO = 2
-} EPDOType;
+} PDOType;
 
 typedef enum
 {
 	GENERAL_FEATURES = 0, MN_FEATURES = 1, CN_FEATURES = 2
-} EFeatureType;
+} FeatureType;
 
 typedef enum
 {
@@ -148,7 +148,7 @@ typedef enum
 	readWriteInput, /*both read and write access, but represents process input data*/
 	readWriteOutput, /*both read and write, access, but represents process output data*/
 	noAccess /*access denied				*/
-} EParameterAccess;
+} ParameterAccess;
 
 typedef enum IEC_Datatype
 {
@@ -175,105 +175,105 @@ typedef enum IEC_Datatype
 struct DataType
 {
 		char* Name;
-		char* DataTypeValue;
-		INT32 DataSize;
+		char* dataTypeValue;
+		INT32 dataSize;
 		IEC_Datatype IEC_dt;
-		char* getName()
+		char* GetName()
 		{
 			return (Name);
 		}
 		//TODO: Review. steName not called
-		void setName(char* DataTypeName)
+		void SetName(char* dataTypeName)
 		{
-			Name = new char[strlen(DataTypeName) + 1];
-			strcpy(Name, DataTypeName);
+			Name = new char[strlen(dataTypeName) + 1];
+			strcpy(Name, dataTypeName);
 		}
 };
 
-typedef struct appProcessCommon
+typedef struct AppProcessCommon
 {
-		char* m_Name;
-		char* UniqueId;
+		char* Name;
+		char* uniqueId;
 		char* dataType;
 		char* dataTypeUniqueIDRef;
 
-		char* getUniqueID()
+		char* GetUniqueID()
 		{
-			return (UniqueId);
+			return (uniqueId);
 		}
 
-		void setUniqueID(char* UniqueID)
+		void SetUniqueID(char* varUniqueID)
 		{
-			UniqueId = new char[strlen(UniqueID) + 1];
-			strcpy(UniqueId, UniqueID);
+			uniqueId = new char[strlen(varUniqueID) + 1];
+			strcpy(uniqueId, varUniqueID);
 		}
 
-		char* getName()
+		char* GetName()
 		{
-			return (m_Name);
+			return (Name);
 		}
 
-		void setName(char* attrname)
+		void SetName(char* attrName)
 		{
-			m_Name = new char[strlen(attrname) + 1];
-			strcpy(m_Name, attrname);
+			Name = new char[strlen(attrName) + 1];
+			strcpy(Name, attrName);
 		}
 
-		char* getDataType()
+		char* GetDataType()
 		{
 			return (dataType);
 		}
 
-		void setDataType(char* dt)
+		void SetDataType(char* dt)
 		{
 			dataType = new char[strlen(dt) + 1];
 			strcpy(dataType, dt);
 		}
 
-		char* getDtUniqueRefId()
+		char* GetDtUniqueRefId()
 		{
 			return (dataTypeUniqueIDRef);
 		}
 
-		void setDtUniqueRefId(char* UniqueRefID)
+		void SetDtUniqueRefId(char* uniqueRefID)
 		{
-			dataTypeUniqueIDRef = new char[strlen(UniqueRefID) + 1];
-			strcpy(dataTypeUniqueIDRef, UniqueRefID);
+			dataTypeUniqueIDRef = new char[strlen(uniqueRefID) + 1];
+			strcpy(dataTypeUniqueIDRef, uniqueRefID);
 		}
 } appProcessCommon;
 
 struct varDeclaration
 {
-		appProcessCommon* nam_id_dt_attr;
-		char size[5];
-		char* InitialValue; //TODO: unused
-		char* StructUniqueId;
+		AppProcessCommon* namIdDtAttr;
+		char Size[5];
+		char* initialValue; //TODO: unused
+		char* structUniqueId;
 		void Initialize()
 		{
-			nam_id_dt_attr = new appProcessCommon;
-			nam_id_dt_attr->dataType = NULL;
-			nam_id_dt_attr->dataTypeUniqueIDRef = NULL;
-			nam_id_dt_attr->m_Name = NULL;
-			nam_id_dt_attr->UniqueId = NULL;
-			strcpy(size, "");
+			namIdDtAttr = new AppProcessCommon;
+			namIdDtAttr->dataType = NULL;
+			namIdDtAttr->dataTypeUniqueIDRef = NULL;
+			namIdDtAttr->Name = NULL;
+			namIdDtAttr->uniqueId = NULL;
+			strcpy(Size, "");
 		}
 };
 
 typedef struct Parameter
 {
-		appProcessCommon name_id_dt_attr;
+		AppProcessCommon nameIdDtAttr;
 		char* dataType;	//TODO: unused
-		INT32 StructIndex; //TODO: unused
-		char* access;
-		INT32 ParaIndex;
+		INT32 structIndex; //TODO: unused
+		char* Access;
+		INT32 paraIndex;
 		//char*	dataTypeUniqueIDRef;
 } Parameter;
 
 typedef struct Feature
 {
-		char* m_Name;
-		char* m_Value;
-		EFeatureType m_featureType;
+		char* Name;
+		char* Value;
+		FeatureType featureType;
 } Feature;
 
 typedef struct MNPdoVariable
@@ -283,7 +283,7 @@ typedef struct MNPdoVariable
 		INT32 Offset; //TODO: unused
 		char* Value;
 		INT32 DataSize;
-		EPDOType pdoType;
+		PDOType pdoType;
 } MNPdoVariable;
 
 typedef enum
@@ -298,133 +298,132 @@ typedef enum
 	LOWLIMIT,
 	HIGHLIMIT,
 	FLAGIFINCDC,
-} EAttributeType;
+} AttributeType;
 
 typedef enum
 {
 	FALSE = 0, TRUE
-} EFlag;
+} Flag;
 
 typedef enum
 {
 	DATE = 0, TIME
-} EDateTime;
+} DateTime;
 
 typedef enum
 {
 	NO_AG = 0, YES_AG = 1
-} EAutoGenerate;
+} AutoGenerate;
 
 typedef enum
 {
 	YES_AS = 0, PROMPT_AS, DISCARD_AS
-} EAutoSave;
+} AutoSave;
 typedef enum
 {
 	SIMPLE = 0, EXPERT
 
-} EViewMode;
+} ViewMode;
 
 typedef enum
 {
 	AUTOGENERATE = 0, AUTOSAVE
-} EProjectSettings;
+} ProjectSettings;
 typedef enum
 {
 	NORMAL = 0, MULTIPLEXED, CHAINED
-} EStationType;
+} StationType;
 /************************************************************************************************
  * Function Declarations
- ****************************************************************************************************/DllExport ocfmRetCode ImportXML(
-		char* fileName, INT32 NodeID, ENodeType NodeType);
-DllExport ocfmRetCode ReImportXML(char* fileName, INT32 NodeID,
-		ENodeType NodeType);
-DllExport ocfmRetCode GenerateXAP(char* fileName);
-DllExport ocfmRetCode GenerateCDC(char* CDCLocation);
-DllExport ocfmRetCode GenerateNET(char* pbFileName);
-DllExport ocfmRetCode CreateNode(INT32 NodeID, ENodeType NodeType,
-		char* NodeName);
-DllExport ocfmRetCode parseFile(char* filename, INT32 NodeID,
-		ENodeType NodeType);
-DllExport ocfmRetCode DeleteNode(INT32 NodeID, ENodeType NodeType);
-DllExport ocfmRetCode DeleteNodeObjDict(INT32 NodeID, ENodeType NodeType);
-DllExport ocfmRetCode DeleteIndex(INT32 NodeID, ENodeType NodeType,
-		char* IndexID);
-DllExport ocfmRetCode DeleteSubIndex(INT32 NodeID, ENodeType NodeType,
-		char* IndexID, char* SubIndexID);
-DllExport ocfmRetCode AddIndex(INT32 NodeID, ENodeType NodeType, char* IndexID);
-DllExport ocfmRetCode AddSubIndex(INT32 NodeID, ENodeType NodeType,
-		char* IndexID, char* SubIndexID);
-DllExport ocfmRetCode SetIndexAttributes(INT32 NodeID, ENodeType NodeType,
-		char* IndexID, char* IndexValue, char* IndexName, EFlag flagIfInCdc);
-DllExport ocfmRetCode SetSubIndexAttributes(INT32 NodeID, ENodeType NodeType,
-		char* IndexID, char* SubIndexID, char* IndexValue, char* IndexName,
-		EFlag flagIfInCdc);
-DllExport ocfmRetCode IfNodeExists(INT32 NodeID, ENodeType NodeType,
-		INT32* NodePos, bool& ExistfFlag);
-DllExport ocfmRetCode IfIndexExists(INT32 NodeID, ENodeType NodeType,
-		char* IndexID, INT32* IndexPos);
-DllExport ocfmRetCode IfSubIndexExists(INT32 NodeID, ENodeType NodeType,
-		char* IndexID, char* SubIndexID, INT32* SubIndexPos, INT32* IndexPos);
-DllExport ocfmRetCode GetIndexAttributes(INT32 NodeID, ENodeType NodeType,
-		char* IndexID, EAttributeType AttributeType, char* Out_AttributeValue);
-DllExport ocfmRetCode GetSubIndexAttributes(INT32 NodeID, ENodeType NodeType,
-		char* IndexID, char* SubIndexID, EAttributeType AttributeType,
-		char* Out_AttributeValue);
-DllExport ocfmRetCode GetNodeCount(INT32 MnNodeID, INT32* Out_NodeCount);
-DllExport ocfmRetCode GetIndexCount(INT32 NodeID, ENodeType NodeType,
-		INT32* Out_IndexCount);
-DllExport ocfmRetCode GetSubIndexCount(INT32 NodeID, ENodeType NodeType,
-		char* IndexID, INT32* Out_SubIndexCount);
-DllExport ocfmRetCode GetNodeAttributesbyNodePos(INT32 NodePos,
-		INT32* Out_NodeID, char* Out_NodeName, EStationType *Out_eStationType,
-		char* Out_ForcedCycle, bool* bForcedCycleFlag);
-DllExport ocfmRetCode GetIndexIDbyIndexPos(INT32 NodeID, ENodeType NodeType,
-		INT32 IndexPos, char* Out_IndexID);
-DllExport ocfmRetCode GetSubIndexIDbySubIndexPos(INT32 NodeID,
-		ENodeType NodeType, char* IndexID, INT32 SubIndexPos,
-		char* Out_SubIndexID);
-DllExport ocfmRetCode GetIndexIDbyPositions(INT32 NodePos, INT32 IndexPos,
-		char* Out_IndexID);
-DllExport ocfmRetCode GetSubIndexIDbyPositions(INT32 NodePos, INT32 IndexPos,
-		INT32 SubIndexPos, char* Out_SubIndexID);
-DllExport ocfmRetCode GetIndexAttributesbyPositions(INT32 NodePos,
-		INT32 IndexPos, EAttributeType AttributeType, char* Out_AttributeValue);
-DllExport ocfmRetCode GetSubIndexAttributesbyPositions(INT32 NodePos,
-		INT32 IndexPos, INT32 SubIndexPos, EAttributeType AttributeType,
-		char* Out_AttributeValue);
+ ****************************************************************************************************/
+DLLEXPORT ocfmRetCode ImportXML(
+		char* fileName, INT32 varNodeID, NodeType varNodeType);
+DLLEXPORT ocfmRetCode ReImportXML(char* fileName, INT32 varNodeID,
+		NodeType varNodeType);
+DLLEXPORT ocfmRetCode GenerateXAP(char* fileName);
+DLLEXPORT ocfmRetCode GenerateCDC(char* CDCLocation);
+DLLEXPORT ocfmRetCode GenerateNET(char* fileName);
+DLLEXPORT ocfmRetCode CreateNode(INT32 varNodeID, NodeType varNodeType,
+		char* nodeName);
+DLLEXPORT ocfmRetCode DeleteNode(INT32 varNodeID, NodeType varNodeType);
+DLLEXPORT ocfmRetCode DeleteNodeObjDict(INT32 varNodeID, NodeType varNodeType);
+DLLEXPORT ocfmRetCode DeleteIndex(INT32 varNodeID, NodeType varNodeType,
+		char* indexID);
+DLLEXPORT ocfmRetCode DeleteSubIndex(INT32 varNodeID, NodeType varNodeType,
+		char* indexID, char* subIndexID);
+DLLEXPORT ocfmRetCode AddIndex(INT32 varNodeID, NodeType varNodeType, char* indexID);
+DLLEXPORT ocfmRetCode AddSubIndex(INT32 varNodeID, NodeType varNodeType,
+		char* iIndexID, char* subIndexID);
+DLLEXPORT ocfmRetCode SetIndexAttributes(INT32 varNodeID, NodeType varNodeType,
+		char* indexID, char* indexValue, char* indexName, Flag flagIfInCdc);
+DLLEXPORT ocfmRetCode SetSubIndexAttributes(INT32 varNodeID, NodeType varNodeType,
+		char* indexID, char* subIndexID, char* indexValue, char* indexName,
+		Flag flagIfInCdc);
+DLLEXPORT ocfmRetCode IfNodeExists(INT32 varNodeID, NodeType varNodeType,
+		INT32* nodePos, bool& existfFlag);
+DLLEXPORT ocfmRetCode IfIndexExists(INT32 varNodeID, NodeType varNodeType,
+		char* indexID, INT32* indexPos);
+DLLEXPORT ocfmRetCode IfSubIndexExists(INT32 varNodeID, NodeType varNodeType,
+		char* indexID, char* subIndexID, INT32* subIndexPos, INT32* indexPos);
+DLLEXPORT ocfmRetCode GetIndexAttributes(INT32 varNodeID, NodeType varNodeType,
+		char* indexID, AttributeType attributeType, char* outAttributeValue);
+DLLEXPORT ocfmRetCode GetSubIndexAttributes(INT32 varNodeID, NodeType varNodeType,
+		char* indexID, char* subIndexID, AttributeType attributeType,
+		char* outAttributeValue);
+DLLEXPORT ocfmRetCode GetNodeCount(INT32 mnNodeID, INT32* outNodeCount);
+DLLEXPORT ocfmRetCode GetIndexCount(INT32 varNodeID, NodeType varNodeType,
+		INT32* outIndexCount);
+DLLEXPORT ocfmRetCode GetSubIndexCount(INT32 varNodeID, NodeType varNodeType,
+		char* indexID, INT32* outSubIndexCount);
+DLLEXPORT ocfmRetCode GetNodeAttributesbyNodePos(INT32 nodePos,
+		INT32* outNodeID, char* outNodeName, StationType *outEstationType,
+		char* outForcedCycle, bool* bForcedCycleFlag);
+DLLEXPORT ocfmRetCode GetIndexIDbyIndexPos(INT32 varNodeID, NodeType varNodeType,
+		INT32 indexPos, char* outIndexID);
+DLLEXPORT ocfmRetCode GetSubIndexIDbySubIndexPos(INT32 varNodeID,
+		NodeType varNodeType, char* indexID, INT32 subIndexPos,
+		char* outSubIndexID);
+DLLEXPORT ocfmRetCode GetIndexIDbyPositions(INT32 nodePos, INT32 indexPos,
+		char* outIndexID);
+DLLEXPORT ocfmRetCode GetSubIndexIDbyPositions(INT32 nodePos, INT32 indexPos,
+		INT32 subIndexPos, char* outSubIndexID);
+DLLEXPORT ocfmRetCode GetIndexAttributesbyPositions(INT32 nodePos,
+		INT32 indexPos, AttributeType attributeType, char* outAttributeValue);
+DLLEXPORT ocfmRetCode GetSubIndexAttributesbyPositions(INT32 nodePos,
+		INT32 indexPos, INT32 subIndexPos, AttributeType attributeType,
+		char* outAttributeValue);
 
-DllExport void LoadObjectDictionary(char* fileName);
-DllExport ocfmRetCode SaveNode(const char* fileName, INT32 NodeID,
-		ENodeType NodeType);
-DllExport ocfmRetCode SaveProject(char* ProjectPath, char* ProjectName);
-DllExport ocfmRetCode OpenProject(char* PjtPath, char* projectXmlFileName);
-DllExport ocfmRetCode FreeProjectMemory();
-DllExport ocfmRetCode GetProjectSettings(EAutoGenerate* autoGen,
-		EAutoSave* autoSave, EViewMode* viewMode, bool* bExpertViewAlreadySet);
-DllExport ocfmRetCode SetProjectSettings(EAutoGenerate autoGen,
-		EAutoSave autoSave, EViewMode viewMode, bool bExpertViewAlreadySet);
-DllExport ocfmRetCode GenerateMNOBD();
-DllExport ocfmRetCode SetAllIndexAttributes(INT32 NodeID, ENodeType NodeType,
-		char* IndexID, char* ActualValue, char* IndexName, char* Access,
+DLLEXPORT void LoadObjectDictionary(char* fileName);
+DLLEXPORT ocfmRetCode SaveNode(const char* fileName, INT32 varNodeID,
+		NodeType varNodeType);
+DLLEXPORT ocfmRetCode SaveProject(char* projectPath, char* projectName);
+DLLEXPORT ocfmRetCode OpenProject(char* pjtPath, char* projectXmlFileName);
+DLLEXPORT ocfmRetCode FreeProjectMemory();
+DLLEXPORT ocfmRetCode GetProjectSettings(AutoGenerate* autoGen,
+		AutoSave* autoSave, ViewMode* viewMode, bool* bExpertViewAlreadySet);
+DLLEXPORT ocfmRetCode SetProjectSettings(AutoGenerate autoGen,
+		AutoSave autoSave, ViewMode viewMode, bool bExpertViewAlreadySet);
+DLLEXPORT ocfmRetCode GenerateMNOBD();
+DLLEXPORT ocfmRetCode SetAllIndexAttributes(INT32 varNodeID, NodeType varNodeType,
+		char* indexID, char* actualValue, char* indexName, char* varAccess,
 		char* dataTypeValue, char* pdoMappingVal, char* defaultValue,
 		char* highLimit, char* lowLimit, char* objType,
-		EFlag flagIfIncludedInCdc);
-DllExport ocfmRetCode SetAllSubIndexAttributes(INT32 NodeID, ENodeType NodeType,
-		char* IndexID, char* SubIndexID, char* ActualValue, char* IndexName,
-		char* Access, char* dataTypeValue, char* pdoMappingVal,
+		Flag flagIfIncludedInCdc);
+DLLEXPORT ocfmRetCode SetAllSubIndexAttributes(INT32 varNodeID, NodeType varNodeType,
+		char* indexID, char* subIndexID, char* actualValue, char* indexName,
+		char* varAccess, char* dataTypeValue, char* pdoMappingVal,
 		char* defaultValue, char* highLimit, char* lowLimit, char* objType,
-		EFlag flagIfIncludedInCdc);
-DllExport ocfmRetCode GetFeatureValue(INT32 iNodeId, ENodeType eNodeType,
-		EFeatureType eFeatureType, char* FeatureName, char* Out_FeatureValue);
-DllExport ocfmRetCode UpdateNodeParams(INT32 iCurrNodeId, INT32 iNewNodeID,
-		ENodeType eNodeType, char* NodeName, EStationType eStationType,
-		char* ForcedCycle, bool ForcedCycleFlag, char* PollResponseTimeout);
-DllExport ocfmRetCode GetNodeDataTypes(INT32 iNodeId, ENodeType eNodeType,
-		char* Out_DataTypes);
-DllExport ocfmRetCode NewProjectNode(INT32 iNodeID, ENodeType enumNodeType,
-		char* pbNodeName, char * pbImportXmlFile);
-DllExport INT32 getDataSize(char* dataTypeVal);
+		Flag flagIfIncludedInCdc);
+DLLEXPORT ocfmRetCode GetFeatureValue(INT32 iNodeId, NodeType varNodeType,
+		FeatureType varFeatureType, char* featureName, char* outFeatureValue);
+DLLEXPORT ocfmRetCode UpdateNodeParams(INT32 iCurrNodeId, INT32 iNewNodeID,
+		NodeType varNodeType, char* nodeName, StationType varStationType,
+		char* forcedCycle, bool forcedCycleFlag, char* pollResponseTimeout);
+DLLEXPORT ocfmRetCode GetNodeDataTypes(INT32 iNodeId, NodeType varNodeType,
+		char* outDataTypes);
+DLLEXPORT ocfmRetCode NewProjectNode(INT32 iNodeID, NodeType varNodeType,
+		char* nodeName, char * importXmlFile);
+DLLEXPORT INT32 GetDataSize(char* dataTypeVal);
 #ifndef __GNUC__
 #pragma warning( disable: 4251 )
 #endif

@@ -73,7 +73,7 @@ class ocfmException: public std::exception
 	public:
 		ocfmRetCode _ocfmRetCode;
 	public:
-		void ocfm_Excpetion(EConfiuguratorErrors errcode);
+		void OCFMException(ConfiguratorErrors errcode);
 };
 
 #endif // exception_h

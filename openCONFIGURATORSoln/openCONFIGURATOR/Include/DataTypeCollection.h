@@ -65,22 +65,22 @@
  \brief			This class is to handle complex datatype collection in xdd/xdc file
  
  *******************************************************************************************************/
-class DllExport CDataTypeCollection
+class DataTypeCollection
 {
 	public:
-		CDataTypeCollection(void);
-		~CDataTypeCollection(void);
+		DataTypeCollection(void);
+		~DataTypeCollection(void);
 	private:
-		INT32 m_DataTypeCount;
+		INT32 DataTypeCount;
 
 	private:
 		TCollection<DataType> collectionObj;
 	public:
-		void addDataType(DataType objDataType);
+		void AddDataType(DataType objDataType);
 		void DeleteDataTypeCollection();
-		INT32 getNumberOfDataTypes();
-		DataType* getDataTypeElement(INT32 DataTypeId);
-		DataType* getDataType(char* DataTypevalue);
-		DataType* getDataTypeByName(char* DataTypeName);
+		INT32 GetNumberOfDataTypes();
+		DataType* GetDataTypeElement(INT32 dataTypeId);
+		DataType* GetDataType(char* dataTypevalue);
+		DataType* GetDataTypeByName(char* dataTypeName);
 };
 #endif // DataTypeCollection_h

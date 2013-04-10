@@ -167,32 +167,32 @@ static const int NO_OF_PI_ENTERIES = 18;
 void GroupInOutPIVariables(ProcessImage PIInCol[], ProcessImage PIOutCol[]);
 //TODO: CalculateOffsets To be removedNo definitions found 
 void CalculateOffsets(INT32 VarCount, EPIDirectionType type);
-PIDataInfo* getIECDT(char* dtStr, INT32 dataSize);
-INT32 ComputeINOffset(INT32 dataSize, EPDOType pdoType);
-INT32 ComputeOUTOffset(INT32 dataSize, EPDOType pdoType);
+PIDataInfo* GetIECDT(char* dtStr, INT32 dataSize);
+INT32 ComputeINOffset(INT32 dataSize, PDOType pdoType);
+INT32 ComputeOUTOffset(INT32 dataSize, PDOType pdoType);
 void SetPIOffsets(ProcessImage* pi, INT32& StartingByteOffset, INT32 pos,
 		INT32& StartBitOffset);
-void GenerateXAPHeaderFile(char* fileName, ProcessImage PI_IN[],
-		ProcessImage PI_OUT[], INT32 InVar, INT32 OutVar);
-void AddPDOIndexsToMN(char* Index, char* SubIndex, EPDOType pdoType);
-PIObject getPIAddress(PDODataType dt, EPIDirectionType dirType, INT32 Offset,
+void GenerateXAPHeaderFile(char* fileName, ProcessImage piIn[],
+		ProcessImage piOut[], INT32 inVar, INT32 outVar);
+void AddPDOIndexsToMN(char* Index, char* subIndex, PDOType varPDOType);
+PIObject GetPIAddress(PDODataType dt, EPIDirectionType dirType, INT32 Offset,
 		INT32 dataSize);
-char* getPIDataTypeName(char* Address);
-char* getPIName(char* Address);
+char* GetPIDataTypeName(char* Address);
+char* GetPIName(char* Address);
 bool CheckIfProcessImageIdx(char* Index);
-void WriteXAPHeaderContents(ProcessImage PI[], INT32 NumberOfVars,
+void WriteXAPHeaderContents(ProcessImage PI[], INT32 numberOfVars,
 		EPIDirectionType dirType, FILE* fileptr);
-void GenerateNETHeaderFile(char* pbFileName, ProcessImage objPIInCol[],
+void GenerateNETHeaderFile(char* fileName, ProcessImage objPIInCol[],
 		ProcessImage objPIOutCol[], INT32 iInVar, INT32 iOutVar);
 void WriteNETHeaderContents(ProcessImage objProcessImage[], INT32 iNumberOfVars,
-		EPIDirectionType enumDirType, FILE* fpNetHeader);
+		EPIDirectionType dirType, FILE* fpNetHeader);
 INT32 SearchModuleNameNETProcessImageCollection(INT32 CNNodeID,
 		INT32 iItemLoopCount, char* schModuleName);
-INT32 GroupNETPIVariables(EPIDirectionType DirectionType,
+INT32 GroupNETPIVariables(EPIDirectionType varDirectionType,
 		ProcessImage aobjPICol[]);
 void SetUniquePIVarName();
 void CopyPItoNETPICollection(ProcessImage objProcessImage,
-		NETProcessImage objNETProcessImage, char* ModuleName);
+		NETProcessImage objNETProcessImage, char* moduleName);
 INT32 GroupNETHeaderContents(ProcessImage objProcessImage[],
 		INT32 iNumberOfVars, EPIDirectionType enumDirType, FILE* fpNetHeader);
 char* GetDatatypeNETPI(IEC_Datatype dt_enum);

@@ -71,47 +71,47 @@
  \brief			Handles the object dictionary for each index	
  
  ******************************************************************************************************/
-class CObjectDictionary
+class ObjectDictionary
 {
 	public:
-		CObjectDictionary(void);
-		~CObjectDictionary(void);
+		ObjectDictionary(void);
+		~ObjectDictionary(void);
 	private:
 		static bool instanceFlag;
-		INT32 m_s_attrIdx_SIdx;
+		INT32 varsattrIdxSIdx;
 
 		enum ObjectType
 		{
 			INDEX = 0, SUBINDEX
 		};
 
-		typedef struct s_attrIdx_SIdx
+		typedef struct sattrIdxSIdx
 		{
 				char* Idx;
-				char* start_Index;
-				char* end_Index;
+				char* startIndex;
+				char* endIndex;
 				ObjectType objectType;
-		} s_attrIdx_SIdx;
+		} sattrIdxSIdx;
 
-		TCollection<s_attrIdx_SIdx> collectionObj;
+		TCollection<sattrIdxSIdx> collectionObj;
 
 	public:
-		static CNode* objDictNode;
-		static CObjectDictionary* objectDictionary;
+		static Node* objDictNode;
+		static ObjectDictionary* objectDictionary;
 
 	public:
 		void CheckIfSameIndex(char* Index);
-		CIndex* getIndexDictAttribues(char* Index);
+		Index* GetIndexDictAttribues(char* Index);
 		void ProcessObjectDictionary(xmlTextReaderPtr reader);
-		static CObjectDictionary* getObjDictPtr();
-		void addSameAttributesObjects(s_attrIdx_SIdx object);
-		void createSameattrObject(char* value, ObjectType objType, char*Idx);
-		CIndex* getObjectDictIndex(char* Idx);
-		CSubIndex* getObjectDictSubIndex(char* Idx, char* SIdx);
-		INT32 ifObjectDictIndexExists(char* Index);
-		INT32 ifObjectDictSubIndexExists(char* Idx, char* SIdx);
-		bool checkInTheRange(char* Idx, char* StartIdx, char* EndIdx);
-		void printall();
-		char* getIndexName(char* pbObjectIndex, char* pbObjectName);
+		static ObjectDictionary* GetObjDictPtr();
+		void AddSameAttributesObjects(sattrIdxSIdx object);
+		void CreateSameattrObject(char* value, ObjectType objType, char*Idx);
+		Index* GetObjectDictIndex(char* Idx);
+		SubIndex* GetObjectDictSubIndex(char* Idx, char* sIdx);
+		INT32 IfObjectDictIndexExists(char* Index);
+		INT32 IfObjectDictSubIndexExists(char* Idx, char* sIdx);
+		bool CheckInTheRange(char* Idx, char* startIdx, char* endIdx);
+		void Printall();
+		char* GetIndexName(char* objectIndex, char* objectName);
 };
 #endif // ObjectDictionary_h

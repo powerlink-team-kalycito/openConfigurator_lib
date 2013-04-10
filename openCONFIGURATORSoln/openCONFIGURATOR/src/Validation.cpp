@@ -73,52 +73,52 @@
 
  \param		iNodeID			Integer variable to hold the Node Id of a node
  \param		iNodeType		Enum to hold the Node type of the node
- \param		piNodePos		Pointer to the Node position
+ \param		iNodePos		Pointer to the Node position
  \param		ExistfFlag		Boolean
 
  \return	ocfmRetCode
  */
 /*****************************************************************************/
 
-ocfmRetCode IfNodeExists(INT32 iNodeID, ENodeType iNodeType, INT32 *piNodePos,
+ocfmRetCode IfNodeExists(INT32 iNodeID, NodeType iNodeType, INT32 *iNodePos,
 		bool& ExistfFlag)
 {
-	CNode objNode;
-	CNodeCollection *pobjNodeCollection = NULL;
+	Node objNode;
+	NodeCollection *objNodeCollection = NULL;
 	ocfmRetCode stErrStruct;
 
 	try
 	{
 
-		if (NULL == piNodePos)
+		if (NULL == iNodePos)
 		{
 			ocfmException objException;
-			objException.ocfm_Excpetion(OCFM_ERR_INVALID_PARAMETER);
+			objException.OCFMException(OCFM_ERR_INVALID_PARAMETER);
 			cout << "INVALID_PARAMETER" << __FUNCTION__ << __LINE__ << endl;
 			throw &objException;
 		}
-		pobjNodeCollection = CNodeCollection::getNodeColObjectPointer();
-		if (NULL == pobjNodeCollection)
+		objNodeCollection = NodeCollection::GetNodeColObjectPointer();
+		if (NULL == objNodeCollection)
 		{
 			cout << "IfNodeExists: pobjNodeCollection is NULL!" << endl;
 			stErrStruct.code = OCFM_ERR_UNKNOWN;
 			return stErrStruct;
 		}
 
-		if (pobjNodeCollection->getNumberOfNodes() > 0)
+		if (objNodeCollection->GetNumberOfNodes() > 0)
 		{
 			for (INT32 iLoopCount = 0;
-					iLoopCount < pobjNodeCollection->getNumberOfNodes();
+					iLoopCount < objNodeCollection->GetNumberOfNodes();
 					iLoopCount++)
 			{
-				objNode = pobjNodeCollection->getNodebyCollectionIndex(
+				objNode = objNodeCollection->GetNodebyCollectionIndex(
 						iLoopCount);
 
-				if (objNode.getNodeType() == iNodeType)
+				if (objNode.GetNodeType() == iNodeType)
 				{
-					if (objNode.getNodeId() == iNodeID)
+					if (objNode.GetNodeId() == iNodeID)
 					{
-						*piNodePos = iLoopCount;
+						*iNodePos = iLoopCount;
 						stErrStruct.code = OCFM_ERR_SUCCESS;
 						ExistfFlag = true;
 
@@ -127,13 +127,13 @@ ocfmRetCode IfNodeExists(INT32 iNodeID, ENodeType iNodeType, INT32 *piNodePos,
 				}
 			}
 			ocfmException objException;
-			objException.ocfm_Excpetion(OCFM_ERR_NODEID_NOT_FOUND);
+			objException.OCFMException(OCFM_ERR_NODEID_NOT_FOUND);
 			throw &objException;
 		}
 		else
 		{
 			ocfmException objException;
-			objException.ocfm_Excpetion(OCFM_ERR_NO_NODES_FOUND);
+			objException.OCFMException(OCFM_ERR_NO_NODES_FOUND);
 			throw &objException;
 		}
 	} catch (ocfmException* ex)
@@ -150,17 +150,17 @@ ocfmRetCode IfNodeExists(INT32 iNodeID, ENodeType iNodeType, INT32 *piNodePos,
  This API shall be used to check the presence of an Index in a node. This API returns 'ocfmRetCode'. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS',  the 'IndexPos' will contain the position of the Index under the node.
 
  \param		iNodeID			Integer variable to hold the Node Id of a node
- \param		enumNodeType	Enum to hold the Node type of the node
- \param		pbIndexID		Character pointer to hold the IndexID
- \param		piIndexPos		Integer Pointer to the  IndexPos
+ \param		varNodeType	Enum to hold the Node type of the node
+ \param		indexID		Character pointer to hold the IndexID
+ \param		iIndexPos		Integer Pointer to the  IndexPos
 
  \return	ocfmRetCode		-2 if the Index doesnot exist. Returns Zero and fills the error string on Index existance or 
  if Node doesn't exist or if NodeType is invalid
  */
 /*****************************************************************************/
 
-ocfmRetCode IfIndexExists(INT32 iNodeID, ENodeType enumNodeType,
-		char* pbIndexID, INT32 *piIndexPos)
+ocfmRetCode IfIndexExists(INT32 iNodeID, NodeType varNodeType,
+		char* indexID, INT32 *iIndexPos)
 {
 	//CIndex objIndex;
 	ocfmRetCode stErrStruct;
@@ -169,15 +169,15 @@ ocfmRetCode IfIndexExists(INT32 iNodeID, ENodeType enumNodeType,
 
 	try
 	{
-		if ((NULL == pbIndexID) || (NULL == piIndexPos))
+		if ((NULL == indexID) || (NULL == iIndexPos))
 		{
 			ocfmException objException;
-			objException.ocfm_Excpetion(OCFM_ERR_INVALID_PARAMETER);
+			objException.OCFMException(OCFM_ERR_INVALID_PARAMETER);
 			cout << "INVALID_PARAMETER" << __FUNCTION__ << __LINE__ << endl;
 			throw objException;
 		}
 
-		stErrStruct = IfNodeExists(iNodeID, enumNodeType, &iNodePos, bFlag);
+		stErrStruct = IfNodeExists(iNodeID, varNodeType, &iNodePos, bFlag);
 
 		if ((true == bFlag) && (OCFM_ERR_SUCCESS == stErrStruct.code))
 		{
@@ -186,50 +186,50 @@ ocfmRetCode IfIndexExists(INT32 iNodeID, ENodeType enumNodeType,
 		else
 		{
 			ocfmException objException;
-			objException.ocfm_Excpetion(OCFM_ERR_INVALID_NODEID);
+			objException.OCFMException(OCFM_ERR_INVALID_NODEID);
 			throw objException;
 		}
-		CNode objNode;
-		CNodeCollection *pobjNodeCollection = NULL;
-		CIndexCollection *pobjIndexCollection = NULL;
-		pobjNodeCollection = CNodeCollection::getNodeColObjectPointer();
-		objNode = pobjNodeCollection->getNode(enumNodeType, iNodeID);
-		pobjIndexCollection = objNode.getIndexCollection();
+		Node objNode;
+		NodeCollection *pobjNodeCollection = NULL;
+		IndexCollection *objIndexCollection = NULL;
+		pobjNodeCollection = NodeCollection::GetNodeColObjectPointer();
+		objNode = pobjNodeCollection->GetNode(varNodeType, iNodeID);
+		objIndexCollection = objNode.GetIndexCollection();
 
-		if (0 == pobjIndexCollection->getNumberofIndexes())
+		if (0 == objIndexCollection->GetNumberofIndexes())
 		{
-			*piIndexPos = 0;
+			*iIndexPos = 0;
 			stErrStruct.code = OCFM_ERR_NO_INDEX_FOUND;
 		}
-		else if (pobjIndexCollection->getNumberofIndexes() > 0)
+		else if (objIndexCollection->GetNumberofIndexes() > 0)
 		{
 			//Check for existance of the Index
 			for (INT32 iIndexCount = 0;
-					iIndexCount < pobjIndexCollection->getNumberofIndexes();
+					iIndexCount < objIndexCollection->GetNumberofIndexes();
 					iIndexCount++)
 			{
-				CIndex *objIndexPtr = NULL;
-				char *pbIndexValue = NULL;
+				Index *objIndexPtr = NULL;
+				char *indexValue = NULL;
 
-				objIndexPtr = pobjIndexCollection->getIndex(iIndexCount);
-				pbIndexValue =
-						new char[strlen((char*) objIndexPtr->getIndexValue())
+				objIndexPtr = objIndexCollection->GetIndex(iIndexCount);
+				indexValue =
+						new char[strlen((char*) objIndexPtr->GetIndexValue())
 								+ STR_ALLOC_BUFFER];
-				strcpy(pbIndexValue, (char*) objIndexPtr->getIndexValue());
+				strcpy(indexValue, (char*) objIndexPtr->GetIndexValue());
 
 				if (0
-						== strcmp(StringToUpper(pbIndexValue),
-								StringToUpper(pbIndexID)))
+						== strcmp(StringToUpper(indexValue),
+								StringToUpper(indexID)))
 				{
-					CIndex *objIndexPtr = NULL;
+					Index *objIndexPtr = NULL;
 
-					objIndexPtr = pobjIndexCollection->getIndex(iIndexCount);
-					*piIndexPos = iIndexCount;
+					objIndexPtr = objIndexCollection->GetIndex(iIndexCount);
+					*iIndexPos = iIndexCount;
 					stErrStruct.code = OCFM_ERR_SUCCESS;
 					return stErrStruct;
 				}
 				else if (iIndexCount
-						== (pobjIndexCollection->getNumberofIndexes() - 1))
+						== (objIndexCollection->GetNumberofIndexes() - 1))
 				{
 					// Index Doesn't Exist
 					stErrStruct.code = OCFM_ERR_INDEXID_NOT_FOUND;
@@ -238,7 +238,7 @@ ocfmRetCode IfIndexExists(INT32 iNodeID, ENodeType enumNodeType,
 				else
 				{
 				}
-				delete[] pbIndexValue;
+				delete[] indexValue;
 			}
 		}
 		else
@@ -260,39 +260,39 @@ ocfmRetCode IfIndexExists(INT32 iNodeID, ENodeType enumNodeType,
  This API shall be used to check the presence of a SubIndex in an Index. This API returns 'ocfmRetCode'. If 'ocfmRetCode' is equal to ' OCFM_ERR_SUCCESS',  the 'SubIndexPos' will contain the position of the SubIndex under the Index.
 
  \param		iNodeID				Integer variable to hold the Node Id of a node
- \param		enumNodeType		Enum to hold the Node type of the node
- \param		pbIndexID			Character pointer to hold the IndexID
- \param		pbSubIndexID		Character pointer to hold the SubIndexID
- \param		piSubIndexPos		Integer Pointer to hold  the  SubIndexPos
- \param		piIndexPos			Integer Pointer to hold the  IndexPos
+ \param		varNodeType		Enum to hold the Node type of the node
+ \param		iIndexID			Character pointer to hold the IndexID
+ \param		subIndexID		Character pointer to hold the SubIndexID
+ \param		iSubIndexPos		Integer Pointer to hold  the  SubIndexPos
+ \param		iIndexPos			Integer Pointer to hold the  IndexPos
 
  \return	ocfmRetCode
  */
 /*****************************************************************************/
 
-ocfmRetCode IfSubIndexExists(INT32 iNodeID, ENodeType enumNodeType,
-		char* pbIndexID, char* pbSubIndexID, INT32* piSubIndexPos,
-		INT32* piIndexPos)
+ocfmRetCode IfSubIndexExists(INT32 iNodeID, NodeType varNodeType,
+		char* iIndexID, char* subIndexID, INT32* iSubIndexPos,
+		INT32* iIndexPos)
 {
 	ocfmRetCode stErrStruct;
 	try
 	{
-		if ((NULL == pbIndexID) || (NULL == pbSubIndexID)
-				|| (NULL == piIndexPos) || (NULL == piSubIndexPos))
+		if ((NULL == iIndexID) || (NULL == subIndexID)
+				|| (NULL == iIndexPos) || (NULL == iSubIndexPos))
 		{
 			ocfmException objException;
-			objException.ocfm_Excpetion(OCFM_ERR_INVALID_PARAMETER);
+			objException.OCFMException(OCFM_ERR_INVALID_PARAMETER);
 			cout << "INVALID_PARAMETER" << __FUNCTION__ << __LINE__ << endl;
 			throw objException;
 		}
-		CNode objNode;
-		CIndex objIndex;
-		CNodeCollection *pobjNodeCollection = NULL;
-		CIndexCollection *pobjIndexCollection = NULL;
-		CIndex *pobjSubIndex = NULL;
+		Node objNode;
+		Index objIndex;
+		NodeCollection *objNodeCollection = NULL;
+		IndexCollection *objIndexCollection = NULL;
+		Index *objSubIndex = NULL;
 
-		stErrStruct = IfIndexExists(iNodeID, enumNodeType, pbIndexID,
-				piIndexPos);
+		stErrStruct = IfIndexExists(iNodeID, varNodeType, iIndexID,
+				iIndexPos);
 
 		if (OCFM_ERR_SUCCESS != stErrStruct.code)
 		{
@@ -301,35 +301,35 @@ ocfmRetCode IfSubIndexExists(INT32 iNodeID, ENodeType enumNodeType,
 			return stErrStruct;
 		}
 
-		pobjNodeCollection = CNodeCollection::getNodeColObjectPointer();
-		objNode = pobjNodeCollection->getNode(enumNodeType, iNodeID);
-		objIndex.setNodeID(objNode.getNodeId()); //TODO: Tobe removed
-		pobjIndexCollection = objNode.getIndexCollection();
-		pobjSubIndex = pobjIndexCollection->getIndex(*piIndexPos);
-		if (pobjSubIndex->getNumberofSubIndexes() == 0)
+		objNodeCollection = NodeCollection::GetNodeColObjectPointer();
+		objNode = objNodeCollection->GetNode(varNodeType, iNodeID);
+		objIndex.SetNodeID(objNode.GetNodeId()); //TODO: Tobe removed
+		objIndexCollection = objNode.GetIndexCollection();
+		objSubIndex = objIndexCollection->GetIndex(*iIndexPos);
+		if (objSubIndex->GetNumberofSubIndexes() == 0)
 		{
 			stErrStruct.code = OCFM_ERR_NO_SUBINDEXS_FOUND;
 		}
-		else if (pobjSubIndex->getNumberofSubIndexes() > 0)
+		else if (objSubIndex->GetNumberofSubIndexes() > 0)
 		{
 			//Check for existance of the SubIndex
 			for (INT32 iSubIndexcount = 0;
-					iSubIndexcount < pobjSubIndex->getNumberofSubIndexes();
+					iSubIndexcount < objSubIndex->GetNumberofSubIndexes();
 					iSubIndexcount++)
 			{
-				CSubIndex* objSubIndexPtr = NULL;
+				SubIndex* objSubIndexPtr = NULL;
 
-				objSubIndexPtr = pobjSubIndex->getSubIndex(iSubIndexcount);
+				objSubIndexPtr = objSubIndex->GetSubIndex(iSubIndexcount);
 				if ((strcmp(
-						StringToUpper((char*) objSubIndexPtr->getIndexValue()),
-						StringToUpper(pbSubIndexID)) == 0))
+						StringToUpper((char*) objSubIndexPtr->GetIndexValue()),
+						StringToUpper(subIndexID)) == 0))
 				{
 					stErrStruct.code = OCFM_ERR_SUCCESS;
-					*piSubIndexPos = iSubIndexcount;
+					*iSubIndexPos = iSubIndexcount;
 					return stErrStruct;
 				}
 				else if (iSubIndexcount
-						== (pobjSubIndex->getNumberofSubIndexes() - 1))
+						== (objSubIndex->GetNumberofSubIndexes() - 1))
 				{
 					// SubIndex Doesn't Exist
 					stErrStruct.code = OCFM_ERR_SUBINDEXID_NOT_FOUND;
@@ -354,31 +354,32 @@ ocfmRetCode IfSubIndexExists(INT32 iNodeID, ENodeType enumNodeType,
 
 /*****************************************************************************/
 /**
- \brief			CheckIfDataTypeExists
+ \brief		CheckIfDataTypeExists
  
- This API shall be used to check datatype of objects
+  This API shall be used to check datatype of objects
  
- \param			pbDataValue   Character pointer to hold the datavalue
- \param			iNodeID       Integer Pointer to hold the value of node id 
- \return		BOOL
- \retval			TRUE			if successful
- \retval			FALSE			if there is already a message pending
+ \param		dataValue	Character pointer to hold the datavalue
+ \param		iNodeID		Integer Pointer to hold the value of node id 
+ 
+ \return	BOOL
+ \retval		TRUE			if successful
+ \retval		FALSE			if there is already a message pending
  */
 /*****************************************************************************/
 
-bool CheckIfDataTypeExists(char* pbDataValue, INT32 iNodeID)
+bool CheckIfDataTypeExists(char* dataValue, INT32 iNodeID)
 {
-	CNodeCollection* pobjNodeCol = NULL;
-	CDataTypeCollection* pobjDataCol = NULL;
-	DataType* pobjDataType = NULL;
+	NodeCollection* objNodeCol = NULL;
+	DataTypeCollection* objDataCol = NULL;
+	DataType* objDataType = NULL;
 
-	pobjNodeCol = CNodeCollection::getNodeColObjectPointer();
-	CNode objNode = pobjNodeCol->getNode(iNodeID);
-	pobjDataCol = objNode.getDataTypeCollection();
+	objNodeCol = NodeCollection::GetNodeColObjectPointer();
+	Node objNode = objNodeCol->GetNode(iNodeID);
+	objDataCol = objNode.GetDataTypeCollection();
 
-	pobjDataType = pobjDataCol->getDataType(pbDataValue);
+	objDataType = objDataCol->GetDataType(dataValue);
 
-	if (NULL == pobjDataType)
+	if (NULL == objDataType)
 	{
 		return false;
 	}
@@ -404,13 +405,13 @@ bool CheckIfDataTypeExists(char* pbDataValue, INT32 iNodeID)
 
 bool CheckIfDataTypeByNameExists(char* dtName, INT32 iNodeID)
 {
-	CNodeCollection *objNodeCol = NULL;
-	objNodeCol = CNodeCollection::getNodeColObjectPointer();
-	CNode objNode = objNodeCol->getNode(iNodeID);
-	CDataTypeCollection *dtcol = NULL;
-	dtcol = objNode.getDataTypeCollection();
+	NodeCollection *objNodeCol = NULL;
+	objNodeCol = NodeCollection::GetNodeColObjectPointer();
+	Node objNode = objNodeCol->GetNode(iNodeID);
+	DataTypeCollection *dtcol = NULL;
+	dtcol = objNode.GetDataTypeCollection();
 	DataType *dt = NULL;
-	dt = dtcol->getDataTypeByName(dtName);
+	dt = dtcol->GetDataTypeByName(dtName);
 	if (NULL == dt)
 	{
 		return false;
@@ -428,52 +429,52 @@ bool CheckIfDataTypeByNameExists(char* dtName, INT32 iNodeID)
  This API shall be used to check whether subindex is present with reference to node id and index ids	
  
  \param			iNodeID           Integer Pointer to hold the value of node id
- \param			enumNodeType      Enum Variable of  ENodeType to hold the value of Node type    
- \param			pbIndexID         Character Pointer Variable to hold the value of Index Id
- \param			pbSubIndexID      Character Pointer Variable to hold the value of sub Index Id 
+ \param			varNodeType      Enum Variable of  ENodeType to hold the value of Node type    
+ \param			indexID         Character Pointer Variable to hold the value of Index Id
+ \param			subIndexID      Character Pointer Variable to hold the value of sub Index Id 
  \return		BOOL
  \retval			TRUE			if successful
  \retval			FALSE			if there is already a message pending
  */
 /*****************************************************************************/
 
-bool CheckIfSubIndexExists(INT32 iNodeID, ENodeType enumNodeType,
-		char* pbIndexID, char* pbSubIndexID)
+bool CheckIfSubIndexExists(INT32 iNodeID, NodeType varNodeType,
+		char* indexID, char* subIndexID)
 {
-	CNode objNode;
+	Node objNode;
 	//CIndex objIndex;
-	CNodeCollection *pobjNodeCollection = NULL;
-	CIndexCollection *pobjIndexCollection = NULL;
-	CIndex *pobjIdx = NULL;
+	NodeCollection *objNodeCollection = NULL;
+	IndexCollection *objIndexCollection = NULL;
+	Index *objIdx = NULL;
 
-	pobjNodeCollection = CNodeCollection::getNodeColObjectPointer();
-	objNode = pobjNodeCollection->getNode(enumNodeType, iNodeID);
-	pobjIndexCollection = objNode.getIndexCollection();
-	pobjIdx = pobjIndexCollection->getIndexbyIndexValue(pbIndexID);
+	objNodeCollection = NodeCollection::GetNodeColObjectPointer();
+	objNode = objNodeCollection->GetNode(varNodeType, iNodeID);
+	objIndexCollection = objNode.GetIndexCollection();
+	objIdx = objIndexCollection->GetIndexbyIndexValue(indexID);
 
-	if ((0 == pobjIdx->getNumberofSubIndexes()))
+	if ((0 == objIdx->GetNumberofSubIndexes()))
 	{
 		return false;
 	}
-	else if (pobjIdx->getNumberofSubIndexes() > 0)
+	else if (objIdx->GetNumberofSubIndexes() > 0)
 	{
 		//Check for existance of the SubIndex
 		for (INT32 iSubIndexCount = 0;
-				iSubIndexCount < pobjIdx->getNumberofSubIndexes();
+				iSubIndexCount < objIdx->GetNumberofSubIndexes();
 				iSubIndexCount++)
 		{
-			CSubIndex* objSubIndexPtr;
-			objSubIndexPtr = pobjIdx->getSubIndex(iSubIndexCount);
+			SubIndex* objSubIndexPtr;
+			objSubIndexPtr = objIdx->GetSubIndex(iSubIndexCount);
 
 			if ((0
 					== strcmp(
 							StringToUpper(
-									(char*) objSubIndexPtr->getIndexValue()),
-							StringToUpper(pbSubIndexID))))
+									(char*) objSubIndexPtr->GetIndexValue()),
+							StringToUpper(subIndexID))))
 			{
 				return true;
 			}
-			else if (iSubIndexCount == (pobjIdx->getNumberofSubIndexes() - 1))
+			else if (iSubIndexCount == (objIdx->GetNumberofSubIndexes() - 1))
 			{
 				return false;
 			}
@@ -506,24 +507,24 @@ bool CheckIfSubIndexExists(INT32 iNodeID, ENodeType enumNodeType,
 
 bool IfVersionNumberMatches(xmlTextReaderPtr pxReader)
 {
-	const xmlChar* pxcName = NULL;
-	const xmlChar* pxcValue = NULL;
+	const xmlChar* xcName = NULL;
+	const xmlChar* xcValue = NULL;
 	//Retrieve the name and Value of an attribute
-	pxcValue = xmlTextReaderConstValue(pxReader);
-	pxcName = xmlTextReaderConstName(pxReader);
+	xcValue = xmlTextReaderConstValue(pxReader);
+	xcName = xmlTextReaderConstName(pxReader);
 	bool bReturnValue;
-	if (NULL == pxcValue || NULL == pxcName)
+	if (NULL == xcValue || NULL == xcName)
 	{
 		return false;
 	}
 #if defined DEBUG
-	cout << "\nName:" << pxcName << endl;
-	cout << "Value:" << pxcValue << endl;
+	cout << "\nName:" << xcName << endl;
+	cout << "Value:" << xcValue << endl;
 #endif
 	// Check for Version Tool-Project Version
-	if (FALSE == strcmp(ConvertToUpper((char*) pxcName), "VERSION"))
+	if (FALSE == strcmp(ConvertToUpper((char*) xcName), "VERSION"))
 	{
-		if (true == CheckToolVersion((char*) pxcValue))
+		if (true == CheckToolVersion((char*) xcValue))
 		{
 #if defined DEBUG
 			cout << "Version number matched" << endl;

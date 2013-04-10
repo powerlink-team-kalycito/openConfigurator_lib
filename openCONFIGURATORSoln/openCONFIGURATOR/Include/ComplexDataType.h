@@ -68,23 +68,25 @@
  \brief			This class is to handle complex datatypes in xdd/xdc file
  
  ******************************************************************************************************/
-class DllExport CComplexDataType
+class ComplexDataType
 {
 	public:
-		CComplexDataType(void);
-		~CComplexDataType(void);
+		ComplexDataType(void);
+		~ComplexDataType(void);
 		TCollection<varDeclaration> varCollection;
-		INT32 VarIndex;
+		INT32 varIndex;
 		INT32 Index;
 		char* previousCDT_UId;
 
+
+	public:
+		AppProcessCommon *nameIdAttr;
+
+	public:
+		void AddVarDeclaration(varDeclaration varDecl);
+
 	private:
-		INT32 m_varCount;
+			INT32 VarCount;
 
-	public:
-		appProcessCommon *name_id_attr;
-
-	public:
-		void addVarDeclaration(varDeclaration VarDecl);
 };
 #endif // complexdatatype_h

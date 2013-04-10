@@ -68,26 +68,26 @@ using namespace std;
  \brief			This class handles Feature collection of each node present in the network
  
  ******************************************************************************************************/
-class DllExport CNetworkManagement
+class NetworkManagement
 {
 	public:
-		CNetworkManagement(void);
-		~CNetworkManagement(void);
+		NetworkManagement(void);
+		~NetworkManagement(void);
 
 	public:
 		TCollection<Feature> FeatureCollection;
 	private:
-		INT32 m_NodeID;
-		INT32 m_MaxPDOCount;
+		INT32 nmNodeID;
+		INT32 MaxPDOCount;
 	public:
-		INT32 getMaxPDOCount();
-		void calculateMaxPDOCount();
-		void addFeature(Feature stfeature);
-		INT32 getNodeID();
-		void setNodeID(INT32 NodeID);
-		char* getFeatureValue(EFeatureType featureType, char* featureName);
-		Feature* getFeature(UINT32 iCount);
-		UINT32 getNumberOfFeatures();
+		INT32 GetMaxPDOCount();
+		void CalculateMaxPDOCount();
+		void AddFeature(Feature stfeature);
+		INT32 GetNodeID();
+		void SetNodeID(INT32 NodeID);
+		char* getFeatureValue(FeatureType featureType, char* featureName);
+		Feature* GetFeature(UINT32 iCount);
+		UINT32 GetNumberOfFeatures();
 		void DeleteFeatureCollections();
 };
 

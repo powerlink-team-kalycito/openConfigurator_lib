@@ -67,19 +67,19 @@
 
 /**
  
- @param void
+
  */
 
-CComplexDataType::CComplexDataType(void)
+ComplexDataType::ComplexDataType(void)
 {
-	name_id_attr = new appProcessCommon;
-	name_id_attr->dataType = NULL;
-	name_id_attr->dataTypeUniqueIDRef = NULL;
-	name_id_attr->m_Name = NULL;
-	name_id_attr->UniqueId = NULL;
-	VarIndex = -1;
+	nameIdAttr = new AppProcessCommon;
+	nameIdAttr->dataType = NULL;
+	nameIdAttr->dataTypeUniqueIDRef = NULL;
+	nameIdAttr->Name = NULL;
+	nameIdAttr->uniqueId = NULL;
+	varIndex = -1;
 	previousCDT_UId = NULL;
-	m_varCount = 0;
+	VarCount = 0;
 	Index = -1;
 }
 
@@ -88,27 +88,29 @@ CComplexDataType::CComplexDataType(void)
 
 /**
  
- @param void
+
  */
 
-CComplexDataType::~CComplexDataType(void)
+ComplexDataType::~ComplexDataType(void)
 {
 	//Add destructor code here
 }
 
 /*****************************************************************************/
 /**
- \brief			addVarDeclaration
+ \brief			AddVarDeclaration
  
  This is a member Function of CComplexDataType adds variable declarations for complex datatype
+ 
+ \param			objVarDecl
  
  \return		void
  */
 /*****************************************************************************/
 
-void CComplexDataType::addVarDeclaration(varDeclaration objVarDecl)
+void ComplexDataType::AddVarDeclaration(varDeclaration objVarDecl)
 {
 	INT32 iItemPosition = varCollection.Add();
 	varCollection[iItemPosition] = objVarDecl;
-	m_varCount = varCollection.Count();
+	VarCount = varCollection.Count();
 }
