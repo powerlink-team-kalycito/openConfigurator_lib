@@ -64,7 +64,7 @@ using namespace std;
 /* Global Variables */
 
 bool PjtSettings::instanceFlag = false;
-PjtSettings* PjtSettings::objPjtSettings = NULL;
+PjtSettings* PjtSettings::pjtSettingsObj = NULL;
 
 //==========================================================================//
 // 				F U N C T I O N  D E F I N I T I O N S  					//
@@ -85,8 +85,8 @@ PjtSettings::PjtSettings(void)
 #endif
 	saveMode = DISCARD_AS;
 	generateMode = NO_AG;
-	IPopenPOWERLINK = NULL;
-	varbExpertViewSelected = false;
+	ipAddress = NULL;
+	expertView = false;
 	viewMode = SIMPLE; //TODO: Review initialisation
 }
 
@@ -106,136 +106,64 @@ PjtSettings::~PjtSettings(void)
 #endif
 }
 
-/*****************************************************************************/
-/**
- \brief			GetPjtSettingsPtr
- 
- This is a member function of CPjtSettings creats new Pjtsettings 
-
- \return		PjtSettings*
- */
-/*****************************************************************************/
 
 PjtSettings* PjtSettings::GetPjtSettingsPtr()
 {
 	if (!instanceFlag)
 	{
-		objPjtSettings = new PjtSettings();
+		pjtSettingsObj = new PjtSettings();
 		instanceFlag = true;
 #if defined DEBUG
-		cout << "\n\n\n\nNew PjtSettings Object Created!\n" << endl;
+		cout << "\n\n\nNew PjtSettings Object Created!\n" << endl;
 #endif
 	}
-	return objPjtSettings;
+	return pjtSettingsObj;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetSaveAttr
- 
- This is a member function of CPjtSettings saves new Pjtsettings  
-
- \return		AutoSave
- */
-/*****************************************************************************/
 
 AutoSave PjtSettings::GetSaveAttr()
 {
 	return saveMode;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetSaveAttr
- 
- This is a member function of CPjtSettings sets mode for pjt settings 
- 
- \param			autoSaveMode   Enum Variable of EAutoSave to save the attributes
- \return		void
- */
-/*****************************************************************************/
-
 void PjtSettings::SetSaveAttr(AutoSave autoSaveMode)
 {
 	saveMode = autoSaveMode;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetGenerateAttr
- 
- This is a member function of CPjtSettings generates mode for pjt settings    
-
- \return		AutoGenerate
- */
-/*****************************************************************************/
 
 AutoGenerate PjtSettings::GetGenerateAttr()
 {
 #if defined DEBUG
-	//cout << "\n Returning m_generateMode:-" << m_generateMode <<endl;	
+	//cout << "\n Returning AutoGenerate mode:-" << generateMode <<endl;
 #endif	
 	return generateMode;
 }
-
-/*****************************************************************************/
-/**
- \brief		SetGenerateAttr
- 
- This is a member function of CPjtSettings sets mode for pjt settings  
- 
- \param		autoGenerateMode	 Enum Variable of EAutoGenerate to generate attribute
- 
- \return	void
- */
-/*****************************************************************************/
 
 void PjtSettings::SetGenerateAttr(AutoGenerate autoGenerateMode)
 {
 	generateMode = autoGenerateMode;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetPOWERLINKIP
- 
- This is a member function of CPjtSettings assigns IP address for Powerlink  
- 
- \param			ipAddr   Character Pointer variable to hold IPaddress
- 
- \return		void
- */
-/*****************************************************************************/
-
-void PjtSettings::SetPOWERLINKIP(char* ipAddr)
+void PjtSettings::SetIP(char* ipAddr)
 {
 //TODO: review
-	if (NULL != IPopenPOWERLINK)
+	if (NULL != ipAddress)
 	{
-		delete[] IPopenPOWERLINK;
+		delete[] ipAddress;
 	}
 
-	IPopenPOWERLINK = new char[strlen(ipAddr) + STR_ALLOC_BUFFER];
-	strcpy((char*) IPopenPOWERLINK, ipAddr);
+	ipAddress = new char[strlen(ipAddr) + STR_ALLOC_BUFFER];
+	strcpy((char*) ipAddress, ipAddr);
 
 }
 
-/*****************************************************************************/
-/**
- \brief			GetPOWERLINKIP
- 
- This is a member function of CPjtSettings returns Powerlink IP  
- 
- \return		const char*
- */
-/*****************************************************************************/
-
 //TODO: Unused Function
-const char* PjtSettings::GetPOWERLINKIP()
+const char* PjtSettings::GetIP()
 {
-	if (NULL != IPopenPOWERLINK)
+	if (NULL != ipAddress)
 	{
-		return IPopenPOWERLINK;
+		return ipAddress;
 	}
 	else
 	{
@@ -243,67 +171,25 @@ const char* PjtSettings::GetPOWERLINKIP()
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief			GetViewMode
- 
- This is a member function of CPjtSettings sets view mode under pjt settings  
- 
- \return		ViewMode
- */
-/*****************************************************************************/
 
 ViewMode PjtSettings::GetViewMode()
 {
 	return viewMode;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetViewMode
- 
- This is a member function of CPjtSettings assigns view mode  
- 
- \param			varViewMode	Enum Variable of EViewMode to hold the value of mode type			
- \return		void
- */
-/*****************************************************************************/
-
-void PjtSettings::SetViewMode(ViewMode varViewMode)
+void PjtSettings::SetViewMode(ViewMode viewModeTemp)
 {
-	viewMode = varViewMode;
+	viewMode = viewModeTemp;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetExpertViewSelectedFlag
- 
- This is a member function of CPjtSettings sets flag for type of view selected under pjt settings  
- 
- \return		BOOL
- \retval			TRUE			if successful
- \retval			FALSE			if there is already a message pending	
- */
-/*****************************************************************************/
 
 bool PjtSettings::GetExpertViewSelectedFlag()
 {
-	return varbExpertViewSelected;
+	return expertView;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetExpertViewSelectedFlag
- 
- This is a member function of CPjtSettings assigns type of view selected under pjt settings 
- 
- \param			bExpertViewSelected	 Boolean Variable to hold the value of Expertview selected			
- \return		void
- */
-/*****************************************************************************/
-
-void PjtSettings::SetExpertViewSelectedFlag(bool bExpertViewSelected)
+void PjtSettings::SetExpertViewSelectedFlag(bool expertViewTemp)
 {
-	varbExpertViewSelected = bExpertViewSelected;
+	expertView = expertViewTemp;
 }
 

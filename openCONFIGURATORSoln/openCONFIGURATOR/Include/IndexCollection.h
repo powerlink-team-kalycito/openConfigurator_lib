@@ -62,7 +62,7 @@ using namespace std;
 
 /**
  ******************************************************************************************************
- \class			CIndexCollection
+ \class			IndexCollection
  \brief			This class has definition of Index collection for all datatypes		
  
  ******************************************************************************************************/
@@ -72,18 +72,81 @@ class IndexCollection
 		IndexCollection(void);
 		~IndexCollection(void);
 
-	public:
-		void AddIndex(Index objIndex);
-		void DeleteIndex(INT32 indexID);
-		void DeleteIndexCollection();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to delete the 0x14XX, 0x16XX, 0x18XX, 0x1AXX Index objects in the collection list and update the count
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/		
 		void DeletePDOs();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to delete the PIO Index objects in the collection list and update the count
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/		
 		void DeletePIObjects();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to delete all the Index objects in the collection list and update the count
+
+		 \return	void
+		 */
+		/*****************************************************************************/		
+		void DeleteIndexCollection();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to add an Index object to a collection list and update the count
+		 
+		 \param		objIndex	Class variable of Index for object index
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void AddIndex(Index objIndex);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to delete the Index object at given position in the collection list and update the count
+		 
+		 \param		indexPosition	Integer to hold index id
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void DeleteIndex(INT32 indexPosition);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the number of indices in the collection list
+		 
+		 \return	INT32
+		 */
+		/*****************************************************************************/		
 		INT32 GetNumberofIndexes();
-		Index* GetIndex(INT32 varCount);
-		Index* GetIndexbyIndexValue(char* varIndex);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the Index object at the given position in the collection list
+		 
+		 \param		indexPosition    Integer to hold index count
+		 
+		 \return	Index*
+		 */
+		/*****************************************************************************/
+		Index* GetIndex(INT32 indexPosition);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the Index object whose indexId matches the given parameter in the collection list
+		 
+		 \param		indexId    Character pointer to the indexId value
+		 
+		 \return	Index*
+		 */
+		/*****************************************************************************/
+		Index* GetIndexbyIndexValue(char* indexId);
 
 	private:
 		INT32 indexCount;
-		TCollection<Index> collectionObj;
+		TCollection<Index> indexCollection;
 };
 #endif // IndexCollection_h

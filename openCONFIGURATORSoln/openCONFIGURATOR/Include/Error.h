@@ -130,7 +130,7 @@ typedef enum
 
 DLLEXPORT typedef struct ocfmRetCode
 {
-		ConfiguratorErrors code;/* Error code from EConfiuguratorErrors*/
+		ConfiguratorErrors code;/* Error code from ConfiguratorErrors*/
 		char* errorString; /* String Describes the error */
 } ocfmRetCode;
 

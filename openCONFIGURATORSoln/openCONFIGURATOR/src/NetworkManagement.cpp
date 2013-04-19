@@ -71,8 +71,7 @@
 
 NetworkManagement::NetworkManagement(void)
 {
-	MaxPDOCount = 0;
-	nmNodeID = 0;
+	maxPDOCount = 0;
 }
 
 /*************************************************************************/
@@ -88,84 +87,28 @@ NetworkManagement::~NetworkManagement(void)
 	//Add destructor code here
 }
 
-/*****************************************************************************/
-/**
- \brief		AddFeature
- 
- This is a member function of NetworkManagement collects feature for each object
-
- \param		stFeature	Structure Variable of feature to add feature to collection list
- 
- \return	void
- */
-/*****************************************************************************/
-
-void NetworkManagement::AddFeature(Feature stFeature)
+void NetworkManagement::AddFeature(Feature objFeature)
 {
-	INT32 iItemPosition = FeatureCollection.Add();
-	FeatureCollection[iItemPosition] = stFeature;
+	INT32 itemPosition = FeatureCollection.Add();
+	FeatureCollection[itemPosition] = objFeature;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetNodeID
- 
- This is a member function of NetworkManagement Returns the NodeID of NetworkManagement Object
-
- \return		INT32
- */
-/*****************************************************************************/
-
-//TODO: unused function
-INT32 NetworkManagement::GetNodeID()
-{
-	return nmNodeID;
-}
-
-/*****************************************************************************/
-/**
- \brief			SetNodeID
- 
- This is a member function of NetworkManagement sets the NodeID of the NetworkManagement Object
-
- \return		void
- */
-/*****************************************************************************/
-//TODO: unused function
-void NetworkManagement::SetNodeID(INT32 nodeID)
-{
-	nmNodeID = nodeID;
-}
-
-/*****************************************************************************/
-/**
- \brief			getFeatureValue
- 
- This is a member function of NetworkManagement gets the network Management feature value
-
- \param		featureType		Enum variable of FeatureType to hold the feature type
-  \param	featureName		Character pointer variable of to hold feature name    
-
- \return		char*
- */
-/*****************************************************************************/
-
-char* NetworkManagement::getFeatureValue(FeatureType featureType,
+char* NetworkManagement::GetNwMgmtFeatureValue(FeatureType featureType,
 		char* featureName)
 {
-	INT32 iLoopCount = 0;
+	INT32 loopCount = 0;
 	char* retString = NULL;
-	Feature stFeature;
+	Feature objFeature;
 
-	for (iLoopCount = 0; iLoopCount < FeatureCollection.Count(); iLoopCount++)
+	for (loopCount = 0; loopCount < FeatureCollection.Count(); loopCount++)
 	{
-		stFeature = FeatureCollection[iLoopCount];
-		if (stFeature.featureType == featureType
-				&& (!strcmp(featureName, stFeature.Name)))
+		objFeature = FeatureCollection[loopCount];
+		if (objFeature.featureType == featureType
+				&& (!strcmp(featureName, objFeature.name)))
 		{
 			retString =
-					new char[strlen(stFeature.Value) + STR_ALLOC_BUFFER];
-			strcpy(retString, stFeature.Value);
+					new char[strlen(objFeature.value) + STR_ALLOC_BUFFER];
+			strcpy(retString, objFeature.value);
 			return retString;
 		}
 	}
@@ -174,47 +117,17 @@ char* NetworkManagement::getFeatureValue(FeatureType featureType,
 	return retString;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetNumberOfFeatures
- 
- This is a member function of NetworkManagement returns the Number of Features
-
- \return		UINT32
- */
-/*****************************************************************************/
 
 UINT32 NetworkManagement::GetNumberOfFeatures()
 {
 	return FeatureCollection.Count();
 }
 
-/*****************************************************************************/
-/**
- \brief			GetFeature
- 
- This is a member function of NetworkManagement returns feature collection list 
-
- \param			uiCount  Unsigned integer variable to hold count value
- 
- \return		Feature*
- */
-/*****************************************************************************/
-
-Feature* NetworkManagement::GetFeature(UINT32 uiCount)
+Feature* NetworkManagement::GetFeature(UINT32 featurePosition)
 {
-	return &FeatureCollection[uiCount];
+	return &FeatureCollection[featurePosition];
 }
 
-/*****************************************************************************/
-/**
- \brief			DeleteFeatureCollections
- 
- This is a member function of NetworkManagement Deletes NetworkManagement Collections
-
- \return		void
- */
-/*****************************************************************************/
 
 void NetworkManagement::DeleteFeatureCollections()
 {
@@ -224,37 +137,19 @@ void NetworkManagement::DeleteFeatureCollections()
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief			GetMaxPDOCount
- 
- This is a member function of NetworkManagement to get max PDO count
-
- \return		INT32
- */
-/*****************************************************************************/
 
 INT32 NetworkManagement::GetMaxPDOCount()
 {
-	return MaxPDOCount;
+	return maxPDOCount;
 }
 
-/*****************************************************************************/
-/**
- \brief			CalculateMaxPDOCount
- 
- This is a member function of NetworkManagement calculates the PDO count from the PDOTPDOChannels parameter in MN xdd and MaxPDOCount is updated with that specified value
-
- \return		void
- */
-/*****************************************************************************/
 
 void NetworkManagement::CalculateMaxPDOCount()
 {
-	char* maxPDOCount = new char[5];
+	char* tpdoChannelValue = new char[5];
 	char* featureName = new char[20];
-	MaxPDOCount = 0;
-	if ((NULL == maxPDOCount) || (NULL == featureName))
+	maxPDOCount = 0;
+	if ((NULL == tpdoChannelValue) || (NULL == featureName))
 	{
 #if defined DEBUG
 		cout << "Memory allocation error" << __FUNCTION__ << endl;
@@ -267,17 +162,17 @@ void NetworkManagement::CalculateMaxPDOCount()
 	else
 	{
 		strcpy(featureName, "PDOTPDOChannels");
-		strcpy(maxPDOCount, getFeatureValue(MN_FEATURES, featureName));
-		MaxPDOCount = atoi((char*) maxPDOCount);
-		//check is made for the validating the value in MN xdd. 
+		strcpy(tpdoChannelValue, GetNwMgmtFeatureValue(MN_FEATURES, featureName));
+		maxPDOCount = atoi((char*) tpdoChannelValue);
+		//check is made for validating the value in MN xdd
 		//Min value = 0; Maxvalue = 256 (EPSG specification)
-		if (MaxPDOCount > 256)
+		if (maxPDOCount > 256)
 		{
 			ocfmException ex;
 			ex.OCFMException(OCFM_ERR_EXCEEDS_MAX_TPDO_CHANNELS);
 			throw ex;
 		}
 	}
-	delete[] maxPDOCount;
+	delete[] tpdoChannelValue;
 	delete[] featureName;
 }

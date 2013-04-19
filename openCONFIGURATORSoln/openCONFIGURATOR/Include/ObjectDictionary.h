@@ -67,7 +67,7 @@
 
 /**
  ******************************************************************************************************
- \class			CObjectDictionary
+ \class			ObjectDictionary
  \brief			Handles the object dictionary for each index	
  
  ******************************************************************************************************/
@@ -76,6 +76,7 @@ class ObjectDictionary
 	public:
 		ObjectDictionary(void);
 		~ObjectDictionary(void);
+
 	private:
 		static bool instanceFlag;
 		INT32 varsattrIdxSIdx;
@@ -93,13 +94,12 @@ class ObjectDictionary
 				ObjectType objectType;
 		} sattrIdxSIdx;
 
-		TCollection<sattrIdxSIdx> collectionObj;
-
+		TCollection<sattrIdxSIdx> attribCollObj;
 	public:
+
 		static Node* objDictNode;
 		static ObjectDictionary* objectDictionary;
 
-	public:
 		void CheckIfSameIndex(char* Index);
 		Index* GetIndexDictAttribues(char* Index);
 		void ProcessObjectDictionary(xmlTextReaderPtr reader);
@@ -111,7 +111,6 @@ class ObjectDictionary
 		INT32 IfObjectDictIndexExists(char* Index);
 		INT32 IfObjectDictSubIndexExists(char* Idx, char* sIdx);
 		bool CheckInTheRange(char* Idx, char* startIdx, char* endIdx);
-		void Printall();
 		char* GetIndexName(char* objectIndex, char* objectName);
 };
 #endif // ObjectDictionary_h

@@ -2,7 +2,7 @@
  *****************************************************************************************************
  \file			ProjectSettings.h
 
- \brief			This handles Powerlink IP settings details	
+ \brief
  *****************************************************************************************************
  */
 
@@ -60,7 +60,7 @@
 
 /**
  ******************************************************************************************************
- \class			CPjtSettings
+ \class			PjtSettings
  \brief			This handles Powerlink IP settings details	
  
  ******************************************************************************************************/
@@ -71,26 +71,115 @@ class PjtSettings
 		PjtSettings(void);
 		~PjtSettings(void);
 
-	public:
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to check for and return an existing PjtSettings object. If not available, it will return a new PjtSettings object
+		 
+		 \return	PjtSettings*
+		 */
+		/*****************************************************************************/		
 		static PjtSettings* GetPjtSettingsPtr();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to assign IP address for Powerlink MN
+		 
+		 \param		ipAddr		Character pointer to the IPaddress string
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void SetIP(char* ipAddr);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the saveMode attribute in the PjtSettings object
+		 
+		 \param		autoSaveMode   	Enum variable of AutoSave to hold the saveMode attributes to be set
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void SetSaveAttr(AutoSave autoSaveMode);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the viewMode attribute in the PjtSettings object
+		 
+		 \param		viewModeTemp		Enum variable of ViewMode to hold the viewMode attributes to be set
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void SetViewMode(ViewMode viewModeTemp);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the generateMode attribute in the PjtSettings object
+		 
+		 \param		autoGenerateMode	 Enum variable of AutoGenerate to hold the generateMode attributes to be set
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void SetGenerateAttr(AutoGenerate autoGenerateMode);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the expertView flag in the PjtSettings object	
+		 
+		 \param		expertViewTemp	 	Boolean to hold the enable/disable value of expertView flag
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void SetExpertViewSelectedFlag(bool expertViewTemp);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the IP address assigned for Powerlink MN
+		 
+		 \return	const char* or NULL
+		 */
+		/*****************************************************************************/
+		const char* GetIP();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the saveMode attribute in the PjtSettings object
+		 
+		 \return	AutoSave
+		 */
+		/*****************************************************************************/		
 		AutoSave GetSaveAttr();
-		void SetSaveAttr(AutoSave);
-		AutoGenerate GetGenerateAttr();
-		void SetGenerateAttr(AutoGenerate);
-		void SetPOWERLINKIP(char*);
-		const char* GetPOWERLINKIP();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the viewMode attribute in the PjtSettings object
+		 
+		 \return	ViewMode
+		 */
+		/*****************************************************************************/		
 		ViewMode GetViewMode();
-		void SetViewMode(ViewMode);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the generateMode attribute in the PjtSettings project
+		 
+		 \return	AutoGenerate
+		 */
+		/*****************************************************************************/		
+		AutoGenerate GetGenerateAttr();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the expertView flag in the PjtSettings object
+		 
+		 \return	BOOL
+		 \retval	TRUE		if expertView is enabled
+		 \retval	FALSE		if expertView is disabled	
+		 */
+		/*****************************************************************************/		
 		bool GetExpertViewSelectedFlag();
-		void SetExpertViewSelectedFlag(bool);
 
 	private:
 		static bool instanceFlag;
-		static PjtSettings *objPjtSettings;
-		AutoGenerate generateMode;
+		static PjtSettings *pjtSettingsObj;
+		bool expertView;
+		char* ipAddress;
 		AutoSave saveMode;
-		char* IPopenPOWERLINK;
 		ViewMode viewMode;
-		bool varbExpertViewSelected;
+		AutoGenerate generateMode;
+
 };
 #endif // ProjectSettings_h

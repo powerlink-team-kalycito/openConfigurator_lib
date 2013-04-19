@@ -65,7 +65,7 @@
 
 /**
  ******************************************************************************************************
- \class			CNode
+ \class			Node
  \brief			This class includes each node's information on id,name,type present inside the network
  
  ******************************************************************************************************/
@@ -74,80 +74,403 @@ class Node
 	public:
 		Node(void);
 		~Node(void);
-	private:
-		DataTypeCollection *VarDataTypeCollection;
-		IndexCollection *VarIndexCollection;
-		ApplicationProcess* VarApplicationProcess;
-		NetworkManagement *VarNetworkManagement;
 
-		INT32 VarNodeId;
-		NodeType VarNodeType;
-		INT32 NodeIndex;
-		bool VarHasPdoObjects;
-		char* VarNodeName;
-		StationType VarStationType;
-		char* VarForcedCycle;
-		bool VarForcedCycleFlag;
-		char* VarPollResponseTimeout;
-		INT32 VarPResActPayload;
-		INT32 VarPReqActPayload;
-		/*	typedef TCollection<ProcessImage> PICollection;*/
-	public:
-		/*typedef _PICollection PICollection;*/
-		TCollection<ProcessImage> ProcessImageCollection;
-		TCollection<MNPdoVariable> MNPDOINVarCollection;
-		TCollection<MNPdoVariable> MNPDOOUTVarCollection;
-		TCollection<NETProcessImage> NETProcessImageCollection;
-	public:
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the DataTypeCollection object of the Node
+
+		 \return	DataTypeCollection*
+		 */
+		/*****************************************************************************/		
 		DataTypeCollection* GetDataTypeCollection();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the IndexCollection object of the Node
+		 
+		 \return	IndexCollection*
+		 */
+		/*****************************************************************************/		
 		IndexCollection* GetIndexCollection();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the ApplicatinoProcess object of the Node
+		 
+		 \return	ApplicationProcess*
+		 */
+		/*****************************************************************************/		
 		ApplicationProcess* GetApplicationProcess();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the NetworkManagement object of the Node
+		 
+		 \return	NetworkManagement*
+		 */
+		/*****************************************************************************/		
 		NetworkManagement *GetNetworkManagement();
 
+		TCollection<ProcessImage> PICollection;
+		TCollection<MNPdoVariable> MNPDOINVarCollection;
+		TCollection<MNPdoVariable> MNPDOOUTVarCollection;
+		TCollection<NETProcessImage> NETPIColl;
+
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the Node ID of the Node
+		 
+		 \return	INT32
+		 */
+		/*****************************************************************************/		
 		INT32 GetNodeId();
-		void SetNodeId(INT32 NodeId);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the Node ID of the Node
+		 
+		 \param		nodeID		Integer to hold the Node ID of the Node
 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void SetNodeId(INT32 nodeID);
+
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the position of the Node
+		 
+		 \return	INT32
+		 */
+		/*****************************************************************************/
 		INT32 GetNodeIndex();
-		void SetNodeIndex(INT32 nodeIndex);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the position of the Node
+		 
+		 \param		nodePos		Integer to the position of the node
 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void SetNodeIndex(INT32 nodePos);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the Name of the Node
+
+		 \return	char*		Node name as string
+		 */
+		/*****************************************************************************/
 		char* GetNodeName();
-		void SetNodeName(char* nodeName);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the Name of the Node
+		 
+		 \param		nodeNameStr		Character pointer to the name of the node
 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void SetNodeName(char* nodeNameStr);
+
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the NodeType of the Node
+
+		 \return	NodeType
+		 */
+		/*****************************************************************************/		
 		NodeType GetNodeType();
-		void SetNodeType(NodeType varNodeType);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the NodeType of the node
+		 
+		 \param		objNodeType 	Enum Variable of NodeType to hold the node type
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void SetNodeType(NodeType objNodeType);
 
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to check if the Node has PDO objects
+		 
+		 \return	BOOL
+		 
+		 \retval	TRUE		if the node has PDO objects
+		 \retval	FALSE		if the node does not have PDO objects	
+		 */
+		/*****************************************************************************/
 		bool HasPdoObjects();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the hasPdoObjects flag of the Node to indicate that the Node has PDO objects
+
+		 \param		flag	Boolean flag to hold the value 'true' if PDO objects are present
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
 		void SetFlagForPdoObjects(bool flag);
 
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to create an IndexCollection object for the node
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/		
 		void CreateIndexCollection();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to create a new DataTypeCollection object
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
 		void CreateDataTypeCollection();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to create a new ApplicationProcess object
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/		
 		void CreateApplicationProcess();
-		void CreateNetworkManagament();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to create a new NetworkManagement object
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/		
+		void CreateNetworkManagement();
 
-		void AddProcessImage(ProcessImage processImage);
-		void AddNETProcessImage(NETProcessImage objNETProcessImage);
-		void AddMNPDOvar(MNPdoVariable variable, PDOType varPDOType);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to add a ProcessImage object to the collection list 
+		  
+		 \param		piObj  Class variable of ProcessImage to hold the object
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void AddProcessImage(ProcessImage piObj);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to add a NETProcessImage object to the collection list
+		 
+		 \param		netPIobj  Class variable of NETProcessImage to hold the object
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void AddNETProcessImage(NETProcessImage netPIobj);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to add a MNPdoVariable object for the MN. It is added to the MNPDOOUTVarCollection list if given pdotype is PDO_RPDO / to the MNPDOINVarCollection list if given pdotype is PDO_TPDO
+		 
+		 \param		pdoVarObj      	Structure variable of MNPdoVariable
+		 \param		pdotype			Enum variable of PDOType
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void AddMNPDOvar(MNPdoVariable pdoVarObj, PDOType pdotype);
 
-		IndexCollection* GetPDOIndexCollection(PDOType varPDOType);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return an object containing all the Index objects of PDO type from the IndexCollection list
+		 
+		 \param		pdotype		 Enum variable of PDOType hold the PDO type
+		 
+		 \return	IndexCollection*
+		 */
+		/*****************************************************************************/
+		IndexCollection* GetPDOIndexCollection(PDOType pdotype);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return an object containing all the Index objects of non PDO type from the IndexCollection list
+		 
+		 \return	IndexCollection*
+		 */
+		/*****************************************************************************/		
 		IndexCollection* GetIndexCollectionWithoutPDO();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return an object containing all the Index objects of PDO type and also update the number of RPDO and TPDO indexes in the calling function
+		 
+		 \param		rpdoCount	Integer pointer to number of RPDOs
+		 \param		tpdoCount	Integer pointer to number of TPDOs
+		 
+		 \return	IndexCollection*
+		 */
+		/*****************************************************************************/
 		IndexCollection* getPDOIndexCollection(INT32 *rpdoCount, INT32 *tpdoCount);
 
-		ProcessImage* GetPIbyParaIndex(INT32 paraIndex);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return a ProcessImage object at given position in the PICollection list
+		 
+		 \param		paramerterPos		Integer to hold the value of parameter index
+		 
+		 \return	ProcessImage*
+		 */
+		/*****************************************************************************/
+		ProcessImage* GetPIbyParaIndex(INT32 paramerterPos);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to delete the objects in the MNPDOINVarCollection, NPDOOUTVarCollection and PICollection lists
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
 		void DeleteCollectionsForPI();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the StationType of the Node
+		 
+		 \return	StationType
+		 */
+		/*****************************************************************************/		
 		StationType GetStationType();
-		void SetStationType(StationType varStationType);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the StationType of the Node
+		 
+		 \param		stationtype		Enum variable of EStationType to hold value of Station type
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void SetStationType(StationType stationtype);
 
-		char* GetForcedCycle();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the force cycle value of the Node
+		 
+		 \return	char*
+		 */
+		/*****************************************************************************/		
+		char* GetForcedCycleValue();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to check if the Node is configured for forcecycle
+		 
+		 \return	BOOL
+		 
+		 \retval	TRUE		if the Node is configured for forcecycle
+		 \retval	FALSE		if the Node is not configured for forcecycle	
+		 */
+		/*****************************************************************************/		
 		bool GetForceCycleFlag();
-		ocfmRetCode SetForcedCycle(char* forcedCycle);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the force cycle value of the Node
+		 
+		 \param		tempForcedCycleVal     	Character pointer to the forced cycle value
+		 
+		 \return	ocfmRetCode		ConfiguratorErrors
+		 */
+		/*****************************************************************************/
+		ocfmRetCode SetForcedCycle(char* tempForcedCycleVal);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to reset the force cycle value of the Node
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
 		void ResetForcedCycleValue();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to enable/disable forcecylce for the Node
+		 
+		 \param		forceCycleFlag       Boolean flag to hold the value of forced cycle flag
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
 		void SetForceCycleFlag(bool forceCycleFlag);
-		void SetPollResponseTimeout(char* pollResponseTimeout);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the poll response timeout value in MN
+		 
+		 \param		presTimoutVal      Character pointer to the value of poll response timeout
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void SetPollResponseTimeout(char* presTimoutVal);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to check if the IndexCollection object is NULL
+		 
+		 \return	BOOL
+		 
+		 \retval	TRUE		if IndexCollection object is NULL
+		 \retval	FALSE		if IndexCollection object is not NULL
+		 */
+		/*****************************************************************************/
 		bool IsNull();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to delete the objects in the NETPIColl list
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/		
 		void DeleteCollectionsForNETPI();
-		void SetPResActPayloadValue(INT32);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the PRes Actual Payload value for the node
+		 
+		 \param		value      Integer to hold value of Pres Actual payload
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void SetPResActPayloadValue(INT32 value);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the PRes Actual Payload value for the node
+		 
+		 \return	INT32
+		 */
+		/*****************************************************************************/
 		INT32 GetPResActPayloadValue();
-		void SetPReqActPayloadValue(INT32);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to set the PReq Actual Payload value for the node
+		 
+		 \param		value		Integer to hold value of Preq Actual payload
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void SetPReqActPayloadValue(INT32 value);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the PReq Actual Payload value for the node
+		 
+		 \return	INT32
+		 */
+		/*****************************************************************************/		
 		INT32 GetPReqActPayloadValue();
+
+	private:
+		DataTypeCollection *dtCollObj;
+		IndexCollection *indexCollObj;
+		ApplicationProcess* appProcessObj;
+		NetworkManagement *nmtObj;
+
+		INT32 nodeId;
+		INT32 nodePosition;
+		INT32 presActualPayload;
+		INT32 preqActualPayload;
+		bool hasPdoObjects;
+		bool isForcedCycle;
+		char* nodeName;
+		char* forcedCycle;
+		char* presTimeOut;
+		StationType stationType;
+		NodeType nodeType;
 };
 #endif // Node_h

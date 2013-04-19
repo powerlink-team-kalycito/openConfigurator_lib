@@ -1,6 +1,6 @@
 /**
  ************************************************************************************************
- \file			ComplexDataType.h
+ n \file			ComplexDataType.h
 
  \brief			This class is to handle complex datatypes in xdd/xdc file
  ************************************************************************************************
@@ -64,7 +64,7 @@
 
 /**
  ******************************************************************************************************
- \class			CComplexDataType
+ \class			ComplexDataType
  \brief			This class is to handle complex datatypes in xdd/xdc file
  
  ******************************************************************************************************/
@@ -73,20 +73,26 @@ class ComplexDataType
 	public:
 		ComplexDataType(void);
 		~ComplexDataType(void);
-		TCollection<varDeclaration> varCollection;
-		INT32 varIndex;
-		INT32 Index;
-		char* previousCDT_UId;
 
-
-	public:
+		INT32 cDtObjPosition;
+		char* prevUniqueId;
 		AppProcessCommon *nameIdAttr;
 
-	public:
-		void AddVarDeclaration(varDeclaration varDecl);
+		TCollection<varDeclaration> varDeclarationCollection;
+
+		/*****************************************************************************/
+		/**
+		 \brief			This function shall be used to add an object of varDeclaration to a collection list and update the count
+		  
+		 \param			varDeclarationObject
+		 
+		 \return		void
+		 */
+		/*****************************************************************************/
+		void AddVarDeclaration(varDeclaration varDeclarationObject);
 
 	private:
-			INT32 VarCount;
+			INT32 varDeclarationCollCount;
 
 };
 #endif // complexdatatype_h

@@ -64,7 +64,7 @@ using namespace std;
 /****************************************************************************************************/
 /* Global Variables */
 
-INT32 iLastObjDictIndexParsed = 0;
+INT32 lastObjDictIdxParsed = 0;
 bool ObjectDictionary::instanceFlag = false;
 ObjectDictionary* ObjectDictionary::objectDictionary = NULL;
 Node* ObjectDictionary::objDictNode = NULL;
@@ -88,8 +88,8 @@ ObjectDictionary::ObjectDictionary(void)
 	objDictNode->CreateIndexCollection();
 	objDictNode->CreateDataTypeCollection();
 	objDictNode->CreateApplicationProcess();
-	objDictNode->CreateNetworkManagament();
-	varsattrIdxSIdx = collectionObj.Count();
+	objDictNode->CreateNetworkManagement();
+	varsattrIdxSIdx = attribCollObj.Count();
 }
 
 /*************************************************************************/
@@ -107,11 +107,9 @@ ObjectDictionary::~ObjectDictionary(void)
 
 /*****************************************************************************/
 /**
- \brief			GetObjDictPtr
+ \brief		This function shall be used to return pointer to ObjectDictionary object
  
- This is a member function of CObjectDictionary returns object dictionary based on the value of instance flag 
-
- \return		ObjectDictionary*
+ \return	ObjectDictionary*
  */
 /*****************************************************************************/
 
@@ -127,12 +125,11 @@ ObjectDictionary* ObjectDictionary::GetObjDictPtr()
 
 /*****************************************************************************/
 /**
- \brief			ProcessObjectDictionary
+ \brief		This function shall be used to process the Object Dictionary file and generate the DataTypeCollection, IndexCollection and SubIndexCollection lists
  
- This is a member function of CObjectDictionary Process the Node value,Name and its attributes
+ \param		reader		xml Variable of type xmlTextReaderPtr 
  
- \param			reader	xml Variable of type xmlTextReaderPtr 
- \return		void
+ \return	void
  */
 /*****************************************************************************/
 
@@ -155,29 +152,29 @@ void ObjectDictionary::ProcessObjectDictionary(xmlTextReaderPtr reader)
 		{
 			if (0 == strcmp(((char*) name), "defType"))
 			{
-				DataTypeCollection* objDataTypeCollection = NULL;
-				DataType objDataType;
-				objDataType.dataTypeValue = NULL;
-				objDataType.Name = NULL;
+				DataTypeCollection* dtCollObj = NULL;
+				DataType dtObj;
+				dtObj.dataTypeValue = NULL;
+				dtObj.dataTypeName = NULL;
 
 				if (1 == xmlTextReaderHasAttributes(reader))
 				{
 					while (xmlTextReaderMoveToNextAttribute(reader))
 					{
-						SetDataTypeAttributes(reader, &objDataType);
+						SetDataTypeAttributes(reader, &dtObj);
 					}
 				}
-				objDataTypeCollection = objDictNode->GetDataTypeCollection();
-				objDataTypeCollection->AddDataType(objDataType);
+				dtCollObj = objDictNode->GetDataTypeCollection();
+				dtCollObj->AddDataType(dtObj);
 			}
 
 			else if (0 == strcmp(((char*) name), "Object"))
 			{
-				IndexCollection* objIndexCollection = NULL;
-				Index objIndex;
+				IndexCollection* idxCollObj = NULL;
+				Index idxObj;
 
 				//Set the NodeID
-				objIndex.SetNodeID(-100);
+				idxObj.SetNodeID(-100);
 
 				if (1 == xmlTextReaderHasAttributes(reader))
 				{
@@ -186,80 +183,63 @@ void ObjectDictionary::ProcessObjectDictionary(xmlTextReaderPtr reader)
 						value = xmlTextReaderConstValue(reader);
 						name = xmlTextReaderConstName(reader);
 
-						if (0
-								== strcmp(ConvertToUpper((char*) name),
-										"DATATYPE"))
+						if (0 == strcmp(ConvertToUpper((char*) name), "DATATYPE"))
 						{
 							DataType *dt = NULL;
-							dt =
-									objDictNode->GetDataTypeCollection()->GetDataType(
-											(char*) value);
-							objIndex.SetDataTypeST(*dt);
+							dt = objDictNode->GetDataTypeCollection()->GetDataType((char*) value);
+							idxObj.SetDataTypeST(*dt);
 						}
-						else if (0
-								== strcmp(ConvertToUpper((char*) name),
-										"RANGE"))
+						else if (0 == strcmp(ConvertToUpper((char*) name), "RANGE"))
 						{
-							CreateSameattrObject((char*) value, INDEX,
-									(char*) objIndex.GetIndexValue());
+							CreateSameattrObject((char*) value, INDEX, (char*) idxObj.GetIndexValue());
 						}
 						else
 						{
 							bool hasPDO;
-							SetIndexAttributes(reader, &objIndex, hasPDO);
+							SetIndexAttributes(reader, &idxObj, hasPDO);
 						}
 					}
 				}
-				objIndexCollection = objDictNode->GetIndexCollection();
+				idxCollObj = objDictNode->GetIndexCollection();
 
 				//Add Index object to the IndexCollection
-				objIndexCollection->AddIndex(objIndex);
-				iLastObjDictIndexParsed =
-						objIndexCollection->GetNumberofIndexes() - 1;
+				idxCollObj->AddIndex(idxObj);
+				lastObjDictIdxParsed = idxCollObj->GetNumberofIndexes() - 1;
 			}
 			else if (0 == strcmp(((char*) name), "SubObject"))
 			{
-				IndexCollection* objIndexCollection = NULL;
-				SubIndex objSubIndex;
+				IndexCollection* idxCollObj = NULL;
+				SubIndex sidxObj;
 				//bool same = false;
-				Index* objIndexPtr = NULL;
-				objIndexCollection = objDictNode->GetIndexCollection();
-				objIndexPtr = objIndexCollection->GetIndex(
-						iLastObjDictIndexParsed);
+				Index* idxObj = NULL;
+				idxCollObj = objDictNode->GetIndexCollection();
+				idxObj = idxCollObj->GetIndex(lastObjDictIdxParsed);
 
 				//Set the NodeID
-				objSubIndex.SetNodeID(-100);
+				sidxObj.SetNodeID(-100);
 				if (1 == xmlTextReaderHasAttributes(reader))
 				{
 					while (xmlTextReaderMoveToNextAttribute(reader))
 					{
 						value = xmlTextReaderConstValue(reader);
 						name = xmlTextReaderConstName(reader);
-						if (0
-								== strcmp(ConvertToUpper((char*) name),
-										"DATATYPE"))
+						if (0 == strcmp(ConvertToUpper((char*) name), "DATATYPE"))
 						{
 							DataType *dt = NULL;
-							dt =
-									objDictNode->GetDataTypeCollection()->GetDataType(
-											(char*) value);
-							objSubIndex.SetDataTypeST(*dt);
+							dt = objDictNode->GetDataTypeCollection()->GetDataType((char*) value);
+							sidxObj.SetDataTypeST(*dt);
 						}
-						else if (0
-								== strcmp(ConvertToUpper((char*) name),
-										"RANGE"))
+						else if (0 == strcmp(ConvertToUpper((char*) name), "RANGE"))
 						{
-							//same =true;
-							CreateSameattrObject((char*) value, SUBINDEX,
-									(char*) objIndexPtr->GetIndexValue());
+							CreateSameattrObject((char*) value, SUBINDEX, (char*) idxObj->GetIndexValue());
 						}
 						else
 						{
-							SetSubIndexAttributes(reader, &objSubIndex);
+							SetSubIndexAttributes(reader, &sidxObj);
 						}
 					}
 				}
-				objIndexPtr->AddSubIndex(objSubIndex);
+				idxObj->AddSubIndex(sidxObj);
 			}
 			else
 			{
@@ -274,61 +254,59 @@ void ObjectDictionary::ProcessObjectDictionary(xmlTextReaderPtr reader)
 
 /*****************************************************************************/
 /**
- \brief			AddSameAttributesObjects
+ \brief		To check
  
- This is a member function of CObjectDictionary add the SubIndex in the Index Object
+ This is a member function of ObjectDictionary add the SubIndex in the Index Object
  
- \param			stAttrIdx Structure Variable of s_attrIdx_SIdx to hold the attribute index
- \return		void
+ \param		attrIdxPos	Structure Variable of s_attrIdx_SIdx to hold the attribute index
+ \return	void
  */
 /*****************************************************************************/
 
-void ObjectDictionary::AddSameAttributesObjects(sattrIdxSIdx stAttrIdx)
+void ObjectDictionary::AddSameAttributesObjects(sattrIdxSIdx attrIdxPos)
 {
-	INT32 iItemPosition = collectionObj.Add();
+	INT32 itemPos = attribCollObj.Add();
 
-	collectionObj[iItemPosition] = stAttrIdx;
-	varsattrIdxSIdx = collectionObj.Count();
+	attribCollObj[itemPos] = attrIdxPos;
+	varsattrIdxSIdx = attribCollObj.Count();
 }
 
 /*****************************************************************************/
 /**
- \brief			CreateSameattrObject
+ \brief		To check
  
  This is a member function of CObjectDictionary creats object dictionary
  
- \param			varValue          Character Pointer Variable to hold the value of the object
- \param			varObjType      Enum Variable of  ObjectType to hold the value of Object type
- \param			varIdx            Character Pointer Variable to hold the value of Index
+ \param		value		Character pointer to the value of the object
+ \param		objType     Enum variable of ObjectType to hold the value of Object type
+ \param		idxId       Character pointer to the value of Index
  
- \return		void
+ \return	void
  */
 /*****************************************************************************/
 
-void ObjectDictionary::CreateSameattrObject(char* varValue,
-		ObjectType varObjType, char* varIdx)
+void ObjectDictionary::CreateSameattrObject(char* value, ObjectType objType, char* idxId)
 {
 	sattrIdxSIdx stAttrIdx;
 	char* subIdx = new char[RANGE_INDEX];
 	char* idx = NULL;
 
-	idx = strchr(varValue, '-');
+	idx = strchr(value, '-');
 	if (NULL != idx)
 	{
-		subIdx = SubString(varValue, 0, strlen(idx) - 1);
-		idx = SubString(varValue, strlen(subIdx) + 1, strlen(varValue));
+		subIdx = SubString(value, 0, strlen(idx) - 1);
+		idx = SubString(value, strlen(subIdx) + 1, strlen(value));
 
-		stAttrIdx.objectType = varObjType;
+		stAttrIdx.objectType = objType;
 		stAttrIdx.Idx = new char[INDEX_LEN];
 
-		if (varObjType == INDEX)
+		if (objType == INDEX)
 		{
 			stAttrIdx.startIndex = new char[INDEX_LEN];
 			stAttrIdx.endIndex = new char[INDEX_LEN];
-			strcpy(stAttrIdx.endIndex,
-					SubString(varIdx, 0, 4 - strlen(subIdx)));
+			strcpy(stAttrIdx.endIndex, SubString(idxId, 0, 4 - strlen(subIdx)));
 			strcat(stAttrIdx.endIndex, idx);
-			strcpy(stAttrIdx.startIndex, varIdx);
+			strcpy(stAttrIdx.startIndex, idxId);
 		}
 		else
 		{
@@ -338,7 +316,7 @@ void ObjectDictionary::CreateSameattrObject(char* varValue,
 			strcpy(stAttrIdx.endIndex, idx);
 		}
 
-		strcpy(stAttrIdx.Idx, varIdx);
+		strcpy(stAttrIdx.Idx, idxId);
 		AddSameAttributesObjects(stAttrIdx);
 	}
 	delete[] subIdx;
@@ -346,45 +324,42 @@ void ObjectDictionary::CreateSameattrObject(char* varValue,
 
 /*****************************************************************************/
 /**
- \brief			GetObjectDictIndex
+ \brief			To check
  
  This is a member function of CObjectDictionary returns index value of the object dictionary
  
- \param			idx            Character Pointer Variable to hold the value of Index
+ \param			indexId            Character Pointer Variable to hold the value of Index
  
  \return		Index*
  */
 /*****************************************************************************/
 
-Index* ObjectDictionary::GetObjectDictIndex(char* idx)
+Index* ObjectDictionary::GetObjectDictIndex(char* indexId)
 {
-	Index* objIndex = NULL;
-	IndexCollection* objIndexCol = NULL;
+	Index* idxObj = NULL;
+	IndexCollection* idxCollObj = NULL;
 	//CIndex objIndex;
 
-	objIndexCol = objDictNode->GetIndexCollection();
-	objIndex = objIndexCol->GetIndexbyIndexValue(idx);
+	idxCollObj = objDictNode->GetIndexCollection();
+	idxObj = idxCollObj->GetIndexbyIndexValue(indexId);
 
-	if (NULL != objIndex)
+	if (NULL != idxObj)
 	{
-		return objIndex;
+		return idxObj;
 	}
 	else
 	{
-		for (INT32 iLoopCount = 0; iLoopCount < collectionObj.Count();
-				iLoopCount++)
+		for (INT32 iLoopCount = 0; iLoopCount < attribCollObj.Count(); iLoopCount++)
 		{
 			sattrIdxSIdx stAttrIdx;
-			stAttrIdx = collectionObj[iLoopCount];
+			stAttrIdx = attribCollObj[iLoopCount];
 
 			if (stAttrIdx.objectType == INDEX)
 			{
-				if (CheckInTheRange(idx, stAttrIdx.startIndex,
-						stAttrIdx.endIndex))
+				if (CheckInTheRange(indexId, stAttrIdx.startIndex, stAttrIdx.endIndex))
 				{
-					objIndex = objIndexCol->GetIndexbyIndexValue(
-							stAttrIdx.startIndex);
-					return objIndex;
+					idxObj = idxCollObj->GetIndexbyIndexValue(stAttrIdx.startIndex);
+					return idxObj;
 				}
 			}
 		}
@@ -394,65 +369,61 @@ Index* ObjectDictionary::GetObjectDictIndex(char* idx)
 
 /*****************************************************************************/
 /**
- \brief			GetObjectDictSubIndex
+ \brief			To check
  
  This is a member function of CObjectDictionary returns the object dictonary for sub index
  
- \param			idx       Character pointer variable to hold the value of Index
- \param			sIdx      Character pointer variable to hold the value of Sub-Index
+ \param			idxId       Character pointer variable to hold the value of Index
+ \param			sIdxId      Character pointer variable to hold the value of Sub-Index
  
  \return		SubIndex*
  */
 /*****************************************************************************/
 
-SubIndex* ObjectDictionary::GetObjectDictSubIndex(char* idx, char* sIdx)
+SubIndex* ObjectDictionary::GetObjectDictSubIndex(char* idxId, char* sIdxId)
 {
-	SubIndex* objSIdx = NULL;
-	Index* objIndex = NULL;
+	SubIndex* sidxObj = NULL;
+	Index* idxObj = NULL;
 	IndexCollection* objIndexCol = NULL;
 
 	objIndexCol = objDictNode->GetIndexCollection();
-	objIndex = objIndexCol->GetIndexbyIndexValue(idx);
+	idxObj = objIndexCol->GetIndexbyIndexValue(idxId);
 
-	if (NULL == objIndex)
+	if (NULL == idxObj)
 	{
-		objIndex = GetObjectDictIndex(idx);
+		idxObj = GetObjectDictIndex(idxId);
 
-		if (NULL != objIndex)
+		if (NULL != idxObj)
 		{
-			idx = (char*) objIndex->GetIndexValue();
+			idxId = (char*) idxObj->GetIndexValue();
 		}
 		else
 		{
-			return objSIdx;
+			return sidxObj;
 		}
 	}
 
-	objSIdx = objIndex->GetSubIndexbyIndexValue(sIdx);
+	sidxObj = idxObj->GetSubIndexbyIndexValue(sIdxId);
 
-	if (NULL != objSIdx)
+	if (NULL != sidxObj)
 	{
-		return objSIdx;
+		return sidxObj;
 	}
 	else
 	{
-		for (INT32 iLoopCount = 0; iLoopCount < collectionObj.Count();
-				iLoopCount++)
+		for (INT32 attribLC = 0; attribLC < attribCollObj.Count(); attribLC++)
 		{
-			sattrIdxSIdx stAttrIdx;
-			stAttrIdx = collectionObj[iLoopCount];
+			sattrIdxSIdx attribObj;
+			attribObj = attribCollObj[attribLC];
 
-			if ((stAttrIdx.objectType == SUBINDEX)
-					&& (strcmp(stAttrIdx.Idx, idx) == 0))
+			if ((attribObj.objectType == SUBINDEX) && (strcmp(attribObj.Idx, idxId) == 0))
 			{
-				if (CheckInTheRange(sIdx, stAttrIdx.startIndex,
-						stAttrIdx.endIndex))
+				if (CheckInTheRange(sIdxId, attribObj.startIndex, attribObj.endIndex))
 				{
-					objSIdx = objIndex->GetSubIndexbyIndexValue(
-							stAttrIdx.startIndex);
-					if (NULL != objSIdx)
+					sidxObj = idxObj->GetSubIndexbyIndexValue(attribObj.startIndex);
+					if (NULL != sidxObj)
 					{
-						return objSIdx;
+						return sidxObj;
 					}
 				}
 			}
@@ -463,25 +434,23 @@ SubIndex* ObjectDictionary::GetObjectDictSubIndex(char* idx, char* sIdx)
 
 /*****************************************************************************/
 /**
- \brief			CheckInTheRange
+ \brief		To check
  
  This is a member function of CObjectDictionary returns the range of the object dictionary ids
  
- \param			iIdx              Character Pointer Variable to hold the value of Index
- \param			startIdx         Character Pointer Variable to hold the value of Start Index 
- \param			endIdx           Character Pointer Variable to hold the value of End Index
+ \param		idxId		Character Pointer Variable to hold the value of Index
+ \param		startIdx	Character Pointer Variable to hold the value of Start Index 
+ \param		endIdx      Character Pointer Variable to hold the value of End Index
  
- \return		BOOL
- \retval			TRUE			if successful
- \retval			FALSE			if there is already a message pending	
+ \return	BOOL
+ \retval	TRUE		to check
+ \retval	FALSE		to check	
  */
 /*****************************************************************************/
 
-bool ObjectDictionary::CheckInTheRange(char* iIdx, char* startIdx,
-		char* endIdx)
+bool ObjectDictionary::CheckInTheRange(char* idxId, char* startIdx, char* endIdx)
 {
-	if (HexToInt(iIdx) >= HexToInt(startIdx)
-			&& (HexToInt(iIdx) <= HexToInt(endIdx)))
+	if (HexToInt(idxId) >= HexToInt(startIdx) && (HexToInt(idxId) <= HexToInt(endIdx)))
 	{
 		return true;
 	}
@@ -493,41 +462,21 @@ bool ObjectDictionary::CheckInTheRange(char* iIdx, char* startIdx,
 
 /*****************************************************************************/
 /**
- \brief			Printall
+ \brief		This function shall be used to check if an Object Dictionary Index exists at the given Index ID in the collection list
  
- This is a member function of CObjectDictionary collects the object ids,start index and end index
- 
- \return		void
- */
-/*****************************************************************************/
-//TODO: Unused function
-void ObjectDictionary::Printall()
-{
-	for (INT32 iLoopCount = 0; iLoopCount < collectionObj.Count(); iLoopCount++)
-	{
-		sattrIdxSIdx stAttrIdx;
-		stAttrIdx = collectionObj[iLoopCount];
-	}
-}
+ \param		idxId		Character pointer to the value of index
 
-/*****************************************************************************/
-/**
- \brief			IfObjectDictIndexExists
- 
- This is a member function of CObjectDictionaryreturns the obj dictionary value from the collection list based on the index value
- 
- \param			iIdx		Character Pointer Variable to hold the value of index		
- \return		INT32
+ \return	INT32
  */
 /*****************************************************************************/
 //TODO: Unused function
-INT32 ObjectDictionary::IfObjectDictIndexExists(char* iIdx)
+INT32 ObjectDictionary::IfObjectDictIndexExists(char* idxId)
 {
 	Index* objIndex = NULL;
 	IndexCollection* objIndexCol;
 
 	objIndexCol = objDictNode->GetIndexCollection();
-	objIndex = objIndexCol->GetIndexbyIndexValue(iIdx);
+	objIndex = objIndexCol->GetIndexbyIndexValue(idxId);
 
 	if (NULL == objIndex)
 	{
@@ -541,32 +490,30 @@ INT32 ObjectDictionary::IfObjectDictIndexExists(char* iIdx)
 
 /*****************************************************************************/
 /**
- \brief			IfObjectDictSubIndexExists
+ \brief		This function shall be used to check if an Object Dictionary SubIndex exists at the given SubIndex ID in the collection list
  
- This is a member function of CObjectDictionary returns the obj dictionary value from the collection list based on the subindex value
+ \param		idxId      Character pointer to the value of Index
+ \param		sIdxId	   Character pointer to the value of SubIndex
  
- \param			iIdx      Character Pointer Variable to hold the value of index		
- \param			sIdx	   Character Pointer Variable to hold the value of Subindex		
- 
- \return		INT32
+ \return	INT32
  */
 /*****************************************************************************/
 //TODO: Unused function
-INT32 ObjectDictionary::IfObjectDictSubIndexExists(char* iIdx, char* sIdx)
+INT32 ObjectDictionary::IfObjectDictSubIndexExists(char* idxId, char* sIdxId)
 {
 	SubIndex* objSIdx = NULL;
 	Index* objIndex = NULL;
 	IndexCollection* objIndexCol;
 
 	objIndexCol = objDictNode->GetIndexCollection();
-	objIndex = objIndexCol->GetIndexbyIndexValue(iIdx);
+	objIndex = objIndexCol->GetIndexbyIndexValue(idxId);
 
 	if (NULL == objIndex)
 	{
 		return TRUE;
 	}
 
-	objSIdx = objIndex->GetSubIndexbyIndexValue(sIdx);
+	objSIdx = objIndex->GetSubIndexbyIndexValue(sIdxId);
 
 	if (NULL == objSIdx)
 	{
@@ -580,43 +527,40 @@ INT32 ObjectDictionary::IfObjectDictSubIndexExists(char* iIdx, char* sIdx)
 
 /*****************************************************************************/
 /**
- \brief			GetIndexName
+ \brief		This function shall be used to return the name of the Index given the Object Name and Index ID
  
- This is a member function of CObjectDictionary  returns the index name
+ \param		idxId			Character pointer to the value of Object index
+ \param		objectName  	Character pointer to the value of Object name				
  
- \param			objectIndex  Character Pointer Variable to hold the value of Object index
- \param			objectName   Character Pointer Variable to hold the value of Object name				
- 
- \return		char*
+ \return	char*
  */
 /*****************************************************************************/
 
-char* ObjectDictionary::GetIndexName(char* objectIndex, char* objectName)
+char* ObjectDictionary::GetIndexName(char* idxId, char* objectName)
 {
-	char* varName = NULL;
-	char* modifiedName = new char[strlen(objectName) + STR_ALLOC_BUFFER];
+	char* tempObjName = NULL;
 
-	INT32 iLen = 0;
 	if (NULL == objectName)
 	{
 		return NULL;
 	}
 
-	varName = strchr(objectName, 'X');
-	if (NULL != varName)
+	tempObjName = strchr(objectName, 'X');
+	if (NULL != tempObjName)
 	{
-		iLen = 1;
-		if (0 == strcmp(SubString(varName, 1, 1), "X"))
+		INT32 len = 0;
+		len = 1;
+		if (0 == strcmp(SubString(tempObjName, 1, 1), "X"))
 		{
-			iLen++;
+			len++;
 		}
 
-		INT32 pos = strlen(varName);
-		INT32 iCount = strlen(objectIndex) - iLen;
-		strcpy(modifiedName,
-				SubString(objectName, 0, strlen(objectName) - pos));
-		strcat(modifiedName, SubString(objectIndex, iCount, iLen));
-		strcat(modifiedName, SubString(varName, iLen, strlen(varName) - iLen));
+		INT32 pos = strlen(tempObjName);
+		INT32 count = strlen(idxId) - len;
+		char* modifiedName = new char[strlen(objectName) + STR_ALLOC_BUFFER];
+		strcpy(modifiedName, SubString(objectName, 0, strlen(objectName) - pos));
+		strcat(modifiedName, SubString(idxId, count, len));
+		strcat(modifiedName, SubString(tempObjName, len, strlen(tempObjName) - len));
 		return modifiedName;
 	}
 	else

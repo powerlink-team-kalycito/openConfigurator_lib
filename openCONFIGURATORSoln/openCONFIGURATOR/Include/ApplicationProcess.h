@@ -1,9 +1,9 @@
 /**
- ************************************************************************************************
+ ******************************************************************************
  \file			ApplicationProcess.h
 
  \brief			The collection of all the objects within the Application Process tag xdd/xdc file 
- ************************************************************************************************
+ ******************************************************************************
  */
 
 /*
@@ -66,7 +66,7 @@ using namespace std;
 
 /**
  *******************************************************************************************************
- \class			CApplicationProcess
+ \class			ApplicationProcess
  \brief			The collection of all the objects within the Application Process tag xdd/xdc file  
 
  ********************************************************************************************************/
@@ -75,29 +75,157 @@ class ApplicationProcess
 	public:
 		ApplicationProcess(void);
 		~ApplicationProcess(void);
-	public:
-		char* xddFileName;
-		char* projectPath;
+
+		char *xddFileName;
+		char *projectPath;
 		TCollection<ComplexDataType> CDTCollection;
 		TCollection<Parameter> ParameterCollection;
 
-	public:
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to delete the objects in ComplexDataType collection list
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
 		void DeleteComplexDataTypeCollection(void);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to delete the objects in Parameter collection list
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/		
 		void DeleteParameterCollection(void);
-		//void ParseXDDfile(char* filename);
-		INT32 CheckFileStatus(char* fileName);
-		void AddComplexDataType(ComplexDataType complexDT);
-		void AddParameter(Parameter parameter);
-		INT32 GetParameterIndexbyUniqueIDRef(char* uniqueIdRef);
-		Parameter* GetParameterbyUniqueIDRef(char* uniqueIdRef);
-		ComplexDataType* GetCDTbyUniqueID(char* uniqueId);
-		ComplexDataType* GetCDTByDtUniqueRefID(char* uniqueRefId);
-		ComplexDataType* GetCDTByDtIndex(INT32 varIndex);
-		INT32 GetCDTUniqueIDRef(char *uniqueIdRef);
-		void UpdatePreviousCDTUId(char *uniqueID, INT32 varIndex);
-		Parameter GetUniqueIDRefbyParameterIndex(INT32 parameterIndex);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to add an object of ComplexDataType to a collection list
+		 
+		 \param		objectCdT	 Class variable of ComplexDataType for data type
+
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void AddComplexDataType(ComplexDataType objectCdT);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to add an object of Parameter to a collection list
+		 
+		 \param		objectParameter		Structure Variable of addParameter to add parameter to the collection list
+
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void AddParameter(Parameter objectParameter);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to update the prevUniqueId member of the ComplexDataType object of given Index position with the given uniqueID
+
+		 \param		uniqueID 		Character pointer to the unique id of CDT collection
+		 \param		cDtPosition		Integer to hold the Index of CDT collection
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void UpdatePreviousCDTUId(char* uniqueID, INT32 cDtPosition);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall return the ComplexDataType collection count
+
+		 \return	INT32
+		 */
+		/*****************************************************************************/		
 		INT32 GetCDTCount();
-		ComplexDataType* GetCDTbyCount(INT32 varCount);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to check if the file is open and return this status 
+		 
+		 \param		fileName	Character pointer to the path of the file
+		 
+		 \return	INT32
+		 */
+		/*****************************************************************************/
+		INT32 CheckFileStatus(char* fileName);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to get the parameter index with unique reference ID
+
+		 \param		uniqueIdRef		Character pointer to the value of unique reference ID
+
+		 \return	INT32
+		 */
+		/*****************************************************************************/
+		INT32 GetParameterIndexbyUniqueIDRef(char *uniqueIdRef);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to get the position of ComplexDataType object with given unique reference ID in the collection list
+
+		 \param		uniqueIdRef   Character pointer to the Unique reference ID
+
+		 \return	INT32
+		 */
+		/*****************************************************************************/
+		INT32 GetCDTUniqueIDRef(char *uniqueIdRef);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to get the pointer to the ComplexDataType object with given Index position in the collection list
+
+		 \param		cDtPosition		Integer to hold the Index of CDT collection
+
+		 \return	ComplexDataType*
+		 */
+		/*****************************************************************************/
+		ComplexDataType* GetCDTbyCount(INT32 cDtPosition);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to get the pointer to the ComplexDataType object with given unique reference ID in the collection list
+
+		 \param		uniqueId	Character pointer to the unique reference ID
+
+		 \return	ComplexDataType*
+		 */
+		/*****************************************************************************/
+		ComplexDataType* GetCDTbyUniqueID(char *uniqueId);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to get the pointer to the ComplexDataType object with given dataTypeStr string in the collection list
+
+		 \param		dataTypeStr		Character pointer to the dataTypeStr string		
+
+		 \return	ComplexDataType*
+		 */
+		/*****************************************************************************/
+		ComplexDataType* GetCDTByDtUniqueRefID(char *dataTypeStr);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to get the pointer to the ComplexDataType object with given Index position in the collection list
+		 
+		 \param		cDtPosition		Integer to hold the Index of CDT collection
+
+		 \return	ComplexDataType*
+		 */
+		/*****************************************************************************/
+		ComplexDataType* GetCDTByDtIndex(INT32 cDtPosition);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to get the parameter with unique reference ID
+
+		 \param		uniqueIdRef		Character pointer to the unique reference ID
+
+		 \return	Parameter*
+		 */
+		/*****************************************************************************/
+		Parameter* GetParameterbyUniqueIDRef(char *uniqueIdRef);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to get the Parameter object given its Index position in the collection list
+		 
+		 \param		parameterPosition		Integer to hold the Parameter Index position
+
+		 \return	Parameter
+		 */
+		/*****************************************************************************/
+		Parameter GetUniqueIDRefbyParameterIndex(INT32 parameterPosition);
+
 };
 
 #endif // ApplicationProcess_h

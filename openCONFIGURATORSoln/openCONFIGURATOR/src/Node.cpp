@@ -67,28 +67,27 @@
 
 /**
  
-
  */
 
 Node::Node(void)
 {
-	VarNodeName = NULL;
-	VarIndexCollection = NULL;
-	VarDataTypeCollection = NULL;
-	VarIndexCollection = NULL;
-	VarApplicationProcess = NULL;
-	VarNetworkManagement = NULL;
-	VarHasPdoObjects = false;
-	VarStationType = NORMAL;
-	VarForcedCycle = NULL;
-	VarPollResponseTimeout = NULL;
-	VarForcedCycleFlag = false;
-	VarNodeId = 0;
-	NodeIndex = 0;
-	//m_NodeType = 0; //TODO: Review initialization
-	VarPResActPayload = 0;
-	VarPReqActPayload = 0;
-	//cout<<"CNode: Constructor Executed"<<endl;
+	indexCollObj = NULL;
+	dtCollObj = NULL;
+	indexCollObj = NULL;
+	appProcessObj = NULL;
+	nmtObj = NULL;
+	nodeName = NULL;
+	hasPdoObjects = false;
+	stationType = NORMAL;
+	forcedCycle = NULL;
+	presTimeOut = NULL;
+	isForcedCycle = false;
+	nodeId = 0;
+	nodePosition = 0;
+	//VarNodeType = 0; //TODO: Review initialization
+	presActualPayload = 0;
+	preqActualPayload = 0;
+	//cout<<"NodeClass: Constructor Executed"<<endl;
 }
 
 /*************************************************************************/
@@ -96,7 +95,6 @@ Node::Node(void)
 
 /**
  
-
  */
 
 Node::~Node(void)
@@ -107,322 +105,134 @@ Node::~Node(void)
 #pragma region Properties
 #endif
 
-/*****************************************************************************/
-/**
- \brief		GetNodeType
- 
- This is a member function of CNode Returns the NodeType of the Node
 
- \return	NodeType
- */
-/*****************************************************************************/
 
 NodeType Node::GetNodeType()
 {
-	return VarNodeType;
+	return nodeType;
 }
-
-/*****************************************************************************/
-/**
- \brief		SetNodeType
- 
- This is a member function of CNode sets the Node Type of the Node.Value can be either CN or MN
-
- \param		objNodeType Enum Variable of ENodeType to hold the node type
- 
- \return	void
- */
-/*****************************************************************************/
 
 void Node::SetNodeType(NodeType objNodeType)
 {
-	VarNodeType = objNodeType;
+	nodeType = objNodeType;
 }
 
-/*****************************************************************************/
-/**
- \brief		GetNodeId
- 
- This is a member function of CNode Returns the Index of the Index Object
 
- \return	INT32
- */
-/*****************************************************************************/
 
 INT32 Node::GetNodeId()
 {
-	return VarNodeId;
+	return nodeId;
 }
 
-/*****************************************************************************/
-/**
- \brief		SetNodeId
- 
- This is a member function of CNode sets the Index of the Index Object
-
- \return	void
- */
-/*****************************************************************************/
-
-void Node::SetNodeId(INT32 iNodeId)
+void Node::SetNodeId(INT32 nodeID)
 {
-	VarNodeId = iNodeId;
+	nodeId = nodeID;
 
 }
 
-/*****************************************************************************/
-/**
- \brief		GetNodeIndex
- 
- This is a member function of CNode Returns the Index of the Index Object
-
- \return	INT32
- */
-/*****************************************************************************/
 
 INT32 Node::GetNodeIndex()
 {
-	return NodeIndex;
+	return nodePosition;
 }
 
-/*****************************************************************************/
-/**
- \brief		SetNodeIndex
- 
- This is a member function of CNode sets the Index of the Index Object
- 
- \param		iNodeIndex	Integer variable to hold node index
-
- \return	void
- */
-/*****************************************************************************/
-
-void Node::SetNodeIndex(INT32 iNodeIndex)
+void Node::SetNodeIndex(INT32 nodePos)
 {
-	NodeIndex = iNodeIndex;
+	nodePosition = nodePos;
 }
 
-/*****************************************************************************/
-/**
- \brief		GetNodeName
- 
- This is a member function of CNode Returns the Name of the Node
 
- \return	char*	Node name as string
- */
-/*****************************************************************************/
 
 char* Node::GetNodeName()
 {
-	return VarNodeName;
+	return nodeName;
 }
 
-/*****************************************************************************/
-/**
- \brief		SetNodeName
- 
- This is a member function of CNode sets the Name of the Node
- 
- \param		nodeName	Character Pointer variable to hold node name
 
- \return	void
- */
-/*****************************************************************************/
-
-void Node::SetNodeName(char* nodeName)
+void Node::SetNodeName(char* nodeNameStr)
 {
-	if (NULL != VarNodeName)
+	if (NULL != nodeName)
 	{
-		delete[] VarNodeName;
+		delete[] nodeName;
 	}
-	VarNodeName = new char[strlen(nodeName) + STR_ALLOC_BUFFER];
-	strcpy((char*) VarNodeName, nodeName);
+	nodeName = new char[strlen(nodeNameStr) + STR_ALLOC_BUFFER];
+	strcpy((char*) nodeName, nodeNameStr);
 }
 
-/*****************************************************************************/
-/**
- \brief			HasPdoObjects
- 
- This is a member function of CNode Returns status PDO objects
-
- \return		BOOL
- \retval			TRUE			if successful
- \retval			FALSE			if there is already a message pending	
- */
-/*****************************************************************************/
 
 bool Node::HasPdoObjects()
 {
-	return VarHasPdoObjects;
+	return hasPdoObjects;
 }
 
-/*****************************************************************************/
-/**
- \brief		SetFlagForPdoObjects
- 
- This is a member function of CNode sets the Name of the Node
-
- \param		bFlag	Boolean flag to hold the value true if PDO objects are present
- \return	void
- */
-/*****************************************************************************/
-
-void Node::SetFlagForPdoObjects(bool bFlag)
+void Node::SetFlagForPdoObjects(bool flag)
 {
-	VarHasPdoObjects = bFlag;
+	hasPdoObjects = flag;
 }
 
-/*****************************************************************************/
-/**
- \brief		GetIndexCollection
- 
- This is a member function of CNode Returns the IndexCollection of the Node
-
- \return	IndexCollection*
- */
-/*****************************************************************************/
 
 IndexCollection* Node::GetIndexCollection()
 {
-	return VarIndexCollection;
+	return indexCollObj;
 }
 
-/*****************************************************************************/
-/**
- \brief		GetApplicationProcess
- 
- This is a member function of CNode Returns the Application Process of the Node
-
- \return	ApplicationProcess*
- */
-/*****************************************************************************/
 
 ApplicationProcess* Node::GetApplicationProcess()
 {
-	return VarApplicationProcess;
+	return appProcessObj;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetNetworkManagement
- 
- This is a member function of CNode Returns the NetworkManagement of the Node
-
- \return		NetworkManagement*
- */
-/*****************************************************************************/
 
 NetworkManagement* Node::GetNetworkManagement()
 {
-	return VarNetworkManagement;
+	return nmtObj;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetDataTypeCollection
- 
- This is a member function of CNode returns the DataType Collection
-
- \return		DataTypeCollection*
- */
-/*****************************************************************************/
 
 DataTypeCollection* Node::GetDataTypeCollection()
 {
-	return VarDataTypeCollection;
+	return dtCollObj;
 }
 
-/*****************************************************************************/
-/**
- \brief			CreateIndexCollection
- 
- This is a member function of CNode creates index collection
-
- \return		void
- */
-/*****************************************************************************/
 
 void Node::CreateIndexCollection()
 {
 	IndexCollection* objIndexCollection = NULL;
 	objIndexCollection = new IndexCollection();
-	VarIndexCollection = objIndexCollection;
+	indexCollObj = objIndexCollection;
 }
 
-/*****************************************************************************/
-/**
- \brief			CreateDataTypeCollection
- 
- This is a member function of CNode creates data type collection
-
- \return		void
- */
-/*****************************************************************************/
 
 void Node::CreateDataTypeCollection()
 {
 	DataTypeCollection* pobjDataTypeCollection = NULL;
 	pobjDataTypeCollection = new DataTypeCollection();
-	VarDataTypeCollection = pobjDataTypeCollection;
+	dtCollObj = pobjDataTypeCollection;
 }
 
-/*****************************************************************************/
-/**
- \brief			AddProcessImage
- 
- This is a member function of CNode collects the process images
- 
- \param			objProcessImage  Class variable of ProcessImage to hold object process image
- \return		void
- */
-/*****************************************************************************/
-
-void Node::AddProcessImage(ProcessImage objProcessImage)
+void Node::AddProcessImage(ProcessImage piObj)
 {
-	INT32 iItemPosition = ProcessImageCollection.Add();
-	ProcessImageCollection[iItemPosition] = objProcessImage;
+	INT32 iItemPosition = PICollection.Add();
+	PICollection[iItemPosition] = piObj;
 }
 
-/*****************************************************************************/
-/**
- \brief			AddNETProcessImage
- 
- This is a member function of CNode collects the NETprocess images 
- 
- \param			objNETProcessImage  Class variable of NETProcessImage
- \return		void
- */
-/*****************************************************************************/
-
-void Node::AddNETProcessImage(NETProcessImage objNETProcessImage)
+void Node::AddNETProcessImage(NETProcessImage netPIobj)
 {
-	INT32 iItemPosition = NETProcessImageCollection.Add();
-	NETProcessImageCollection[iItemPosition] = objNETProcessImage;
+	INT32 iItemPosition = NETPIColl.Add();
+	NETPIColl[iItemPosition] = netPIobj;
 }
 
-/*****************************************************************************/
-/**
- \brief			AddMNPDOvar
- 
- This is a member function of CNode adds PDO variables for MN
- 
- \param			stPdoVar        Structure variable of MNPdoVariable
- \param			varPdoType    Enum Variable of EPDOType
- \return		void
- */
-/*****************************************************************************/
-
-void Node::AddMNPDOvar(MNPdoVariable stPdoVar, PDOType varPdoType)
+void Node::AddMNPDOvar(MNPdoVariable pdoVarObj, PDOType pdotype)
 {
-	if (PDO_RPDO == varPdoType)
+	if (PDO_RPDO == pdotype)
 	{
 		INT32 iItemPosition = MNPDOOUTVarCollection.Add();
-		MNPDOOUTVarCollection[iItemPosition] = stPdoVar;
+		MNPDOOUTVarCollection[iItemPosition] = pdoVarObj;
 	}
-	else if (PDO_TPDO == varPdoType)
+	else if (PDO_TPDO == pdotype)
 	{
 		INT32 iItemPosition = MNPDOINVarCollection.Add();
-		MNPDOINVarCollection[iItemPosition] = stPdoVar;
+		MNPDOINVarCollection[iItemPosition] = pdoVarObj;
 	}
 	else
 	{
@@ -430,63 +240,33 @@ void Node::AddMNPDOvar(MNPdoVariable stPdoVar, PDOType varPdoType)
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief			CreateApplicationProcess
- 
- This is a member function of CNode creates application process 
- 
- \return		void
- */
-/*****************************************************************************/
 
 void Node::CreateApplicationProcess()
 {
-	ApplicationProcess* objAppliProcess = NULL;
+	ApplicationProcess* appProcess = NULL;
 
-	objAppliProcess = new ApplicationProcess();
-	VarApplicationProcess = objAppliProcess;
+	appProcess = new ApplicationProcess();
+	appProcessObj = appProcess;
 }
 
-/*****************************************************************************/
-/**
- \brief			CreateNetworkManagament
- 
- This is a member function of CNode creates  network management for the objects 
- 
- \return		void
- */
-/*****************************************************************************/
 
-void Node::CreateNetworkManagament()
+void Node::CreateNetworkManagement()
 {
-	NetworkManagement* objNwManagement = NULL;
+	NetworkManagement* nmtObject = NULL;
 
-	objNwManagement = new NetworkManagement();
-	VarNetworkManagement = objNwManagement;
+	nmtObject = new NetworkManagement();
+	nmtObj = nmtObject;
 }
 
-/*****************************************************************************/
-/**
- \brief			getPDOIndexCollection
- 
- This is a member function of CNode adds the indexs under EPDO index collection
- 
- \param			varPdoType		 Enum variable of EPDOType hold the EPDO type		
- \return		IndexCollection*
- */
-/*****************************************************************************/
-
-IndexCollection* Node::GetPDOIndexCollection(PDOType varPdoType)
+IndexCollection* Node::GetPDOIndexCollection(PDOType pdotype)
 {
 	IndexCollection* objPdoIndexCollection = new IndexCollection();
 	Index* objIndex = NULL;
-	for (INT32 iLoopCount = 0;
-			iLoopCount < VarIndexCollection->GetNumberofIndexes(); iLoopCount++)
+	for (INT32 iLoopCount = 0; iLoopCount < indexCollObj->GetNumberofIndexes(); iLoopCount++)
 	{
-		objIndex = VarIndexCollection->GetIndex(iLoopCount);
+		objIndex = indexCollObj->GetIndex(iLoopCount);
 
-		if (objIndex->GetPDOType() == varPdoType)
+		if (objIndex->GetPDOType() == pdotype)
 		{
 			objPdoIndexCollection->AddIndex(*objIndex);
 		}
@@ -494,42 +274,29 @@ IndexCollection* Node::GetPDOIndexCollection(PDOType varPdoType)
 	return objPdoIndexCollection;
 }
 
-/*****************************************************************************/
-/**
- \brief			getPDOIndexCollection
- 
- This is a member function of CNode creates a new temproary Index collection which has all PDO indexes for that node and updates the number of rpdo and tpdo indexes(16xx & 1Axx)
- 
- \param			rpdoCount
- \param			tpdoCount
- \return		IndexCollection*
- */
-/*****************************************************************************/
-
 IndexCollection* Node::getPDOIndexCollection(INT32 *rpdoCount, INT32 *tpdoCount)
 {
-	IndexCollection* objPdoIndexCollection = new IndexCollection();
-	Index* pobjIndex = NULL;
+	IndexCollection* pdoIndexCollObj = new IndexCollection();
+	Index* indexObj = NULL;
 
-	for (INT32 iLoopCount = 0;
-			iLoopCount < VarIndexCollection->GetNumberofIndexes(); iLoopCount++)
+	for (INT32 indexLC = 0;	indexLC < indexCollObj->GetNumberofIndexes(); indexLC++)
 	{
-		pobjIndex = VarIndexCollection->GetIndex(iLoopCount);
-		if ((pobjIndex->GetPDOType() == PDO_TPDO))
+		indexObj = indexCollObj->GetIndex(indexLC);
+		if ((indexObj->GetPDOType() == PDO_TPDO))
 		{
-			if ((0 == strncmp(pobjIndex->GetIndexValue(), "1A", 2)) || 0 == strncmp(pobjIndex->GetIndexValue(), "1a", 2))
+			if ((0 == strncmp(indexObj->GetIndexValue(), "1A", 2)) || 0 == strncmp(indexObj->GetIndexValue(), "1a", 2))
 			{
 				*tpdoCount = *tpdoCount + 1;
 			}
-			objPdoIndexCollection->AddIndex(*pobjIndex);
+			pdoIndexCollObj->AddIndex(*indexObj);
 		}
-		else if((pobjIndex->GetPDOType() == PDO_RPDO))
+		else if((indexObj->GetPDOType() == PDO_RPDO))
 		{
-			if (0 == strncmp(pobjIndex->GetIndexValue(), "16", 2))
+			if (0 == strncmp(indexObj->GetIndexValue(), "16", 2))
 			{
 				*rpdoCount = *rpdoCount + 1;
 			}
-			objPdoIndexCollection->AddIndex(*pobjIndex);
+			pdoIndexCollObj->AddIndex(*indexObj);
 		}
 		else
 		{
@@ -537,50 +304,29 @@ IndexCollection* Node::getPDOIndexCollection(INT32 *rpdoCount, INT32 *tpdoCount)
 		}
 
 	}
-	return objPdoIndexCollection;
+	return pdoIndexCollObj;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetIndexCollectionWithoutPDO
- 
- This is a member function of CNode adds the indexes for non PDO type
- 
- \return		IndexCollection*
- */
-/*****************************************************************************/
 
 IndexCollection* Node::GetIndexCollectionWithoutPDO()
 {
-	IndexCollection* pobjIndexCol = new IndexCollection();
-	Index* pobjIndex = NULL;
-	for (INT32 iLoopCount = 0;
-			iLoopCount < VarIndexCollection->GetNumberofIndexes(); iLoopCount++)
+	IndexCollection* indexCollObject = new IndexCollection();
+	Index* indexObj = NULL;
+	for (INT32 indexLC = 0;	indexLC < indexCollObj->GetNumberofIndexes(); indexLC++)
 	{
-		pobjIndex = VarIndexCollection->GetIndex(iLoopCount);
-		if (CheckIfNotPDO((char*) pobjIndex->GetIndexValue()))
+		indexObj = indexCollObj->GetIndex(indexLC);
+		if (CheckIfNotPDO((char*) indexObj->GetIndexValue()))
 		{
-			pobjIndexCol->AddIndex(*pobjIndex);
+			indexCollObject->AddIndex(*indexObj);
 		}
 	}
-	return pobjIndexCol;
+	return indexCollObject;
 }
 
-/*****************************************************************************/
-/**
- \brief			isNull
- 
- This is a member function of CNode returns the status of the index collection
- 
- \return		BOOL
- \retval			TRUE			if successful
- \retval			FALSE			if there is already a message pending	
- */
-/*****************************************************************************/
 
 bool Node::IsNull()
 {
-	if (NULL == VarIndexCollection)
+	if (NULL == indexCollObj)
 	{
 		return true;
 	}
@@ -590,44 +336,22 @@ bool Node::IsNull()
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief			GetPIbyParaIndex
- 
- This is a member function of CNode returns process image for each parameter index
- 
- \param			iParaIndex		Integer Variable to hold the value of parameter index
- 
- \return		ProcessImage*
- */
-/*****************************************************************************/
-
-ProcessImage* Node::GetPIbyParaIndex(INT32 iParaIndex)
+ProcessImage* Node::GetPIbyParaIndex(INT32 paramerterPos)
 {
-	ProcessImage* pobjProcessImage = NULL;
+	ProcessImage* piObj = NULL;
 
-	for (INT32 iLoopCount = 0; iLoopCount < ProcessImageCollection.Count();
-			iLoopCount++)
+	for (INT32 piLC = 0; piLC < PICollection.Count();	piLC++)
 	{
-		pobjProcessImage = ProcessImageCollection.GetAddress(iLoopCount);
+		piObj = PICollection.GetAddress(piLC);
 
-		if (pobjProcessImage->ParametrIndex == iParaIndex)
+		if (piObj->parameterPos == paramerterPos)
 		{
-			return pobjProcessImage;
+			return piObj;
 		}
 	}
-	return pobjProcessImage;
+	return piObj;
 }
 
-/*****************************************************************************/
-/**
- \brief			DeleteCollectionsForPI
- 
- This is a member function of CNode clears MN PDO collection index and process image collection
- 
- \return		void
- */
-/*****************************************************************************/
 
 void Node::DeleteCollectionsForPI()
 {
@@ -639,264 +363,174 @@ void Node::DeleteCollectionsForPI()
 	{
 		MNPDOOUTVarCollection.Clear();
 	}
-	if (0 != ProcessImageCollection.Count())
+	if (0 != PICollection.Count())
 	{
-		ProcessImageCollection.Clear();
+		PICollection.Clear();
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief			DeleteCollectionsForNETPI
- 
- This is a member function of CNode clears NETprocess image collection
- 
- \return		void
- */
-/*****************************************************************************/
 
 void Node::DeleteCollectionsForNETPI()
 {
-	if (0 != NETProcessImageCollection.Count())
+	if (0 != NETPIColl.Count())
 	{
-		NETProcessImageCollection.Clear();
+		NETPIColl.Clear();
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief			GetStationType
- 
- This is a member function of CNode Returns the station type of the Node
- 
- \return		StationType
- */
-/*****************************************************************************/
 
 StationType Node::GetStationType()
 {
-	return VarStationType;
+	return stationType;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetStationType
- 
- This is a member function of CNode sets the Node Type of the Node.Value can be either CN or MN
- 
- \param			StationType		Enum Variable of EStationType to hold value of Station type		
- \return		void
- */
-/*****************************************************************************/
-
-void Node::SetStationType(StationType StationType)
+void Node::SetStationType(StationType stationtype)
 {
-	VarStationType = StationType;
+	stationType = stationtype;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetForcedCycle
- 
- This is a member function of CNode Returns the forced cycle of the Node
- 
- \return		char*
- */
-/*****************************************************************************/
 
-char* Node::GetForcedCycle()
+char* Node::GetForcedCycleValue()
 {
-	return VarForcedCycle;
+	return forcedCycle;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetForcedCycle
- 
- This is a member function of CNode sets the cycle of the Node
-
- \param			pbForcedCycle     Character Pointer Variable to hold the value of forced cycle
- 
- \return		ocfmRetCode
- */
-/*****************************************************************************/
-
-ocfmRetCode Node::SetForcedCycle(char* pbForcedCycle)
+ocfmRetCode Node::SetForcedCycle(char* tempForcedCycleVal)
 {
 	//add or update 1f9b
-	ocfmRetCode stErrorResult;
-	ocfmRetCode stErrorInfoMN;
-	ocfmRetCode stErrorInfoCN;
-	INT32 IndexPos = 0;
-	INT32 subIndexPos = 0;
+	ocfmRetCode errReslt1;
+	ocfmRetCode errReslt2;
+	ocfmRetCode errReslt3;
+	INT32 idxPos = 0;
+	INT32 sIdxPos = 0;
 
-	char strCustomErrString[200];
-	char strCustomErrStringMN[100];
-	strCustomErrStringMN[0] = 0;
-	char strCustomErrStringCN[100];
-	strCustomErrStringCN[0] = 0;
+	char customErr1[200];
+	char customErr2[100];
+	char customErr3[100];
+	customErr1[0] = 0;
+	customErr2[0] = 0;
+	customErr3[0] = 0;
 
-	char* strConvertedValue = new char[SUBINDEX_LEN];
-	char acMultiCycleAssignObj[] = MULTIPL_CYCLE_ASSIGN_OBJECT;
+	char* sidxId = new char[SUBINDEX_LEN];
+	char indexId[] = MULTIPL_CYCLE_ASSIGN_OBJECT;
 
-	stErrorResult.code = OCFM_ERR_SUCCESS;
+	errReslt1.code = OCFM_ERR_SUCCESS;
 
-	strConvertedValue = IntToAscii(this->GetNodeId(), strConvertedValue, 16);
-	strConvertedValue = PadLeft(strConvertedValue, '0', 2);
+	sidxId = IntToAscii(this->GetNodeId(), sidxId, 16);
+	sidxId = PadLeft(sidxId, '0', 2);
 
-	stErrorInfoMN = IfSubIndexExists(MN_NODEID, MN, acMultiCycleAssignObj,
-			strConvertedValue, &subIndexPos, &IndexPos);
-	stErrorInfoCN = IfSubIndexExists(this->GetNodeId(), CN,
-			acMultiCycleAssignObj, strConvertedValue, &subIndexPos, &IndexPos);
-	if ((OCFM_ERR_SUCCESS == stErrorInfoMN.code)
-			&& (OCFM_ERR_SUCCESS == stErrorInfoCN.code))
+	errReslt2 = IfSubIndexExists(MN_NODEID, MN, indexId, sidxId, &sIdxPos, &idxPos);
+	errReslt3 = IfSubIndexExists(this->GetNodeId(), CN,	indexId, sidxId, &sIdxPos, &idxPos);
+	if ((OCFM_ERR_SUCCESS == errReslt2.code) && (OCFM_ERR_SUCCESS == errReslt3.code))
 	{
 		// both the index and subindex are present continue
 	}
 	else
 	{
-		if (OCFM_ERR_INDEXID_NOT_FOUND == stErrorInfoMN.code)
+		if (OCFM_ERR_INDEXID_NOT_FOUND == errReslt2.code)
 		{
-			strcpy((char*) strCustomErrStringMN,
-					"The Index 1F9B does not exist in MN. ");
+			strcpy((char*) customErr2, "The Index 1F9B does not exist in MN. ");
 		}
-		if (OCFM_ERR_INDEXID_NOT_FOUND == stErrorInfoCN.code)
+		if (OCFM_ERR_INDEXID_NOT_FOUND == errReslt3.code)
 		{
-			strcpy((char*) strCustomErrStringCN,
-					"The Index 1F9B does not exist in CN. ");
+			strcpy((char*) customErr3, "The Index 1F9B does not exist in CN. ");
 		}
-		if (OCFM_ERR_SUBINDEXID_NOT_FOUND == stErrorInfoMN.code)
+		if (OCFM_ERR_SUBINDEXID_NOT_FOUND == errReslt2.code)
 		{
-			sprintf(strCustomErrStringMN,
-					"The Subindex %s in Index 1F9B does not exist in MN. ",
-					strConvertedValue);
+			sprintf(customErr2,	"The Subindex %s in Index 1F9B does not exist in MN. ",	sidxId);
 		}
-		if (OCFM_ERR_SUBINDEXID_NOT_FOUND == stErrorInfoCN.code)
+		if (OCFM_ERR_SUBINDEXID_NOT_FOUND == errReslt3.code)
 		{
-			sprintf(strCustomErrStringCN,
-					"The Subindex %s in Index 1F9B does not exist in CN. ",
-					strConvertedValue);
+			sprintf(customErr3,	"The Subindex %s in Index 1F9B does not exist in CN. ",	sidxId);
 		}
-		strcpy(strCustomErrString, strCustomErrStringMN);
-		strcat(strCustomErrString, strCustomErrStringCN);
-		strcat(strCustomErrString, "Unable to assign the multiplexing cycle");
+		strcpy(customErr1, customErr2);
+		strcat(customErr1, customErr3);
+		strcat(customErr1, "Unable to assign the multiplexing cycle");
 
-		stErrorResult.code = OCFM_ERR_MULTIPLEX_ASSIGN_ERROR;
-		CopyCustomErrorString(&stErrorResult, (char*) &strCustomErrString);
-		return stErrorResult;
+		errReslt1.code = OCFM_ERR_MULTIPLEX_ASSIGN_ERROR;
+		CopyCustomErrorString(&errReslt1, (char*) &customErr1);
+		return errReslt1;
 	}
 
-	char* subIndName = new char[50];
-	subIndName[0] = 0;
+	char* sidxName = new char[50];
+	sidxName[0] = 0;
 
-	GetSubIndexAttributes(240, MN, acMultiCycleAssignObj, strConvertedValue,
-			NAME, subIndName);
-	SetSubIndexAttributes(240, MN, acMultiCycleAssignObj, strConvertedValue,
-			pbForcedCycle, subIndName, TRUE);
+	GetSubIndexAttributes(240, MN, indexId, sidxId,	NAME, sidxName);
+	SetBasicSubIndexAttributes(240, MN, indexId, sidxId,	tempForcedCycleVal, sidxName, TRUE);
 
-	Index* objMN1F9BIndex = NULL;
-	objMN1F9BIndex = GetMNIndexValues(acMultiCycleAssignObj);
-	if (NULL != objMN1F9BIndex)
+	Index* idxObj1 = NULL;
+	idxObj1 = GetMNIndexValues(indexId);
+	if (NULL != idxObj1)
 	{
 		//UpdateNumberOfEnteriesSIdx(objMN1F92Index, MN);
-		objMN1F9BIndex->SetFlagIfIncludedCdc(TRUE);
-		if (NULL != objMN1F9BIndex->GetSubIndexbyIndexValue((char*) "00"))
+		idxObj1->SetFlagIfIncludedCdc(TRUE);
+		if (NULL != idxObj1->GetSubIndexbyIndexValue((char*) "00"))
 		{
-			objMN1F9BIndex->GetSubIndexbyIndexValue((char*) "00")->SetFlagIfIncludedCdc(
-					TRUE);
+			idxObj1->GetSubIndexbyIndexValue((char*) "00")->SetFlagIfIncludedCdc(TRUE);
 		}
 	}
 
-	strcpy(subIndName, "");
-	GetSubIndexAttributes(this->GetNodeId(), CN, acMultiCycleAssignObj,
-			strConvertedValue, NAME, subIndName);
-	SetSubIndexAttributes(this->GetNodeId(), CN, acMultiCycleAssignObj,
-			strConvertedValue, pbForcedCycle, subIndName, TRUE);
+	strcpy(sidxName, "");
+	GetSubIndexAttributes(this->GetNodeId(), CN, indexId, sidxId, NAME, sidxName);
+	SetBasicSubIndexAttributes(this->GetNodeId(), CN, indexId, sidxId, tempForcedCycleVal, sidxName, TRUE);
 
-	Index* objThis1F9BIndex;
-	objThis1F9BIndex = this->VarIndexCollection->GetIndexbyIndexValue(
-			acMultiCycleAssignObj);
-	if (NULL != objThis1F9BIndex)
+	Index* idxObj;
+	idxObj = this->indexCollObj->GetIndexbyIndexValue(indexId);
+	if (NULL != idxObj)
 	{
-		objThis1F9BIndex->SetFlagIfIncludedCdc(TRUE);
-		if (NULL != objThis1F9BIndex->GetSubIndexbyIndexValue((char*) "00"))
+		idxObj->SetFlagIfIncludedCdc(TRUE);
+		if (NULL != idxObj->GetSubIndexbyIndexValue((char*) "00"))
 		{
-			objThis1F9BIndex->GetSubIndexbyIndexValue((char*) "00")->SetFlagIfIncludedCdc(
-					TRUE);
+			idxObj->GetSubIndexbyIndexValue((char*) "00")->SetFlagIfIncludedCdc(TRUE);
 		}
 	}
 
-	VarForcedCycle = new char[strlen(pbForcedCycle) + ALLOC_BUFFER];
-	strcpy((char*) VarForcedCycle, pbForcedCycle);
+	forcedCycle = new char[strlen(tempForcedCycleVal) + ALLOC_BUFFER];
+	strcpy((char*) forcedCycle, tempForcedCycleVal);
 
-	delete[] subIndName;
-	return stErrorResult;
+	delete[] sidxName;
+	return errReslt1;
 }
 
-/*****************************************************************************/
-/**
- \brief			ResetForcedCycleValue
- 
- This is a member function of CNode resets current node cycle
-
- \return		void
- */
-/*****************************************************************************/
 
 void Node::ResetForcedCycleValue()
 {
-	if (NULL == VarForcedCycle)
+	if (NULL == forcedCycle)
 	{
-		VarForcedCycle = new char[strlen("") + STR_ALLOC_BUFFER];
+		forcedCycle = new char[strlen("") + STR_ALLOC_BUFFER];
 	}
-	strcpy((char*) VarForcedCycle, "");
+	strcpy((char*) forcedCycle, "");
 
-	char* cSIdx = new char[SUBINDEX_LEN];
-	cSIdx = IntToAscii(VarNodeId, cSIdx, 16);
-	cSIdx = PadLeft(cSIdx, '0', 2);
-	SetSubIndexAttributesByAttribute(MN_NODEID, MN,
-			(char *) MULTIPL_CYCLE_ASSIGN_OBJECT, cSIdx, ACTUALVALUE,
-			VarForcedCycle);
-	SetSubIndexAttributesByAttribute(VarNodeId, VarNodeType,
-			(char *) MULTIPL_CYCLE_ASSIGN_OBJECT, cSIdx, ACTUALVALUE,
-			VarForcedCycle);
+	char* sidxId = new char[SUBINDEX_LEN];
+	sidxId = IntToAscii(nodeId, sidxId, 16);
+	sidxId = PadLeft(sidxId, '0', 2);
 
-	delete[] cSIdx;
+	SetSubIndexAttribute(MN_NODEID, MN,	(char *) MULTIPL_CYCLE_ASSIGN_OBJECT, sidxId, ACTUALVALUE, forcedCycle);
+	SetSubIndexAttribute(nodeId, nodeType, (char *) MULTIPL_CYCLE_ASSIGN_OBJECT, sidxId, ACTUALVALUE, forcedCycle);
+
+	delete[] sidxId;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetPollResponseTimeout
- 
- This is a member function of CNode sets the poll response timeout value in MN
- 
- \param			pbPollResponseTimeout      Character pointer to hold the value of poll response timeout
- \return		void
- */
-/*****************************************************************************/
-
-void Node::SetPollResponseTimeout(char* pbPollResponseTimeout)
+void Node::SetPollResponseTimeout(char* presTimoutVal)
 {
-	if (NULL != VarPollResponseTimeout)
+	if (NULL != presTimeOut)
 	{
-		delete[] VarPollResponseTimeout;
+		delete[] presTimeOut;
 	}
-	VarPollResponseTimeout = new char[strlen(pbPollResponseTimeout)
-			+ STR_ALLOC_BUFFER];
-	strcpy((char*) VarPollResponseTimeout, pbPollResponseTimeout);
+	presTimeOut = new char[strlen(presTimoutVal) + STR_ALLOC_BUFFER];
+	strcpy((char*) presTimeOut, presTimoutVal);
 
 	//add or update 1f92 subobjects in MN
 	ocfmRetCode stErrorInfo;
-	INT32 IndexPos = 0;
-	INT32 subIndexPos = 0;
-	char* strConvertedValue = new char[SUBINDEX_LEN];
-	char acMNCNPollresponseTimeoutObj[] = MNCN_POLLRESPONSE_TIMEOUT_OBJECT;
+	INT32 idxPos = 0;
+	INT32 sidxPos = 0;
+	char* sidxId = new char[SUBINDEX_LEN];
+	char indexId[] = MNCN_POLLRESPONSE_TIMEOUT_OBJECT;
 
-	strConvertedValue = IntToAscii(this->GetNodeId(), strConvertedValue, 16);
-	strConvertedValue = PadLeft(strConvertedValue, '0', 2);
+	sidxId = IntToAscii(this->GetNodeId(), sidxId, 16);
+	sidxId = PadLeft(sidxId, '0', 2);
 
-	stErrorInfo = IfSubIndexExists(MN_NODEID, MN, acMNCNPollresponseTimeoutObj,
-			strConvertedValue, &subIndexPos, &IndexPos);
+	stErrorInfo = IfSubIndexExists(MN_NODEID, MN, indexId,	sidxId, &sidxPos, &idxPos);
 	if (OCFM_ERR_SUCCESS != stErrorInfo.code)
 	{
 		return;
@@ -905,116 +539,51 @@ void Node::SetPollResponseTimeout(char* pbPollResponseTimeout)
 	char* subIndName = new char[50];
 	subIndName[0] = 0;
 
-	GetSubIndexAttributes(240, MN, acMNCNPollresponseTimeoutObj,
-			strConvertedValue, NAME, subIndName);
-	SetSubIndexAttributes(MN_NODEID, MN, acMNCNPollresponseTimeoutObj,
-			strConvertedValue, pbPollResponseTimeout, subIndName, TRUE);
-	////////////////No exception is handled from the "SetSubIndexAttributes"
-	Index* objMN1F92Index = NULL;
-	objMN1F92Index = GetMNIndexValues(acMNCNPollresponseTimeoutObj);
-	if (NULL != objMN1F92Index)
+	GetSubIndexAttributes(240, MN, indexId,	sidxId, NAME, subIndName);
+	SetBasicSubIndexAttributes(MN_NODEID, MN, indexId, sidxId, presTimoutVal, subIndName, TRUE);
+
+	Index* idxObj = NULL;
+	idxObj = GetMNIndexValues(indexId);
+	if (NULL != idxObj)
 	{
-		UpdateNumberOfEnteriesSIdx(objMN1F92Index, MN);
-		objMN1F92Index->SetFlagIfIncludedCdc(TRUE);
+		UpdateNumberOfEnteriesSIdx(idxObj, MN);
+		idxObj->SetFlagIfIncludedCdc(TRUE);
 	}
 
 	delete[] subIndName;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetForceCycleFlag
- 
- This is a member function of CNode returns the value of forced cycle flag
- 
- \return		BOOL
- \retval			TRUE			if successful
- \retval			FALSE			if there is already a message pending	
- */
-/*****************************************************************************/
 
 bool Node::GetForceCycleFlag()
 {
-	return VarForcedCycleFlag;
+	return isForcedCycle;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetForceCycleFlag
- 
- This is a member function of CNode sets the value for forced cycle flag
- 
- \param			bForceCycleFlag       Boolean flag to hold the value of forced cycle flag
- \return		void
- */
-/*****************************************************************************/
-
-void Node::SetForceCycleFlag(bool bForceCycleFlag)
+void Node::SetForceCycleFlag(bool forceCycleFlag)
 {
-	VarForcedCycleFlag = bForceCycleFlag;
+	isForcedCycle = forceCycleFlag;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetPResActPayloadValue
- 
- This is a member function of CNode sets the value for Presact payload
- 
- \param			iValue      Integer Variable to hold value of Pres Actpayload
- \return		void
- */
-/*****************************************************************************/
-
-void Node::SetPResActPayloadValue(INT32 iValue)
+void Node::SetPResActPayloadValue(INT32 value)
 {
-	VarPResActPayload = iValue;
+	presActualPayload = value;
 }
-
-/*****************************************************************************/
-/**
- \brief			GetPResActPayloadValue
- 
- This is a member function of CNode returns the value for Presact payload
- 
- \return		INT32
- */
-/*****************************************************************************/
 
 INT32 Node::GetPResActPayloadValue()
 {
-	return VarPResActPayload;
+	return presActualPayload;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetPReqActPayloadValue
- 
- This is a member function of CNode sets the value for Preqact payload
- 
- \param			iValue
- \return		void
- */
-/*****************************************************************************/
-
-void Node::SetPReqActPayloadValue(INT32 iValue)
+void Node::SetPReqActPayloadValue(INT32 value)
 {
-	VarPReqActPayload = iValue;
+	preqActualPayload = value;
 
 }
 
-/*****************************************************************************/
-/**
- \brief			GetPReqActPayloadValue
- 
- This is a member function of CNode returns the value for Preqact payload
- 
- \return		INT32
- */
-/*****************************************************************************/
 
 INT32 Node::GetPReqActPayloadValue()
 {
-	return VarPReqActPayload;
+	return preqActualPayload;
 }
 #ifndef __GNUC__
 #pragma endregion Properties

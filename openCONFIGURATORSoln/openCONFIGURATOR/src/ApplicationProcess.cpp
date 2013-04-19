@@ -51,7 +51,7 @@
 
  ****************************************************************************/
 
-/****************************************************************************************************/
+/****************************************************************************/
 /* Includes */
 
 #include <iostream>
@@ -72,7 +72,6 @@
 
 ApplicationProcess::ApplicationProcess(void)
 {
-	//Add constructor code here
 	xddFileName = NULL;
 	projectPath = NULL;
 }
@@ -90,16 +89,6 @@ ApplicationProcess::~ApplicationProcess(void)
 	//Add destructor code here
 }
 
-/*****************************************************************************/
-/**
- \brief			CheckFileStatus
- 
- This is a member Function of CApplicationProcess checks the status of the file
- 
- \param			fileName	Character Pointer variable hold the value of file status		
- \return	INT32
- */
-/*****************************************************************************/
 
 INT32 ApplicationProcess::CheckFileStatus(char* fileName)
 {
@@ -115,203 +104,116 @@ INT32 ApplicationProcess::CheckFileStatus(char* fileName)
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief			AddComplexDataType
- 
- This ia a member Function of CApplicationProcess which collects complex data type 
- 
- \param			objComplexData	 Class variable of CComplexDataType for data type	
- \return	void
- */
-/*****************************************************************************/
 
-void ApplicationProcess::AddComplexDataType(ComplexDataType objComplexData)
+void ApplicationProcess::AddComplexDataType(ComplexDataType objectCdT)
 {
-	INT32 iItemPosition = CDTCollection.Add();
+	INT32 itemPosition = CDTCollection.Add();
 
-	objComplexData.Index = iItemPosition;
-	CDTCollection[iItemPosition] = objComplexData;
+	objectCdT.cDtObjPosition = itemPosition;
+	CDTCollection[itemPosition] = objectCdT;
 }
 
-/*****************************************************************************/
-/**
- \brief			DeleteComplexDataTypeCollection
- 
- This is member Function of CApplicationProcess which clears complex data type collection
- 
- \return	void
- */
-/*****************************************************************************/
 
 void ApplicationProcess::DeleteComplexDataTypeCollection()
 {
 	CDTCollection.Clear();
 }
 
-/*****************************************************************************/
-/**
- \brief			AddParameter
- 
- This is a member function of CApplicationProcess to add parameter in the collection list
- 
- \param			stParam		Structure Variable of addParameter to add parameter to the collection list
- \return	void
- */
-/*****************************************************************************/
 
-void ApplicationProcess::AddParameter(Parameter stParam)
+void ApplicationProcess::AddParameter(Parameter objectParameter)
 {
-	INT32 iItemPosition = ParameterCollection.Add();
+	INT32 itemPosition = ParameterCollection.Add();
 
-	stParam.paraIndex = iItemPosition;
-	ParameterCollection[iItemPosition] = stParam;
+	objectParameter.paraIndex = itemPosition;
+	ParameterCollection[itemPosition] = objectParameter;
 }
 
-/*****************************************************************************/
-/**
- \brief			Deleteparametercollection
- 
- This is a member function of CApplicationProcess which clears parameter collection list
- 
- \return	void
- */
-/*****************************************************************************/
 
 void ApplicationProcess::DeleteParameterCollection()
 {
 	ParameterCollection.Clear();
 }
 
-/*****************************************************************************/
-/**
- \brief			GetParameterIndexbyUniqueIDRef
- 
- This is a member function of CApplicationProcess to point parameter index with reference to IDs
-
- \param			uniqueIdRef	Character Pointer variable to hold the value of unique refernce ids	
- \return	INT32
- */
-/*****************************************************************************/
 
 INT32 ApplicationProcess::GetParameterIndexbyUniqueIDRef(char *uniqueIdRef)
 {
-	for (INT32 iLoopCount = 0; iLoopCount < ParameterCollection.Count();
-			iLoopCount++)
+	for (INT32 loopCount = 0; loopCount < ParameterCollection.Count();
+			loopCount++)
 	{
-		Parameter stParams;
-		stParams = ParameterCollection[iLoopCount];
-		if (0 == strcmp(uniqueIdRef, stParams.nameIdDtAttr.GetUniqueID()))
+		Parameter parameterObj;
+		parameterObj = ParameterCollection[loopCount];
+		if (0 == strcmp(uniqueIdRef, parameterObj.nameIdDtAttr.GetUniqueID()))
 		{
-			return iLoopCount;
+			return loopCount;
 		}
 	}
 	return 0;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetParameterbyUniqueIDRef
- 
- This is a member function of CApplicationProcess to point parameter with reference to IDs
-
- \param			uniqueIdRef	Character Pointer variable to hold 	Unique reference ids
- \return	Parameter*
- */
-/*****************************************************************************/
 
 Parameter* ApplicationProcess::GetParameterbyUniqueIDRef(char *uniqueIdRef)
 {
-	for (INT32 iLoopCount = 0; iLoopCount < ParameterCollection.Count();
-			iLoopCount++)
+	for (INT32 loopCount = 0; loopCount < ParameterCollection.Count();
+			loopCount++)
 	{
-		Parameter stParams;
+		Parameter parameterObj;
 
-		stParams = ParameterCollection[iLoopCount];
-		if (0 == strcmp(uniqueIdRef, stParams.nameIdDtAttr.GetUniqueID()))
+		parameterObj = ParameterCollection[loopCount];
+		if (0 == strcmp(uniqueIdRef, parameterObj.nameIdDtAttr.GetUniqueID()))
 		{
-			return &ParameterCollection[iLoopCount];
+			return &ParameterCollection[loopCount];
 		}
 	}
 	return NULL;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetCDTUniqueIDRef
- 
- This is a member function of CApplicationProcess to point unique reference ids from the collection list
-
- \param			uniqueIdRef   Character Pointer variable to hold the value of unique reference ids	
- \return	INT32
- */
-/*****************************************************************************/
 
 INT32 ApplicationProcess::GetCDTUniqueIDRef(char *uniqueIdRef)
 {
-	for (INT32 iLoopCount = 0; iLoopCount < CDTCollection.Count(); iLoopCount++)
+	for (INT32 loopCount = 0; loopCount < CDTCollection.Count(); loopCount++)
 	{
-		ComplexDataType objCDT;
+		ComplexDataType complexDtObj;
 
-		objCDT = CDTCollection[iLoopCount];
-		if (0 == strcmp(uniqueIdRef, objCDT.nameIdAttr->GetUniqueID()))
+		complexDtObj = CDTCollection[loopCount];
+		if (0 == strcmp(uniqueIdRef, complexDtObj.nameIdAttr->GetUniqueID()))
 		{
-			return iLoopCount;
+			return loopCount;
 		}
 	}
 	return 0;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetCDTbyUniqueID
- 
- This is a member function of CApplicationProcess to point CDT values based on unique reference ids from the collection list
-
- \param			uniqueId	Character Pointer variable to hold the value of unique ids	
- \return	ComplexDataType*
- */
-/*****************************************************************************/
 
 ComplexDataType* ApplicationProcess::GetCDTbyUniqueID(char *uniqueId)
 {
-	for (INT32 iLoopCount = 0; iLoopCount < CDTCollection.Count(); iLoopCount++)
+	for (INT32 loopCount = 0; loopCount < CDTCollection.Count(); loopCount++)
 	{
-		ComplexDataType objCDT;
+		ComplexDataType complexDtObj;
 
-		objCDT = CDTCollection[iLoopCount];
-		if (0 == strcmp(uniqueId, objCDT.nameIdAttr->GetUniqueID()))
+		complexDtObj = CDTCollection[loopCount];
+		if (0 == strcmp(uniqueId, complexDtObj.nameIdAttr->GetUniqueID()))
 		{
-			return &CDTCollection[iLoopCount];
+			return &CDTCollection[loopCount];
 		}
 	}
 	return NULL;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetCDTByDtUniqueRefID
- 
- This is member function of CApplicationProcess to point complex datatype collection reference to unique ids
 
- \param			uniqueRefId	Character pointer to hold the value of unique reference ids		
- \return	ComplexDataType*
- */
-/*****************************************************************************/
 
 ComplexDataType* ApplicationProcess::GetCDTByDtUniqueRefID(
 		char *uniqueRefId)
 {
 	for (INT32 iLoopCount = 0; iLoopCount < CDTCollection.Count(); iLoopCount++)
 	{
-		ComplexDataType objCDT;
+		ComplexDataType complexDtObj;
 
-		objCDT = CDTCollection[iLoopCount];
-		if (NULL != objCDT.nameIdAttr->GetDtUniqueRefId())
+		complexDtObj = CDTCollection[iLoopCount];
+		if (NULL != complexDtObj.nameIdAttr->GetDtUniqueRefId())
 		{
 			if (0
 					== strcmp(uniqueRefId,
-							objCDT.nameIdAttr->GetDtUniqueRefId()))
+							complexDtObj.nameIdAttr->GetDtUniqueRefId()))
 			{
 				return &CDTCollection[iLoopCount];
 			}
@@ -320,90 +222,41 @@ ComplexDataType* ApplicationProcess::GetCDTByDtUniqueRefID(
 	return NULL;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetCDTByDtIndex
- 
- This is a member function of CApplicationProcess to point CDT with reference to index values
 
- \param			iIndex		Integer variable to hold the Index of CDT collection	
- \return	ComplexDataType*
- */
-/*****************************************************************************/
-
-ComplexDataType* ApplicationProcess::GetCDTByDtIndex(INT32 iIndex)
+ComplexDataType* ApplicationProcess::GetCDTByDtIndex(INT32 cDtPosition)
 {
-	return &CDTCollection[iIndex];
+	return &CDTCollection[cDtPosition];
 }
 
-/*****************************************************************************/
-/**
- \brief			UpdatePreviousCDTUId
- 
- This is a member function of CApplicationProcess which updates CDT collection list 
 
- \param			uniqueID  Character Pointer variable to hold the unique id of CDT collection
- \param			iIndex		Integer variable to hold the Index of CDT collection	
- \return	void
- */
-/*****************************************************************************/
-
-void ApplicationProcess::UpdatePreviousCDTUId(char* uniqueID, INT32 iIndex)
+void ApplicationProcess::UpdatePreviousCDTUId(char* uniqueID, INT32 cDtPosition)
 {
-	ComplexDataType* pobjCDT;
+	ComplexDataType* complexDtObj;
 
-	pobjCDT = CDTCollection.GetAddress(iIndex);
-	pobjCDT->previousCDT_UId = new char[strlen(uniqueID) + 1];
-	strcpy(pobjCDT->previousCDT_UId, uniqueID);
+	complexDtObj = CDTCollection.GetAddress(cDtPosition);
+	complexDtObj->prevUniqueId = new char[strlen(uniqueID) + 1];
+	strcpy(complexDtObj->prevUniqueId, uniqueID);
 }
 
-/*****************************************************************************/
-/**
- \brief			GetUniqueIDRefbyParameterIndex
- 
- This is a member function of CApplicationProcess to point the parameterindex reference to unique ids
- 
- \param			iParameterIndex  Integer variable to hold the unique ids.	
- \return	Parameter
- */
-/*****************************************************************************/
 
 Parameter ApplicationProcess::GetUniqueIDRefbyParameterIndex(
-		INT32 iParameterIndex)
+		INT32 parameterPosition)
 {
-	Parameter stParams;
+	Parameter parameterObj;
 
-	stParams = ParameterCollection[iParameterIndex];
+	parameterObj = ParameterCollection[parameterPosition];
 
-	return stParams;
+	return parameterObj;
 }
 
-/*****************************************************************************/
-/**
- \brief			GetCDTCount
- 
- This is a member function of CApplicationProcess returns CDT collection count
-
- \return	INT32
- */
-/*****************************************************************************/
 
 INT32 ApplicationProcess::GetCDTCount()
 {
 	return CDTCollection.Count();
 }
 
-/*****************************************************************************/
-/**
- \brief			GetCDTbyCount
- 
- This is a member function of CApplicationProcess returns CDT index collection value 
-
- \return	ComplexDataType*
- */
-/*****************************************************************************/
-
-ComplexDataType* ApplicationProcess::GetCDTbyCount(INT32 iIndex)
+//This function has same operation as GetCDTByDtIndex
+ComplexDataType* ApplicationProcess::GetCDTbyCount(INT32 cDtPosition)
 {
-	return &CDTCollection[iIndex];
+	return &CDTCollection[cDtPosition];
 }

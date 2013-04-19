@@ -2,7 +2,7 @@
  ************************************************************************************************
  \file			BaseIndex.cpp
 
- \brief			This Adds the feature details reference to the index for each datatype 
+ \brief			This adds the feature details reference to the index for each datatype 
  ************************************************************************************************
 
  */
@@ -75,10 +75,10 @@
 
 BaseIndex::BaseIndex(void)
 {
-	Index = NULL;
-	Name = NULL;
+	indexId = NULL;
+	name = NULL;
 	highLimit = NULL;
-	dataType.Name = NULL;
+	dataType.Initialize();
 	dataTypeValue = NULL;
 	defaultValue = NULL;
 	actualValue = NULL;
@@ -86,13 +86,11 @@ BaseIndex::BaseIndex(void)
 	lowLimit = NULL;
 	uniqueIdRef = NULL;
 	dataTypeValue = NULL;
-	dataType.dataTypeValue = NULL;
 	nodeId = 0;
-	dataType.dataSize = 0;
-	//m_objectType = 0; //TODO: Review initialisation
-	//m_pdoMapping = 0;
+	//objectType = 0; //TODO: Review initialisation
+	//pdoMapping = 0;
 	parameterIndex = -1;
-	isIncludedInCDC = FALSE;
+	includeInCDC = FALSE;
 }
 
 /****************************************************************************************************/
@@ -111,96 +109,50 @@ BaseIndex::~BaseIndex(void)
 #pragma region Properties
 #endif
 
-/*****************************************************************************/
-/**
- \brief			GetName
- 
- This is a member function of CBaseIndex points the Name of the Index Object
- 
- \return	const char*
- */
-/*****************************************************************************/
+
 
 const char* BaseIndex::GetName()
 {
-	return Name;
+	return name;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetName
- 
- This is a member function of CBaseIndex to set the Name of the Index Object
-
- \param			varName	Pointer variable to hold the name of the index object
- \return	void
- */
-/*****************************************************************************/
-
-void BaseIndex::SetName(char* varName)
+void BaseIndex::SetName(char* nameStr)
 {
-	if(NULL != Name)
+	if(NULL != name)
 	{
-		delete[] Name;
+		delete[] name;
 	}
-	if (NULL != varName)
+	if (NULL != nameStr)
 	{
-		Name = new char[strlen(varName) + STR_ALLOC_BUFFER];
-		strcpy((char*) Name, varName);
+		name = new char[strlen(nameStr) + STR_ALLOC_BUFFER];
+		strcpy((char*) name, nameStr);
 	}
 	else
 	{
-		Name = new char[1 + STR_ALLOC_BUFFER];
-		strcpy((char*) Name, "");
+		name = new char[1 + STR_ALLOC_BUFFER];
+		strcpy((char*) name, "");
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief			GetIndexValue
- 
- This is a member function of CBaseIndex returns the Index value of the Object
- 
- \return	const char*
- */
-/*****************************************************************************/
+
 
 const char* BaseIndex::GetIndexValue()
 {
-	return Index;
+	return indexId;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetIndexValue
- 
- This is a member function of CBaseIndex to set the Index of the Object
- 
- \param		varIndex	 Pointer variable to hold the Index value
- 
- \return	void
- */
-/*****************************************************************************/
 
-void BaseIndex::SetIndexValue(char* varIndex)
+void BaseIndex::SetIndexValue(char* idxId)
 {
-	if(NULL != Index)
+	if(NULL != indexId)
 	{
-		delete[] Index;
+		delete[] indexId;
 	}
-	Index = new char[strlen(varIndex) + STR_ALLOC_BUFFER];
-	strcpy((char*) Index, varIndex);
+	indexId = new char[strlen(idxId) + STR_ALLOC_BUFFER];
+	strcpy((char*) indexId, idxId);
 }
 
-/*****************************************************************************/
-/**
- \brief			GetLowLimit
- 
- This is a member function of CBaseIndex to return the LowLimit of the Index Object
- 
- \return		const char*
- */
-/*****************************************************************************/
+
 
 const char* BaseIndex::GetLowLimit()
 {
@@ -214,37 +166,17 @@ const char* BaseIndex::GetLowLimit()
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief			SetLowLimit
- 
- This is a member function of CBaseIndex to set the LowLimit of the Index Object
- 
- \param			varLowLimit		Pointer variable to hold lowlimit value
- 
- \return		void
- */
-/*****************************************************************************/
 
-void BaseIndex::SetLowLimit(char* varLowLimit)
+void BaseIndex::SetLowLimit(char* lowLimitStr)
 {
 	if(NULL != lowLimit)
 	{
 		delete[] lowLimit;
 	}
-	lowLimit = new char[strlen(varLowLimit) + STR_ALLOC_BUFFER];
-	strcpy((char*) lowLimit, varLowLimit);
+	lowLimit = new char[strlen(lowLimitStr) + STR_ALLOC_BUFFER];
+	strcpy((char*) lowLimit, lowLimitStr);
 }
 
-/*****************************************************************************/
-/**
- \brief			GetHighLimit
- 
- This is a member function of CBaseIndex to return the HighLimit of the Index Object
- 
- \return		const char*
- */
-/*****************************************************************************/
 
 const char* BaseIndex::GetHighLimit()
 {
@@ -258,74 +190,35 @@ const char* BaseIndex::GetHighLimit()
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief			SetHighLimit
- 
- This is a member function of CBaseIndex to set the LowLimit of the Index Object
- 
- \param			varHighLimit		Pointer variable to hold highlimit value	
- 
- \return		void
- */
-/*****************************************************************************/
 
-void BaseIndex::SetHighLimit(char* varHighLimit)
+void BaseIndex::SetHighLimit(char* highLimitStr)
 {
 	if(NULL != highLimit)
 	{
 		delete[] highLimit;
 	}
-	highLimit = new char[strlen(varHighLimit) + STR_ALLOC_BUFFER];
-	strcpy((char*) highLimit, varHighLimit);
+	highLimit = new char[strlen(highLimitStr) + STR_ALLOC_BUFFER];
+	strcpy((char*) highLimit, highLimitStr);
 }
 
-/*****************************************************************************/
-/**
- \brief			GetDefaultValue
- 
- This is a member function of CBaseIndex to return the Default Value of the Index Object
- 
- \return		const char*
- */
-/*****************************************************************************/
+
 
 const char* BaseIndex::GetDefaultValue()
 {
 	return defaultValue;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetDefaultValue
- 
- This is a member function of CBaseIndex to set the Default Value of the Index Object
- 
- \param			varValue		Pointer variable to hold default value	
- 
- \return		void
- */
-/*****************************************************************************/
 
-void BaseIndex::SetDefaultValue(char* varValue)
+void BaseIndex::SetDefaultValue(char* value)
 {
 	if(NULL != defaultValue)
 	{
 		delete[] defaultValue;
 	}
-	defaultValue = new char[strlen(varValue) + STR_ALLOC_BUFFER];
-	strcpy((char*) defaultValue, varValue);
+	defaultValue = new char[strlen(value) + STR_ALLOC_BUFFER];
+	strcpy((char*) defaultValue, value);
 }
 
-/*****************************************************************************/
-/**
- \brief			GetActualValue
- 
- This is a member function of CBaseIndex to set the Default Value of the Index Object
- 
- \return		const char*
- */
-/*****************************************************************************/
 
 const char* BaseIndex::GetActualValue()
 {
@@ -336,74 +229,34 @@ const char* BaseIndex::GetActualValue()
 	return actualValue;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetActualValue
- 
- This is a member function of CBaseIndex to set the Actual Value of the Index Object
- 
- \param			varValue		Pointer variable to hold Actual value 
 
- \return		void
- */
-/*****************************************************************************/
-
-void BaseIndex::SetActualValue(char* varValue)
+void BaseIndex::SetActualValue(char* value)
 {
 	if(NULL != actualValue)
 	{
 		delete[] actualValue;
 	}
-	actualValue = new char[strlen(varValue) + STR_ALLOC_BUFFER];
-	strcpy((char*) actualValue, varValue);
+	actualValue = new char[strlen(value) + STR_ALLOC_BUFFER];
+	strcpy((char*) actualValue, value);
 }
 
-/*****************************************************************************/
-/**
- \brief			GetAccessType
- 
- This is a member function of CBaseIndex returns the Access Type of the Index Object
- 
- \return		const char*
- */
-/*****************************************************************************/
 
 const char* BaseIndex::GetAccessType()
 {
 	return accessType;
 }
 
-/*****************************************************************************/
-/**
- \brief			SetAccessType
- 
- This is a member function of CBaseIndex sets the Access Type of the Index Object
- 
- \param			varAccessType Pointer variable to hold Access type of the object
- 
- \return		void
- */
-/*****************************************************************************/
 
-void BaseIndex::SetAccessType(char* varAccessType)
+void BaseIndex::SetAccessType(char* accessStr)
 {
 	if(NULL != accessType)
 	{
 		delete[] accessType;
 	}
-	accessType = new char[strlen(varAccessType) + STR_ALLOC_BUFFER];
-	strcpy((char*) accessType, varAccessType);
+	accessType = new char[strlen(accessStr) + STR_ALLOC_BUFFER];
+	strcpy((char*) accessType, accessStr);
 }
 
-/*****************************************************************************/
-/**
- \brief			GetObjectType
- 
- This is a member function of CBaseIndex returns the Object Type of the Index Object
- 
- \return		const char*
- */
-/*****************************************************************************/
 
 const char* BaseIndex::GetObjectType()
 {
@@ -424,58 +277,38 @@ const char* BaseIndex::GetObjectType()
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief			GetEObjectType
- 
- This is a member function of CBaseIndex returns the Object Type of the Index Object as Enum
- 
- \return		ObjectType
- */
-/*****************************************************************************/
 
 ObjectType BaseIndex::GetEObjectType()
 {
 	return objectType;
 }
 
-/******************************************************************************/
-/**
- \brief			SetObjectType
- 
- This is a member function of CBaseIndex sets the Object of the Index Object
- 
- \param			varObjectType	Pointer variable to hold object type
- 
- \return		void
- */
-/*****************************************************************************/
 
-void BaseIndex::SetObjectType(char* varObjectType)
+void BaseIndex::SetObjectType(char* objTypeStr)
 {
-	char* varStrBuff = new char[strlen(varObjectType) + STR_ALLOC_BUFFER];
+	char* tempObjtype = new char[strlen(objTypeStr) + STR_ALLOC_BUFFER];
 
-	strcpy(varStrBuff, varObjectType);
-	if ((0 == strcmp(varStrBuff, "5"))
-			|| (0 == strcmp(ConvertToUpper(varStrBuff), "DEFTYPE")))
+	strcpy(tempObjtype, objTypeStr);
+	if ((0 == strcmp(tempObjtype, "5"))
+			|| (0 == strcmp(ConvertToUpper(tempObjtype), "DEFTYPE")))
 	{
 		objectType = DEFTYPE;
 	}
-	else if ((0 == strcmp(varStrBuff, "6"))
-			|| (0 == strcmp(varStrBuff, "DEFSTRUCT")))
+	else if ((0 == strcmp(tempObjtype, "6"))
+			|| (0 == strcmp(tempObjtype, "DEFSTRUCT")))
 	{
 		objectType = DEFSTRUCT;
 	}
-	else if ((0 == strcmp(varStrBuff, "7")) || (0 == strcmp(varStrBuff, "VAR")))
+	else if ((0 == strcmp(tempObjtype, "7")) || (0 == strcmp(tempObjtype, "VAR")))
 	{
 		objectType = VAR;
 	}
-	else if ((0 == strcmp(varStrBuff, "8")) || (0 == strcmp(varStrBuff, "ARRAY")))
+	else if ((0 == strcmp(tempObjtype, "8")) || (0 == strcmp(tempObjtype, "ARRAY")))
 	{
 		objectType = ARRAY;
 	}
-	else if ((0 == strcmp(varStrBuff, "9"))
-			|| (0 == strcmp(varStrBuff, "RECORD")))
+	else if ((0 == strcmp(tempObjtype, "9"))
+			|| (0 == strcmp(tempObjtype, "RECORD")))
 	{
 		objectType = RECORD;
 	}
@@ -485,18 +318,9 @@ void BaseIndex::SetObjectType(char* varObjectType)
 		cout << "Error! setObjectType failed\n" << endl;
 #endif
 	}
-	delete[] varStrBuff;
+	delete[] tempObjtype;
 }
 
-/******************************************************************************/
-/**
- \brief			GetPDOMapping
- 
- This is a member function of CBaseIndex returns the PDOMapping of the Index Object
- 
- \return		const char*
- */
-/*****************************************************************************/
 
 const char* BaseIndex::GetPDOMapping()
 {
@@ -517,23 +341,12 @@ const char* BaseIndex::GetPDOMapping()
 	}
 }
 
-/******************************************************************************/
-/**
- \brief			SetPDOMapping
- 
- This is a member function of CBaseIndex sets the PDOMapping of the Index Object
- 
- \param			varPdoMapping  Character Pointer Variable to hold PDOMapping of the Index Object
- 
- \return		void
- */
-/*****************************************************************************/
 
-void BaseIndex::SetPDOMapping(char* varPdoMapping)
+void BaseIndex::SetPDOMapping(char* pdoMappingStr)
 {
-	char* varStrBuff = new char[strlen(varPdoMapping) + STR_ALLOC_BUFFER];
+	char* varStrBuff = new char[strlen(pdoMappingStr) + STR_ALLOC_BUFFER];
 
-	strcpy(varStrBuff, ConvertToUpper((char*) varPdoMapping));
+	strcpy(varStrBuff, ConvertToUpper((char*) pdoMappingStr));
 	if (0 == strcmp(ConvertToUpper(varStrBuff), "DEFAULT"))
 	{
 		pdoMapping = DEFAULT;
@@ -557,39 +370,20 @@ void BaseIndex::SetPDOMapping(char* varPdoMapping)
 	else
 	{
 #ifdef DEBUG
-		cout << "Error! setPDOMapping failed: "<<varPdoMapping<<" index: "<< Index<<endl;
+		cout << "Error! setPDOMapping failed: "<<pdoMappingStr<<" index: "<< indexId<<endl;
 #endif
 	}
 	delete[] varStrBuff;
 }
 
-/******************************************************************************/
-/**
- \brief			GetDataType
- 
- This is member function of CBaseIndex returns the DataType of the Index Object
- 
- \return		DataType
- */
-/*****************************************************************************/
 
 DataType BaseIndex::GetDataType()
 {
 	return dataType;
 }
 
-/******************************************************************************/
-/**
- \brief			SetDataType
- 
- This is member function of CBaseIndex sets the DataType of the Index Object
- 
- \param			varDataTypeName	Character pointer variable to hold datatype name
- \return		void
- */
-/*****************************************************************************/
 
-void BaseIndex::SetDataType(char* varDataTypeName)
+void BaseIndex::SetDataType(char* dataTypeName)
 {
 	DataType* objDataType = NULL;
 	NodeCollection* objNodeCol = NULL;
@@ -599,7 +393,7 @@ void BaseIndex::SetDataType(char* varDataTypeName)
 	objNodeCol = NodeCollection::GetNodeColObjectPointer();
 	objNode = objNodeCol->GetNode(nodeId);
 	objDataCol = objNode.GetDataTypeCollection();
-	objDataType = objDataCol->GetDataType(varDataTypeName);
+	objDataType = objDataCol->GetDataType(dataTypeName);
 
 	if (NULL != objDataType)
 	{
@@ -607,105 +401,47 @@ void BaseIndex::SetDataType(char* varDataTypeName)
 	}
 }
 
-/******************************************************************************/
-/**
- \brief			SetDataTypeName
- 
- This is member function of CBaseIndex sets the DataType of the Index Object
- 
- \param			varDataTypeName Character pointer variable to hold datatype name
- \param			iNodeID		   Integer variable to hold node id of each node 		
- \return		void
- */
-/*****************************************************************************/
 //TODO: unused function
-void BaseIndex::SetDataTypeName(char* varDataTypeName, INT32 iNodeID)
+void BaseIndex::SetDataTypeName(char* dataTypeName, INT32 nodeIdVal)
 {
 	DataType* objDataType = NULL;
 	NodeCollection* objNodeCol = NULL;
 	DataTypeCollection* objDataCol = NULL;
 
 	objNodeCol = NodeCollection::GetNodeColObjectPointer();
-	Node objNode = objNodeCol->GetNode(iNodeID);
+	Node objNode = objNodeCol->GetNode(nodeIdVal);
 
 	objDataCol = objNode.GetDataTypeCollection();
-	objDataType = objDataCol->GetDataTypeByName(varDataTypeName);
+	objDataType = objDataCol->GetDataTypeByName(dataTypeName);
+
 	dataType = *objDataType;
 }
 
-/******************************************************************************/
-/**
- \brief			GetNodeID
- 
- This is member function of CBaseIndex returns the NodeID of Index Object
- 
- \return		INT32
- */
-/*****************************************************************************/
 
 INT32 BaseIndex::GetNodeID()
 {
 	return nodeId;
 }
 
-/******************************************************************************/
-/**
- \brief			SetNodeID
- 
- This is member function of CBaseIndex sets the NodeID of the Index Object
- 
- \param			NodeID	Integer Variable to hold the node id of the objects			
- \return		void
- */
-/*****************************************************************************/
 
-void BaseIndex::SetNodeID(INT32 NodeID)
+void BaseIndex::SetNodeID(INT32 nodeIdVal)
 {
-	nodeId = NodeID;
+	nodeId = nodeIdVal;
 }
 
-/******************************************************************************/
-/**
- \brief			GetUniqueIDRef
- 
- This is member function of CBaseIndex returns the UniqueIDRef of the Node 
- 
- \return		char*
- */
-/*****************************************************************************/
 
 char* BaseIndex::GetUniqueIDRef()
 {
 	return uniqueIdRef;
 }
 
-/******************************************************************************/
-/**
- \brief			SetUniqueIDRef
- 
- This is member function of CBaseIndex sets the UniqueIDRef of the Index Object
- 
- \param        uniqueID  Character pointer variable to hold unique id of the objects
- 
- \return		void
- */
-/*****************************************************************************/
 
-void BaseIndex::SetUniqueIDRef(char* uniqueID)
+void BaseIndex::SetUniqueIDRef(char* uniqueIdStr)
 {
-	uniqueIdRef = new char[strlen(uniqueID) + STR_ALLOC_BUFFER];
-	strcpy((char*) uniqueIdRef, uniqueID);
+	uniqueIdRef = new char[strlen(uniqueIdStr) + STR_ALLOC_BUFFER];
+	strcpy((char*) uniqueIdRef, uniqueIdStr);
 }
 
-/******************************************************************************/
-/**
- \brief			GetDataTypeValue
- 
- This is member function of CBaseIndex returns datatype of Node
- 
- \return		char*
- */
-/*****************************************************************************/
 
 char* BaseIndex::GetDataTypeValue()
 {
@@ -719,37 +455,17 @@ char* BaseIndex::GetDataTypeValue()
 	}
 }
 
-/******************************************************************************/
-/**
- \brief			SetDataTypeValue
- 
- This is member function of CBaseIndex sets the datatype value of the Index Object
- 
- \param			varValue 	
- \return		void
- */
-/*****************************************************************************/
 
-void BaseIndex::SetDataTypeValue(char* varValue)
+void BaseIndex::SetDataTypeValue(char* dataTypeStr)
 {
-	dataTypeValue = new char[strlen(varValue) + STR_ALLOC_BUFFER];
-	strcpy((char*) dataTypeValue, varValue);
+	dataTypeValue = new char[strlen(dataTypeStr) + STR_ALLOC_BUFFER];
+	strcpy((char*) dataTypeValue, dataTypeStr);
 }
 
-/******************************************************************************/
-/**
- \brief			SetDataTypeST
- 
- This is member function of CBaseIndex sets the datatype value of the Index Object
- 
- \param			objDataType		Class Variable of DataType to hold value of object datatype		
- \return		void
- */
-/*****************************************************************************/
 
-void BaseIndex::SetDataTypeST(DataType objDataType)
+void BaseIndex::SetDataTypeST(DataType dtObj)
 {
-	dataType = objDataType;
+	dataType = dtObj;
 }
 #ifndef __GNUC__
 #pragma endregion Properties
@@ -759,43 +475,18 @@ void BaseIndex::SetDataTypeST(DataType objDataType)
 #pragma region MemberFunctions
 #endif
 
-/******************************************************************************/
-/**
- \brief			SaveChanges
- 
- This is member function of CBaseIndex to Save the changes of the Index properties
- 
- \param			varIndex  Character pointer varibale to hold the value of index
- \param			varName	 Character pointer varibale to hold the value of name			
- \return		void
- */
-/*****************************************************************************/
 
-void BaseIndex::SaveChanges(char* varIndex, char* varName)
+void BaseIndex::SaveChanges(char* idxIdStr, char* nameStr)
 {
-	Index = varIndex;
-	Name = varName;
+	indexId = idxIdStr;
+	name = nameStr;
 }
 
-/******************************************************************************/
-/**
- \brief			IsIndexVaueValid
- 
- This is member function of CBaseIndex to check the valid index value
- 
- \param			hexValue  Character pointer variable to hold the hex value
- 
- \return		BOOL
- 
- \retval			TRUE			if successful
- \retval			FALSE			if there is already a message pending
- */
-/*****************************************************************************/
 
-bool BaseIndex::IsIndexVaueValid(char* hexValue)
+bool BaseIndex::IsIndexValueValid(char* hexValue)
 {
-	ULONG ulValue;
-	bool bFlag = true;
+	ULONG value;
+	bool retFlag = true;
 
 	if (0 == strcmp(hexValue, ""))
 	{
@@ -804,7 +495,7 @@ bool BaseIndex::IsIndexVaueValid(char* hexValue)
 
 	if (CheckIfHex(hexValue))
 	{
-		ulValue = HexToInt(SubString(hexValue, 2, (strlen(hexValue) - 2)));
+		value = HexToInt(SubString(hexValue, 2, (strlen(hexValue) - 2)));
 	}
 	else
 	{
@@ -815,20 +506,20 @@ bool BaseIndex::IsIndexVaueValid(char* hexValue)
 	{
 		if (0 != strcmp(this->lowLimit, ""))
 		{
-			ULONG ulLowlimit;
+			ULONG lowlimitValue;
 			if (CheckIfHex((char*) this->lowLimit))
 			{
-				ulLowlimit = HexToInt(
+				lowlimitValue = HexToInt(
 						SubString((char*) lowLimit, 2,
 								strlen(lowLimit) - 2));
 			}
 			else
 			{
-				ulLowlimit = atoi(lowLimit);
+				lowlimitValue = atoi(lowLimit);
 			}
-			if (ulValue >= ulLowlimit)
+			if (value >= lowlimitValue)
 			{
-				bFlag = true;
+				retFlag = true;
 			}
 			else
 			{
@@ -862,9 +553,9 @@ bool BaseIndex::IsIndexVaueValid(char* hexValue)
 			{
 				ulHighLimit = atoi(highLimit);
 			}
-			if (ulValue <= ulHighLimit)
+			if (value <= ulHighLimit)
 			{
-				bFlag = true;
+				retFlag = true;
 			}
 			else
 			{
@@ -881,39 +572,20 @@ bool BaseIndex::IsIndexVaueValid(char* hexValue)
 			}
 		}
 	}
-	return bFlag;
+	return retFlag;
 }
 
-/******************************************************************************/
-/**
- \brief			SetFlagIfIncludedCdc
- 
- This is a member function of CBaseIndex sets the Enumflag 
- 
- \param			varFlag  Enumeration Flag to flagIfInCdc  
- 
- \return		void			
- */
-/*****************************************************************************/
 
-void BaseIndex::SetFlagIfIncludedCdc(Flag varFlag)
+void BaseIndex::SetFlagIfIncludedCdc(Flag flagVal)
 {
-	isIncludedInCDC = varFlag;
+	includeInCDC = flagVal;
 }
 
-/******************************************************************************/
-/**
- \brief			GetFlagIfIncludedCdc
- 
- This is a member function of CBaseIndex checks whether the Index shall be included in cdc
- 
- \return		Flag			
- */
-/*****************************************************************************/
+
 
 Flag BaseIndex::GetFlagIfIncludedCdc()
 {
-	return isIncludedInCDC;
+	return includeInCDC;
 }
 #ifndef __GNUC__
 #pragma endregion MemberFunctions
