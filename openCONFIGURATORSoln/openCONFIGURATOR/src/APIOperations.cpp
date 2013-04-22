@@ -1842,7 +1842,8 @@ ocfmRetCode CheckUpperAndLowerLimits(char* lowLimitVal, char* highLimitVal)
 }
 
 
-void EnableDisableMappingPDO(IndexCollection* indexCollObj, Index* indexObj, char* cdcBuffer, bool enablePDO)
+
+void EnableDisableMappingPDO(IndexCollection* indexCollObj, Index* indexObj, char* cdcBuffer, bool enablePDO)
 {
 	ocfmException exceptionObj;
 

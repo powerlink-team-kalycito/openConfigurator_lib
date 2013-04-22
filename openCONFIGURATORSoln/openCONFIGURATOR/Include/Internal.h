@@ -1493,4 +1493,8 @@ void SetVarDecAttributes(xmlTextReaderPtr reader, varDeclaration& vdecl);
  */
 /*****************************************************************************/
 void ProcessNode(xmlTextReaderPtr reader, NodeType nodeType, INT32 nodePos);
+
+
+static void SetVarDeclaration(xmlTextReaderPtr reader, ComplexDataType *cdtObj);
+
 #endif // internal_h

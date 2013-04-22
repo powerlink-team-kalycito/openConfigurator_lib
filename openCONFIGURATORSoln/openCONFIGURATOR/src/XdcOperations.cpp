@@ -1,9 +1,9 @@
 /**
- ************************************************************************************************
+ ******************************************************************************
  \file			XdcOperations.cpp
 
  \brief			Handles Parameter,Variable declaration, datatype for Index attributes and Sub-Index attributes
- ************************************************************************************************
+ ******************************************************************************
  */
 /*
  (c) Kalycito Infotech Private Limited
@@ -50,7 +50,7 @@
 
  ****************************************************************************/
 
-/****************************************************************************************************/
+/*****************************************************************************/
 /* Includes */
 
 #include <iostream>
@@ -64,12 +64,12 @@
 #include "../Include/Exception.h"
 #include "../Include/Validation.h"
 
-/****************************************************************************************************/
+/*****************************************************************************/
 /* Defines */
 
 #define MY_ENCODING "UTF-8"
 
-/****************************************************************************************************/
+/*****************************************************************************/
 /* Global Variables */
 
 INT32 lastIndexParsed = 0;
@@ -608,19 +608,16 @@ bool CheckStartElement(INT32 elementId, char *srcElement, char *compareElement)
 		return false;
 	}
 }
-
 /*****************************************************************************/
 /**
- \brief		To check
- 
- This Function shall assign Variable declaration
+ \brief		This Function shall parse and Adds the varDecleration object and its attributes
  
  \param		reader		xml pointer of xmlTextReaderPtr
  \param		cdtObj		Class pointer of ComplexDataType
+
  \return	void
  */
 /*****************************************************************************/
-
 static void SetVarDeclaration(xmlTextReaderPtr reader, ComplexDataType *cdtObj)
 {
 	const xmlChar *name = NULL;

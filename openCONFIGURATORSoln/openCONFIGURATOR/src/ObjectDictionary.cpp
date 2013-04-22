@@ -105,13 +105,6 @@ ObjectDictionary::~ObjectDictionary(void)
 	//Add destructor code here
 }
 
-/*****************************************************************************/
-/**
- \brief		This function shall be used to return pointer to ObjectDictionary object
- 
- \return	ObjectDictionary*
- */
-/*****************************************************************************/
 
 ObjectDictionary* ObjectDictionary::GetObjDictPtr()
 {
@@ -123,15 +116,6 @@ ObjectDictionary* ObjectDictionary::GetObjDictPtr()
 	return objectDictionary;
 }
 
-/*****************************************************************************/
-/**
- \brief		This function shall be used to process the Object Dictionary file and generate the DataTypeCollection, IndexCollection and SubIndexCollection lists
- 
- \param		reader		xml Variable of type xmlTextReaderPtr 
- 
- \return	void
- */
-/*****************************************************************************/
 
 void ObjectDictionary::ProcessObjectDictionary(xmlTextReaderPtr reader)
 {
@@ -252,16 +236,7 @@ void ObjectDictionary::ProcessObjectDictionary(xmlTextReaderPtr reader)
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief		To check
- 
- This is a member function of ObjectDictionary add the SubIndex in the Index Object
- 
- \param		attrIdxPos	Structure Variable of s_attrIdx_SIdx to hold the attribute index
- \return	void
- */
-/*****************************************************************************/
+
 
 void ObjectDictionary::AddSameAttributesObjects(sattrIdxSIdx attrIdxPos)
 {
@@ -271,19 +246,6 @@ void ObjectDictionary::AddSameAttributesObjects(sattrIdxSIdx attrIdxPos)
 	varsattrIdxSIdx = attribCollObj.Count();
 }
 
-/*****************************************************************************/
-/**
- \brief		To check
- 
- This is a member function of CObjectDictionary creats object dictionary
- 
- \param		value		Character pointer to the value of the object
- \param		objType     Enum variable of ObjectType to hold the value of Object type
- \param		idxId       Character pointer to the value of Index
- 
- \return	void
- */
-/*****************************************************************************/
 
 void ObjectDictionary::CreateSameattrObject(char* value, ObjectType objType, char* idxId)
 {
@@ -322,17 +284,7 @@ void ObjectDictionary::CreateSameattrObject(char* value, ObjectType objType, cha
 	delete[] subIdx;
 }
 
-/*****************************************************************************/
-/**
- \brief			To check
- 
- This is a member function of CObjectDictionary returns index value of the object dictionary
- 
- \param			indexId            Character Pointer Variable to hold the value of Index
- 
- \return		Index*
- */
-/*****************************************************************************/
+
 
 Index* ObjectDictionary::GetObjectDictIndex(char* indexId)
 {
@@ -367,18 +319,7 @@ Index* ObjectDictionary::GetObjectDictIndex(char* indexId)
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief			To check
- 
- This is a member function of CObjectDictionary returns the object dictonary for sub index
- 
- \param			idxId       Character pointer variable to hold the value of Index
- \param			sIdxId      Character pointer variable to hold the value of Sub-Index
- 
- \return		SubIndex*
- */
-/*****************************************************************************/
+
 
 SubIndex* ObjectDictionary::GetObjectDictSubIndex(char* idxId, char* sIdxId)
 {
@@ -432,21 +373,6 @@ SubIndex* ObjectDictionary::GetObjectDictSubIndex(char* idxId, char* sIdxId)
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief		To check
- 
- This is a member function of CObjectDictionary returns the range of the object dictionary ids
- 
- \param		idxId		Character Pointer Variable to hold the value of Index
- \param		startIdx	Character Pointer Variable to hold the value of Start Index 
- \param		endIdx      Character Pointer Variable to hold the value of End Index
- 
- \return	BOOL
- \retval	TRUE		to check
- \retval	FALSE		to check	
- */
-/*****************************************************************************/
 
 bool ObjectDictionary::CheckInTheRange(char* idxId, char* startIdx, char* endIdx)
 {
@@ -460,15 +386,7 @@ bool ObjectDictionary::CheckInTheRange(char* idxId, char* startIdx, char* endIdx
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief		This function shall be used to check if an Object Dictionary Index exists at the given Index ID in the collection list
- 
- \param		idxId		Character pointer to the value of index
 
- \return	INT32
- */
-/*****************************************************************************/
 //TODO: Unused function
 INT32 ObjectDictionary::IfObjectDictIndexExists(char* idxId)
 {
@@ -488,16 +406,7 @@ INT32 ObjectDictionary::IfObjectDictIndexExists(char* idxId)
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief		This function shall be used to check if an Object Dictionary SubIndex exists at the given SubIndex ID in the collection list
- 
- \param		idxId      Character pointer to the value of Index
- \param		sIdxId	   Character pointer to the value of SubIndex
- 
- \return	INT32
- */
-/*****************************************************************************/
+
 //TODO: Unused function
 INT32 ObjectDictionary::IfObjectDictSubIndexExists(char* idxId, char* sIdxId)
 {
@@ -525,16 +434,7 @@ INT32 ObjectDictionary::IfObjectDictSubIndexExists(char* idxId, char* sIdxId)
 	}
 }
 
-/*****************************************************************************/
-/**
- \brief		This function shall be used to return the name of the Index given the Object Name and Index ID
- 
- \param		idxId			Character pointer to the value of Object index
- \param		objectName  	Character pointer to the value of Object name				
- 
- \return	char*
- */
-/*****************************************************************************/
+
 
 char* ObjectDictionary::GetIndexName(char* idxId, char* objectName)
 {

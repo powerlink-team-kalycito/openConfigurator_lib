@@ -102,15 +102,113 @@ class ObjectDictionary
 
 		void CheckIfSameIndex(char* Index);
 		Index* GetIndexDictAttribues(char* Index);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to process the Object Dictionary file and generate the DataTypeCollection, IndexCollection and SubIndexCollection lists
+		 
+		 \param		reader		xml Variable of type xmlTextReaderPtr 
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+
 		void ProcessObjectDictionary(xmlTextReaderPtr reader);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return pointer to ObjectDictionary object
+		 
+		 \return	ObjectDictionary*
+		 */
+		/*****************************************************************************/
 		static ObjectDictionary* GetObjDictPtr();
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall adds the an attribute(subindex) to the attribute collection(Index)
+		 
+		 \param		object	Structure Variable of sattrIdxSIdx to hold the attribute Object
+
+		 \return	void
+		 */
+		/*****************************************************************************/
 		void AddSameAttributesObjects(sattrIdxSIdx object);
-		void CreateSameattrObject(char* value, ObjectType objType, char*Idx);
-		Index* GetObjectDictIndex(char* Idx);
-		SubIndex* GetObjectDictSubIndex(char* Idx, char* sIdx);
-		INT32 IfObjectDictIndexExists(char* Index);
-		INT32 IfObjectDictSubIndexExists(char* Idx, char* sIdx);
-		bool CheckInTheRange(char* Idx, char* startIdx, char* endIdx);
-		char* GetIndexName(char* objectIndex, char* objectName);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall create an objects and attributes of the type and indexId
+		 
+		 \param		value		Character pointer to the value of the object
+		 \param		objType		Enum variable of ObjectType to hold the value of Object type
+		 \param		idxId		Character pointer to the value of Index
+		 
+		 \return	void
+		 */
+		/*****************************************************************************/
+		void CreateSameattrObject(char* value, ObjectType objType, char* idxId);
+		/*****************************************************************************/
+		/**
+		 \brief		This is a member function of CObjectDictionary returns index value of the object dictionary
+		 
+		 \param		indexId            Character Pointer Variable to hold the value of Index
+		 
+		 \return	Index*
+		 */
+		/*****************************************************************************/
+		Index* GetObjectDictIndex(char* indexId);
+		/*****************************************************************************/
+		/**
+		 \brief		This is a member function of CObjectDictionary returns the object dictonary for sub index
+		 
+		 \param		idxId       Character pointer variable to hold the value of Index
+		 \param		sIdxId      Character pointer variable to hold the value of Sub-Index
+		 
+		 \return	SubIndex*
+		 */
+		/*****************************************************************************/
+		SubIndex* GetObjectDictSubIndex(char* idxId, char* sIdxId);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to check if an Object Dictionary Index exists at the given Index ID in the collection list
+		 
+		 \param		idxId		Character pointer to the value of index
+
+		 \return	INT32
+		 */
+		/*****************************************************************************/
+		INT32 IfObjectDictIndexExists(char* idxId);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to check if an Object Dictionary SubIndex exists at the given SubIndex ID in the collection list
+		 
+		 \param		idxId      Character pointer to the value of Index
+		 \param		sIdxId	   Character pointer to the value of SubIndex
+		 
+		 \return	INT32
+		 */
+		/*****************************************************************************/
+		INT32 IfObjectDictSubIndexExists(char* idxId, char* sIdxId);
+		/*****************************************************************************/
+		/**
+		 \brief		This is a member function of CObjectDictionary returns the range of the object dictionary ids
+		 
+		 \param		idxId		Character Pointer Variable to hold the value of Index
+		 \param		startIdx	Character Pointer Variable to hold the value of Start Index 
+		 \param		endIdx      Character Pointer Variable to hold the value of End Index
+		 
+		 \return	BOOL
+		 \retval	TRUE		to check
+		 \retval	FALSE		to check	
+		 */
+		/*****************************************************************************/
+		bool CheckInTheRange(char* idxId, char* startIdx, char* endIdx);
+		/*****************************************************************************/
+		/**
+		 \brief		This function shall be used to return the name of the Index given the Object Name and Index ID
+		 
+		 \param		idxId			Character pointer to the value of Object index
+		 \param		objectName		Character pointer to the value of Object name
+		 
+		 \return	char*
+		 */
+		/*****************************************************************************/
+		char* GetIndexName(char* idxId, char* objectName);
 };
 #endif // ObjectDictionary_h
