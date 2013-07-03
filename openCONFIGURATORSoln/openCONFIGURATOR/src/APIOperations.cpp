@@ -104,6 +104,7 @@ static Offsets size16OUTOffset;
 static Offsets size32OUTOffset;
 static Offsets size64OUTOffset;
 
+/** Represents the maximum payload for each channel. */ 
 char abC_DLL_ISOCHR_MAX_PAYL[5] = "1490";
 INT32 configDateGlobal; //global used in xdcoperations
 INT32 configTimeGlobal; //global used in xdcoperations
@@ -6368,6 +6369,18 @@ ocfmRetCode ProcessPDONodes(bool isBuild)
 									delete[] moduleName;
 									delete[] sidxName;
 								}
+								
+								#if defined DEBUG
+									cout<<"Checking for MaxPayload: "<< nodeMappedTotalBytes + mappedLength <<" with 11920"<< endl;
+								#endif
+								if ((nodeMappedTotalBytes + mappedLength) > (atoi((const char*)abC_DLL_ISOCHR_MAX_PAYL) * 8))
+								{
+									exceptionObj.OCFMException(OCFM_ERR_VALUE_NOT_WITHIN_RANGE);
+									char customError[200] = { 0 };
+									sprintf(customError, "Maximum payload limit exceeded for the Channel %s in CN %d. ", indexObj.GetIndexValue(), nodeObj->GetNodeId());
+									CopyCustomErrorString(&(exceptionObj._ocfmRetCode), customError);
+									throw exceptionObj;
+								}
 
 								if ((true == isBuild)
 										&& (strncmp(indexObj.GetIndexValue(),
@@ -6395,14 +6408,22 @@ ocfmRetCode ProcessPDONodes(bool isBuild)
 										modOffset[offsetCopyCount + 2 + 4] = offsetStr[offsetCopyCount];
 									}
 
-									indexCollObj->GetIndexbyIndexValue(
-											(char *) indexObjB4Sort->GetIndexValue())->GetSubIndexbyIndexValue(
-											(char *) sidxObj->GetIndexValue())->SetActualValue(
-											modOffset);
 									if (CHAINED == stnType)
 									{
+										//Updating the total chained bits mapped.
 										totalChainedBytesMapped = totalChainedBytesMapped + mappedLength;
+										if ((totalChainedBytesMapped) > (atoi((const char*)abC_DLL_ISOCHR_MAX_PAYL) * 8))
+										{
+											exceptionObj.OCFMException(OCFM_ERR_VALUE_NOT_WITHIN_RANGE);
+											char customError[200] = { 0 };
+											sprintf(customError, "The total payload for the chained stations exceeds the maximum Pres payload limit(1490 bytes) ");
+											CopyCustomErrorString(&(exceptionObj._ocfmRetCode), customError);
+											throw exceptionObj;
+										}
 									}
+
+									//Set the correct offset for the RPDO
+									indexCollObj->GetIndexbyIndexValue((char *) indexObjB4Sort->GetIndexValue())->GetSubIndexbyIndexValue((char *) sidxObj->GetIndexValue())->SetActualValue(modOffset);
 
 									delete[] modOffset;
 									delete[] offsetStr;
@@ -9030,7 +9051,7 @@ ocfmRetCode GenerateMNOBD(bool IsBuild)
 						prevSubIndex = chainOutPrevSubIndex;
 						outPrevSize = chainOutPrevSize;
 					}
-					/* Create PDO_TxCommParam_XXh_REC 1800 INdex*/
+					/* Create PDO_TxCommParam_XXh_REC 1800 Index*/
 					Index* indexObj;
 					indexPos = 0;
 					char* mappNodeID = new char[SUBINDEX_LEN];
@@ -9042,8 +9063,7 @@ ocfmRetCode GenerateMNOBD(bool IsBuild)
 
 						sidxId = PadLeft(sidxId, '0', 2);
 						indexIdMN = strcat(indexIdMN, sidxId);
-						errCodeObj = IfIndexExists(MN_NODEID, MN, indexIdMN,
-								&indexPos);
+						errCodeObj = IfIndexExists(MN_NODEID, MN, indexIdMN, &indexPos);
 						if (errCodeObj.code != OCFM_ERR_SUCCESS)
 						{
 #if defined DEBUG
@@ -9053,16 +9073,14 @@ ocfmRetCode GenerateMNOBD(bool IsBuild)
 						}
 
 						//to write cn node id in 18XX/01
-						mappNodeID = IntToAscii(nodeObj.GetNodeId(), mappNodeID,
-								10);
+						mappNodeID = IntToAscii(nodeObj.GetNodeId(), mappNodeID, 10);
 					}
 					else
 					{
 						//1800 is used of PRes chained station
 						strcpy(indexIdMN, (char *) "1800");
 						strcpy(sidxId, (char *) "00");
-						errCodeObj = IfIndexExists(MN_NODEID, MN, indexIdMN,
-								&indexPos);
+						errCodeObj = IfIndexExists(MN_NODEID, MN, indexIdMN, &indexPos);
 						if (errCodeObj.code != OCFM_ERR_SUCCESS)
 						{
 #if defined DEBUG
@@ -9086,28 +9104,22 @@ ocfmRetCode GenerateMNOBD(bool IsBuild)
 
 					char* tempSidxId = new char[SUBINDEX_LEN];
 					strcpy(tempSidxId, "01");
-					SetBasicSubIndexAttributes(MN_NODEID, MN, indexIdMN,
-							tempSidxId, mappNodeID, (char*) "NodeID_U8", TRUE);
+					SetBasicSubIndexAttributes(MN_NODEID, MN, indexIdMN, tempSidxId, mappNodeID, (char*) "NodeID_U8", TRUE);
 					delete[] mappNodeID;
 
-					GetSubIndexAttributes(nodeObj.GetNodeId(), CN,
-							(char*) "1400", (char*) "02", ACTUALVALUE,
-							versionNumber);
+					GetSubIndexAttributes(nodeObj.GetNodeId(), CN, (char*) "1400", (char*) "02", ACTUALVALUE, versionNumber);
 					if ((NULL == versionNumber)
 							|| (strcmp(versionNumber, "") == 0))
 					{
 						strcpy(versionNumber, "0x0");
 					}
-					SetBasicSubIndexAttributes(MN_NODEID, MN, indexIdMN,
-							(char*) "02", versionNumber,
-							(char*) "MappingVersion_U8", TRUE);
+					SetBasicSubIndexAttributes(MN_NODEID, MN, indexIdMN, (char*) "02", versionNumber, (char*) "MappingVersion_U8", TRUE);
 
 					strcpy(indexIdMN, "1A");
 					strcat(indexIdMN, sidxId);
 					/* Set the MN's PDO Index*/
 					indexPos = 0;
-					errCodeObj = IfIndexExists(MN_NODEID, MN, indexIdMN,
-							&indexPos);
+					errCodeObj = IfIndexExists(MN_NODEID, MN, indexIdMN, &indexPos);
 					if (errCodeObj.code != OCFM_ERR_SUCCESS)
 					{
 #if defined DEBUG
@@ -9125,20 +9137,40 @@ ocfmRetCode GenerateMNOBD(bool IsBuild)
 						throw exceptionObj;
 					}
 					INT32 pdoOutLC = 0;
-					for (pdoOutLC = 0;
-							pdoOutLC < nodeObj.MNPDOOUTVarCollection.Count();
-							pdoOutLC++)
+					for (pdoOutLC = 0; pdoOutLC < nodeObj.MNPDOOUTVarCollection.Count(); pdoOutLC++)
 					{
 						MNPdoVariable mnPDOObj;
 						mnPDOObj = nodeObj.MNPDOOUTVarCollection[pdoOutLC];
-						indexObj = indexCollObj->GetIndexbyIndexValue(
-								indexIdMN);
+						indexObj = indexCollObj->GetIndexbyIndexValue(indexIdMN);
+						#if defined DEBUG
+							cout<<"prevSubIndex"<<prevSubIndex<<endl;
+						#endif
+						if(prevSubIndex >= 254)
+						{
+							exceptionObj.OCFMException(OCFM_ERR_VALUE_NOT_WITHIN_RANGE);
+							char customError[200];
+							sprintf(customError, "Maximum limit for the payload frame exceeded while mapping to MN's %s channel. Check in CN %d's, RPDO channel's mapped number of subobjects ", indexObj->GetIndexValue(), nodeObj.GetNodeId());
+							CopyCustomErrorString(&(exceptionObj._ocfmRetCode), customError);
+							throw exceptionObj;
+						}
+	
+						#if defined DEBUG
+							cout<<"outPrevSize"<<outPrevSize<<"mnPDOObj.dataSize"<<mnPDOObj.dataSize<<endl;
+							cout<<"Comparing: " <<outPrevSize + mnPDOObj.dataSize <<" with: 11920"<<endl;
+						#endif
+						if((outPrevSize + mnPDOObj.dataSize) > (atoi((const char*) abC_DLL_ISOCHR_MAX_PAYL) * 8))
+						{
+							exceptionObj.OCFMException(OCFM_ERR_VALUE_NOT_WITHIN_RANGE);
+							char customError[200];
+							sprintf(customError, "Maximum payload limit exceeded for the TPDO Channel %s in MN ", indexObj->GetIndexValue());
+							CopyCustomErrorString(&(exceptionObj._ocfmRetCode), customError);
+							throw exceptionObj;
+						}
 
 						if (indexObj != NULL)
 						{
 							indexObj->SetFlagIfIncludedCdc(TRUE);
-							GetMNPDOSubIndex(mnPDOObj, prevSubIndex, indexObj,
-									indexIdMN, outPrevSize);
+							GetMNPDOSubIndex(mnPDOObj, prevSubIndex, indexObj, indexIdMN, outPrevSize);
 							outPrevSize = outPrevSize + mnPDOObj.dataSize;
 						}
 					}
@@ -9164,7 +9196,7 @@ ocfmRetCode GenerateMNOBD(bool IsBuild)
 
 				if (nodeObj.MNPDOINVarCollection.Count() != 0)
 				{
-					/* Create PDO_TxCommParam_XXh_REC 1800 INdex*/
+					/* Create PDO_RxCommParam_XXh_REC 1400 Index*/
 					Index* indexObjTemp;
 					strcpy(indexIdMN, "14");
 					sidxId = IntToAscii(rxChannelCount, sidxId, 16);
@@ -9172,8 +9204,7 @@ ocfmRetCode GenerateMNOBD(bool IsBuild)
 
 					sidxId = PadLeft(sidxId, '0', 2);
 					indexIdMN = strcat(indexIdMN, sidxId);
-					errCodeObj = IfIndexExists(MN_NODEID, MN, indexIdMN,
-							&indexPos);
+					errCodeObj = IfIndexExists(MN_NODEID, MN, indexIdMN, &indexPos);
 					if (errCodeObj.code != OCFM_ERR_SUCCESS)
 					{
 #if defined DEBUG
@@ -9182,8 +9213,7 @@ ocfmRetCode GenerateMNOBD(bool IsBuild)
 						errCodeObj = AddIndex(MN_NODEID, MN, indexIdMN);
 						/* set bFlag to true for 1800*/
 					}
-					indexObjTemp = indexCollObj->GetIndexbyIndexValue(
-							indexIdMN);
+					indexObjTemp = indexCollObj->GetIndexbyIndexValue(indexIdMN);
 					if (indexObjTemp != NULL)
 						indexObjTemp->SetFlagIfIncludedCdc(TRUE);
 
@@ -9196,32 +9226,24 @@ ocfmRetCode GenerateMNOBD(bool IsBuild)
 						throw exceptionObj;
 					}
 
-					mappingSidxId = IntToAscii((nodeObj.GetNodeId()),
-							mappingSidxId, 10);
+					mappingSidxId = IntToAscii((nodeObj.GetNodeId()), mappingSidxId, 10);
 					char* tempSidxId = new char[SUBINDEX_LEN];
 					strcpy(tempSidxId, "01");
-					SetBasicSubIndexAttributes(MN_NODEID, MN, indexIdMN,
-							tempSidxId, mappingSidxId, (char*) "NodeID_U8",
-							TRUE);
+					SetBasicSubIndexAttributes(MN_NODEID, MN, indexIdMN, tempSidxId, mappingSidxId, (char*) "NodeID_U8", TRUE);
 
-					GetSubIndexAttributes(nodeObj.GetNodeId(), CN,
-							(char*) "1800", (char*) "02", ACTUALVALUE,
-							versionNumber);
+					GetSubIndexAttributes(nodeObj.GetNodeId(), CN, (char*) "1800", (char*) "02", ACTUALVALUE, versionNumber);
 					if ((NULL == versionNumber)
 							|| (strcmp(versionNumber, "") == 0))
 					{
 						strcpy(versionNumber, "0x0");
 					}
-					SetBasicSubIndexAttributes(MN_NODEID, MN, indexIdMN,
-							(char*) "02", versionNumber,
-							(char*) "MappingVersion_U8", TRUE);
+					SetBasicSubIndexAttributes(MN_NODEID, MN, indexIdMN, (char*) "02", versionNumber, (char*) "MappingVersion_U8", TRUE);
 					delete[] tempSidxId;
 
 					strcpy(indexIdMN, "16");
 					strcat(indexIdMN, sidxId);
 					/* Set the MN's PDO Index*/
-					errCodeObj = IfIndexExists(MN_NODEID, MN, indexIdMN,
-							&indexPos);
+					errCodeObj = IfIndexExists(MN_NODEID, MN, indexIdMN, &indexPos);
 					if (errCodeObj.code != OCFM_ERR_SUCCESS)
 					{
 						cout << "AddIndex: " << indexIdMN << __LINE__ << endl;
@@ -9234,26 +9256,48 @@ ocfmRetCode GenerateMNOBD(bool IsBuild)
 						}
 					}
 
-					indexObjTemp = indexCollObj->GetIndexbyIndexValue(
-							indexIdMN);
+					indexObjTemp = indexCollObj->GetIndexbyIndexValue(indexIdMN);
 					INT32 pdoInLC = 0;
-					for (pdoInLC = 0;
-							pdoInLC < nodeObj.MNPDOINVarCollection.Count();
-							pdoInLC++)
+					for (pdoInLC = 0; pdoInLC < nodeObj.MNPDOINVarCollection.Count(); pdoInLC++)
 					{
 						MNPdoVariable mnPDOobj;
 						mnPDOobj = nodeObj.MNPDOINVarCollection[pdoInLC];
-						indexObjTemp = indexCollObj->GetIndexbyIndexValue(
-								indexIdMN);
+						indexObjTemp = indexCollObj->GetIndexbyIndexValue(indexIdMN);
 						indexObjTemp->SetFlagIfIncludedCdc(TRUE);
-						GetMNPDOSubIndex(mnPDOobj, inPrevSubIndex, indexObjTemp,
-								indexIdMN, inPrevSize);
+
+						#if defined DEBUG
+							cout<<"InPrevSubIndex"<<inPrevSubIndex<<endl;
+						#endif
+
+						if(inPrevSubIndex >= 254)
+						{
+							exceptionObj.OCFMException(OCFM_ERR_VALUE_NOT_WITHIN_RANGE);
+							char customError[200];
+							sprintf(customError, "Maximum limit for the payload frame exceeded while mapping to MN's %s channel. Check in CN %d's, TPDO channel's mapped number of subobjects ", indexObjTemp->GetIndexValue(), nodeObj.GetNodeId());
+							CopyCustomErrorString(&(exceptionObj._ocfmRetCode), customError);
+							throw exceptionObj;
+						}
+
+						#if defined DEBUG
+							cout<<"InPrevSize"<<inPrevSize<<"mnPDOobj.dataSize"<<mnPDOobj.dataSize<<endl;
+							cout<<"Comparing: " <<inPrevSize + mnPDOobj.dataSize <<" with: 11920"<<endl;
+						#endif
+
+						if((inPrevSize + mnPDOobj.dataSize) > (atoi((const char*) abC_DLL_ISOCHR_MAX_PAYL) * 8))
+						{
+							exceptionObj.OCFMException(OCFM_ERR_VALUE_NOT_WITHIN_RANGE);
+							char customError[200];
+							sprintf(customError, "Maximum payload limit exceeded for the RPDO Channel %s in MN ", indexObjTemp->GetIndexValue());
+							CopyCustomErrorString(&(exceptionObj._ocfmRetCode), customError);
+							throw exceptionObj;
+						}
+
+						GetMNPDOSubIndex(mnPDOobj, inPrevSubIndex, indexObjTemp, indexIdMN, inPrevSize);
 						inPrevSize = inPrevSize + mnPDOobj.dataSize;
 					}
 
 					SubIndex *sidxObjtemp = NULL;
-					sidxObjtemp = indexObjTemp->GetSubIndexbyIndexValue(
-							(char*) "00");
+					sidxObjtemp = indexObjTemp->GetSubIndexbyIndexValue((char*) "00");
 					if (NULL != sidxObjtemp)
 					{
 						char *temp = new char[INDEX_LEN];
