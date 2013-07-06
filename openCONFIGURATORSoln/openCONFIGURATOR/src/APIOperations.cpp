@@ -4547,92 +4547,41 @@ ocfmRetCode GenerateCDC(char* cdcPath)
 			{
 			}
 		}
-		else
+
+
+		if (YES_AG == pjtSettingsObj->GetGenerateAttr())
 		{
-			for (INT32 nodeLC = 0;
-					nodeLC < objNodeCollection->GetNumberOfNodes(); nodeLC++)
+			for (INT32 nodeLC = 0; nodeLC < objNodeCollection->GetNumberOfNodes();
+				nodeLC++)
 			{
-				nodeObj = objNodeCollection->GetNodebyColIndex(nodeLC);
-				/* Process PDO Objects for CN*/
-				if (NULL == nodeObj)
+				Node nodeObjCN;
+				nodeObjCN = objNodeCollection->GetNodebyCollectionIndex(nodeLC);
+				if (nodeObjCN.GetNodeType() == CN)
 				{
-#if defined DEBUG
-					cout << "Memory allocation error" << __FUNCTION__ << endl;
-#endif
+					INT32 nodeId = nodeObjCN.GetNodeId();
+					char* tempStr = new char[10];
+					tempStr = IntToAscii(nodeId, tempStr, 16);
+					tempStr = PadLeft(tempStr, '0', 2);
 
-					exceptionObj.OCFMException(
-							OCFM_ERR_MEMORY_ALLOCATION_ERROR);
-					throw exceptionObj;
-				}
-
-				if (nodeObj->GetNodeType() == MN)
-				{
-					indexCollObj = nodeObj->GetIndexCollection();
-					if (NULL == indexCollObj)
+					char* nodeAssignmentBitsStr = GetNodeAssigmentBits(&nodeObjCN);
+					char* tempStr2 = new char[strlen(nodeAssignmentBitsStr) + ALLOC_BUFFER + 2];
+					sprintf(tempStr2, "0x%s", nodeAssignmentBitsStr);
+					errCodeObj1 = IfSubIndexExists(MN_NODEID, MN, (char*) "1F81",
+						tempStr, &sidxPos, &indexPos);
+					if (OCFM_ERR_SUCCESS != errCodeObj1.code)
 					{
-#if defined DEBUG
-						cout << "Memory allocation error" << __FUNCTION__
-						<< endl;
-#endif
-
-						exceptionObj.OCFMException(
-								OCFM_ERR_MEMORY_ALLOCATION_ERROR);
-						throw exceptionObj;
-					}
-				}
-				else
-				{
-					if (!(nodeObj->HasPdoObjects()))
-					{
-
 						continue;
 					}
-				}
-			}
-		}
 
-		FILE* fileptr = new FILE();
-		tempFileName = new char[strlen(cdcPath) + 10 + strlen("mnobd")];
-		sprintf(tempFileName, "%s/%s.txt", cdcPath, "mnobd");
-
-		if ((fileptr = fopen(tempFileName, "w+")) == NULL)
-		{
-			exceptionObj.OCFMException(OCFM_ERR_CANNOT_OPEN_FILE);
-			throw exceptionObj;
-		}
-
-		for (INT32 nodeLC = 0; nodeLC < objNodeCollection->GetNumberOfNodes();
-				nodeLC++)
-		{
-			Node nodeObjCN;
-			nodeObjCN = objNodeCollection->GetNodebyCollectionIndex(nodeLC);
-			if (nodeObjCN.GetNodeType() == CN)
-			{
-				INT32 nodeId = nodeObjCN.GetNodeId();
-				char* tempStr = new char[10];
-				tempStr = IntToAscii(nodeId, tempStr, 16);
-				tempStr = PadLeft(tempStr, '0', 2);
-
-				char* nodeAssignmentBitsStr = GetNodeAssigmentBits(&nodeObjCN);
-				char* tempStr2 = new char[strlen(nodeAssignmentBitsStr)
-						+ ALLOC_BUFFER + 2];
-				sprintf(tempStr2, "0X%s", nodeAssignmentBitsStr);
-				errCodeObj1 = IfSubIndexExists(MN_NODEID, MN, (char*) "1F81",
-						tempStr, &sidxPos, &indexPos);
-				if (OCFM_ERR_SUCCESS != errCodeObj1.code)
-				{
-					continue;
-				}
-
-				SetSIdxValue((char*) "1F81", tempStr, tempStr2,
+					SetSIdxValue((char*) "1F81", tempStr, tempStr2,
 						objNodeCollection->GetMNNode().GetIndexCollection(),
 						MN_NODEID, MN, false);
-				delete[] tempStr;
-				delete[] tempStr2;
+					delete[] tempStr;
+					delete[] tempStr2;
+				}
 			}
 		}
-
-		nodeObjMN = objNodeCollection->GetMNNode();
+		//nodeObjMN = objNodeCollection->GetMNNode();
 		INT32 totalCNCount = 0;
 		totalCNCount = objNodeCollection->GetCNNodesCount();
 		UpdateMNNodeAssignmentIndex(&nodeObjMN, totalCNCount, (char*) "1F81",
@@ -4653,6 +4602,17 @@ ocfmRetCode GenerateCDC(char* cdcPath)
 		if (YES_AG == pjtSettingsObj->GetGenerateAttr())
 		{
 			CalculatePayload();
+		}
+
+
+		FILE* fileptr = new FILE();
+		tempFileName = new char[strlen(cdcPath) + 10 + strlen("mnobd")];
+		sprintf(tempFileName, "%s/%s.txt", cdcPath, "mnobd");
+
+		if ((fileptr = fopen(tempFileName, "w+")) == NULL)
+		{
+			exceptionObj.OCFMException(OCFM_ERR_CANNOT_OPEN_FILE);
+			throw exceptionObj;
 		}
 
 		//Buffer1 = (char*)malloc(CDC_BUFFER);
@@ -4676,38 +4636,19 @@ ocfmRetCode GenerateCDC(char* cdcPath)
 		}
 		delete[] Buffer1;
 
-		// Add 1F81
-		for (INT32 nodeLC = 0; nodeLC < objNodeCollection->GetNumberOfNodes();
-				nodeLC++)
-		{
-			Node nodeObjCN;
-			nodeObjCN = objNodeCollection->GetNodebyCollectionIndex(nodeLC);
-			if (nodeObjCN.GetNodeType() == CN)
-			{
+		Buffer1 = new char[(CDC_BUFFER * objNodeCollection->GetCNNodesCount())];
+		memset(Buffer1, 0, (((CDC_BUFFER * objNodeCollection->GetCNNodesCount())) * sizeof(char)));
 
-				Buffer1 = new char[CDC_BUFFER];
-				strcpy(Buffer1, "//// NodeId Assignment\n");
-				strcat(Buffer1, "1F81");
-				strcat(Buffer1, "\t");
-				INT32 nodeID = nodeObjCN.GetNodeId();
-				char* tempStr = new char[10];
-				tempStr = IntToAscii(nodeID, tempStr, 16);
-				tempStr = PadLeft(tempStr, '0', 2);
-				strcat(Buffer1, tempStr);
-				strcat(Buffer1, "\t00000004\t00000007\n");
-				strcat(Buffer1, "\n");
-				len = strlen(Buffer1);
-				// write 1F81 entry in MN text file
-				if ((len != (fwrite(Buffer1, sizeof(char), len, fileptr))))
-				{
+		GetAllNodeIdAssignment(Buffer1, false);
+		//Write all 1F81 NodeId Assignment
+		len = strlen(Buffer1);
+		if ((len != (fwrite(Buffer1, sizeof(char), len, fileptr))))
+		{
 #ifdef DEBUG
-					cout << "Write Error in CDC _1" << endl;
+			cout << "Write Error in CDC" << endl;
 #endif
-				}
-				delete[] tempStr;
-				delete[] Buffer1;
-			}
 		}
+		delete[] Buffer1;
 
 		fclose(fileptr);
 
@@ -4740,56 +4681,28 @@ ocfmRetCode GenerateCDC(char* cdcPath)
 		WriteCNsData((char*) tempFileName);
 		//INT32 ret;
 
-		//Get all the IF81 ENTRY in Buffer1
+		//Write all the IF81 nodeId ReAssignment in Buffer1
 		if (objNodeCollection->GetNumberOfNodes() != 0)
 		{
-
-			for (INT32 nodeLC = 0;
-					nodeLC < objNodeCollection->GetNumberOfNodes(); nodeLC++)
+			if ((fileptr = fopen(tempFileName, "a+")) == NULL)
 			{
-				Node nodeObjCN;
-				nodeObjCN = objNodeCollection->GetNodebyCollectionIndex(nodeLC);
-				if (nodeObjCN.GetNodeType() == CN)
-				{
-					if ((fileptr = fopen(tempFileName, "a+")) == NULL)
-					{
-						exceptionObj.OCFMException(OCFM_ERR_CANNOT_OPEN_FILE);
-						throw exceptionObj;
-					}
-					Buffer1 = new char[CDC_BUFFER];
-					len = strlen(Buffer1);
-					strcpy(Buffer1, "//// NodeId Reassignment\n");
-					strcat(Buffer1, "1F81");
-					strcat(Buffer1, "\t");
-					INT32 nodeId = nodeObjCN.GetNodeId();
-					char* tempStr = new char[10];
-					tempStr = IntToAscii(nodeId, tempStr, 16);
-					tempStr = PadLeft(tempStr, '0', 2);
-					strcat(Buffer1, tempStr);
-
-					strcat(Buffer1, "\t00000004\t");
-					char* nodeAssignmentData = GetNodeAssigmentBits(&nodeObjCN);
-					strcat(Buffer1, nodeAssignmentData);
-
-					strcat(Buffer1, "\n");
-
-					len = strlen(Buffer1);
-					if ((len != (fwrite(Buffer1, sizeof(char), len, fileptr))))
-					{
-
-						//TODO: Need to specify warning or err if fwrite fails.
-						fclose(fileptr);
-
-					}
-					else
-					{
-						fclose(fileptr);
-					}
-					delete[] tempStr;
-					delete[] Buffer1;
-				}
+				exceptionObj.OCFMException(OCFM_ERR_CANNOT_OPEN_FILE);
+				throw exceptionObj;
 			}
 
+			Buffer1 = new char[(CDC_BUFFER * objNodeCollection->GetCNNodesCount())];
+			memset(Buffer1, 0, (((CDC_BUFFER * objNodeCollection->GetCNNodesCount())) * sizeof(char)));
+			strcpy(Buffer1, "\n");
+			GetAllNodeIdAssignment(Buffer1, true);
+			len = strlen(Buffer1);
+			if ((len != (fwrite(Buffer1, sizeof(char), len, fileptr))))
+			{
+				#ifdef DEBUG
+				cout << "Write Error in mnobd.txt: node id re-Assignment" << endl;
+				#endif
+			}
+			delete[] Buffer1;
+			fclose(fileptr);
 		}
 
 		// Convert CDC txt file to Binary
@@ -11703,6 +11616,119 @@ ocfmRetCode GetNodeDataTypes(INT32 nodeId, NodeType nodeType,
 		return ex->_ocfmRetCode;
 	}
 	return errCodeObj;
+}
+
+void GetAllNodeIdAssignment(char* Buffer1, bool isReAssignment)
+{
+	NodeCollection *objNodeCollection = NULL;
+	Node nodeObjMN;
+	IndexCollection *mnIndexCollObj = NULL;
+	Index* mnIdxObj = NULL;
+
+	objNodeCollection = NodeCollection::GetNodeColObjectPointer();
+	nodeObjMN = objNodeCollection->GetMNNode();
+	mnIndexCollObj = nodeObjMN.GetIndexCollection();
+	if(mnIndexCollObj == NULL)
+	{
+		cout<<"MN has no indexes"<<endl;
+		return;
+	}
+	mnIdxObj = mnIndexCollObj->GetIndexbyIndexValue((char*) "1F81");
+	if(mnIdxObj == NULL)
+	{
+		cout<<"MN 1F81 Not Found"<<endl;
+		return;
+	}
+
+	for(INT32 nodeLC = 0; nodeLC < objNodeCollection->GetNumberOfNodes();
+		nodeLC++)
+	{
+		Node nodeObjCN;
+		nodeObjCN = objNodeCollection->GetNodebyCollectionIndex(nodeLC);
+		if (nodeObjCN.GetNodeType() == CN)
+		{
+			if(isReAssignment == false)
+			{
+				strcat(Buffer1, "//// NodeId Assignment\n");
+			}
+			else
+			{
+				strcat(Buffer1, "//// NodeId Reassignment\n");
+			}
+			strcat(Buffer1, "1F81");
+			strcat(Buffer1, "\t");
+			INT32 nodeID = nodeObjCN.GetNodeId();
+			cout<<"Writting 1F81 data for CN "<<nodeID<<endl;
+			char* tempStr = new char[10];
+			tempStr = IntToAscii(nodeID, tempStr, 16);
+			tempStr = PadLeft(tempStr, '0', 2);
+			strcat(Buffer1, tempStr);
+			strcat(Buffer1, "\t00000004\t");
+
+			SubIndex* mnSidxObj = mnIdxObj->GetSubIndexbyIndexValue(tempStr);
+			if(mnSidxObj != NULL)
+			{
+				char* orgValue = NULL;
+				if(mnSidxObj->GetActualValue() != NULL)
+				{
+					orgValue = new char[strlen(mnSidxObj->GetActualValue()) + STR_ALLOC_BUFFER];
+					strcpy(orgValue, mnSidxObj->GetActualValue());
+				}
+				else if(mnSidxObj->GetDefaultValue() != NULL)
+				{
+					orgValue = new char[strlen(mnSidxObj->GetDefaultValue()) + STR_ALLOC_BUFFER];
+					strcpy(orgValue, mnSidxObj->GetDefaultValue());
+					cout<<"Fetching Default value"<<endl;
+				}
+				else
+				{
+					cout<<"Fetching None: BothActual & Default values are not configured"<<endl;
+					orgValue = new char[11];
+					strcpy(orgValue, "0x00000000");
+				}
+
+				if(strlen(orgValue) != 10)
+				{
+					cout<<"Error Invalid length for the value"<<endl;
+				}
+
+				if(CheckIfHex(orgValue))
+				{
+					char* destStr = new char[9];
+					SubString(destStr, orgValue, 2, 8);
+					if(isReAssignment == false)
+					{
+						char* temp = new char[9];
+						strcat(Buffer1, "0");
+						SubString(temp, destStr, 1, 7);
+						strcat(Buffer1, temp);
+						delete[] temp;
+					}
+					else
+					{
+						strcat(Buffer1, destStr);
+					}
+					strcat(Buffer1, "\n");
+					delete[] destStr;
+				}
+				else
+				{
+					cout<<"Invalid 1F81 value: "<<orgValue<<endl;
+					strcat(Buffer1, orgValue);
+				}
+				delete[] orgValue;
+			}
+			else
+			{
+				cout<<"MN 1F81/"<<tempStr<<" subindex not found"<<endl;
+				//handled error case
+				strcat(Buffer1, "00000007");
+			}
+
+			strcat(Buffer1, "\n");
+			delete[] tempStr;
+		}
+	}
 }
 
 char* GetNodeAssigmentBits(Node* nodeObj)

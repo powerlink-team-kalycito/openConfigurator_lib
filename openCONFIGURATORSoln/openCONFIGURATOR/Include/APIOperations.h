@@ -167,4 +167,13 @@ void AddForEachSIdx(char *indexId, IndexCollection *indexCollObj, INT32 nodeId,
 /*****************************************************************************/
 void CheckIfOffsetUsed(INT32& iOffset, PDOType varPdoType);
 
+/**
+ \brief		This function returns the node id assignment/reAssignment to be written in the CDC
+
+ \param[out]	Buffer				Character pointer to update the nodeid assignment contents
+ \param[in]		isReAssignment		Boolean flag to specify node id assignment or re-assingnment
+ \return		void
+ */
+void GetAllNodeIdAssignment(char *Buffer, bool isReAssignment);
+
 #endif // APIOperations_h
