@@ -5819,25 +5819,6 @@ ocfmRetCode ProcessPDONodes(bool isBuild)
 									throw exceptionObj;
 								}
 
-								INT32 mappedOffset = 0;
-								char* mappingOffset = new char[INDEX_LEN];
-								SubString(mappingOffset, actualVal, 6, 4);
-								mappedOffset = HexToInt(mappingOffset);
-								delete[] mappingOffset;
-
-#if defined DEBUG
-								cout << "Validating offset(decimal): "<<"mappedOffset"<<mappedOffset<<" nodeMappedTotalBytes"<<nodeMappedTotalBytes<<" Sidx: "<< sidxObj->GetIndexValue()<<endl;
-#endif
-
-								if (mappedOffset != nodeMappedTotalBytes)
-								{
-									exceptionObj.OCFMException(OCFM_ERR_INVALID_PDO_OFFSET);
-									char customError[200] = { 0 };
-									sprintf(customError, "Incorrect offset configured for the PDO\nIn the node %s(%d), Index: %s(0x%s) subIndex: %s(0x%s)", nodeObj->GetNodeName(), nodeObj->GetNodeId(), indexObj.GetName(), indexObj.GetIndexValue(), sidxObj->GetName(), sidxObj->GetIndexValue());
-									CopyCustomErrorString(&(exceptionObj._ocfmRetCode), customError);
-									throw exceptionObj;
-								}
-
 								//Mapped length in bits
 								INT32 mappedLength = 0;
 								char* mappingLen = new char[INDEX_LEN];
@@ -6341,7 +6322,35 @@ ocfmRetCode ProcessPDONodes(bool isBuild)
 									delete[] modOffset;
 									delete[] offsetStr;
 								}
+
+								if (strncmp(indexObj.GetIndexValue(), "1A", 2) == 0)
+								{
+									INT32 mappedOffset = 0;
+									char* mappingOffset = new char[INDEX_LEN];
+									SubString(mappingOffset, actualVal, 6, 4);
+									mappedOffset = HexToInt(mappingOffset);
+									delete[] mappingOffset;
+
+									#if defined DEBUG
+										cout << "Validating offset(decimal): "<<"mappedOffset"<<mappedOffset<<" ChannelMappedTotalBits"<<nodeMappedTotalBytes<<" Sidx: "<< sidxObj->GetIndexValue()<<endl;
+									#endif
+
+									if (mappedOffset != nodeMappedTotalBytes)
+									{
+										exceptionObj.OCFMException(OCFM_ERR_INVALID_PDO_OFFSET);
+										char customError[200] = { 0 };
+										sprintf(customError, "Incorrect offset configured for the PDO\nIn the node %s(%d), Index: %s(0x%s) subIndex: %s(0x%s)", nodeObj->GetNodeName(), nodeObj->GetNodeId(), indexObj.GetName(), indexObj.GetIndexValue(), sidxObj->GetName(), sidxObj->GetIndexValue());
+										CopyCustomErrorString(&(exceptionObj._ocfmRetCode), customError);
+										throw exceptionObj;
+									}
+								}
+
+								//Updating the ChannelMapped Total bits.
 								nodeMappedTotalBytes = nodeMappedTotalBytes + mappedLength;
+
+								#if defined DEBUG
+									cout << "ChannelMappedTotalBytes:" << nodeMappedTotalBytes/8 << " TotalChainedBytesMapped:" << totalChainedBytesMapped/8 <<endl;
+								#endif
 							}
 							else
 							{
