@@ -2562,15 +2562,12 @@ void UpdateCNMultipleCycleAssign(Node* nodeObj)
 		if (NULL == sindexObjMN)
 			continue;
 
-		if (NULL != sindexObjMN->GetActualValue())
+		if (NULL != sindexObjMN->GetActualValue() 
+			&& IsDefaultActualNotEqual(sindexObjMN))
 		{
 			sindexObjCN->SetActualValue((char*) sindexObjMN->GetActualValue());
+			sindexObjCN->SetFlagIfIncludedCdc(TRUE);
 		}
-		else
-		{
-			sindexObjCN->SetActualValue((char*) "");
-		}
-		sindexObjCN->SetFlagIfIncludedCdc(TRUE);
 	}
 }
 
