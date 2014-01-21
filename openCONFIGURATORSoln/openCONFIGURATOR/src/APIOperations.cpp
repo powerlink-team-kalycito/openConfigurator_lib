@@ -9097,7 +9097,7 @@ ocfmRetCode GenerateMNOBD(bool IsBuild)
 						#if defined DEBUG
 							cout<<"prevSubIndex"<<prevSubIndex<<endl;
 						#endif
-						if(prevSubIndex >= 254)
+						if (prevSubIndex >= 252)
 						{
 							exceptionObj.OCFMException(OCFM_ERR_VALUE_NOT_WITHIN_RANGE);
 							char customError[200];
