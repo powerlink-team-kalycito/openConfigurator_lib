@@ -57,6 +57,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <stdio.h>
 #include <libxml/xmlreader.h>
 #include <errno.h>
@@ -6884,10 +6885,13 @@ void WriteXAPElements(ProcessImage piCollObj[], xmlTextWriterPtr& xmlWriter,
 			{
 				return;
 			}
+			stringstream moduleName;
+			string moduleNr(piObj.moduleIndex);
+			moduleName << "CN" << piObj.nodeId << ".M" << moduleNr.substr(2,4) << "." << piObj.moduleName << "." << piObj.varDeclName;
 
 			/* Add an attribute with name "Name" and value  to channel. */
 			bytesWritten = xmlTextWriterWriteAttribute(xmlWriter,
-					BAD_CAST "Name", BAD_CAST piObj.name);
+				BAD_CAST "Name", BAD_CAST moduleName.str().c_str());
 
 			if (bytesWritten < 0)
 			{
