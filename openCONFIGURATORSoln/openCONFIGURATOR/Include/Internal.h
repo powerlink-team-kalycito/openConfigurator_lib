@@ -74,8 +74,8 @@
 /*****************************************************************************/
 /* Defines */
 
-#define TOOL_VERSION "1.3.0"
-#define LAST_TOOL_VERSION "1.2.2"
+#define TOOL_VERSION "1.3.1"
+#define LAST_TOOL_VERSION "1.3.0"
 #define PREV_TOOL_VERSION_1 "1.1.0"
 #define PREV_TOOL_VERSION_2 "1.0.1"
 #define PREV_TOOL_VERSION_3 "1.0.0"
